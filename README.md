@@ -120,6 +120,36 @@ the most abundant ligands: 3.2× more in the top three deciles than in the botto
 - **Fully permuted data (S0) cannot validate a null.** Both nulls look calibrated there. Use a
   structured null.
 
+## Real-data benchmark: Open Problems / LIANA TNBC atlas
+
+`benchmarks/tnbc_openproblems.py` compares five nulls across all seven liana-py scoring methods
+on the triple-negative breast cancer atlas that LIANA's benchmark and the Open Problems
+ligand–target task use (Wu et al. 2021): 42,512 cells, 29 cell types, 10 patients, with the
+cytokine ground truth in `uns["ccc_target"]`.
+
+```bash
+# data: Open Problems public S3 (1.27 GB, md5 0c1c558c4137571eb5e9351c8408dc04)
+curl -o data/tnbc_wu2021_log_cp10k.h5ad \
+  https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/tnbc_wu2021/log_cp10k/dataset.h5ad
+pip install -e ".[liana]"
+python benchmarks/tnbc_openproblems.py --B 1000 --B5 100     # ~3.5 h on an 8 GB laptop
+python benchmarks/tnbc_e1_bootstrap.py full                   # E1 with bootstrap CIs
+python benchmarks/tnbc_summary.py full                        # tables
+python benchmarks/tnbc_patient_splits.py --splits 2 --B 300   # E3 reproducibility
+```
+
+| Null | What is randomised |
+|---|---|
+| N1 | cell labels, uniformly (CellPhoneDB / CellChat / LIANA default) |
+| N2 | cell labels within each patient |
+| N3 | gene identity vs abundance-matched non-LR decoys (this package's Null B) |
+| N4 | gene identity vs any non-LR decoy (ablation) |
+| N5 | per-patient z-scores, one-sided t-test across patients |
+
+`ccc_nulls.multitool` recomputes every tool's statistic under each null and reproduces
+LIANA's own scores to within float32 rounding (r = 1.000000 for all seven tools).
+Results, including the fake-LR-resource calibration test, are in `benchmarks/results/tnbc/`.
+
 ## Limitations
 
 - **Power:** Null B gives up weak effects (LFC 0.5) in exchange for error control. Report both q-values.

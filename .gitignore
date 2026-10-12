@@ -7,3 +7,8 @@ __pycache__/
 build/
 dist/
 *.h5ad
+data/
+benchmarks/results/tnbc/rows_*.csv.gz
+benchmarks/results/tnbc/liana_*.pkl
+benchmarks/results/tnbc/*.log
+benchmarks/results/tnbc/results_quick.json

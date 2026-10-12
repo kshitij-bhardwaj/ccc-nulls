@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "cells": 42512,
+  "genes": 28200,
+  "types": 29,
+  "patients": 10,
+  "B": 10000,
+  "B5": 100,
+  "tag": "n3_B10000",
+  "truth_rows": 812,
+  "truth_pos": 166
+ },
+ "validation": {
+  "CellPhoneDB": {
+   "max_abs_diff": 7.605746517924672e-06,
+   "corr": 0.9999999999997715
+  }
+ },
+ "tools": {
+  "CellPhoneDB": {
+   "n_real": 154213,
+   "n_fake": 214574,
+   "e1": {
+    "ungated": {
+     "auprc": 0.23626582776329952,
+     "odds_ratio": 2.7644444444444445,
+     "odds_ratio_sigmoid": 0.580223880597015
+    },
+    "N6_native": {
+     "auprc": 0.23623540529532513,
+     "odds_ratio": 2.7644444444444445,
+     "odds_ratio_sigmoid": 0.580223880597015
+    },
+    "N3": {
+     "auprc": 0.2480494683079595,
+     "odds_ratio": 2.467549668874172,
+     "odds_ratio_sigmoid": 0.5523273050696709
+    }
+   },
+   "e2": {
+    "N3": {
+     "real_rate": 0.0,
+     "fake_rate": 0.0,
+     "real_p05": 0.206772451090375,
+     "fake_p05": 0.0577749401139001,
+     "real_calls_sep": 1300,
+     "fake_calls_sep": 0
+    }
+   },
+   "e4": {
+    "N3": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     2,
+     60,
+     97,
+     276,
+     863
+    ]
+   },
+   "native_vs_N1": null,
+   "n_real_calls": {
+    "N3": 1300
+   },
+   "e1q": {
+    "N3": {
+     "auprc": 0.2514061868289122,
+     "odds_ratio": 1.5098998887652948,
+     "odds_ratio_sigmoid": 0.4301831780439881
+    }
+   }
+  }
+ },
+ "random_baseline": {
+  "auprc": 0.21410915457809934,
+  "odds_ratio": 1.5098998887652948,
+  "odds_ratio_sigmoid": 0.4301831780439881
+ }
+}
