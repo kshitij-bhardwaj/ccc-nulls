@@ -16,13 +16,17 @@ CellPhoneDB, CellChat, NATMI, Connectome. Each is built twice:
 
 ## Steps
 
-| # | Step | Data | Status |
-|---|---|---|---|
-| 1 | Adapter layer: dataset → native inputs → native run → common schema | TNBC | LIANA path done; native paths per tool |
-| 2 | Evaluation against ground truth (AUPRC, odds ratio, Open Problems protocol) | TNBC (cytokine), mouse brain (spatial) | TNBC done for LIANA tools |
-| 3 | Calibration: fully permuted labels + fake LR resource | Tabula Sapiens (one tissue), TNBC | TNBC done; Tabula Sapiens to do |
-| 4 | Null A check: native permutation p vs our Null A | CellPhoneDB, CellChat | LIANA-vs-ours r = 0.992 (CellPhoneDB); native to do |
-| 5 | Null comparison N1–N5 per tool + stress tests | all | done on TNBC for 7 LIANA tools |
+| # | Step | Where | Data | Status |
+|---|---|---|---|---|
+| 1 | Each tool's own Null A (`null_a`), on the tool's own score, with its adapter | `tools/<tool>/nulls.py`, `adapter.py` | TNBC | to do (stubs and tests in place) |
+| 2 | Null A check: our Null A vs the tool's own permutation p | CellPhoneDB, CellChat | TNBC | to do; `run_tool.py` reports it |
+| 3 | Each tool's own Null B (`null_b`) | `tools/<tool>/nulls.py` | TNBC | to do |
+| 4 | Native adapters: dataset → native inputs → native run → common schema | `tools/<tool>/adapter.py` | TNBC | LIANA path done; native to do |
+| 5 | Evaluation against ground truth (AUPRC, odds ratio, Open Problems protocol) | `benchmarks/run_tool.py` | TNBC (cytokine), mouse brain (spatial) | shared scoring in place |
+| 6 | Calibration: fully permuted labels + fake LR resource | shared | Tabula Sapiens (one tissue), TNBC | TNBC done for LIANA tools; Tabula Sapiens to do |
+
+The earlier 7-tool LIANA benchmark (`benchmarks/tnbc_openproblems.py`, shared nulls N1–N5 in
+`ccc_nulls.multitool`) stays as the reference the per-tool nulls can be checked against.
 
 ## Decisions and caveats from the review of this plan
 

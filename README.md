@@ -38,12 +38,14 @@ Details, md5 sums and loaders: [`data/README.md`](data/README.md) and `ccc_nulls
 
 ```
 src/ccc_nulls/        shared library: nulls, statistics engine, schema, datasets, evaluation
-tools/                one workspace per tool, one owner each (see .github/CODEOWNERS)
-  cellphonedb/          adapter.py (dataset -> native inputs -> native run -> common schema), tests
+tools/                one workspace per tool, one owner each
+  cellphonedb/          adapter.py (dataset -> native inputs -> native run -> common schema),
+                        nulls.py (this tool's Null A and Null B), tests
   cellchat/
   natmi/
   connectome/
-benchmarks/           experiment drivers (shared) and their summary results
+benchmarks/           experiment drivers (shared) and their summary results;
+                        run_tool.py runs and scores any tool's nulls the same way
 tests/                tests for the shared library
 docs/PLAN.md          project plan and the decisions behind it
 data/                 datasets (git-ignored, see data/README.md)

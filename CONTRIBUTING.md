@@ -4,7 +4,7 @@
 
 | Path | Who edits | How changes land |
 |---|---|---|
-| `tools/<tool>/` | that tool's owner only (`.github/CODEOWNERS`) | PR, owner merges |
+| `tools/<tool>/` | that tool's owner only (assigned within the team) | PR, owner merges |
 | `src/ccc_nulls/`, `benchmarks/`, `tests/` | anyone | PR + review by one other member |
 | `README.md`, `docs/`, `CONTRIBUTING.md` | anyone | PR + review by one other member |
 
