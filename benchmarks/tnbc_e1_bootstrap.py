@@ -15,6 +15,8 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import auc, precision_recall_curve
 
+from ccc_nulls import datasets
+
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "benchmarks" / "results" / "tnbc"
 tag = sys.argv[1] if len(sys.argv) > 1 else "full"
@@ -22,7 +24,7 @@ NULLS = ["N1", "N2", "N3", "N4", "N5"]
 TOOLS = ["CellPhoneDB", "GeometricMean", "CellChat", "Connectome", "NATMI", "SingleCellSignalR", "log2FC"]
 NBOOT = 1000
 
-truth = ad.read_h5ad(ROOT / "data" / "tnbc_wu2021_log_cp10k.h5ad", backed="r").uns["ccc_target"][["ligand", "target", "response"]]
+truth = ad.read_h5ad(datasets.path("tnbc_wu2021"), backed="r").uns["ccc_target"][["ligand", "target", "response"]]
 truth = truth.astype({"response": int}).reset_index(drop=True)
 
 

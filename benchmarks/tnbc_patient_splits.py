@@ -26,11 +26,12 @@ import pandas as pd
 from scipy.stats import spearmanr
 
 import ccc_nulls as cn
+from ccc_nulls import datasets
 from ccc_nulls.multitool import TOOLS, Candidates, StatsEngine, decoy_null, label_null, tool_scores
 
 warnings.filterwarnings("ignore")
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data" / "tnbc_wu2021_log_cp10k.h5ad"
+DATA = datasets.path("tnbc_wu2021")
 OUT = ROOT / "benchmarks" / "results" / "tnbc"
 EXPR_PROP, ALPHA = 0.10, 0.05
 

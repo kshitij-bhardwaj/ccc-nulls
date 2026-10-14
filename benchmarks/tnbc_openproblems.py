@@ -18,19 +18,18 @@ import time
 import warnings
 from pathlib import Path
 
-import anndata as ad
 import liana as li
 import numpy as np
 import pandas as pd
-from sklearn.metrics import auc, precision_recall_curve
 
 import ccc_nulls as cn
+from ccc_nulls import datasets
+from ccc_nulls.evaluation import openproblems as opm
 from ccc_nulls.multitool import (TOOLS, Candidates, StatsEngine, decoy_null, label_null,
                                  patient_replicate_null, tool_scores)
 
 warnings.filterwarnings("ignore")
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data" / "tnbc_wu2021_log_cp10k.h5ad"
 OUT = ROOT / "benchmarks" / "results" / "tnbc"
 EXPR_PROP, ALPHA = 0.10, 0.05
 NATIVE_P = {"CellPhoneDB": "cellphone_pvals", "GeometricMean": "gmean_pvals", "CellChat": "cellchat_pvals"}
@@ -41,32 +40,16 @@ def log(*a):
 
 
 # ------------------------------------------------------------------ Open Problems metrics
-def op_metrics(pred: pd.DataFrame, truth: pd.DataFrame, top_prop=0.05):
-    """Exact Open Problems v1 ligand-target metrics (auprc.py, odds_ratio.py)."""
-    gt = truth.merge(pred, on=["ligand", "target"], how="left")
-    gt.loc[gt.response.isna(), "response"] = 0
-    gt.loc[gt.score.isna(), "score"] = np.nanmin(gt.score) - np.finfo(float).eps if gt.score.notna().any() else 0
-    p, r, _ = precision_recall_curve(gt.response, gt.score, pos_label=1)
-    auprc = auc(r, p)
-    gt = gt.sort_values("score", ascending=False)
-    top_n = int(truth.shape[0] * top_prop)
-    top = np.zeros(len(gt))
-    top[:top_n] = 1
-    tp = np.sum((top == 1) & (gt.response == 1)); fp = np.sum((top == 1) & (gt.response == 0))
-    fn = np.sum((top == 0) & (gt.response == 1)); tn = np.sum((top == 0) & (gt.response == 0))
-    if fp * fn == 0:
-        orr = np.nan if tp * tn == 0 else np.inf
-    else:
-        orr = tp * tn / (fp * fn)
-    or_sig = 1 - 1 / (1 + orr / 2) if np.isfinite(orr) else (1.0 if orr == np.inf else np.nan)
-    return dict(auprc=float(auprc), odds_ratio=float(orr), odds_ratio_sigmoid=float(or_sig))
+KEYS = ["ligand", "target"]                      # ligand-target task (cytokine truth)
+
+
+def op_metrics(pred: pd.DataFrame, truth: pd.DataFrame):
+    return opm.metrics(pred, truth, KEYS)
 
 
 def op_prediction(df: pd.DataFrame, score: np.ndarray, p=None):
-    """OP protocol: keep the tool score if p <= 0.05 (else 0), max over sources/receptors."""
-    s = score.copy() if p is None else np.where(p <= ALPHA, score, 0.0)
-    return (pd.DataFrame({"ligand": df.ligand_complex.values, "target": df.target.values, "score": s})
-            .groupby(["ligand", "target"]).score.max().reset_index())
+    """Open Problems protocol: keep the tool score if p <= 0.05 (else 0), max per (ligand, target)."""
+    return opm.predictions(df, score, KEYS, p=p, alpha=ALPHA)
 
 
 # ------------------------------------------------------------------ main
@@ -87,21 +70,15 @@ def main():
     tag = args.tag or ("quick" if args.quick else "full")
     liana_tag = "quick" if args.quick else "full"
 
-    log("loading", DATA.name)
-    raw = ad.read_h5ad(DATA)
-    # a clean object: X = Open Problems' log-CP10k layer (what their LIANA wrapper scores)
-    adata = ad.AnnData(X=raw.layers["normalized"].astype(np.float32).tocsr(), obs=raw.obs.copy(),
-                       var=raw.var[[]].copy(), uns={"ccc_target": raw.uns["ccc_target"]})
-    del raw
+    log("loading", datasets.path("tnbc_wu2021").name)
+    adata, truth = datasets.load_openproblems("tnbc_wu2021")   # X = Open Problems' log-CP10k layer
     if args.quick:
         keep = rng.choice(adata.n_obs, 8000, replace=False)
         adata = adata[np.sort(keep)].copy()
-    # LIANA drops cell types with < 5 cells (min_cells); drop them up front so every null sees the same types
-    vc = adata.obs["label"].value_counts()
-    adata = adata[adata.obs["label"].isin(vc[vc >= 5].index)].copy()
-    adata.obs["label"] = adata.obs["label"].astype(str).astype("category")
-    truth = adata.uns["ccc_target"][["ligand", "target", "response"]].copy()
-    truth["response"] = truth.response.astype(int)
+        # LIANA drops cell types with < 5 cells; drop them up front so every null sees the same types
+        vc = adata.obs["label"].value_counts()
+        adata = adata[adata.obs["label"].isin(vc[vc >= 5].index)].copy()
+        adata.obs["label"] = adata.obs["label"].astype(str).astype("category")
     patients = adata.obs["orig.ident"].astype(str).to_numpy()
     types = list(adata.obs.label.cat.categories)
     K = len(types)
@@ -285,8 +262,7 @@ def main():
             log(f"  E5 {t}: " + " | ".join(f"{nl} p<.05 {v['p05']:.1%} calls {v['calls']}" for nl, v in results['tools'][t]['e5'].items()))
 
     # random baseline (Open Problems "Random Events" control)
-    rnd = truth[["ligand", "target"]].copy(); rnd["score"] = np.random.default_rng(1).random(len(rnd))
-    results["random_baseline"] = op_metrics(rnd, truth)
+    results["random_baseline"] = opm.random_baseline(truth, KEYS)
     (OUT / f"results_{tag}.json").write_text(json.dumps(results, indent=1, default=float))
     log("wrote", OUT / f"results_{tag}.json")
 
