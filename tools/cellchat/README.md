@@ -1,6 +1,6 @@
 # CellChat
 
-Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shared goes in
+One owner, assigned within the team. Only the owner edits this folder; anything shared goes in
 `src/ccc_nulls/` through a reviewed pull request.
 
 | | |
@@ -18,6 +18,11 @@ Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shar
 | `prepare_inputs` | to do |
 | `run_native` | to do |
 | `native_to_schema` | to do |
+
+| Function in `nulls.py` | State |
+|---|---|
+| `null_a` | to do: shuffle labels, recompute this tool's score |
+| `null_b` | to do: abundance-matched decoy genes, this tool's score |
 
 ## Native input (to verify against the installed version)
 
@@ -41,10 +46,13 @@ Long table: `source, target, ligand, receptor, prob, pval, interaction_name, ...
 - [ ] pin the CellChat version and record it in this README
 - [ ] keep all rows (thresh = 1), not only significant ones, so nulls can be compared
 - [ ] check that `ligand` / `receptor` names match gene symbols (complexes use underscores)
-- [ ] compare native `pval` with Null A (`ccc_nulls.multitool.label_null`)
+- [ ] `nulls.null_a`: reproduce CellChat's own permutation; compare `p_null_a` with `p_native`
+- [ ] `nulls.null_b`
 
-## Run the tests
+## Run the tests and the benchmark
 
 ```bash
 pytest tools/cellchat
+python benchmarks/run_tool.py --tool cellchat --quick --B 50     # smoke test, 8,000 cells
+python benchmarks/run_tool.py --tool cellchat --B 1000             # full TNBC run
 ```

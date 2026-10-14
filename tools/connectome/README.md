@@ -1,6 +1,6 @@
 # Connectome
 
-Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shared goes in
+One owner, assigned within the team. Only the owner edits this folder; anything shared goes in
 `src/ccc_nulls/` through a reviewed pull request.
 
 | | |
@@ -18,6 +18,11 @@ Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shar
 | `prepare_inputs` | to do |
 | `run_native` | to do |
 | `native_to_schema` | to do |
+
+| Function in `nulls.py` | State |
+|---|---|
+| `null_a` | to do: shuffle labels, recompute this tool's score |
+| `null_b` | to do: abundance-matched decoy genes, this tool's score |
 
 ## Native input (to verify against the installed version)
 
@@ -37,9 +42,13 @@ Edge table with `source, target, ligand, receptor, weight_norm, weight_sc, p_val
 - [ ] confirm column names and default filters in the installed version
 - [ ] use `weight_sc` as `score` (= LIANA's scaled_weight)
 - [ ] decide how to report the DE p-values (they are not a null for the edge score)
+- [ ] `nulls.null_a` (our implementation; no native p to compare)
+- [ ] `nulls.null_b`
 
-## Run the tests
+## Run the tests and the benchmark
 
 ```bash
 pytest tools/connectome
+python benchmarks/run_tool.py --tool connectome --quick --B 50     # smoke test, 8,000 cells
+python benchmarks/run_tool.py --tool connectome --B 1000             # full TNBC run
 ```

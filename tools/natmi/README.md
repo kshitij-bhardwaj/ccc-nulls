@@ -1,6 +1,6 @@
 # NATMI
 
-Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shared goes in
+One owner, assigned within the team. Only the owner edits this folder; anything shared goes in
 `src/ccc_nulls/` through a reviewed pull request.
 
 | | |
@@ -18,6 +18,11 @@ Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shar
 | `prepare_inputs` | to do |
 | `run_native` | to do |
 | `native_to_schema` | to do |
+
+| Function in `nulls.py` | State |
+|---|---|
+| `null_a` | to do: shuffle labels, recompute this tool's score |
+| `null_b` | to do: abundance-matched decoy genes, this tool's score |
 
 ## Native input (to verify against the installed version)
 
@@ -39,9 +44,13 @@ Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shar
 - [ ] confirm column names in the installed NATMI version
 - [ ] use `Edge average expression derived specificity` as `score` (= LIANA's spec_weight)
 - [ ] no native null: Null A here is our implementation only; say so in results
+- [ ] `nulls.null_a` (our implementation; no native p to compare)
+- [ ] `nulls.null_b`
 
-## Run the tests
+## Run the tests and the benchmark
 
 ```bash
 pytest tools/natmi
+python benchmarks/run_tool.py --tool natmi --quick --B 50     # smoke test, 8,000 cells
+python benchmarks/run_tool.py --tool natmi --B 1000             # full TNBC run
 ```

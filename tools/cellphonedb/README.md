@@ -1,6 +1,6 @@
 # CellPhoneDB (v5)
 
-Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shared goes in
+One owner, assigned within the team. Only the owner edits this folder; anything shared goes in
 `src/ccc_nulls/` through a reviewed pull request.
 
 | | |
@@ -18,6 +18,11 @@ Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shar
 | `prepare_inputs` | to do |
 | `run_native` | to do |
 | `native_to_schema` | to do |
+
+| Function in `nulls.py` | State |
+|---|---|
+| `null_a` | to do: shuffle labels, recompute this tool's score |
+| `null_b` | to do: abundance-matched decoy genes, this tool's score |
 
 ## Native input (to verify against the installed version)
 
@@ -43,10 +48,13 @@ Wide tables `means`, `pvalues`, `significant_means`: one row per interacting pai
 - [ ] confirm v5 input/output format against the installed version
 - [ ] orient partners (ligand vs receptor) using receptor_a / receptor_b
 - [ ] complexes: map `complex:...` partners to their subunits; record the subunit used
-- [ ] compare native p-values with Null A (`ccc_nulls.multitool.label_null`)
+- [ ] `nulls.null_a`: reproduce CellPhoneDB's own permutation; compare `p_null_a` with `p_native`
+- [ ] `nulls.null_b`
 
-## Run the tests
+## Run the tests and the benchmark
 
 ```bash
 pytest tools/cellphonedb
+python benchmarks/run_tool.py --tool cellphonedb --quick --B 50     # smoke test, 8,000 cells
+python benchmarks/run_tool.py --tool cellphonedb --B 1000             # full TNBC run
 ```
