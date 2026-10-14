@@ -120,9 +120,9 @@ def test_liana_adapter_schema():
         "source": ["x", "x"], "target": ["y", "y"], "lr_means": [1.0, 2.0], "cellphone_pvals": [0.0, 0.1],
     })
     out = cn.adapters.from_liana(liana_res, method="cellphonedb")
-    assert list(out.columns) == ["ligand", "receptor", "source", "target", "tool_score", "ligand_complex", "receptor_complex"]
+    assert list(out.columns) == ["ligand", "receptor", "source", "target", "score", "ligand_complex", "receptor_complex"]
     with pytest.raises(KeyError):
-        cn.adapters.from_liana(liana_res, tool_score="nope")
+        cn.adapters.from_liana(liana_res, score="nope")
 
 
 def test_binned_labels_diagnostic_equals_null_a(s1):
