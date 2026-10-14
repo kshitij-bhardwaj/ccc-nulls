@@ -33,6 +33,25 @@ def test_schema_require_p_native():
         schema.validate(_rows(), require_p_native=True)
 
 
+def test_validate_null_accepts_same_rows_with_p():
+    df = schema.validate(_rows())
+    out = schema.validate_null(df, df.assign(p_null_a=0.5), "a")
+    assert (out.p_null_a == 0.5).all()
+
+
+@pytest.mark.parametrize("breaker, msg", [
+    (lambda d: d, "missing column"),
+    (lambda d: d.assign(p_null_b=0.0), "outside"),
+    (lambda d: d.assign(p_null_b=np.nan), "missing or non-numeric"),
+    (lambda d: d.iloc[::-1].assign(p_null_b=0.5), "rows differ"),
+    (lambda d: d.iloc[1:].assign(p_null_b=0.5), "rows returned"),
+])
+def test_validate_null_rejects_bad_output(breaker, msg):
+    df = schema.validate(_rows())
+    with pytest.raises(ValueError, match=msg):
+        schema.validate_null(df, breaker(df), "b")
+
+
 def test_openproblems_metrics_perfect_and_gated():
     truth = pd.DataFrame({"ligand": list("abcd"), "target": ["t"] * 4, "response": [1, 1, 0, 0]})
     rows = pd.DataFrame({"ligand_complex": list("abcd"), "target": ["t"] * 4})

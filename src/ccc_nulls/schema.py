@@ -11,7 +11,8 @@ One row per candidate interaction (ligand L in source cell type -> receptor R in
     receptor_complex
     tool                      tool identifier, e.g. "cellphonedb"
 
-The null models in ``ccc_nulls`` consume this table plus the expression matrix the tool scored.
+The null models consume this table plus the expression matrix the tool scored, and return it
+with one p-value column added (``p_null_a`` or ``p_null_b``); see :func:`validate_null`.
 """
 from __future__ import annotations
 
@@ -58,3 +59,36 @@ def validate(df: pd.DataFrame, *, require_p_native: bool = False) -> pd.DataFram
         out["p_native"] = np.nan
     extra = [c for c in out.columns if c not in COLUMNS]
     return out[[c for c in COLUMNS if c in out.columns] + extra].reset_index(drop=True)
+
+
+# Column each tool's null writes (tools/<tool>/nulls.py)
+NULL_P = {"a": "p_null_a", "b": "p_null_b"}
+
+
+def validate_null(interactions: pd.DataFrame, result: pd.DataFrame, which: str) -> pd.DataFrame:
+    """Check the output of a tool's ``null_a`` / ``null_b``; raise ValueError listing every problem.
+
+    ``result`` must contain the same rows as ``interactions`` (same keys, same order) plus a
+    p-value column ``p_null_a`` or ``p_null_b`` with every value in (0, 1].
+    """
+    col = NULL_P[which]
+    problems = []
+    keys = KEY + [c for c in ("ligand_complex", "receptor_complex") if c in interactions.columns]
+    if len(result) != len(interactions):
+        problems.append(f"{len(result)} rows returned for {len(interactions)} interactions")
+    elif not all(c in result.columns for c in keys) or not (
+            result[keys].reset_index(drop=True).astype(str)
+            .equals(interactions[keys].reset_index(drop=True).astype(str))):
+        problems.append(f"rows differ from the input on {keys} (keep the input order)")
+    if col not in result.columns:
+        problems.append(f"missing column '{col}'")
+    else:
+        p = pd.to_numeric(result[col], errors="coerce").to_numpy(dtype=float)
+        if np.isnan(p).any():
+            problems.append(f"{int(np.isnan(p).sum())} missing or non-numeric values in '{col}' "
+                            "(give untestable rows p = 1)")
+        elif ((p <= 0) | (p > 1)).any():
+            problems.append(f"'{col}' outside (0, 1]")
+    if problems:
+        raise ValueError(f"null {which.upper()} check failed: " + "; ".join(problems))
+    return result.reset_index(drop=True)
