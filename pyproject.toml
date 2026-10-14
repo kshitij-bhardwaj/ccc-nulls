@@ -8,12 +8,7 @@ version = "0.1.0"
 description = "Structure-preserving null models and FDR control for ligand-receptor cell-cell communication inference"
 readme = "README.md"
 requires-python = ">=3.10"
-authors = [
-  { name = "Kaushal" },
-  { name = "Kshitij Bhardwaj" },
-  { name = "Ankit" },
-  { name = "Aritra" },
-]
+authors = [{ name = "ccc-nulls contributors" }]
 keywords = ["single-cell", "cell-cell communication", "ligand-receptor", "permutation test", "FDR", "LIANA"]
 dependencies = [
   "numpy>=1.24",
