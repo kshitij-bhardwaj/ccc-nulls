@@ -21,6 +21,43 @@ It composes with existing tools instead of replacing them. The LR scoring stays 
 
 ---
 
+## Datasets
+
+All public; no login needed. Download into `data/` (git-ignored) with
+`python -m ccc_nulls.datasets <name>` (parallel, md5-checked) or any browser/`curl`.
+
+| Name | Role | Link | Size | Ground truth |
+|---|---|---|---|---|
+| `tnbc_wu2021` | **Evaluation** (current focus) | [dataset.h5ad](https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/tnbc_wu2021/log_cp10k/dataset.h5ad) | 1.27 GB | Cytokine activity per (ligand, target type); Open Problems ligand-target task; LIANA's benchmark atlas |
+| `allen_brain_atlas` | **Evaluation** (spatial) | [dataset.h5ad](https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/allen_brain_atlas/log_cp10k/dataset.h5ad) | 2.05 GB | Spatially adjacent cell types (deconvolved Visium); Open Problems source-target task |
+| `tabula_sapiens` | **Calibration** (no truth) | [CELLxGENE collection](https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5) | per tissue | None: used for permutation and fake-resource calibration |
+
+Details, md5 sums and loaders: [`data/README.md`](data/README.md) and `ccc_nulls/datasets.py`.
+
+## Repository layout and who works where
+
+```
+src/ccc_nulls/        shared library: nulls, statistics engine, schema, datasets, evaluation
+tools/                one workspace per tool, one owner each (see .github/CODEOWNERS)
+  cellphonedb/          adapter.py (dataset -> native inputs -> native run -> common schema), tests
+  cellchat/
+  natmi/
+  connectome/
+benchmarks/           experiment drivers (shared) and their summary results
+tests/                tests for the shared library
+docs/PLAN.md          project plan and the decisions behind it
+data/                 datasets (git-ignored, see data/README.md)
+```
+
+- Work only inside your tool folder. Changes to `src/ccc_nulls/`, `benchmarks/` or docs go
+  through a pull request reviewed by another team member.
+- Every tool exposes the same adapter contract and returns the **common schema**
+  (`ccc_nulls.schema`), so the null models and evaluation code never depend on a single tool.
+  See [`tools/README.md`](tools/README.md).
+- Branching, commit style and review rules: [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+---
+
 ## Installation
 
 ```bash
@@ -128,10 +165,8 @@ ligand–target task use (Wu et al. 2021): 42,512 cells, 29 cell types, 10 patie
 cytokine ground truth in `uns["ccc_target"]`.
 
 ```bash
-# data: Open Problems public S3 (1.27 GB, md5 0c1c558c4137571eb5e9351c8408dc04)
-curl -o data/tnbc_wu2021_log_cp10k.h5ad \
-  https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/tnbc_wu2021/log_cp10k/dataset.h5ad
-pip install -e ".[liana]"
+pip install -e ".[liana,test]"
+python -m ccc_nulls.datasets tnbc_wu2021                      # 1.27 GB, md5-checked
 python benchmarks/tnbc_openproblems.py --B 1000 --B5 100     # ~3.5 h on an 8 GB laptop
 python benchmarks/tnbc_e1_bootstrap.py full                   # E1 with bootstrap CIs
 python benchmarks/tnbc_summary.py full                        # tables
@@ -160,22 +195,25 @@ Results, including the fake-LR-resource calibration test, are in `benchmarks/res
 - **Scores:** standardisation supports the built-in `mean` and `product` scores. For custom scores
   pass `standardize=False` through the low-level `null_b`.
 - **Adapters:** liana-py output is supported now (it covers CellPhoneDB, CellChat, NATMI,
-  Connectome, SingleCellSignalR, logFC and rank aggregate). Native CellPhoneDB/CellChat output is on the roadmap.
+  Connectome, SingleCellSignalR, logFC and rank aggregate). Native adapters for CellPhoneDB,
+  CellChat, NATMI and Connectome are being built in `tools/`.
 
-## Repository layout
+## Library modules
 
 ```
 src/ccc_nulls/
-  core.py          significance_layer, overlap_summary, flag_overlap, aggregate_complexes
-  nulls.py         null_a, null_b, gene_strata, perm_moments, null_b_binned_labels (diagnostic)
-  scores.py        CellPhoneDB mean, product, standardisation
-  stats.py         Benjamini–Hochberg, Cauchy combination
-  adapters.py      from_liana, to_schema
-  io.py            AnnData helpers
-  simulate.py      simulator with known truth (S0 / S1 / S2)
-benchmarks/        simulation_study.py, binned_label_check.py, results/*.json
-examples/          quickstart.py, liana_pbmc.py
-tests/             pytest suite (calibration, exactness, API)
+  core.py            significance_layer, overlap_summary, flag_overlap, aggregate_complexes
+  nulls.py           null_a, null_b, gene_strata, perm_moments, null_b_binned_labels (diagnostic)
+  multitool.py       statistics engine + LIANA-identical tool scores; label and decoy nulls
+  scores.py          CellPhoneDB mean, product, standardisation
+  stats.py           Benjamini-Hochberg, Cauchy combination
+  schema.py          common interaction schema + validate()
+  liana_reference.py LIANA's version of each tool, in the common schema
+  datasets.py        dataset registry, parallel download, loaders
+  evaluation/        Open Problems metrics (AUPRC, odds ratio), random baseline
+  adapters.py        from_liana, to_schema
+  io.py              AnnData helpers
+  simulate.py        simulator with known truth (S0 / S1 / S2)
 ```
 
 ## References
@@ -188,6 +226,6 @@ tests/             pytest suite (calibration, exactness, API)
 6. Browaeys R., Saelens W., Saeys Y. NicheNet. *Nat Methods* 17, 159–162 (2020).
 7. Liu Y., Xie J. Cauchy combination test. *JASA* 115, 393–402 (2020).
 
-## Authors
+## Project
 
-Kaushal, Kshitij Bhardwaj, Ankit, Aritra. Developed as CS690A (Computational Genomics), Project 6.
+Developed for CS690A (Computational Genomics), Project 6.
