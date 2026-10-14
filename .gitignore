@@ -13,3 +13,5 @@ benchmarks/results/tnbc/rows_*.csv.gz
 benchmarks/results/tnbc/liana_*.pkl
 benchmarks/results/tnbc/*.log
 benchmarks/results/tnbc/results_quick.json
+benchmarks/results/tools/*.csv.gz
+benchmarks/results/tools/*_quick.json
