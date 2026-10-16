@@ -1,0 +1,222 @@
+{
+  "dataset": "tnbc_wu2021",
+  "tag": "full",
+  "cellchat": "jinworks/CellChat@75253cd (2.2.0.9001), ported to Python",
+  "nboot": 100,
+  "seed": 1,
+  "r_rng": {
+    "set.seed(1); runif(3)": {
+      "expected": [
+        0.2655087,
+        0.3721239,
+        0.5728534
+      ],
+      "ours": [
+        0.2655087,
+        0.3721239,
+        0.5728534
+      ],
+      "identical": true
+    },
+    "set.seed(123); runif(1)": {
+      "expected": [
+        0.2875775
+      ],
+      "ours": [
+        0.2875775
+      ],
+      "identical": true
+    },
+    "set.seed(1); sample(10)": {
+      "expected": [
+        9,
+        4,
+        7,
+        1,
+        2,
+        5,
+        3,
+        10,
+        6,
+        8
+      ],
+      "ours": [
+        9,
+        4,
+        7,
+        1,
+        2,
+        5,
+        3,
+        10,
+        6,
+        8
+      ],
+      "identical": true
+    },
+    "set.seed(42); sample(10)": {
+      "expected": [
+        1,
+        5,
+        10,
+        8,
+        2,
+        4,
+        6,
+        9,
+        7,
+        3
+      ],
+      "ours": [
+        1,
+        5,
+        10,
+        8,
+        2,
+        4,
+        6,
+        9,
+        7,
+        3
+      ],
+      "identical": true
+    },
+    "set.seed(123); sample(10)": {
+      "expected": [
+        3,
+        10,
+        2,
+        8,
+        6,
+        9,
+        1,
+        7,
+        5,
+        4
+      ],
+      "ours": [
+        3,
+        10,
+        2,
+        8,
+        6,
+        9,
+        1,
+        7,
+        5,
+        4
+      ],
+      "identical": true
+    }
+  },
+  "n_cells": 42512,
+  "n_groups": 29,
+  "inputs": {
+    "n_genes_signaling": 1147,
+    "n_features_sig": 1143,
+    "n_lr": 2090,
+    "secs": 1.5
+  },
+  "cellchat_secs": 58.7,
+  "n_rows": 1757690,
+  "n_rows_prob_gt_0": 14872,
+  "cellchat_significance": {
+    "p_lt_0_05": 13024,
+    "p_eq_0": 12862,
+    "bh_q_lt_0_05": 13024,
+    "bh_q_lt_0_10": 13079,
+    "min_q": 0.0,
+    "p_resolution": 0.01
+  },
+  "same_permutations": {
+    "secs": 25.6,
+    "prob_identical": 1757690,
+    "prob_max_abs_diff": 0.0,
+    "prob_zero_pattern_identical": true,
+    "n_rows": 14872,
+    "p_identical": 14872,
+    "p_max_abs_diff": 0.0,
+    "p_mean_abs_diff": 0.0,
+    "p_spearman": 0.9999999999999998,
+    "q_identical": 14872,
+    "q_max_abs_diff": 0.0,
+    "calls_p_lt_0_05": {
+      "both": 13024,
+      "only_ours": 0,
+      "only_cellchat": 0,
+      "neither": 1848
+    },
+    "calls_bh_q_lt_0_05": {
+      "both": 13024,
+      "only_ours": 0,
+      "only_cellchat": 0,
+      "neither": 1848
+    }
+  },
+  "independent_permutations": {
+    "B100": {
+      "n_rows": 14872,
+      "p_identical": 13873,
+      "p_max_abs_diff": 0.21,
+      "p_mean_abs_diff": 0.002435449166218397,
+      "p_spearman": 0.973525238406091,
+      "q_identical": 14013,
+      "q_max_abs_diff": 0.2320081667255658,
+      "calls_p_lt_0_05": {
+        "both": 13002,
+        "only_ours": 17,
+        "only_cellchat": 22,
+        "neither": 1831
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 13002,
+        "only_ours": 17,
+        "only_cellchat": 22,
+        "neither": 1831
+      },
+      "secs": 19.7,
+      "significance": {
+        "p_lt_0_05": 13019,
+        "p_eq_0": 12853,
+        "bh_q_lt_0_05": 13019,
+        "bh_q_lt_0_10": 13078,
+        "min_q": 0.0,
+        "p_resolution": 0.01
+      },
+      "frac_within_2_mc_sd": 0.9977810650887574,
+      "frac_within_3_mc_sd": 0.9999327595481442
+    },
+    "B1000": {
+      "n_rows": 14872,
+      "p_identical": 13501,
+      "p_max_abs_diff": 0.129,
+      "p_mean_abs_diff": 0.002014456697149005,
+      "p_spearman": 0.9484790345296382,
+      "q_identical": 13821,
+      "q_max_abs_diff": 0.14274267174152777,
+      "calls_p_lt_0_05": {
+        "both": 13007,
+        "only_ours": 18,
+        "only_cellchat": 17,
+        "neither": 1830
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 13004,
+        "only_ours": 15,
+        "only_cellchat": 20,
+        "neither": 1833
+      },
+      "secs": 176.1,
+      "significance": {
+        "p_lt_0_05": 13025,
+        "p_eq_0": 12606,
+        "bh_q_lt_0_05": 13019,
+        "bh_q_lt_0_10": 13088,
+        "min_q": 0.0,
+        "p_resolution": 0.001
+      },
+      "frac_within_2_mc_sd": 0.9964362560516407,
+      "frac_within_3_mc_sd": 1.0
+    }
+  }
+}
