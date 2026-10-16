@@ -53,13 +53,14 @@ def prepare_inputs(adata, groupby: str, out_dir: Path | None = None) -> dict:
 
 
 def run_native(inputs: dict, out_dir: Path | None = None, *, nboot: int = 100, seed: int = 1,
-               population_size: bool = False, log=None, **kw) -> dict:
+               population_size: bool = False, version: str = "2.2", log=None, **kw) -> dict:
     """``computeCommunProb(type = "triMean")`` with CellChat's defaults (nboot = 100,
-    seed.use = 1, Kh = 0.5, n = 1, population.size = FALSE): prob, pval, permutations."""
+    seed.use = 1, Kh = 0.5, n = 1, population.size = FALSE): prob, pval, permutations.
+    ``version="1.0"`` runs CellChat 1.0.0's version (the 2021 paper) on the same inputs."""
     res = cc.compute_commun_prob(inputs["X"], inputs["genes"], inputs["codes"], inputs["levels"],
                                  inputs["LRsig"], inputs["db"], nboot=nboot, seed=seed,
-                                 population_size=population_size, log=log)
-    return {**res, "db": inputs["db"], "nboot": nboot, "seed": seed}
+                                 population_size=population_size, log=log, version=version)
+    return {**res, "db": inputs["db"], "nboot": nboot, "seed": seed, "version": version}
 
 
 def _gene_lists(lr: pd.DataFrame, db: dict, genes_signaling) -> pd.DataFrame:

@@ -285,10 +285,16 @@ def _r_prod(x: np.ndarray, axis=0) -> np.ndarray:
     return out
 
 
-def tri_mean_by_group(data_use: np.ndarray, codes: np.ndarray, K: int) -> np.ndarray:
-    """``aggregate(t(data.use), list(group), FUN = triMean)``: genes x groups. ``triMean`` is
-    ``mean(collapse::fquantile(x, c(.25, .5, .5, .75)))``; fquantile type 7 interpolates
-    ``a + h * (b - a)`` between order statistics (fnth_fmedian_fquantile.c)."""
+def tri_mean_by_group(data_use: np.ndarray, codes: np.ndarray, K: int, quantile: str = "collapse") -> np.ndarray:
+    """``aggregate(t(data.use), list(group), FUN = triMean)``: genes x groups.
+
+    ``triMean`` is the mean of the quartiles (Q1, Q2, Q2, Q3), type 7:
+    - ``quantile="collapse"`` (CellChat >= 2): ``collapse::fquantile`` interpolates ``a + h (b - a)``
+      (fnth_fmedian_fquantile.c);
+    - ``quantile="stats"`` (CellChat 1.x): ``stats::quantile`` interpolates ``(1 - h) a + h b``, and
+      only where ``b != a`` (quantile.default).
+    """
+    data_use = np.atleast_2d(data_use)
     G = data_use.shape[0]
     out = np.empty((G, K))
     for k in range(K):
@@ -302,8 +308,11 @@ def tri_mean_by_group(data_use: np.ndarray, codes: np.ndarray, K: int) -> np.nda
             a = x[:, ih]
             if ih == n - 1 or frac <= 0.0:
                 q.append(a)
-            else:
+            elif quantile == "collapse":
                 q.append(a + frac * (x[:, ih + 1] - a))
+            else:
+                b = x[:, ih + 1]
+                q.append(np.where(b != a, (1 - frac) * a + frac * b, a))
         out[:, k] = _r_mean(np.stack([q[0], q[1], q[1], q[2]]))
     return out
 
@@ -355,11 +364,20 @@ def compute_expr_antagonist(avg: pd.DataFrame, cofactor_input, antagonist: str, 
 
 
 def compute_commun_prob(X, genes, codes, levels, LRsig: pd.DataFrame, db: dict, *, nboot=100, seed=1,
-                        Kh=0.5, n=1, population_size=False, permutation=None, log=None) -> dict:
+                        Kh=0.5, n=1, population_size=False, permutation=None, log=None,
+                        version: str = "2.2") -> dict:
     """``computeCommunProb(type = "triMean")`` for scRNA-seq data, following the R loop.
 
     ``X`` is data.signaling (cells x signaling genes). Returns ``prob`` and ``pval``
-    (nLR x K x K), the permutation matrix and the scaling constant."""
+    (nLR x K x K), the permutation matrix and the scaling constant.
+    ``version="2.2"``: CellChat 2.2.0.9001 (R/modeling.R at 75253cd). ``version="1.0"``: CellChat
+    1.0.0, the version of the 2021 paper (sqjin/CellChat@v1.0.0), run on the raw data
+    (``raw.use = TRUE``; its default projected the data on a protein network first)."""
+    if version == "1.0":
+        return _compute_commun_prob_v1(X, genes, codes, levels, LRsig, db, nboot=nboot, seed=seed, Kh=Kh,
+                                       n=n, population_size=population_size, permutation=permutation, log=log)
+    if version != "2.2":
+        raise ValueError("version must be '2.2' or '1.0'")
     complex_input, cofactor_input = db["complex"], db["cofactor"]
     K, nC = len(levels), X.shape[0]
     data_max = float(X.max())
@@ -422,3 +440,79 @@ def compute_commun_prob(X, genes, codes, levels, LRsig: pd.DataFrame, db: dict, 
     Pval[Prob == 0] = 1
     return dict(prob=Prob, pval=Pval, permutation=permutation, data_max=data_max, groups=list(levels),
                 LRsig=LRsig, genes_signaling=genes)
+
+
+# ---------------------------------------------------------------------- computeCommunProb, CellChat 1.0.0
+def cell_expr_lr(gene_lr: str, data_use: pd.DataFrame, complex_input: pd.DataFrame) -> np.ndarray:
+    """v1.0.0 ``computeExpr_LR`` / ``computeExpr_complex`` per cell: the gene's row of ``data.use``
+    (genes x cells), or for a complex ``geometricMean(data.use[subunits, ])`` across subunits."""
+    if gene_lr in data_use.index:
+        return data_use.loc[gene_lr].to_numpy()
+    return geometric_mean(data_use.loc[_subunits(complex_input, gene_lr)].to_numpy())
+
+
+def _compute_commun_prob_v1(X, genes, codes, levels, LRsig, db, *, nboot, seed, Kh, n, population_size,
+                            permutation, log):
+    """CellChat 1.0.0 ``computeCommunProb`` (R/modeling.R at sqjin/CellChat@v1.0.0), raw data."""
+    if population_size or n != 1:
+        raise NotImplementedError("version 1.0 is ported for population.size = FALSE and n = 1")
+    complex_input, cofactor_input = db["complex"], db["cofactor"]
+    K, nC = len(levels), X.shape[0]
+    data_max = float(X.max())
+    need, gene_set = set(), set(genes)
+    for _, r in LRsig.iterrows():
+        for x in (r.ligand, r.receptor):
+            need.update([x] if x in gene_set else _subunits(complex_input, x))
+        for c in (r.agonist, r.antagonist, r.co_A_receptor, r.co_I_receptor):
+            if c:
+                need.update(_cofactors(cofactor_input, c))
+    gpos = {g: j for j, g in enumerate(genes)}
+    need = [g for g in genes if g in need]
+    data_use = pd.DataFrame((X[:, [gpos[g] for g in need]].toarray() / data_max).T, index=need)  # genes x cells
+    if permutation is None:
+        permutation = r_permutations(nC, nboot, seed)
+    boot_codes = [codes[permutation[:, b] - 1] for b in range(nboot)]
+
+    # agonist / antagonist genes: per-gene trimean by group (computeExpr_agonist / _antagonist)
+    cof_genes = sorted({g for _, r in LRsig.iterrows() for c in (r.agonist, r.antagonist) if c
+                        for g in _cofactors(cofactor_input, c) if g in data_use.index})
+    tm = lambda M, cd: tri_mean_by_group(M, cd, K, quantile="stats")
+    cof = data_use.loc[cof_genes].to_numpy()
+    avg_of = lambda cd: (pd.DataFrame(tm(cof, cd), index=cof_genes) if cof_genes
+                         else pd.DataFrame(np.zeros((0, K))))
+    cof_avg = avg_of(codes)
+    cof_boot = [avg_of(cd) for cd in boot_codes]
+
+    def extra(r, av):
+        P2 = np.outer(*(2 * [compute_expr_agonist(av, cofactor_input, r.agonist, Kh, n)])) if r.agonist else 1.0
+        P3 = np.outer(*(2 * [compute_expr_antagonist(av, cofactor_input, r.antagonist, Kh, n)])) if r.antagonist else 1.0
+        return P2, P3
+
+    nLR = len(LRsig)
+    Prob = np.zeros((nLR, K, K))
+    Pval = np.zeros((nLR, K, K))
+    for i, (_, r) in enumerate(LRsig.iterrows()):
+        dataL = cell_expr_lr(r.ligand, data_use, complex_input)
+        dataR = cell_expr_lr(r.receptor, data_use, complex_input)
+        dataR = dataR * compute_expr_coreceptor(cofactor_input, data_use, r.co_A_receptor) / \
+            compute_expr_coreceptor(cofactor_input, data_use, r.co_I_receptor)
+        LR = np.outer(tm(dataL, codes)[0], tm(dataR, codes)[0])
+        P1 = LR / (Kh + LR)
+        if P1.sum() == 0:
+            Prob[i] = P1
+            Pval[i] = 1
+            continue
+        P2, P3 = extra(r, cof_avg)
+        Pnull = P1 * P2 * P3
+        Prob[i] = Pnull
+        n_reject = np.zeros((K, K), dtype=np.int64)
+        for b in range(nboot):
+            LRb = np.outer(tm(dataL, boot_codes[b])[0], tm(dataR, boot_codes[b])[0])
+            P2b, P3b = extra(r, cof_boot[b])
+            n_reject += (LRb / (Kh + LRb) * P2b * P3b - Pnull) >= 0       # v1.0.0: >=
+        Pval[i] = n_reject / nboot
+        if log and (i + 1) % 500 == 0:
+            log(f"  v1.0: {i + 1}/{nLR} L-R pairs")
+    Pval[Prob == 0] = 1
+    return dict(prob=Prob, pval=Pval, permutation=permutation, data_max=data_max, groups=list(levels),
+                LRsig=LRsig, genes_signaling=genes, version="1.0")
