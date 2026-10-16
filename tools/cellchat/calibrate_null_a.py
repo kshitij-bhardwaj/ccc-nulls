@@ -137,7 +137,7 @@ def summarise(df, res, B):
     )
 
 
-def run_once(adata, B, seed, de_filter=True):
+def run_once(adata, B, seed, de_filter=True, version="2.2"):
     """CellChat on ``adata``. ``de_filter=False`` skips the over-expression filter: every CellChatDB
     pair whose genes are in the data is tested, so no gene is chosen with the labels it is tested on."""
     inputs = adapter.prepare_inputs(adata, "label")
@@ -145,9 +145,9 @@ def run_once(adata, B, seed, de_filter=True):
         inputs["LRsig"] = cc.identify_overexpressed_interactions(inputs["db"], inputs["genes"], inputs["genes"])
     if len(inputs["LRsig"]) == 0:
         return None
-    native = adapter.run_native(inputs, nboot=2, seed=seed)                 # schema rows (prob) only
+    native = adapter.run_native(inputs, nboot=2, seed=seed, version=version)    # schema rows (prob) only
     df = adapter.native_to_schema(native)
-    res = nulls.null_a(adata, df, "label", B=B, seed=seed, rng="cellchat")
+    res = nulls.null_a(adata, df, "label", B=B, seed=seed, rng="cellchat", version=version)
     return summarise(df, res, B)
 
 
@@ -203,6 +203,7 @@ def main():
     ap.add_argument("--shuffles", type=int, default=5)
     ap.add_argument("--B", type=int, default=100, help="CellChat's nboot (its default: 100)")
     ap.add_argument("--seed", type=int, default=1, help="CellChat's seed.use (its default: 1)")
+    ap.add_argument("--version", default="2.2", choices=["2.2", "1.0"], help="CellChat version of Null A")
     args = ap.parse_args()
     if args.download:
         log("downloading", TS_MAMMARY["title"])
@@ -217,14 +218,14 @@ def main():
     adata = load()
     out = dict(dataset=TS_MAMMARY["title"], url=TS_MAMMARY["url"], n_cells=int(adata.n_obs),
                n_genes=int(adata.n_vars), n_groups=int(adata.obs.label.nunique()),
-               n_donors=int(adata.obs.donor_id.nunique()), cellchat=adapter.CELLCHAT_REF, B=args.B, seed=args.seed)
+               n_donors=int(adata.obs.donor_id.nunique()), cellchat=adapter.CELLCHAT_REF, version=args.version, B=args.B, seed=args.seed)
     log(f"{adata.n_obs:,} cells, {out['n_groups']} cell types, {out['n_donors']} donors")
 
     variants = {"cellchat_pipeline": True, "no_overexpression_filter": False}
     out["real_labels"] = {}
     for name, de in variants.items():
         log("real labels,", name)
-        out["real_labels"][name] = s = run_once(adata, args.B, args.seed, de)
+        out["real_labels"][name] = s = run_once(adata, args.B, args.seed, de, args.version)
         log("  ", {k: s[k] for k in ("n_lr", "n_testable", "frac_p_lt_0_05", "calls_p_lt_0_05")})
 
     labels = adata.obs.label.to_numpy()
@@ -235,7 +236,7 @@ def main():
         sh.obs["label"] = sh.obs.label.astype("category")
         for name, de in variants.items():
             log(f"full permutation {r + 1}/{args.shuffles}, {name}")
-            s = run_once(sh, args.B, args.seed, de)
+            s = run_once(sh, args.B, args.seed, de, args.version)
             out["full_permutation"][name].append(s)
             if s:
                 log("  ", {k: round(s[k], 4) if isinstance(s[k], float) else s[k] for k in (
@@ -259,10 +260,12 @@ def main():
             calls_bh_q_lt_0_05_cellchat_p=int(sum(s["calls_bh_q_lt_0_05_cellchat_p"] for s in runs)),
             calls_bh_q_lt_0_05_plus_one_p=int(sum(s["calls_bh_q_lt_0_05_plus_one_p"] for s in runs)))
         log("pooled,", name, out["pooled"][name])
-    log("zero-hit check (3 shuffles, no over-expression filter)")
-    out["zero_hit_check"] = zero_hit_check(adata, B=args.B, seed=args.seed)
-    log("  ", out["zero_hit_check"])
-    f = HERE / "results" / "calibration_tabula_sapiens_mammary.json"
+    if args.version == "2.2":
+        log("zero-hit check (3 shuffles, no over-expression filter)")
+        out["zero_hit_check"] = zero_hit_check(adata, B=args.B, seed=args.seed)
+        log("  ", out["zero_hit_check"])
+    suffix = "" if args.version == "2.2" else "_v1_0"
+    f = HERE / "results" / f"calibration_tabula_sapiens_mammary{suffix}.json"
     f.write_text(json.dumps(out, indent=2))
     log("wrote", f)
 

@@ -11,6 +11,8 @@
    p-values, BH q-values and significant calls.
 4. ``nulls.null_a`` with independent numpy permutations (B = 100, 1,000) must agree up to
    Monte-Carlo error, i.e. the null distribution is the same.
+5. The same for CellChat 1.0.0 (the 2021 paper's version, ``version="1.0"``), and how its
+   probabilities, p-values, calls and ground-truth metrics differ from 2.2's.
 
 Writes tools/cellchat/results/null_a_match_<dataset>_<tag>.json.
 """
@@ -25,6 +27,7 @@ import numpy as np
 from scipy import stats as sstats
 
 from ccc_nulls import datasets
+from ccc_nulls.evaluation import openproblems as opm
 from ccc_nulls.stats import bh
 from tools.cellchat import adapter, nulls
 from tools.cellchat.cellchat_py import RRandom
@@ -77,6 +80,7 @@ def main():
     ap.add_argument("--nboot", type=int, default=100, help="CellChat's nboot (its default: 100)")
     ap.add_argument("--seed", type=int, default=1, help="CellChat's seed.use (its default: 1)")
     ap.add_argument("--own-B", default="100,1000", help="independent-permutation runs of our Null A")
+    ap.add_argument("--no-v1", action="store_true", help="skip the CellChat 1.0.0 comparison")
     ap.add_argument("--tag", default=None)
     args = ap.parse_args()
     tag = args.tag or ("quick" if args.quick else "full")
@@ -87,7 +91,10 @@ def main():
     log("R generator reproduces R:", all(v["identical"] for v in out["r_rng"].values()))
 
     log("loading", args.dataset)
-    adata, _ = datasets.load_openproblems(args.dataset)
+    adata, truth = datasets.load_openproblems(args.dataset)
+    keys = datasets.DATASETS[args.dataset]["truth_keys"]
+    op = lambda d, p=None: {k: float(v) for k, v in opm.metrics(opm.predictions(d, d.score.to_numpy(), keys, p=p),
+                                                                 truth, keys).items()}
     if args.quick:
         rng = np.random.default_rng(0)
         adata = adata[np.sort(rng.choice(adata.n_obs, min(8000, adata.n_obs), replace=False))].copy()
@@ -144,6 +151,48 @@ def main():
         out["independent_permutations"][f"B{B}"] = cmp
         log(f"  spearman {cmp['p_spearman']:.4f}, mean |dp| {cmp['p_mean_abs_diff']:.4f}, "
             f"within 2 MC sd {cmp['frac_within_2_mc_sd']:.3f}")
+
+    out["openproblems"] = {"2.2": dict(score_only=op(df), gated_null_a=op(df, res.p_null_a_cellchat.to_numpy()))}
+
+    if not args.no_v1:
+        log("CellChat 1.0.0 (paper version): port, nboot = 100, seed.use = 1")
+        t0 = time.time()
+        nat1 = adapter.run_native(inputs, nboot=args.nboot, seed=args.seed, version="1.0", log=log)
+        df1 = adapter.native_to_schema(nat1)
+        secs1 = time.time() - t0
+        log(f"  {secs1:.0f} s; our Null A, version 1.0")
+        t0 = time.time()
+        res1 = nulls.null_a(adata, df1, groupby, B=args.nboot, seed=args.seed, version="1.0")
+        test1 = df1.score.to_numpy() > 0
+        out["v1_0_same_permutations"] = dict(
+            cellchat_secs=round(secs1, 1), secs=round(time.time() - t0, 1),
+            n_rows_prob_gt_0=int(test1.sum()),
+            prob_identical=int((res1.score_null_a.to_numpy() == df1.score.to_numpy()).sum()),
+            **compare(df1.p_native.to_numpy()[test1], res1.p_null_a_cellchat.to_numpy()[test1]),
+            cellchat_significance=significance(df1.p_native.to_numpy()[test1], args.nboot))
+        r1 = out["v1_0_same_permutations"]
+        log(f"  prob identical {r1['prob_identical']:,}/{len(df1):,}; p identical {r1['p_identical']:,}/{r1['n_rows']:,}")
+
+        # how the paper's version differs from the current one (same rows, same order)
+        s2, s1 = df.score.to_numpy(), df1.score.to_numpy()
+        p2, p1 = df.p_native.to_numpy(), df1.p_native.to_numpy()
+        both = (s2 > 0) & (s1 > 0)
+        out["v1_0_vs_v2_2"] = dict(
+            prob_identical=int((s1 == s2).sum()), n_rows=int(len(df)),
+            prob_gt_0_v2_2=int((s2 > 0).sum()), prob_gt_0_v1_0=int((s1 > 0).sum()), prob_gt_0_both=int(both.sum()),
+            prob_spearman_both=float(sstats.spearmanr(s1[both], s2[both]).statistic),
+            p_identical_both=int((p1[both] == p2[both]).sum()),
+            p_v1_ge_v2_both=int((p1[both] >= p2[both]).sum()),
+            calls_p_lt_0_05=dict(both=int(((p1 < ALPHA) & (p2 < ALPHA)).sum()),
+                                 only_v1_0=int(((p1 < ALPHA) & (p2 >= ALPHA)).sum()),
+                                 only_v2_2=int(((p1 >= ALPHA) & (p2 < ALPHA)).sum())),
+            pairs_with_complex_or_coreceptor=int(df.drop_duplicates("interaction_name").pipe(
+                lambda d: (d.ligand_genes.str.contains(";") | d.receptor_genes.str.contains(";")
+                           | (d.co_A_genes != "") | (d.co_I_genes != "")).sum())))
+        out["openproblems"]["1.0"] = dict(score_only=op(df1), gated_null_a=op(df1, res1.p_null_a_cellchat.to_numpy()))
+        log("  v1.0 vs v2.2:", {k: v for k, v in out["v1_0_vs_v2_2"].items() if not isinstance(v, dict)})
+        log("  calls (p < 0.05), v1.0 vs v2.2:", out["v1_0_vs_v2_2"]["calls_p_lt_0_05"])
+    log("Open Problems:", out["openproblems"])
 
     f = HERE / "results" / f"null_a_match_{args.dataset}_{tag}.json"
     f.parent.mkdir(exist_ok=True)
