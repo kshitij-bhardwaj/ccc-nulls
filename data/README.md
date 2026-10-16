@@ -15,7 +15,8 @@ under the filename shown.
 |---|---|---|---|
 | `tnbc_wu2021` | `tnbc_wu2021_log_cp10k.h5ad` | `0c1c558c4137571eb5e9351c8408dc04` | https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/tnbc_wu2021/log_cp10k/dataset.h5ad |
 | `allen_brain_atlas` | `allen_brain_atlas_log_cp10k.h5ad` | `89a5f0919ed3f2b3e03e7550ef5a20ef` | https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/allen_brain_atlas/log_cp10k/dataset.h5ad |
-| `tabula_sapiens` | `tabula_sapiens_<tissue>.h5ad` | – | https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5 (choose a tissue) |
+| `tabula_sapiens` | `tabula_sapiens_<tissue>.h5ad` | – | https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5 (one file per tissue) |
+| Tabula Sapiens - Mammary (calibration tissue in use) | `tabula_sapiens_mammary.h5ad` | `6261c8dd5785c52fb8a18d0974602597` | https://datasets.cellxgene.cziscience.com/33b25f68-a9d6-4643-9283-653e937ae608.h5ad (1.33 GB, 30,936 cells; raw counts in `raw/X`, symbols in `raw/var/feature_name`, labels in `obs/cell_type`) |
 
 ## What is inside the Open Problems files
 

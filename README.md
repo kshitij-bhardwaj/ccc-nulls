@@ -30,7 +30,7 @@ All public; no login needed. Download into `data/` (git-ignored) with
 |---|---|---|---|---|
 | `tnbc_wu2021` | **Evaluation** (current focus) | [dataset.h5ad](https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/tnbc_wu2021/log_cp10k/dataset.h5ad) | 1.27 GB | Cytokine activity per (ligand, target type); Open Problems ligand-target task; LIANA's benchmark atlas |
 | `allen_brain_atlas` | **Evaluation** (spatial) | [dataset.h5ad](https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/allen_brain_atlas/log_cp10k/dataset.h5ad) | 2.05 GB | Spatially adjacent cell types (deconvolved Visium); Open Problems source-target task |
-| `tabula_sapiens` | **Calibration** (no truth) | [CELLxGENE collection](https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5) | per tissue | None: used for permutation and fake-resource calibration |
+| `tabula_sapiens` | **Calibration** (no truth) | [CELLxGENE collection](https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5) | per tissue; in use: **Mammary**, [dataset.h5ad](https://datasets.cellxgene.cziscience.com/33b25f68-a9d6-4643-9283-653e937ae608.h5ad), 1.33 GB | None: used for permutation and fake-resource calibration |
 
 Details, md5 sums and loaders: [`data/README.md`](data/README.md) and `ccc_nulls/datasets.py`.
 
