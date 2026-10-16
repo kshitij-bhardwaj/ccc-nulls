@@ -66,14 +66,16 @@ def _pow(x, n):
 
 # ------------------------------------------------------------------ trimean per group
 class TriMean:
-    """Exact per-group trimean (collapse::fquantile type 7, then R's mean of Q1, Q2, Q2, Q3) of
-    the columns of a cells x genes sparse matrix, under any labelling of the cells.
+    """Exact per-group trimean (type-7 quartiles, then R's mean of Q1, Q2, Q2, Q3) of the columns
+    of a cells x genes sparse matrix, under any labelling of the cells. ``quantile="collapse"``
+    interpolates as collapse::fquantile (CellChat >= 2), ``"stats"`` as stats::quantile (1.x).
 
     Values are non-negative, so a group's sorted values are (n - m) zeros followed by its m
     sorted non-zeros, and every order statistic is read off without sorting per group.
     """
 
-    def __init__(self, U: sparse.spmatrix):
+    def __init__(self, U: sparse.spmatrix, quantile: str = "collapse"):
+        self.quantile = quantile
         U = sparse.csc_matrix(U, dtype=np.float64)
         U.eliminate_zeros()
         U.sort_indices()
@@ -104,7 +106,10 @@ class TriMean:
             a = order_stat(np.broadcast_to(ih, m.shape))
             b = order_stat(np.broadcast_to(np.minimum(ih + 1, nk - 1), m.shape))
             last = np.broadcast_to((ih == nk - 1) | (frac <= 0.0), m.shape)
-            q.append(np.where(last, a, a + frac * (b - a)))
+            if self.quantile == "collapse":
+                q.append(np.where(last, a, a + frac * (b - a)))
+            else:                                            # stats::quantile, only where b != a
+                q.append(np.where(last | (b == a), a, (1 - frac) * a + frac * b))
         return _r_mean([q[0], q[1], q[1], q[2]]).T           # K x G
 
 
@@ -186,6 +191,50 @@ class CellChatScore:
         return out
 
 
+class CellChatScoreV1:
+    """CellChat 1.0.0's probability: ligand and receptor expression are formed per cell (complex =
+    geometric mean of its subunits in each cell; receptor * prod(1 + co-A) / prod(1 + co-I) in each
+    cell), then averaged per group; agonists and antagonists use per-gene group averages."""
+
+    def __init__(self, lr: pd.DataFrame, U: sparse.csc_matrix, gene_pos: dict, Kh=KH):
+        self.names, self.Kh = list(lr.index), Kh
+        present = lambda gs: [gene_pos[g] for g in gs if g in gene_pos]
+        col = lambda g: U[:, g].toarray().ravel()
+        units, self.Li, self.Ri = {}, [], []
+        for lig, rec, coA, coI in zip(lr.ligand_genes, lr.receptor_genes, lr.co_A_genes, lr.co_I_genes):
+            for key, side in [(("L", lig), self.Li), (("R", rec, coA, coI), self.Ri)]:
+                if key not in units:
+                    units[key] = len(units)
+                side.append(units[key])
+        vecs = []
+        for key in units:
+            idx = [gene_pos[g] for g in _genes(key[1])]
+            with np.errstate(divide="ignore"):
+                v = col(idx[0]) if len(idx) == 1 else np.exp(_r_mean([np.log(col(g)) for g in idx]))
+            if key[0] == "R":
+                a, i = present(_genes(key[2])), present(_genes(key[3]))
+                v = v * (_r_prod([1 + col(g) for g in a]) if a else 1.0) / (_r_prod([1 + col(g) for g in i]) if i else 1.0)
+            vecs.append(sparse.csc_matrix(v[:, None]))
+        self.units = sparse.hstack(vecs, format="csc") if vecs else sparse.csc_matrix((U.shape[0], 0))
+        self.ag = [present(_genes(x)) for x in lr.agonist_genes]
+        self.an = [present(_genes(x)) for x in lr.antagonist_genes]
+
+    def __call__(self, avg_units: np.ndarray, avg_genes: np.ndarray) -> np.ndarray:
+        K, Kh = avg_units.shape[0], self.Kh
+        out = np.empty((len(self.names), K, K))
+        for i in range(len(self.names)):
+            LR = avg_units[:, self.Li[i]][:, None] * avg_units[:, self.Ri[i]][None, :]
+            P = LR / (Kh + LR)
+            if self.ag[i]:
+                a = _r_prod([1 + avg_genes[:, g] / (Kh + avg_genes[:, g]) for g in self.ag[i]])
+                P = P * (a[:, None] * a[None, :])
+            if self.an[i]:
+                a = _r_prod([Kh / (Kh + avg_genes[:, g]) for g in self.an[i]])
+                P = P * (a[:, None] * a[None, :])
+            out[i] = P
+        return out
+
+
 # ------------------------------------------------------------------ Null A
 def signaling_genes() -> list[str]:
     """Genes of ``data.signaling``: every gene of the default CellChatDB (``extractGene``)."""
@@ -197,7 +246,7 @@ def signaling_genes() -> list[str]:
 def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int = 1000, seed: int = 0,
            rng: str = "cellchat", permutations: np.ndarray | None = None,
            genes_signaling: list[str] | None = None, population_size: bool = False,
-           Kh: float = KH, n: int = HILL_N) -> pd.DataFrame:
+           Kh: float = KH, n: int = HILL_N, version: str = "2.2") -> pd.DataFrame:
     """Null A: CellChat's permutation test on CellChat's score.
 
     Parameters
@@ -217,6 +266,10 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     genes_signaling
         Genes of ``data.signaling`` (all CellChatDB genes in the data); their maximum scales the
         data. Default: the genes of the default CellChatDB.
+    version
+        ``"2.2"`` (default): CellChat 2.2.0.9001, p counts permutations with prob_b > prob.
+        ``"1.0"``: CellChat 1.0.0, the 2021 paper's version: complexes and co-receptors per cell,
+        stats::quantile, and p counts prob_b >= prob (ties count against the interaction).
 
     Returns
     -------
@@ -244,11 +297,25 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
         raise ValueError(f"ligand / receptor genes not in the data: {sorted(missing)[:10]}")
     U = sparse.csc_matrix(X[:, genes.get_indexer(need)], dtype=np.float64)
     U.data = U.data / data_max          # true division, as R's data / max(data); scipy's U / x multiplies by 1/x
-    tm = TriMean(U)
-    score = CellChatScore(lr, {g: j for j, g in enumerate(need)}, Kh=Kh, n=n, population_size=population_size)
+    gene_pos = {g: j for j, g in enumerate(need)}
     sizes = np.bincount(codes, minlength=K).astype(float)
+    if version == "2.2":
+        tm = TriMean(U)
+        sc = CellChatScore(lr, gene_pos, Kh=Kh, n=n, population_size=population_size)
+        score_of = lambda cd: sc(tm(cd, K), sizes)
+        beats = np.greater
+    elif version == "1.0":
+        if population_size or n != 1:
+            raise NotImplementedError("version 1.0 is implemented for population_size=False and n=1")
+        sc = CellChatScoreV1(lr, U, gene_pos, Kh=Kh)
+        tm_units, tm_genes = TriMean(sc.units, quantile="stats"), TriMean(U, quantile="stats")
+        score_of = lambda cd: sc(tm_units(cd, K), tm_genes(cd, K))
+        beats = np.greater_equal
+    else:
+        raise ValueError("version must be '2.2' or '1.0'")
+    score = sc
 
-    P_obs = score(tm(codes, K), sizes)
+    P_obs = score_of(codes)
     exceed = np.zeros(P_obs.shape, dtype=np.int64)
     if permutations is None and rng == "cellchat":
         from tools.cellchat.cellchat_py import r_permutations
@@ -260,7 +327,7 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     gen = np.random.default_rng(seed)
     for b in range(B):
         cb = codes[permutations[:, b] - 1] if permutations is not None else gen.permutation(codes)
-        exceed += score(tm(cb, K), sizes) > P_obs
+        exceed += beats(score_of(cb) - P_obs, 0)          # R: rowSums(Pboot - Pnull > 0), or >= 0 in 1.0
 
     out = interactions.copy()
     i = pd.Index(score.names).get_indexer(_lr_key(out))
@@ -272,7 +339,7 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     out["n_exceed_null_a"] = k
     out["p_null_a_cellchat"] = np.where(zero, 1.0, k / B)
     out["p_null_a"] = np.where(zero, 1.0, (1 + k) / (B + 1))
-    out.attrs["null_a"] = dict(B=int(B), seed=int(seed), rng=rng if permutations is None or rng == "cellchat" else "given",
+    out.attrs["null_a"] = dict(version=version, B=int(B), seed=int(seed), rng=rng if permutations is None or rng == "cellchat" else "given",
                                data_max=data_max, n_lr=len(score.names), groups=[str(x) for x in levels])
     return out
 
