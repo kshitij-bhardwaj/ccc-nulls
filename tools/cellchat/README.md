@@ -63,6 +63,51 @@ pytest tools/cellchat                             # includes the exact-match tes
 4. **Same null distribution.** `nulls.null_a(..., rng="numpy")` with independent permutations
    (B = 100, 1,000) must agree with CellChat up to Monte-Carlo error.
 
+### How far the match goes
+
+| Claim | Established? | Evidence |
+|---|---|---|
+| our fast Null A = our line-by-line port of CellChat | **yes, exactly** | prob, p, BH q and calls identical on every TNBC row, for both versions below |
+| our permutations = the ones R draws for `set.seed(1)` | **yes** | `RRandom` reproduces 5 known R outputs |
+| the port = CellChat's R source | **by reading the code** | every formula and operation order follows R/modeling.R of the version named |
+| our numbers = what CellChat prints when run in R | **not checked** | CellChat in R was never run (the project is Python only) |
+
+### Two CellChat versions: the 2021 paper's (1.0.0) and the current one (2.2.0.9001)
+
+`null_a(..., version="1.0")` and `run_native(..., version="1.0")` follow `computeCommunProb`
+of sqjin/CellChat@v1.0.0, the version the Nature Communications 2021 paper describes. The
+shuffles, the Hill function, agonists and antagonists, and `p = 1` where `prob = 0` are the same.
+What differs:
+
+| | 1.0.0 (paper) | 2.2.0.9001 (current, default) |
+|---|---|---|
+| complexes, co-receptors | per cell (geometric mean of the subunits in each cell), then trimean per group | trimean per gene, then geometric mean of the group averages |
+| quantile | `stats::quantile`: `(1 - h) a + h b`, only where `b != a` | `collapse::fquantile`: `a + h (b - a)` |
+| p-value | `#(prob_perm >= prob) / nboot`: ties count against | `#(prob_perm > prob) / nboot` |
+| default data | `raw.use = FALSE`: data first smoothed over a protein network (`projectData`); **we run 1.0.0 on the raw data** (`raw.use = TRUE`) | raw data |
+
+Both are run on the same CellChatDB (v2) and the same L-R pairs, so only Null A and the score
+differ. The 1.0.0 port is also checked against the vectorised Null A, and matches exactly
+(TNBC: 1,757,690 / 1,757,690 prob, 14,031 / 14,031 p identical).
+
+TNBC, all 42,512 cells (`results/null_a_match_tnbc_wu2021_full.json`):
+
+| | 2.2.0.9001 | 1.0.0 |
+|---|---|---|
+| rows with prob > 0 | 14,872 | 14,031 (per-cell complexes are 0 whenever one subunit is) |
+| prob identical between versions | 1,753,488 of 1,757,690 rows; the 4,202 that differ involve complexes or co-receptors (1,018 of the 2,090 pairs have one) | |
+| p identical, rows scored in both (14,031) | 13,765 | |
+| p-value of 1.0.0 ≥ 2.2's | 13,830 of 14,031 (the ≥ rule counts ties against) | |
+| calls at p < 0.05 | 12,371 in both, 653 only in 2.2, 99 only in 1.0.0 | |
+| Open Problems AUPRC / odds ratio | **0.350** / 3.45 | 0.291 / 1.95 |
+| Tabula Sapiens, full permutation: p < 0.05, scored rows | 15.3% (8.7% without the filter) | 15.3% (9.0% without the filter) |
+| BH false calls on shuffled labels (CellChat p / (1 + #)/(B + 1)) | 835 / 0 | 772 / 0 |
+
+So the version changes individual p-values (mostly for complexes and through ties) and changes
+the ground-truth ranking noticeably, but not the main finding: in both versions, CellChat's
+reported p-values are anti-conservative by about 3 times under full permutation, and its
+p = 0 lets BH make false calls.
+
 What could still differ from running CellChat in R, and why it should not:
 
 - `log` / `exp`: numpy matches the C library bit for bit (checked on 10⁶ values each).
