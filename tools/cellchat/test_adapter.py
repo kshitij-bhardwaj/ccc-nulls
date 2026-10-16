@@ -40,20 +40,30 @@ def test_trimean_matches_sorted_reference():
 
 
 @pytest.fixture(scope="module")
-def native(small_adata):
-    inputs = adapter.prepare_inputs(small_adata, "label")
-    return adapter.run_native(inputs, nboot=20, seed=1)
+def inputs(small_adata):
+    return adapter.prepare_inputs(small_adata, "label")
 
 
-def test_native_pipeline_schema(native):
-    df = adapter.native_to_schema(native)
+def test_native_pipeline_schema(inputs):
+    df = adapter.native_to_schema(adapter.run_native(inputs, nboot=20, seed=1))
     schema.validate(df, require_p_native=True)
     assert (df.score > 0).any()
 
 
-def test_null_a_reproduces_cellchat_exactly(small_adata, native):
-    """With CellChat's seed, the vectorised Null A returns the literal port's prob and p bit for bit."""
-    df = adapter.native_to_schema(native)
-    res = nulls.null_a(small_adata, df, "label", B=20, seed=1, rng="cellchat")
+@pytest.mark.parametrize("version", ["2.2", "1.0"])
+def test_null_a_reproduces_cellchat_exactly(small_adata, inputs, version):
+    """With CellChat's seed, the vectorised Null A returns the literal port's prob and p bit for bit,
+    for the current version (2.2) and the 2021 paper's (1.0)."""
+    df = adapter.native_to_schema(adapter.run_native(inputs, nboot=20, seed=1, version=version))
+    res = nulls.null_a(small_adata, df, "label", B=20, seed=1, rng="cellchat", version=version)
     assert np.array_equal(res.score_null_a.to_numpy(), df.score.to_numpy())
     assert np.array_equal(res.p_null_a_cellchat.to_numpy(), df.p_native.to_numpy())
+
+
+def test_stats_and_collapse_quantiles():
+    """stats::quantile interpolates (1 - h) a + h b only where b != a; collapse a + h (b - a)."""
+    rng = np.random.default_rng(3)
+    X = sparse.random(400, 20, density=0.4, random_state=2, data_rvs=lambda k: rng.gamma(1, 1, k)).tocsc()
+    codes = rng.integers(0, 4, 400)
+    for q in ("stats", "collapse"):
+        assert np.array_equal(nulls.TriMean(X, quantile=q)(codes, 4), cc.tri_mean_by_group(X.toarray().T, codes, 4, q).T)
