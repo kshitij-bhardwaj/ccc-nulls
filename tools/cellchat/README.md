@@ -8,7 +8,7 @@ One owner, assigned within the team. Only the owner edits this folder; anything 
 | Tool | CellChat **2.2.0.9001**, `jinworks/CellChat@75253cd` (latest on GitHub, March 2026), **ported to Python**: no R needed |
 | Statistic tested by the nulls | `prob`, CellChat's communication probability (LIANA's re-implementation calls it `lr_probs`) |
 | Native null (Null A) | Yes: `computeCommunProb` permutes the cell labels, `nboot = 100`, `seed.use = 1` |
-| Extra Python dependency | `rdata` (reads CellChatDB from the package's `.rda` once): `pip install rdata` |
+| Extra Python dependency | `rdata` (reads CellChatDB from the package's `.rda` once): `pip install -e ".[cellchat]"` |
 
 ## Files
 
@@ -102,6 +102,59 @@ way). CellChat reports no FDR, and its p-value cannot be read as one.
 
 Run time on a laptop (Apple Silicon, 8 GB): the literal port 59 s, our Null A 26 s with
 B = 100 and 176 s with B = 1,000.
+
+## Evaluation against ground truth (plan step 1, TNBC cytokine truth)
+
+`python benchmarks/run_tool.py --tool cellchat --source native --B 100 --seed 1 --nulls a`
+→ `benchmarks/results/tools/cellchat_native_full.json`. Open Problems ligand-target protocol.
+
+| | AUPRC | odds ratio (top 5%) |
+|---|---|---|
+| CellChat (this port), score only | **0.350** | 3.45 |
+| CellChat, score kept where Null A p ≤ 0.05 | 0.350 | 3.45 |
+| LIANA's CellChat re-implementation (`benchmarks/results/tnbc/results_full.json`) | 0.235 | 3.09 |
+| random | 0.214 | 1.51 |
+
+The original CellChat model (its database, cofactors and over-expression filter) ranks the
+cytokine truth much better than LIANA's re-implementation. Gating by Null A changes nothing,
+because the top-scoring interactions all have p < 0.05.
+
+BH over every row (1,757,690, including prob = 0 rows with p = 1): CellChat's p-values give
+12,862 calls (exactly its p = 0 rows), the `(1 + #) / (B + 1)` p-values give 0. With B = 100 the
+smallest p is 1/101, above BH's threshold for that many tests. What BH "finds" here is decided by
+the p = 0 convention and the number of rows counted, not by the data.
+
+## Calibration (plan step 2, Tabula Sapiens, full permutation)
+
+`python -m tools.cellchat.calibrate_null_a` → `results/calibration_tabula_sapiens_mammary.json`.
+Tabula Sapiens - Mammary (30,934 cells, 16 cell types with ≥ 5 cells, 2 donors), raw counts →
+ln(1 + CP10k). Every cell's label is shuffled once (5 shuffles), so no interaction is real, and
+CellChat runs end to end with its defaults (nboot = 100, seed.use = 1).
+
+| Fully shuffled labels | P(p < 0.05), scored rows | P(p < 0.05), all rows | BH false calls, CellChat p | BH false calls, (1 + #)/(B + 1) |
+|---|---|---|---|---|
+| CellChat pipeline | **15.3%** (range 10.9-17.7%) | 0.47% | 835 | 0 |
+| without the over-expression filter | **8.7%** (6.5-11.1%) | 0.33% | 1,838 | 0 |
+| scored rows where no permutation reached prob = 0 | **4.92%** | | | |
+| expected for a calibrated test | 4.95% | ≤ 5% | 0 | 0 |
+
+With the real labels, 7,112 of 8,952 scored rows (79%) have p < 0.05.
+
+What this shows:
+1. **Our Null A is correct.** Where nothing is selected, it is exactly calibrated (4.92% vs
+   4.95%), and over all rows it is conservative, as a permutation test must be.
+2. **CellChat's reported p-values are anti-conservative, about 3 times nominal**, because two
+   choices made with the same labels select the rows that are reported:
+   - the over-expression filter keeps genes that look high in some group under these labels
+     (15.3% → 8.7% without it);
+   - only rows with prob > 0 are reported, and a permutation that drives prob to 0 always loses
+     to an observed prob > 0 (11.5% where that happens, 4.9% where it does not).
+3. **CellChat's p = 0 convention breaks BH.** With p = 0 allowed, BH calls 835 interactions on
+   data with no signal at all; with `(1 + #) / (B + 1)` it calls none.
+
+This is the calibration baseline the other nulls are compared with. Full permutation separates
+a valid test from an invalid one here only because CellChat's selection is label-dependent;
+for abundance confounding, the fake-L-R-resource test is still needed (docs/PLAN.md).
 
 ## Checklist
 
