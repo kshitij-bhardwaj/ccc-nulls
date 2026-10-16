@@ -7,7 +7,7 @@ through a reviewed pull request.
 | Folder | Tool | LIANA method | Statistic (Open Problems ranks by) | Native null (Null A)? | Native implementation |
 |---|---|---|---|---|---|
 | `cellphonedb/` | CellPhoneDB v5 | `cellphonedb` | `lr_means` | **Yes**: permutes cluster labels (1,000 by default) | Python package `cellphonedb` |
-| `cellchat/` | CellChat | `cellchat` | `lr_probs` | **Yes**: permutes group labels (100 by default) | R package `CellChat` |
+| `cellchat/` | CellChat | `cellchat` | `lr_probs` (native: `prob`) | **Yes**: permutes cell labels (100 by default) | CellChat 2.2.0.9001 ported to Python (`tools/cellchat/cellchat_py.py`, no R) |
 | `natmi/` | NATMI | `natmi` | `spec_weight` (edge specificity) | No permutation p-value | Python scripts (`asrhou/NATMI`) |
 | `connectome/` | Connectome | `connectome` | `scaled_weight` (`weight_sc`) | No permutation null on the edge score | R package `Connectome` (Seurat) |
 

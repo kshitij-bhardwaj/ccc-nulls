@@ -15,7 +15,7 @@ against `src/ccc_nulls/` instead of copying code into your folder.
 
 - `main` is always green: `pytest` passes.
 - Work on a branch named `<area>/<short-description>`:
-  `cellphonedb/native-adapter`, `cellchat/rscript-runner`, `core/standardised-decoys`,
+  `cellphonedb/native-adapter`, `cellchat/null-b`, `core/standardised-decoys`,
   `docs/tnbc-results`.
 - Rebase on `main` before opening a PR; keep PRs small and about one thing.
 
@@ -52,7 +52,7 @@ pytest tools/<your-tool>    # just your workspace
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[liana,test]"
+pip install -e ".[liana,cellchat,test]"
 python -m ccc_nulls.datasets tnbc_wu2021
 ```
 
