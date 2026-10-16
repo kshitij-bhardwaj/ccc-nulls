@@ -1,0 +1,50 @@
+{
+  "tool": "cellchat",
+  "source": "native",
+  "dataset": "tnbc_wu2021",
+  "B": 100,
+  "seed": 1,
+  "n_cells": 42512,
+  "n_interactions": 1757690,
+  "score_name": "prob",
+  "calls": {
+    "null_a": {
+      "p_lt_0_05": 13024,
+      "bh_q_lt_0_05": 0
+    },
+    "native": {
+      "p_lt_0_05": 13024,
+      "bh_q_lt_0_05": 12862
+    }
+  },
+  "vs_native": {
+    "null_a": {
+      "spearman": 1.0,
+      "both": 13024,
+      "only_ours": 0,
+      "only_native": 0
+    }
+  },
+  "openproblems": {
+    "score_only": {
+      "auprc": 0.34971454717164707,
+      "odds_ratio": 3.4496314496314495,
+      "odds_ratio_sigmoid": 0.6330027051397655
+    },
+    "null_a": {
+      "auprc": 0.34971454717164707,
+      "odds_ratio": 3.4496314496314495,
+      "odds_ratio_sigmoid": 0.6330027051397655
+    },
+    "native": {
+      "auprc": 0.34971454717164707,
+      "odds_ratio": 3.4496314496314495,
+      "odds_ratio_sigmoid": 0.6330027051397655
+    },
+    "random": {
+      "auprc": 0.21410915457809934,
+      "odds_ratio": 1.5098998887652948,
+      "odds_ratio_sigmoid": 0.4301831780439881
+    }
+  }
+}
