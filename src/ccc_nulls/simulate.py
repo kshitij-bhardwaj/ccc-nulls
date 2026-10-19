@@ -112,7 +112,7 @@ def simulate_named(pairs: pd.DataFrame, seed: int = 0, n_background: int = 5000,
                    sizes=(800, 600, 500, 400, 400, 300), tau: float = 0.25, n_planted: int = 60,
                    plant_lfc: float = 1.0, dispersion: float = 0.3, structured: bool = True,
                    planted: bool = True, shuffle_labels: bool = False,
-                   cell_types=None, background_prefix: str = "BG") -> SimData:
+                   cell_types=None, background_prefix: str = "BG", plant_pairs=None) -> SimData:
     """The model of :func:`simulate`, but on a real LR resource so native tools can run it.
 
     LR genes carry their real symbols (from ``pairs``, e.g. LIANA's consensus via
@@ -126,10 +126,18 @@ def simulate_named(pairs: pd.DataFrame, seed: int = 0, n_background: int = 5000,
     resource pairs that reuse a planted gene come out as ``"partial"`` in
     :func:`label_truth`.
 
+    ``plant_pairs`` limits planting to pairs that are also in that table (same
+    ligand -> receptor direction), e.g. the pairs every tool's own database contains.
+    Then every planted event is visible to every tool. Background and resource genes are
+    unchanged.
+
     Regimes as in :func:`simulate`: S0 ``structured=False, planted=False,
     shuffle_labels=True``. S1 ``planted=False``. S2 defaults.
     """
     pairs = load_pairs(pairs)
+    pool = pairs if plant_pairs is None else pairs.merge(load_pairs(plant_pairs))
+    if planted and pool.empty:
+        raise ValueError("no resource pair is also in plant_pairs")
     rng = np.random.default_rng(seed)
     K, n = len(sizes), sum(sizes)
     types = np.array(cell_types if cell_types is not None else [f"CT{k}" for k in range(K)], dtype=str)
@@ -149,19 +157,20 @@ def simulate_named(pairs: pd.DataFrame, seed: int = 0, n_background: int = 5000,
     truth, lig_up, rec_up = set(), set(), set()
     if planted:
         used = set()
-        for j in rng.permutation(len(pairs)):
+        for j in rng.permutation(len(pool)):
             if len(truth) == n_planted:
                 break
-            L, R = pairs.ligand.iat[j], pairs.receptor.iat[j]
+            L, R = pool.ligand.iat[j], pool.receptor.iat[j]
             if L in used or R in used:
                 continue
             used |= {L, R}
             x, y = rng.choice(K, 2, replace=True)
             delta[x, gi.get_loc(L)] += plant_lfc
             delta[y, gi.get_loc(R)] += plant_lfc
-            truth.add((L, R, types[x], types[y]))
-            lig_up.add((L, types[x]))
-            rec_up.add((R, types[y]))
+            x, y = str(types[x]), str(types[y])
+            truth.add((L, R, x, y))
+            lig_up.add((L, x))
+            rec_up.add((R, y))
         if len(truth) < n_planted:
             raise ValueError(f"only {len(truth)} pairs with unshared genes for n_planted={n_planted}")
     size_f = rng.lognormal(0, 0.3, n)

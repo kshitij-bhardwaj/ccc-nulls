@@ -42,6 +42,16 @@ def test_restrict_truth_to_tool_resource():
     assert restrict_truth(sim, some) <= sim.truth
 
 
+def test_plant_pairs_limits_planting():
+    allowed = pd.DataFrame({"ligand": [f"LIG{i}" for i in range(0, 80, 2)] + ["CXCL12", "IL6", "ZZZ"],
+                            "receptor": [f"REC{i}" for i in range(0, 80, 2)] + ["CXCR4", "IL6R", "YYY"]})
+    sim = simulate_named(PAIRS, seed=6, n_background=300, sizes=(60, 60, 60), n_planted=25, plant_pairs=allowed)
+    ok = set(map(tuple, allowed.to_numpy()))
+    assert len(sim.truth) == 25 and all((l, r) in ok for l, r, _, _ in sim.truth)
+    with pytest.raises(ValueError, match="plant_pairs"):
+        simulate_named(PAIRS, seed=6, n_background=300, sizes=(60, 60, 60), plant_pairs=allowed.iloc[[-1]])
+
+
 def test_named_regimes_behave_like_simulate():
     """S1: Null A over-calls and Null B is calibrated. S2: Null B finds planted pairs."""
     kw = dict(n_background=2500, sizes=(300, 250, 200, 150), n_planted=15)
