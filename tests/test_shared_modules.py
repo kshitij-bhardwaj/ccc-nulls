@@ -33,6 +33,12 @@ def test_schema_require_p_native():
         schema.validate(_rows(), require_p_native=True)
 
 
+def test_schema_require_p_native_rejects_missing_values():
+    with pytest.raises(ValueError, match="missing values in 'p_native'"):
+        schema.validate(_rows().assign(p_native=np.nan), require_p_native=True)
+    schema.validate(_rows().assign(p_native=0.5), require_p_native=True)
+
+
 def test_openproblems_metrics_perfect_and_gated():
     truth = pd.DataFrame({"ligand": list("abcd"), "target": ["t"] * 4, "response": [1, 1, 0, 0]})
     rows = pd.DataFrame({"ligand_complex": list("abcd"), "target": ["t"] * 4})
