@@ -1,6 +1,6 @@
 """CellChat adapter: dataset -> CellChat inputs -> CellChat run -> common schema. Python only.
 
-"Native" here is ``cellchat_py``: CellChat 2.2.0.9001 (jinworks/CellChat@75253cd) ported to Python
+"Native" here is ``cellchat_py``: CellChat 2.1.2 (jinworks/CellChat, release tag v2.1.2) ported to Python
 line by line, with CellChatDB read from the package's own data file and R's random-number
 generator reproduced, so its output is what CellChat itself reports. No R is needed.
 Contract: tools/README.md. Common schema: ccc_nulls.schema.
@@ -21,7 +21,7 @@ LIANA_METHOD = "cellchat"
 SCORE_NAME = "lr_probs"
 NATIVE_SCORE_NAME = "prob"
 HAS_NATIVE_NULL = True
-CELLCHAT_REF = f"jinworks/CellChat@{cc.COMMIT} ({cc.VERSION}), ported to Python"
+CELLCHAT_REF = f"jinworks/CellChat@{cc.RELEASE} ({cc.VERSION}), ported to Python"
 SEP = ";"
 
 
@@ -53,10 +53,11 @@ def prepare_inputs(adata, groupby: str, out_dir: Path | None = None) -> dict:
 
 
 def run_native(inputs: dict, out_dir: Path | None = None, *, nboot: int = 100, seed: int = 1,
-               population_size: bool = False, version: str = "2.2", log=None, **kw) -> dict:
+               population_size: bool = False, version: str = cc.VERSION, log=None, **kw) -> dict:
     """``computeCommunProb(type = "triMean")`` with CellChat's defaults (nboot = 100,
     seed.use = 1, Kh = 0.5, n = 1, population.size = FALSE): prob, pval, permutations.
-    ``version="1.0"`` runs CellChat 1.0.0's version (the 2021 paper) on the same inputs."""
+    ``version``: "2.1.2" (release, default), "2.2.0.9001" (main) or "1.0.0" (the 2021 paper's
+    version), all on the same inputs."""
     res = cc.compute_commun_prob(inputs["X"], inputs["genes"], inputs["codes"], inputs["levels"],
                                  inputs["LRsig"], inputs["db"], nboot=nboot, seed=seed,
                                  population_size=population_size, log=log, version=version)

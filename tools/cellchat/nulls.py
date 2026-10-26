@@ -1,13 +1,13 @@
 """CellChat: Null A and Null B on CellChat's own score (communication probability ``prob``).
 
-Null A is CellChat's own permutation test from ``computeCommunProb`` in CellChat 2.2.0.9001
-(jinworks/CellChat@75253cd, R/modeling.R), vectorised. With ``rng="cellchat"`` (default) it draws
+Null A is CellChat's own permutation test from ``computeCommunProb`` in CellChat 2.1.2
+(jinworks/CellChat, release v2.1.2, R/modeling.R), vectorised. With ``rng="cellchat"`` (default) it draws
 the permutations CellChat draws (R's ``set.seed`` + ``sample.int``, see ``cellchat_py.RRandom``),
 so it returns the p-values CellChat reports. ``cellchat_py.compute_commun_prob`` is the literal,
 loop-by-loop port it is checked against (``match_null_a.py``, ``test_adapter.py``):
 
     data      = data.signaling / max(data.signaling)            (all CellChatDB genes in the data)
-    avg[g, k] = triMean of gene g in group k                   (collapse::fquantile, type 7)
+    avg[g, k] = triMean of gene g in group k                   (stats::quantile, type 7)
     L[k]      = avg of the ligand; complexes: geometric mean of the subunits' avg
     R[k]      = same for the receptor, then * prod(1 + avg[co-activating receptors])
                                            / prod(1 + avg[co-inhibitory receptors])
@@ -21,7 +21,7 @@ loop-by-loop port it is checked against (``match_null_a.py``, ``test_adapter.py`
     CellChat calls an interaction significant when p < 0.05 (subsetCommunication).
 
 Every floating-point step follows R's order of operations (R's two-pass mean, sequential
-products, collapse's ``a + h * (b - a)`` interpolation) so that ties between permuted and
+products, R's quantile interpolation) so that ties between permuted and
 observed probabilities resolve the same way. tools/cellchat/README.md records the check.
 """
 from __future__ import annotations
@@ -246,7 +246,7 @@ def signaling_genes() -> list[str]:
 def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int = 1000, seed: int = 0,
            rng: str = "cellchat", permutations: np.ndarray | None = None,
            genes_signaling: list[str] | None = None, population_size: bool = False,
-           Kh: float = KH, n: int = HILL_N, version: str = "2.2") -> pd.DataFrame:
+           Kh: float = KH, n: int = HILL_N, version: str = "2.1.2") -> pd.DataFrame:
     """Null A: CellChat's permutation test on CellChat's score.
 
     Parameters
@@ -267,8 +267,9 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
         Genes of ``data.signaling`` (all CellChatDB genes in the data); their maximum scales the
         data. Default: the genes of the default CellChatDB.
     version
-        ``"2.2"`` (default): CellChat 2.2.0.9001, p counts permutations with prob_b > prob.
-        ``"1.0"``: CellChat 1.0.0, the 2021 paper's version: complexes and co-receptors per cell,
+        ``"2.1.2"`` (default): the latest CellChat release; p counts permutations with prob_b > prob.
+        ``"2.2.0.9001"``: GitHub main; as 2.1.2 but triMean uses collapse::fquantile.
+        ``"1.0.0"``: CellChat 1.0.0, the 2021 paper's version: complexes and co-receptors per cell,
         stats::quantile, and p counts prob_b >= prob (ties count against the interaction).
 
     Returns
@@ -299,20 +300,20 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     U.data = U.data / data_max          # true division, as R's data / max(data); scipy's U / x multiplies by 1/x
     gene_pos = {g: j for j, g in enumerate(need)}
     sizes = np.bincount(codes, minlength=K).astype(float)
-    if version == "2.2":
-        tm = TriMean(U)
+    if version in ("2.1.2", "2.2.0.9001"):
+        tm = TriMean(U, quantile="stats" if version == "2.1.2" else "collapse")
         sc = CellChatScore(lr, gene_pos, Kh=Kh, n=n, population_size=population_size)
         score_of = lambda cd: sc(tm(cd, K), sizes)
         beats = np.greater
-    elif version == "1.0":
+    elif version == "1.0.0":
         if population_size or n != 1:
-            raise NotImplementedError("version 1.0 is implemented for population_size=False and n=1")
+            raise NotImplementedError("version 1.0.0 is implemented for population_size=False and n=1")
         sc = CellChatScoreV1(lr, U, gene_pos, Kh=Kh)
         tm_units, tm_genes = TriMean(sc.units, quantile="stats"), TriMean(U, quantile="stats")
         score_of = lambda cd: sc(tm_units(cd, K), tm_genes(cd, K))
         beats = np.greater_equal
     else:
-        raise ValueError("version must be '2.2' or '1.0'")
+        raise ValueError("version must be '2.1.2', '2.2.0.9001' or '1.0.0'")
     score = sc
 
     P_obs = score_of(codes)

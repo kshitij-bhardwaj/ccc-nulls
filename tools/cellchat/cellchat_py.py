@@ -1,4 +1,4 @@
-"""CellChat 2.2.0.9001 (jinworks/CellChat@75253cd), ported to Python. No R needed.
+"""CellChat, ported to Python: release 2.1.2 (jinworks/CellChat, tag v2.1.2) by default. No R needed.
 
 This is a line-by-line port of the parts of CellChat that produce ``net$prob`` and ``net$pval``
 for single-cell RNA data, written to follow the R code as literally as possible. It is the
@@ -14,8 +14,15 @@ reference that ``nulls.null_a`` (a fast, vectorised Null A) is checked against.
     set.seed / sample.int                R's Mersenne-Twister and rejection sampling (R >= 3.6), so
                                          the permutations are the ones CellChat draws
 
-Sources: R/modeling.R, R/utilities.R, R/database.R of CellChat at 75253cd; R/wilcoxauc.R and
-R/utils.R of presto at b5df6ee; src/main/RNG.c and random.c of R.
+Versions (``VERSIONS``):
+    "2.1.2"        the latest release (jinworks/CellChat, tag v2.1.2, April 2025): the default
+    "2.2.0.9001"   GitHub main at 75253cd: identical to 2.1.2 except that triMean uses
+                   collapse::fquantile instead of stats::quantile (same database, same filters)
+    "1.0.0"        the version of the 2021 paper (sqjin/CellChat, tag v1.0.0): see
+                   ``_compute_commun_prob_v1``
+
+Sources: R/modeling.R, R/utilities.R, R/database.R of CellChat at those tags; R/wilcoxauc.R and
+R/utils.R of presto at b5df6ee; src/main/RNG.c, random.c and library/stats/R/quantile.R of R.
 """
 from __future__ import annotations
 
@@ -32,9 +39,16 @@ from scipy.stats import rankdata
 
 from ccc_nulls import datasets
 
-COMMIT = "75253cd"
-VERSION = "2.2.0.9001"
-DB_URL = "https://raw.githubusercontent.com/jinworks/CellChat/{commit}/data/CellChatDB.{species}.rda"
+RELEASE = "v2.1.2"
+VERSION = "2.1.2"
+# version -> (source, quantile used by triMean)
+VERSIONS = {
+    "2.1.2": ("jinworks/CellChat@v2.1.2", "stats"),
+    "2.2.0.9001": ("jinworks/CellChat@75253cd", "collapse"),
+    "1.0.0": ("sqjin/CellChat@v1.0.0", "stats"),
+}
+# CellChatDB.human.rda is the same file (git blob d2a6800) in v2.1.2 and 75253cd
+DB_URL = "https://raw.githubusercontent.com/jinworks/CellChat/{ref}/data/CellChatDB.{species}.rda"
 ANNOTATION_LEVELS = ["Secreted Signaling", "ECM-Receptor", "Non-protein Signaling", "Cell-Cell Contact"]
 
 
@@ -111,7 +125,7 @@ def r_permutations(n_cells: int, nboot: int, seed: int) -> np.ndarray:
 
 # ====================================================================== CellChatDB
 def db_dir(species: str = "human") -> Path:
-    return datasets.data_dir() / "cellchat" / f"db_{species}_{COMMIT}"
+    return datasets.data_dir() / "cellchat" / f"db_{species}_{RELEASE}"
 
 
 def load_db(species: str = "human") -> dict:
@@ -125,7 +139,7 @@ def load_db(species: str = "human") -> dict:
         d.mkdir(parents=True, exist_ok=True)
         rda = d / f"CellChatDB.{species}.rda"
         if not rda.exists():
-            urllib.request.urlretrieve(DB_URL.format(commit=COMMIT, species=species), rda)
+            urllib.request.urlretrieve(DB_URL.format(ref=RELEASE, species=species), rda)
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             obj = rdata.read_rda(str(rda))[f"CellChatDB.{species}"]
@@ -289,10 +303,10 @@ def tri_mean_by_group(data_use: np.ndarray, codes: np.ndarray, K: int, quantile:
     """``aggregate(t(data.use), list(group), FUN = triMean)``: genes x groups.
 
     ``triMean`` is the mean of the quartiles (Q1, Q2, Q2, Q3), type 7:
-    - ``quantile="collapse"`` (CellChat >= 2): ``collapse::fquantile`` interpolates ``a + h (b - a)``
-      (fnth_fmedian_fquantile.c);
-    - ``quantile="stats"`` (CellChat 1.x): ``stats::quantile`` interpolates ``(1 - h) a + h b``, and
-      only where ``b != a`` (quantile.default).
+    - ``quantile="stats"`` (CellChat 1.0.0 and 2.1.2): ``stats::quantile`` interpolates
+      ``(1 - h) a + h b``, and only where ``b != a`` (quantile.default, type 7);
+    - ``quantile="collapse"`` (CellChat main, 2.2.0.9001): ``collapse::fquantile`` interpolates
+      ``a + h (b - a)`` (fnth_fmedian_fquantile.c).
     """
     data_use = np.atleast_2d(data_use)
     G = data_use.shape[0]
@@ -365,19 +379,21 @@ def compute_expr_antagonist(avg: pd.DataFrame, cofactor_input, antagonist: str, 
 
 def compute_commun_prob(X, genes, codes, levels, LRsig: pd.DataFrame, db: dict, *, nboot=100, seed=1,
                         Kh=0.5, n=1, population_size=False, permutation=None, log=None,
-                        version: str = "2.2") -> dict:
+                        version: str = VERSION) -> dict:
     """``computeCommunProb(type = "triMean")`` for scRNA-seq data, following the R loop.
 
     ``X`` is data.signaling (cells x signaling genes). Returns ``prob`` and ``pval``
     (nLR x K x K), the permutation matrix and the scaling constant.
-    ``version="2.2"``: CellChat 2.2.0.9001 (R/modeling.R at 75253cd). ``version="1.0"``: CellChat
-    1.0.0, the version of the 2021 paper (sqjin/CellChat@v1.0.0), run on the raw data
-    (``raw.use = TRUE``; its default projected the data on a protein network first)."""
-    if version == "1.0":
+    ``version``: "2.1.2" (the release, default) or "2.2.0.9001" (main), which differ only in the
+    quantile of triMean; or "1.0.0", the version of the 2021 paper (sqjin/CellChat@v1.0.0), run
+    on the raw data (``raw.use = TRUE``; its default projected the data on a protein network
+    first)."""
+    if version == "1.0.0":
         return _compute_commun_prob_v1(X, genes, codes, levels, LRsig, db, nboot=nboot, seed=seed, Kh=Kh,
                                        n=n, population_size=population_size, permutation=permutation, log=log)
-    if version != "2.2":
-        raise ValueError("version must be '2.2' or '1.0'")
+    if version not in VERSIONS:
+        raise ValueError(f"version must be one of {sorted(VERSIONS)}")
+    quantile = VERSIONS[version][1]
     complex_input, cofactor_input = db["complex"], db["cofactor"]
     K, nC = len(levels), X.shape[0]
     data_max = float(X.max())
@@ -394,7 +410,7 @@ def compute_commun_prob(X, genes, codes, levels, LRsig: pd.DataFrame, db: dict, 
     data_use = (X[:, [gpos[g] for g in need]].toarray() / data_max).T          # genes x cells
 
     def avg_for(cd):
-        return pd.DataFrame(tri_mean_by_group(data_use, cd, K), index=need)
+        return pd.DataFrame(tri_mean_by_group(data_use, cd, K, quantile), index=need)
 
     avg = avg_for(codes)
     if permutation is None:
@@ -439,7 +455,7 @@ def compute_commun_prob(X, genes, codes, levels, LRsig: pd.DataFrame, db: dict, 
         Pval[i] = n_reject / nboot
     Pval[Prob == 0] = 1
     return dict(prob=Prob, pval=Pval, permutation=permutation, data_max=data_max, groups=list(levels),
-                LRsig=LRsig, genes_signaling=genes)
+                LRsig=LRsig, genes_signaling=genes, version=version)
 
 
 # ---------------------------------------------------------------------- computeCommunProb, CellChat 1.0.0
@@ -455,7 +471,7 @@ def _compute_commun_prob_v1(X, genes, codes, levels, LRsig, db, *, nboot, seed, 
                             permutation, log):
     """CellChat 1.0.0 ``computeCommunProb`` (R/modeling.R at sqjin/CellChat@v1.0.0), raw data."""
     if population_size or n != 1:
-        raise NotImplementedError("version 1.0 is ported for population.size = FALSE and n = 1")
+        raise NotImplementedError("version 1.0.0 is ported for population.size = FALSE and n = 1")
     complex_input, cofactor_input = db["complex"], db["cofactor"]
     K, nC = len(levels), X.shape[0]
     data_max = float(X.max())
@@ -515,4 +531,4 @@ def _compute_commun_prob_v1(X, genes, codes, levels, LRsig, db, *, nboot, seed, 
             log(f"  v1.0: {i + 1}/{nLR} L-R pairs")
     Pval[Prob == 0] = 1
     return dict(prob=Prob, pval=Pval, permutation=permutation, data_max=data_max, groups=list(levels),
-                LRsig=LRsig, genes_signaling=genes, version="1.0")
+                LRsig=LRsig, genes_signaling=genes, version="1.0.0")
