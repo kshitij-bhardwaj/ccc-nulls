@@ -50,10 +50,10 @@ def test_native_pipeline_schema(inputs):
     assert (df.score > 0).any()
 
 
-@pytest.mark.parametrize("version", ["2.2", "1.0"])
+@pytest.mark.parametrize("version", ["2.1.2", "2.2.0.9001", "1.0.0"])
 def test_null_a_reproduces_cellchat_exactly(small_adata, inputs, version):
     """With CellChat's seed, the vectorised Null A returns the literal port's prob and p bit for bit,
-    for the current version (2.2) and the 2021 paper's (1.0)."""
+    for the release (2.1.2), GitHub main (2.2.0.9001) and the 2021 paper's version (1.0.0)."""
     df = adapter.native_to_schema(adapter.run_native(inputs, nboot=20, seed=1, version=version))
     res = nulls.null_a(small_adata, df, "label", B=20, seed=1, rng="cellchat", version=version)
     assert np.array_equal(res.score_null_a.to_numpy(), df.score.to_numpy())
