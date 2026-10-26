@@ -46,6 +46,9 @@ def validate(df: pd.DataFrame, *, require_p_native: bool = False) -> pd.DataFram
         p = df["p_native"].dropna()
         if len(p) and ((p < 0) | (p > 1)).any():
             problems.append("'p_native' outside [0, 1]")
+        if require_p_native and df["p_native"].isna().any():
+            problems.append(f"{int(df['p_native'].isna().sum())} missing values in 'p_native', "
+                            "which this tool must provide")
     elif require_p_native:
         problems.append("'p_native' required for this tool")
     if problems:
