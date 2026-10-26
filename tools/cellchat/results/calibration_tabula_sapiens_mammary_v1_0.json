@@ -1,0 +1,262 @@
+{
+  "dataset": "Tabula Sapiens - Mammary",
+  "url": "https://datasets.cellxgene.cziscience.com/33b25f68-a9d6-4643-9283-653e937ae608.h5ad",
+  "n_cells": 30934,
+  "n_genes": 1204,
+  "n_groups": 16,
+  "n_donors": 2,
+  "cellchat": "jinworks/CellChat@75253cd (2.2.0.9001), ported to Python",
+  "version": "1.0",
+  "B": 100,
+  "seed": 1,
+  "real_labels": {
+    "cellchat_pipeline": {
+      "n_lr": 2024,
+      "n_rows": 518144,
+      "n_testable": 7869,
+      "frac_p_lt_0_05": 0.7966704790951836,
+      "expected_p_lt_0_05": 0.04950495049504951,
+      "frac_p_eq_0": 0.7755750413013089,
+      "expected_p_eq_0": 0.009900990099009901,
+      "ks_uniform_rank": {
+        "statistic": 0.7666309813758406,
+        "pvalue": 0.0
+      },
+      "calls_p_lt_0_05": 6269,
+      "frac_all_rows_p_lt_0_05": 0.012098953186758894,
+      "calls_bh_q_lt_0_05_cellchat_p": 6237,
+      "calls_bh_q_lt_0_05_plus_one_p": 6237
+    },
+    "no_overexpression_filter": {
+      "n_lr": 2231,
+      "n_rows": 571136,
+      "n_testable": 7869,
+      "frac_p_lt_0_05": 0.7966704790951836,
+      "expected_p_lt_0_05": 0.04950495049504951,
+      "frac_p_eq_0": 0.7755750413013089,
+      "expected_p_eq_0": 0.009900990099009901,
+      "ks_uniform_rank": {
+        "statistic": 0.7666309813758406,
+        "pvalue": 0.0
+      },
+      "calls_p_lt_0_05": 6269,
+      "frac_all_rows_p_lt_0_05": 0.010976369901389511,
+      "calls_bh_q_lt_0_05_cellchat_p": 6237,
+      "calls_bh_q_lt_0_05_plus_one_p": 6237
+    }
+  },
+  "full_permutation": {
+    "cellchat_pipeline": [
+      {
+        "n_lr": 546,
+        "n_rows": 139776,
+        "n_testable": 3803,
+        "frac_p_lt_0_05": 0.14278201419931633,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.03760189324217723,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.17428632184675497,
+          "pvalue": 1.6948243696282066e-101
+        },
+        "calls_p_lt_0_05": 543,
+        "frac_all_rows_p_lt_0_05": 0.003884787087912088,
+        "calls_bh_q_lt_0_05_cellchat_p": 143,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 435,
+        "n_rows": 111360,
+        "n_testable": 2535,
+        "frac_p_lt_0_05": 0.1096646942800789,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.02485207100591716,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.1039227808335903,
+          "pvalue": 2.725382064415516e-24
+        },
+        "calls_p_lt_0_05": 278,
+        "frac_all_rows_p_lt_0_05": 0.0024964080459770116,
+        "calls_bh_q_lt_0_05_cellchat_p": 63,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 538,
+        "n_rows": 137728,
+        "n_testable": 4098,
+        "frac_p_lt_0_05": 0.18911664226451927,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.04001952171791118,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.23312399799738415,
+          "pvalue": 2.456517414634416e-196
+        },
+        "calls_p_lt_0_05": 775,
+        "frac_all_rows_p_lt_0_05": 0.005627032992565056,
+        "calls_bh_q_lt_0_05_cellchat_p": 164,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 572,
+        "n_rows": 146432,
+        "n_testable": 6603,
+        "frac_p_lt_0_05": 0.1558382553384825,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.055277903983038015,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.2603094568258554,
+          "pvalue": 0.0
+        },
+        "calls_p_lt_0_05": 1029,
+        "frac_all_rows_p_lt_0_05": 0.007027152534965035,
+        "calls_bh_q_lt_0_05_cellchat_p": 365,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 502,
+        "n_rows": 128512,
+        "n_testable": 1243,
+        "frac_p_lt_0_05": 0.1407884151246983,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.029766693483507644,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.1930461985137592,
+          "pvalue": 4.747446760429755e-41
+        },
+        "calls_p_lt_0_05": 175,
+        "frac_all_rows_p_lt_0_05": 0.0013617405378486057,
+        "calls_bh_q_lt_0_05_cellchat_p": 37,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      }
+    ],
+    "no_overexpression_filter": [
+      {
+        "n_lr": 2231,
+        "n_rows": 571136,
+        "n_testable": 19493,
+        "frac_p_lt_0_05": 0.11214282049966655,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.018519468527163598,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.19033120163342115,
+          "pvalue": 0.0
+        },
+        "calls_p_lt_0_05": 2186,
+        "frac_all_rows_p_lt_0_05": 0.003827459659345585,
+        "calls_bh_q_lt_0_05_cellchat_p": 361,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 2231,
+        "n_rows": 571136,
+        "n_testable": 17804,
+        "frac_p_lt_0_05": 0.07037744327117501,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.014154122669063131,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.11006965825718362,
+          "pvalue": 2.5579680329262728e-188
+        },
+        "calls_p_lt_0_05": 1253,
+        "frac_all_rows_p_lt_0_05": 0.0021938732631107127,
+        "calls_bh_q_lt_0_05_cellchat_p": 252,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 2231,
+        "n_rows": 571136,
+        "n_testable": 18452,
+        "frac_p_lt_0_05": 0.09348580099718187,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.01582484283546499,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.14796284449282154,
+          "pvalue": 0.0
+        },
+        "calls_p_lt_0_05": 1725,
+        "frac_all_rows_p_lt_0_05": 0.0030202963917525774,
+        "calls_bh_q_lt_0_05_cellchat_p": 292,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 2231,
+        "n_rows": 571136,
+        "n_testable": 20796,
+        "frac_p_lt_0_05": 0.10319292171571456,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.02736103096749375,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.22652531309944385,
+          "pvalue": 0.0
+        },
+        "calls_p_lt_0_05": 2146,
+        "frac_all_rows_p_lt_0_05": 0.003757423800986105,
+        "calls_bh_q_lt_0_05_cellchat_p": 569,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      },
+      {
+        "n_lr": 2231,
+        "n_rows": 571136,
+        "n_testable": 17954,
+        "frac_p_lt_0_05": 0.0660577030188259,
+        "expected_p_lt_0_05": 0.04950495049504951,
+        "frac_p_eq_0": 0.012866213657123761,
+        "expected_p_eq_0": 0.009900990099009901,
+        "ks_uniform_rank": {
+          "statistic": 0.08453479273219444,
+          "pvalue": 4.558752332286158e-112
+        },
+        "calls_p_lt_0_05": 1186,
+        "frac_all_rows_p_lt_0_05": 0.0020765632003585835,
+        "calls_bh_q_lt_0_05_cellchat_p": 231,
+        "calls_bh_q_lt_0_05_plus_one_p": 0
+      }
+    ]
+  },
+  "pooled": {
+    "cellchat_pipeline": {
+      "n_shuffles": 5,
+      "n_testable": 18282,
+      "frac_p_lt_0_05": 0.1531561098348102,
+      "expected_p_lt_0_05": 0.04950495049504951,
+      "frac_p_eq_0": 0.04222732742588338,
+      "expected_p_eq_0": 0.009900990099009901,
+      "frac_all_rows_p_lt_0_05": 0.004218087157732356,
+      "per_shuffle_frac_p_lt_0_05": [
+        0.1428,
+        0.1097,
+        0.1891,
+        0.1558,
+        0.1408
+      ],
+      "calls_bh_q_lt_0_05_cellchat_p": 772,
+      "calls_bh_q_lt_0_05_plus_one_p": 0
+    },
+    "no_overexpression_filter": {
+      "n_shuffles": 5,
+      "n_testable": 94499,
+      "frac_p_lt_0_05": 0.0899057132879713,
+      "expected_p_lt_0_05": 0.04950495049504951,
+      "frac_p_eq_0": 0.018042518968454692,
+      "expected_p_eq_0": 0.009900990099009901,
+      "frac_all_rows_p_lt_0_05": 0.0029751232631107126,
+      "per_shuffle_frac_p_lt_0_05": [
+        0.1121,
+        0.0704,
+        0.0935,
+        0.1032,
+        0.0661
+      ],
+      "calls_bh_q_lt_0_05_cellchat_p": 1705,
+      "calls_bh_q_lt_0_05_plus_one_p": 0
+    }
+  }
+}

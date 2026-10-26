@@ -1,0 +1,266 @@
+{
+  "dataset": "tnbc_wu2021",
+  "tag": "quick",
+  "cellchat": "jinworks/CellChat@75253cd (2.2.0.9001), ported to Python",
+  "nboot": 100,
+  "seed": 1,
+  "r_rng": {
+    "set.seed(1); runif(3)": {
+      "expected": [
+        0.2655087,
+        0.3721239,
+        0.5728534
+      ],
+      "ours": [
+        0.2655087,
+        0.3721239,
+        0.5728534
+      ],
+      "identical": true
+    },
+    "set.seed(123); runif(1)": {
+      "expected": [
+        0.2875775
+      ],
+      "ours": [
+        0.2875775
+      ],
+      "identical": true
+    },
+    "set.seed(1); sample(10)": {
+      "expected": [
+        9,
+        4,
+        7,
+        1,
+        2,
+        5,
+        3,
+        10,
+        6,
+        8
+      ],
+      "ours": [
+        9,
+        4,
+        7,
+        1,
+        2,
+        5,
+        3,
+        10,
+        6,
+        8
+      ],
+      "identical": true
+    },
+    "set.seed(42); sample(10)": {
+      "expected": [
+        1,
+        5,
+        10,
+        8,
+        2,
+        4,
+        6,
+        9,
+        7,
+        3
+      ],
+      "ours": [
+        1,
+        5,
+        10,
+        8,
+        2,
+        4,
+        6,
+        9,
+        7,
+        3
+      ],
+      "identical": true
+    },
+    "set.seed(123); sample(10)": {
+      "expected": [
+        3,
+        10,
+        2,
+        8,
+        6,
+        9,
+        1,
+        7,
+        5,
+        4
+      ],
+      "ours": [
+        3,
+        10,
+        2,
+        8,
+        6,
+        9,
+        1,
+        7,
+        5,
+        4
+      ],
+      "identical": true
+    }
+  },
+  "n_cells": 7996,
+  "n_groups": 28,
+  "inputs": {
+    "n_genes_signaling": 1147,
+    "n_features_sig": 1084,
+    "n_lr": 1930,
+    "secs": 0.5
+  },
+  "cellchat_secs": 12.1,
+  "n_rows": 1513120,
+  "n_rows_prob_gt_0": 13374,
+  "cellchat_significance": {
+    "p_lt_0_05": 11244,
+    "p_eq_0": 10850,
+    "bh_q_lt_0_05": 11244,
+    "bh_q_lt_0_10": 11396,
+    "min_q": 0.0,
+    "p_resolution": 0.01
+  },
+  "same_permutations": {
+    "secs": 6.9,
+    "prob_identical": 1513120,
+    "prob_max_abs_diff": 0.0,
+    "prob_zero_pattern_identical": true,
+    "n_rows": 13374,
+    "p_identical": 13374,
+    "p_max_abs_diff": 0.0,
+    "p_mean_abs_diff": 0.0,
+    "p_spearman": 1.0,
+    "q_identical": 13374,
+    "q_max_abs_diff": 0.0,
+    "calls_p_lt_0_05": {
+      "both": 11244,
+      "only_ours": 0,
+      "only_cellchat": 0,
+      "neither": 2130
+    },
+    "calls_bh_q_lt_0_05": {
+      "both": 11244,
+      "only_ours": 0,
+      "only_cellchat": 0,
+      "neither": 2130
+    }
+  },
+  "independent_permutations": {
+    "B100": {
+      "n_rows": 13374,
+      "p_identical": 11543,
+      "p_max_abs_diff": 0.20999999999999996,
+      "p_mean_abs_diff": 0.0052317930312546735,
+      "p_spearman": 0.9556602567805219,
+      "q_identical": 11615,
+      "q_max_abs_diff": 0.23315719299848298,
+      "calls_p_lt_0_05": {
+        "both": 11191,
+        "only_ours": 84,
+        "only_cellchat": 53,
+        "neither": 2046
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 11191,
+        "only_ours": 84,
+        "only_cellchat": 53,
+        "neither": 2046
+      },
+      "secs": 6.1,
+      "significance": {
+        "p_lt_0_05": 11275,
+        "p_eq_0": 10816,
+        "bh_q_lt_0_05": 11275,
+        "bh_q_lt_0_10": 11441,
+        "min_q": 0.0,
+        "p_resolution": 0.01
+      },
+      "frac_within_2_mc_sd": 0.9914012262599072,
+      "frac_within_3_mc_sd": 0.999775684163302
+    }
+  },
+  "openproblems": {
+    "2.2": {
+      "score_only": {
+        "auprc": 0.2976748672017813,
+        "odds_ratio": 3.8467768059604794,
+        "odds_ratio_sigmoid": 0.6579311873233974
+      },
+      "gated_null_a": {
+        "auprc": 0.2976748672017813,
+        "odds_ratio": 3.8467768059604794,
+        "odds_ratio_sigmoid": 0.6579311873233974
+      }
+    },
+    "1.0": {
+      "score_only": {
+        "auprc": 0.28915722741980643,
+        "odds_ratio": 2.7644444444444445,
+        "odds_ratio_sigmoid": 0.580223880597015
+      },
+      "gated_null_a": {
+        "auprc": 0.28915722741980643,
+        "odds_ratio": 2.7644444444444445,
+        "odds_ratio_sigmoid": 0.580223880597015
+      }
+    }
+  },
+  "v1_0_same_permutations": {
+    "cellchat_secs": 104.7,
+    "secs": 8.1,
+    "n_rows_prob_gt_0": 12546,
+    "prob_identical": 1513120,
+    "n_rows": 12546,
+    "p_identical": 12546,
+    "p_max_abs_diff": 0.0,
+    "p_mean_abs_diff": 0.0,
+    "p_spearman": 0.9999999999999998,
+    "q_identical": 12546,
+    "q_max_abs_diff": 0.0,
+    "calls_p_lt_0_05": {
+      "both": 10719,
+      "only_ours": 0,
+      "only_cellchat": 0,
+      "neither": 1827
+    },
+    "calls_bh_q_lt_0_05": {
+      "both": 10719,
+      "only_ours": 0,
+      "only_cellchat": 0,
+      "neither": 1827
+    },
+    "cellchat_significance": {
+      "p_lt_0_05": 10719,
+      "p_eq_0": 10321,
+      "bh_q_lt_0_05": 10719,
+      "bh_q_lt_0_10": 10867,
+      "min_q": 0.0,
+      "p_resolution": 0.01
+    }
+  },
+  "v1_0_vs_v2_2": {
+    "prob_identical": 1508621,
+    "n_rows": 1513120,
+    "prob_gt_0_v2_2": 13374,
+    "prob_gt_0_v1_0": 12546,
+    "prob_gt_0_both": 12546,
+    "prob_spearman_both": 0.9866879141956031,
+    "p_identical_both": 12117,
+    "p_v1_ge_v2_both": 12202,
+    "calls_p_lt_0_05": {
+      "both": 10627,
+      "only_ours": 92,
+      "only_cellchat": 617,
+      "neither": 1501784
+    },
+    "pairs_with_complex_or_coreceptor": 956
+  }
+}
