@@ -3,8 +3,10 @@
 Files live in ``<repo>/data/`` by default; set ``CCC_NULLS_DATA`` to use another folder.
 
     python -m ccc_nulls.datasets tnbc_wu2021          # download + md5 check
-    >>> from ccc_nulls.datasets import load_openproblems
+    python -m ccc_nulls.datasets tabula_sapiens_mammary tabula_sapiens_liver
+    >>> from ccc_nulls.datasets import load_openproblems, load_tabula_sapiens
     >>> adata, truth = load_openproblems("tnbc_wu2021")
+    >>> adata = load_tabula_sapiens("tabula_sapiens_mammary")
 """
 from __future__ import annotations
 
@@ -17,6 +19,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 S3 = "https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1"
+TABULA_SAPIENS = "https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5"
 
 DATASETS = {
     "tnbc_wu2021": dict(
@@ -47,7 +50,7 @@ DATASETS = {
     ),
     "tabula_sapiens": dict(
         role="calibration: no ground truth (permutation / fake-resource tests)",
-        url="https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5",
+        url=TABULA_SAPIENS,
         filename=None,
         md5=None,
         size=None,
@@ -55,8 +58,39 @@ DATASETS = {
         groupby="cell_type",
         sample_key="donor_id",
         truth_keys=None,
-        summary="Tabula Sapiens (CELLxGENE). Download one tissue h5ad from the collection page, save it "
-                "as data/tabula_sapiens_<tissue>.h5ad, and pass that path to load_h5ad().",
+        summary="Tabula Sapiens (CELLxGENE), one h5ad per tissue. The tissues in use are registered as "
+                "tabula_sapiens_<tissue>; load them with load_tabula_sapiens().",
+    ),
+    # Tabula Sapiens tissues used for calibration (CELLxGENE files of the collection above)
+    "tabula_sapiens_mammary": dict(
+        role="calibration: no ground truth (full-permutation and known-null tests)",
+        url="https://datasets.cellxgene.cziscience.com/33b25f68-a9d6-4643-9283-653e937ae608.h5ad",
+        filename="tabula_sapiens_mammary.h5ad",
+        md5="6261c8dd5785c52fb8a18d0974602597",
+        size=1_334_205_970,
+        organism="human",
+        groupby="label",
+        sample_key="donor_id",
+        truth_keys=None,
+        collection=TABULA_SAPIENS,
+        title="Tabula Sapiens - Mammary",
+        summary="Normal breast, the tissue closest to the TNBC atlas: 30,936 cells, 2 donors. Raw counts in "
+                "raw/X; load_tabula_sapiens() normalises them to ln(1 + CP10k).",
+    ),
+    "tabula_sapiens_liver": dict(
+        role="calibration: no ground truth (full-permutation and known-null tests)",
+        url="https://datasets.cellxgene.cziscience.com/a4b3a49e-062b-4e3f-8915-02f40607651f.h5ad",
+        filename="tabula_sapiens_liver.h5ad",
+        md5="ccb220e15f2070c3c22c226fe89d5878",
+        size=834_485_899,
+        organism="human",
+        groupby="label",
+        sample_key="donor_id",
+        truth_keys=None,
+        collection=TABULA_SAPIENS,
+        title="Tabula Sapiens - Liver",
+        summary="A second organ of similar size: 22,214 cells, 4 donors. Raw counts in raw/X; "
+                "load_tabula_sapiens() normalises them to ln(1 + CP10k).",
     ),
 }
 
@@ -144,6 +178,62 @@ def load_openproblems(name: str, layer: str = "normalized", min_cells: int = 5):
     truth = adata.uns["ccc_target"][meta["truth_keys"] + ["response"]].copy()
     truth["response"] = truth["response"].astype(int)
     return adata, truth.reset_index(drop=True)
+
+
+def _h5_strings(f, key):
+    """A string column of an h5ad dataframe, plain or categorical."""
+    import h5py
+    import numpy as np
+
+    o = f[key]
+    if isinstance(o, h5py.Group):                          # categorical: codes + categories
+        return np.asarray(o["categories"].asstr()[:], dtype=object)[o["codes"][:]]
+    return np.asarray(o.asstr()[:], dtype=object)
+
+
+def load_tabula_sapiens(name: str, genes=None, min_cells: int = 5):
+    """Load a registered Tabula Sapiens tissue: AnnData with X = ln(1 + CP10k) of the raw counts.
+
+    X is the raw counts (``raw/X``) scaled to 10,000 per cell, where library sizes use all genes, then
+    log1p, as float32. ``var_names`` are gene symbols (``raw/var/feature_name``; duplicates keep the
+    first), ``obs`` holds ``cell_type``, ``donor_id`` and ``label`` (= cell_type, the groupby), and
+    cell types with fewer than ``min_cells`` cells are dropped, as LIANA does.
+
+    ``genes``: keep only these genes (e.g. a tool's database). Library sizes still use all genes, so
+    the values are the same as without it. The file is read with h5py, because it also holds a
+    ``scale_data`` layer too large for 8 GB of memory.
+    """
+    import anndata as ad
+    import h5py
+    import numpy as np
+    import pandas as pd
+    from scipy import sparse
+
+    if not name.startswith("tabula_sapiens_"):
+        raise ValueError(f"{name} is not a Tabula Sapiens tissue; registered: "
+                         f"{sorted(n for n in DATASETS if n.startswith('tabula_sapiens_'))}")
+    with h5py.File(path(name), "r") as f:
+        g = f["raw/X"]
+        n_obs, n_var = len(g["indptr"]) - 1, len(f["raw/var/_index"])
+        counts = sparse.csr_matrix((g["data"][:], g["indices"][:].astype(np.int32), g["indptr"][:]),
+                                   shape=(n_obs, n_var))
+        symbols = _h5_strings(f, "raw/var/feature_name")
+        obs = pd.DataFrame({"cell_type": _h5_strings(f, "obs/cell_type"),
+                            "donor_id": _h5_strings(f, "obs/donor_id")}, index=_h5_strings(f, "obs/_index"))
+    lib = np.asarray(counts.sum(1, dtype=np.float64)).ravel()
+    keep = np.arange(n_var) if genes is None else np.where(pd.Index(symbols).isin(set(genes)))[0]
+    X = sparse.csr_matrix(counts[:, keep], dtype=np.float64)
+    del counts
+    X = (sparse.diags(1e4 / np.where(lib > 0, lib, 1)) @ X).tocsr()
+    X.data = np.log1p(X.data)
+    adata = ad.AnnData(X=X.astype(np.float32), obs=obs)
+    adata.var_names = pd.Index(symbols[keep]).astype(str)
+    adata = adata[:, ~adata.var_names.duplicated()].copy()
+    adata.obs["label"] = adata.obs["cell_type"].astype(str)
+    vc = adata.obs.label.value_counts()
+    adata = adata[adata.obs.label.isin(vc[vc >= min_cells].index)].copy()
+    adata.obs["label"] = adata.obs.label.astype("category")
+    return adata
 
 
 if __name__ == "__main__":
