@@ -55,3 +55,43 @@ def test_dataset_registry():
         assert datasets.path(name).name == meta["filename"]
     with pytest.raises(ValueError):
         datasets.path("tabula_sapiens")
+
+
+@pytest.mark.parametrize("name", ["tabula_sapiens_mammary", "tabula_sapiens_liver"])
+def test_tabula_sapiens_registry(name, tmp_path, monkeypatch):
+    """The calibration tissues are registered like tnbc_wu2021 (no download needed)."""
+    meta = datasets.DATASETS[name]
+    assert meta["url"].startswith("https://datasets.cellxgene.cziscience.com/") and meta["url"].endswith(".h5ad")
+    assert len(meta["md5"]) == 32 and int(meta["md5"], 16) >= 0
+    assert isinstance(meta["size"], int) and meta["size"] > 0
+    assert meta["collection"] == datasets.TABULA_SAPIENS == datasets.DATASETS["tabula_sapiens"]["url"]
+    assert meta["groupby"] == "label" and meta["truth_keys"] is None and meta["title"].startswith("Tabula Sapiens - ")
+    monkeypatch.setenv("CCC_NULLS_DATA", str(tmp_path))
+    assert datasets.path(name) == tmp_path / meta["filename"] == tmp_path / f"{name}.h5ad"
+
+
+def test_load_tabula_sapiens_reads_raw_counts(tmp_path, monkeypatch):
+    """ln(1 + CP10k) of raw/X with library sizes over all genes, gene subset, small types dropped."""
+    ad = pytest.importorskip("anndata")
+    from scipy import sparse
+
+    counts = np.array([[1, 0, 3, 0], [0, 2, 0, 2], [4, 0, 0, 1], [0, 0, 5, 5], [2, 2, 2, 2]], dtype=np.float32)
+    obs = pd.DataFrame({"cell_type": pd.Categorical(["A", "A", "B", "B", "C"]),
+                        "donor_id": pd.Categorical(["d1", "d1", "d2", "d2", "d2"])},
+                       index=[f"cell{i}" for i in range(5)])
+    var = pd.DataFrame({"feature_name": pd.Categorical(["G1", "G2", "G3", "G3"])}, index=[f"ENSG{i}" for i in range(4)])
+    raw = ad.AnnData(X=sparse.csr_matrix(counts), obs=obs, var=var)
+    a = raw.copy()
+    a.raw = raw
+    monkeypatch.setenv("CCC_NULLS_DATA", str(tmp_path))
+    a.write_h5ad(datasets.path("tabula_sapiens_mammary"))
+
+    out = datasets.load_tabula_sapiens("tabula_sapiens_mammary", genes=["G1", "G3"], min_cells=2)
+    assert list(out.obs_names) == ["cell0", "cell1", "cell2", "cell3"]          # type C (1 cell) dropped
+    assert list(out.var_names) == ["G1", "G3"]                                   # duplicate G3 keeps the first
+    assert list(out.obs.label.cat.categories) == ["A", "B"] and "donor_id" in out.obs
+    lib = counts.sum(1, keepdims=True)                                           # all genes, not the subset
+    expect = np.log1p(1e4 * counts / lib)[:4][:, [0, 2]].astype(np.float32)
+    np.testing.assert_allclose(out.X.toarray(), expect, rtol=1e-6)
+    with pytest.raises(ValueError):
+        datasets.load_tabula_sapiens("tnbc_wu2021")
