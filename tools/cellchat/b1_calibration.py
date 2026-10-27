@@ -92,7 +92,7 @@ def one_dataset(adata, B, seed):
     out["p_calibration"]["naive"] = {str(t): float((sstats.norm.sf(zn) <= t).mean()) for t in P_LEVELS}
     for v in VARIANTS:
         try:
-            b = nulls.null_b(adata, df, "label", null_a_result=res, seed=seed, pvalues=pvals.get(v["pvalue"]), **v)
+            b = nulls.null_b_empirical(adata, df, "label", null_a_result=res, seed=seed, pvalues=pvals.get(v["pvalue"]), **v)
         except ValueError as e:                                  # e.g. central matching not concave
             out["calls"][vname(v)] = {"error": str(e)}
             continue

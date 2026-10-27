@@ -1,0 +1,1826 @@
+{
+  "dataset": "Tabula Sapiens - Mammary",
+  "B": 1000,
+  "shuffles": 2,
+  "alphas": [
+    0.01,
+    0.05,
+    0.1
+  ],
+  "default": "gpd|mle|pct0=0.25|family=None|fit=nondegenerate",
+  "variants": [
+    "gpd|theoretical|pct0=0.25|family=None|fit=nondegenerate",
+    "gpd|mle|pct0=0.25|family=None|fit=nondegenerate",
+    "pearson3|theoretical|pct0=0.25|family=None|fit=nondegenerate",
+    "pearson3|mle|pct0=0.25|family=None|fit=nondegenerate",
+    "permutation|theoretical|pct0=0.25|family=None|fit=nondegenerate",
+    "permutation|mle|pct0=0.25|family=None|fit=nondegenerate",
+    "naive|theoretical|pct0=0.25|family=None|fit=nondegenerate",
+    "naive|mle|pct0=0.25|family=None|fit=nondegenerate",
+    "gpd|mle|pct0=0.1|family=None|fit=nondegenerate",
+    "gpd|mle|pct0=0.33|family=None|fit=nondegenerate",
+    "gpd|cm|pct0=0.1|family=None|fit=nondegenerate",
+    "gpd|cm|pct0=0.25|family=None|fit=nondegenerate",
+    "gpd|cm|pct0=0.33|family=None|fit=nondegenerate",
+    "gpd|mle|pct0=0.25|family=source|fit=nondegenerate",
+    "gpd|mle|pct0=0.25|family=target|fit=nondegenerate",
+    "gpd|mle|pct0=0.25|family=None|fit=scored",
+    "pearson3|mle|pct0=0.25|family=None|fit=scored"
+  ],
+  "real_labels": {
+    "n_lr": 2024,
+    "n_rows": 518144,
+    "n_scored": 8952,
+    "n_nondegenerate": 61748,
+    "null_a_seconds": 212.8,
+    "calls": {
+      "null_a|cellchat-convention|bh|scored": {
+        "0.01": 6927,
+        "0.05": 7095,
+        "0.1": 7180
+      },
+      "gpd|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 6704,
+        "0.05": 6927,
+        "0.1": 7093,
+        "fit": {
+          "delta0": 0.0,
+          "sigma0": 1.0,
+          "pi0": 1.0,
+          "method": "theoretical",
+          "n": 61748,
+          "interval": [
+            NaN,
+            NaN
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "gpd|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 6780,
+        "0.05": 7096,
+        "0.1": 7348,
+        "fit": {
+          "delta0": -0.3988645018439267,
+          "sigma0": 1.0947656875036162,
+          "pi0": 0.7797397375983411,
+          "method": "mle",
+          "n": 61748,
+          "interval": [
+            -1.4745066563329918,
+            0.538878306831627
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "pearson3|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 6761,
+        "0.05": 6939,
+        "0.1": 7086,
+        "fit": {
+          "delta0": 0.0,
+          "sigma0": 1.0,
+          "pi0": 1.0,
+          "method": "theoretical",
+          "n": 61748,
+          "interval": [
+            NaN,
+            NaN
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "pearson3|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 6815,
+        "0.05": 7090,
+        "0.1": 7348,
+        "fit": {
+          "delta0": -0.3988645018439267,
+          "sigma0": 1.0947656875036162,
+          "pi0": 0.7797397375983411,
+          "method": "mle",
+          "n": 61748,
+          "interval": [
+            -1.4745066563329918,
+            0.538878306831627
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "permutation|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 6719,
+        "0.05": 6945,
+        "0.1": 7094,
+        "fit": {
+          "delta0": 0.0,
+          "sigma0": 1.0,
+          "pi0": 1.0,
+          "method": "theoretical",
+          "n": 61748,
+          "interval": [
+            NaN,
+            NaN
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "permutation|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 6810,
+        "0.05": 7097,
+        "0.1": 7348,
+        "fit": {
+          "delta0": -0.3988645018439267,
+          "sigma0": 1.0947656875036162,
+          "pi0": 0.7797397375983411,
+          "method": "mle",
+          "n": 61748,
+          "interval": [
+            -1.4745066563329918,
+            0.538878306831627
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "naive|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 2690,
+        "0.05": 2768,
+        "0.1": 2812,
+        "fit": {
+          "delta0": 0.0,
+          "sigma0": 1.0,
+          "pi0": 1.0,
+          "method": "theoretical",
+          "n": 57567,
+          "interval": [
+            NaN,
+            NaN
+          ],
+          "n_rows": 57567,
+          "own_fit": true
+        }
+      },
+      "naive|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 2718,
+        "0.05": 2771,
+        "0.1": 2799,
+        "fit": {
+          "delta0": 0.860348920986868,
+          "sigma0": 0.6849318151743247,
+          "pi0": 1.0,
+          "method": "mle",
+          "n": 57567,
+          "interval": [
+            -0.9982885442892837,
+            -0.0689698116512078
+          ],
+          "n_rows": 57567,
+          "own_fit": true
+        }
+      },
+      "gpd|mle|pct0=0.1|family=None|fit=nondegenerate": {
+        "0.01": 1335,
+        "0.05": 1477,
+        "0.1": 1543,
+        "fit": {
+          "delta0": -0.2873993036928417,
+          "sigma0": 1.899412972381713,
+          "pi0": 0.9699398200530971,
+          "method": "mle",
+          "n": 61748,
+          "interval": [
+            -3.129048433181141,
+            3.090529137925268
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "gpd|mle|pct0=0.33|family=None|fit=nondegenerate": {
+        "0.01": 1646,
+        "0.05": 1781,
+        "0.1": 6792,
+        "fit": {
+          "delta0": -0.30357112233783956,
+          "sigma0": 1.377667398698863,
+          "pi0": 0.9706536471803257,
+          "method": "mle",
+          "n": 61748,
+          "interval": [
+            -1.0850091860130608,
+            0.17393928700778405
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "gpd|cm|pct0=0.1|family=None|fit=nondegenerate": {
+        "0.01": 1427,
+        "0.05": 1577,
+        "0.1": 1649,
+        "fit": {
+          "delta0": -0.6662652701756732,
+          "sigma0": 1.834165124895702,
+          "pi0": 0.9890817070183893,
+          "method": "cm",
+          "n": 61748,
+          "interval": [
+            -3.129048433181141,
+            3.090529137925268
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "gpd|cm|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": 1586,
+        "0.05": 1733,
+        "0.1": 6743,
+        "fit": {
+          "delta0": -0.6907519029955598,
+          "sigma0": 1.5870240846402721,
+          "pi0": 0.9103085276612847,
+          "method": "cm",
+          "n": 61748,
+          "interval": [
+            -1.4745066563329918,
+            0.538878306831627
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "gpd|cm|pct0=0.33|family=None|fit=nondegenerate": {
+        "0.01": 1606,
+        "0.05": 1755,
+        "0.1": 6795,
+        "fit": {
+          "delta0": -0.6957287269092466,
+          "sigma0": 1.5662314671769173,
+          "pi0": 0.8997531793642846,
+          "method": "cm",
+          "n": 61748,
+          "interval": [
+            -1.0850091860130608,
+            0.17393928700778405
+          ],
+          "n_rows": 61748,
+          "own_fit": true
+        }
+      },
+      "gpd|mle|pct0=0.25|family=source|fit=nondegenerate": {
+        "0.01": 6302,
+        "0.05": 6880,
+        "0.1": 7043,
+        "fit": {
+          "B cell": {
+            "delta0": -0.3471381415028117,
+            "sigma0": 1.0165594203161554,
+            "pi0": 0.9254749982919683,
+            "method": "mle",
+            "n": 6026,
+            "interval": [
+              -1.1396993371613167,
+              0.3639512814681317
+            ],
+            "n_rows": 6026,
+            "own_fit": true
+          },
+          "CD4-positive, alpha-beta T cell": {
+            "delta0": -0.3988645018439267,
+            "sigma0": 1.0947656875036162,
+            "pi0": 0.7797397375983411,
+            "method": "mle",
+            "n": 61748,
+            "interval": [
+              -1.4745066563329918,
+              0.538878306831627
+            ],
+            "n_rows": 2751,
+            "own_fit": false
+          },
+          "CD8-positive, alpha-beta T cell": {
+            "delta0": -0.3988645018439267,
+            "sigma0": 1.0947656875036162,
+            "pi0": 0.7797397375983411,
+            "method": "mle",
+            "n": 61748,
+            "interval": [
+              -1.4745066563329918,
+              0.538878306831627
+            ],
+            "n_rows": 2378,
+            "own_fit": false
+          }
+        }
+      },
+      "gpd|mle|pct0=0.25|family=target|fit=nondegenerate": {
+        "0.01": 6266,
+        "0.05": 6798,
+        "0.1": 6976,
+        "fit": {
+          "B cell": {
+            "delta0": -0.2891233750938056,
+            "sigma0": 1.6512651580941902,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 5928,
+            "interval": [
+              -1.1255744642518717,
+              0.3957615499750825
+            ],
+            "n_rows": 5928,
+            "own_fit": true
+          },
+          "CD4-positive, alpha-beta T cell": {
+            "delta0": -0.3988645018439267,
+            "sigma0": 1.0947656875036162,
+            "pi0": 0.7797397375983411,
+            "method": "mle",
+            "n": 61748,
+            "interval": [
+              -1.4745066563329918,
+              0.538878306831627
+            ],
+            "n_rows": 2654,
+            "own_fit": false
+          },
+          "CD8-positive, alpha-beta T cell": {
+            "delta0": -0.3988645018439267,
+            "sigma0": 1.0947656875036162,
+            "pi0": 0.7797397375983411,
+            "method": "mle",
+            "n": 61748,
+            "interval": [
+              -1.4745066563329918,
+              0.538878306831627
+            ],
+            "n_rows": 2708,
+            "own_fit": false
+          }
+        }
+      },
+      "gpd|mle|pct0=0.25|family=None|fit=scored": {
+        "0.01": 1950,
+        "0.05": 1951,
+        "0.1": 1951,
+        "fit": {
+          "delta0": 3.1588075594165623,
+          "sigma0": 0.003413921074564707,
+          "pi0": 1.0,
+          "method": "mle",
+          "n": 8952,
+          "interval": [
+            3.022250716433974,
+            3.090529137925268
+          ],
+          "n_rows": 8952,
+          "own_fit": true
+        }
+      },
+      "pearson3|mle|pct0=0.25|family=None|fit=scored": {
+        "error": "central interval has zero width: over 50% of the z's are equal"
+      }
+    },
+    "p_calibration": {
+      "gpd": {
+        "0.05": 0.1282146790179439,
+        "0.01": 0.11410895899462331,
+        "0.001": 0.10848934378441406,
+        "0.0001": 0.02915074172442832
+      },
+      "pearson3": {
+        "0.05": 0.1282146790179439,
+        "0.01": 0.11402798471205546,
+        "0.001": 0.10941245060568763,
+        "0.0001": 0.03285936386603615
+      },
+      "permutation": {
+        "0.05": 0.1282146790179439,
+        "0.01": 0.11423851784673188,
+        "0.001": 0.10871607177560406,
+        "0.0001": 0.011417373842067759
+      },
+      "naive": {
+        "0.05": 0.05129674987405979,
+        "0.01": 0.049594385672347,
+        "0.001": 0.04731877638230236,
+        "0.0001": 0.04582486493998297
+      }
+    },
+    "how": {
+      "gpd": {
+        "permutation": 54794,
+        "tail": 2164,
+        "capped": 4790
+      },
+      "pearson3": {
+        "permutation": 54794,
+        "tail": 2287,
+        "capped": 4667
+      },
+      "permutation": {
+        "permutation": 61748,
+        "tail": 0,
+        "capped": 0
+      }
+    }
+  },
+  "shuffled": [
+    {
+      "n_lr": 546,
+      "n_rows": 139776,
+      "n_scored": 3827,
+      "n_nondegenerate": 10890,
+      "null_a_seconds": 77.5,
+      "calls": {
+        "null_a|cellchat-convention|bh|scored": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0
+        },
+        "gpd|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 10890,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.10667362561978072,
+            "sigma0": 1.0165512435308883,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 10890,
+            "interval": [
+              -0.5821506383101529,
+              0.7294887598760749
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "pearson3|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 8,
+          "0.05": 10,
+          "0.1": 11,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 10890,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "pearson3|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 8,
+          "0.05": 8,
+          "0.1": 10,
+          "fit": {
+            "delta0": 0.10667362561978072,
+            "sigma0": 1.0165512435308883,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 10890,
+            "interval": [
+              -0.5821506383101529,
+              0.7294887598760749
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "permutation|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 10890,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "permutation|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.10667362561978072,
+            "sigma0": 1.0165512435308883,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 10890,
+            "interval": [
+              -0.5821506383101529,
+              0.7294887598760749
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "naive|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 192,
+          "0.05": 271,
+          "0.1": 335,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 10890,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "naive|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 1355,
+          "0.05": 1534,
+          "0.1": 1600,
+          "fit": {
+            "delta0": 0.22062336280485084,
+            "sigma0": 0.1778936549945129,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 10890,
+            "interval": [
+              -0.2838689160082184,
+              -0.03162277660168379
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.1|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.045967951884841,
+            "sigma0": 0.9318955055318047,
+            "pi0": 0.9644980302720929,
+            "method": "mle",
+            "n": 10890,
+            "interval": [
+              -1.170766843046824,
+              1.3893187899962427
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.33|family=None|fit=nondegenerate": {
+          "0.01": 4,
+          "0.05": 174,
+          "0.1": 321,
+          "fit": {
+            "delta0": 0.059719336190285965,
+            "sigma0": 0.7536315079503925,
+            "pi0": 0.7888473687719803,
+            "method": "mle",
+            "n": 10890,
+            "interval": [
+              -0.3488491320831939,
+              0.5097635707506495
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "gpd|cm|pct0=0.1|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.032937537196171984,
+            "sigma0": 0.9248016088617745,
+            "pi0": 0.9586142620002264,
+            "method": "cm",
+            "n": 10890,
+            "interval": [
+              -1.170766843046824,
+              1.3893187899962427
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "gpd|cm|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.11318576352581518,
+            "sigma0": 0.9349696975897819,
+            "pi0": 0.9698444227065137,
+            "method": "cm",
+            "n": 10890,
+            "interval": [
+              -0.5821506383101529,
+              0.7294887598760749
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "gpd|cm|pct0=0.33|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.16225281215167622,
+            "sigma0": 0.9565925607660465,
+            "pi0": 0.9938348498481344,
+            "method": "cm",
+            "n": 10890,
+            "interval": [
+              -0.3488491320831939,
+              0.5097635707506495
+            ],
+            "n_rows": 10890,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.25|family=source|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "B cell": {
+              "delta0": 0.10667362561978072,
+              "sigma0": 1.0165512435308883,
+              "pi0": 1.0,
+              "method": "mle",
+              "n": 10890,
+              "interval": [
+                -0.5821506383101529,
+                0.7294887598760749
+              ],
+              "n_rows": 1269,
+              "own_fit": false
+            },
+            "CD4-positive, alpha-beta T cell": {
+              "delta0": 0.10667362561978072,
+              "sigma0": 1.0165512435308883,
+              "pi0": 1.0,
+              "method": "mle",
+              "n": 10890,
+              "interval": [
+                -0.5821506383101529,
+                0.7294887598760749
+              ],
+              "n_rows": 443,
+              "own_fit": false
+            },
+            "CD8-positive, alpha-beta T cell": {
+              "delta0": 0.10667362561978072,
+              "sigma0": 1.0165512435308883,
+              "pi0": 1.0,
+              "method": "mle",
+              "n": 10890,
+              "interval": [
+                -0.5821506383101529,
+                0.7294887598760749
+              ],
+              "n_rows": 427,
+              "own_fit": false
+            }
+          }
+        },
+        "gpd|mle|pct0=0.25|family=target|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "B cell": {
+              "delta0": 0.10667362561978072,
+              "sigma0": 1.0165512435308883,
+              "pi0": 1.0,
+              "method": "mle",
+              "n": 10890,
+              "interval": [
+                -0.5821506383101529,
+                0.7294887598760749
+              ],
+              "n_rows": 1103,
+              "own_fit": false
+            },
+            "CD4-positive, alpha-beta T cell": {
+              "delta0": 0.10667362561978072,
+              "sigma0": 1.0165512435308883,
+              "pi0": 1.0,
+              "method": "mle",
+              "n": 10890,
+              "interval": [
+                -0.5821506383101529,
+                0.7294887598760749
+              ],
+              "n_rows": 478,
+              "own_fit": false
+            },
+            "CD8-positive, alpha-beta T cell": {
+              "delta0": 0.10667362561978072,
+              "sigma0": 1.0165512435308883,
+              "pi0": 1.0,
+              "method": "mle",
+              "n": 10890,
+              "interval": [
+                -0.5821506383101529,
+                0.7294887598760749
+              ],
+              "n_rows": 432,
+              "own_fit": false
+            }
+          }
+        },
+        "gpd|mle|pct0=0.25|family=None|fit=scored": {
+          "0.01": 4,
+          "0.05": 160,
+          "0.1": 266,
+          "fit": {
+            "delta0": 0.4100915964068356,
+            "sigma0": 0.7105777987212859,
+            "pi0": 0.761455429032825,
+            "method": "mle",
+            "n": 3827,
+            "interval": [
+              -0.1743643763928121,
+              1.1837062490325665
+            ],
+            "n_rows": 3827,
+            "own_fit": true
+          }
+        },
+        "pearson3|mle|pct0=0.25|family=None|fit=scored": {
+          "0.01": 15,
+          "0.05": 150,
+          "0.1": 266,
+          "fit": {
+            "delta0": 0.4100915964068356,
+            "sigma0": 0.7105777987212859,
+            "pi0": 0.761455429032825,
+            "method": "mle",
+            "n": 3827,
+            "interval": [
+              -0.1743643763928121,
+              1.1837062490325665
+            ],
+            "n_rows": 3827,
+            "own_fit": true
+          }
+        }
+      },
+      "p_calibration": {
+        "gpd": {
+          "0.05": 0.07226813590449954,
+          "0.01": 0.01790633608815427,
+          "0.001": 0.0011019283746556473,
+          "0.0001": 0.00018365472910927456
+        },
+        "pearson3": {
+          "0.05": 0.07226813590449954,
+          "0.01": 0.01864095500459137,
+          "0.001": 0.0017447199265381084,
+          "0.0001": 0.00101010101010101
+        },
+        "permutation": {
+          "0.05": 0.07226813590449954,
+          "0.01": 0.01928374655647383,
+          "0.001": 0.0011937557392102847,
+          "0.0001": 0.00018365472910927456
+        },
+        "naive": {
+          "0.05": 0.05968778696051423,
+          "0.01": 0.036455463728191,
+          "0.001": 0.022497704315886134,
+          "0.0001": 0.017079889807162536
+        }
+      },
+      "how": {
+        "gpd": {
+          "permutation": 10703,
+          "tail": 151,
+          "capped": 36
+        },
+        "pearson3": {
+          "permutation": 10703,
+          "tail": 170,
+          "capped": 17
+        },
+        "permutation": {
+          "permutation": 10890,
+          "tail": 0,
+          "capped": 0
+        }
+      }
+    },
+    {
+      "n_lr": 435,
+      "n_rows": 111360,
+      "n_scored": 2765,
+      "n_nondegenerate": 6392,
+      "null_a_seconds": 80.9,
+      "calls": {
+        "null_a|cellchat-convention|bh|scored": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0
+        },
+        "gpd|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 6392,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -0.1771092738659909,
+            "sigma0": 0.9521405893579307,
+            "pi0": 0.9117805253574998,
+            "method": "mle",
+            "n": 6392,
+            "interval": [
+              -0.7363454475396485,
+              0.7196565552601593
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "pearson3|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 6392,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "pearson3|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -0.1771092738659909,
+            "sigma0": 0.9521405893579307,
+            "pi0": 0.9117805253574998,
+            "method": "mle",
+            "n": 6392,
+            "interval": [
+              -0.7363454475396485,
+              0.7196565552601593
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "permutation|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 6392,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "permutation|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -0.1771092738659909,
+            "sigma0": 0.9521405893579307,
+            "pi0": 0.9117805253574998,
+            "method": "mle",
+            "n": 6392,
+            "interval": [
+              -0.7363454475396485,
+              0.7196565552601593
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "naive|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 46,
+          "0.05": 72,
+          "0.1": 96,
+          "fit": {
+            "delta0": 0.0,
+            "sigma0": 1.0,
+            "pi0": 1.0,
+            "method": "theoretical",
+            "n": 6392,
+            "interval": [
+              NaN,
+              NaN
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "naive|mle|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 733,
+          "0.05": 824,
+          "0.1": 851,
+          "fit": {
+            "delta0": 0.2674526556632856,
+            "sigma0": 0.21501124633714286,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 6392,
+            "interval": [
+              -0.33069820886665313,
+              -0.03162277660168379
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.1|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -0.1077026036532369,
+            "sigma0": 1.0991996729659994,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 6392,
+            "interval": [
+              -1.335929646958995,
+              1.4035191085021952
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.33|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -1.4324528696382717,
+            "sigma0": 3.1044232861977723,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 6392,
+            "interval": [
+              -0.5008725693767982,
+              0.43070773088467534
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "gpd|cm|pct0=0.1|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -0.08585291263590401,
+            "sigma0": 1.1143935083416643,
+            "pi0": 1.0,
+            "method": "cm",
+            "n": 6392,
+            "interval": [
+              -1.335929646958995,
+              1.4035191085021952
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "gpd|cm|pct0=0.25|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -0.13516658651998206,
+            "sigma0": 1.007117840822504,
+            "pi0": 0.9529289663540519,
+            "method": "cm",
+            "n": 6392,
+            "interval": [
+              -0.7363454475396485,
+              0.7196565552601593
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "gpd|cm|pct0=0.33|family=None|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -0.1429283841750007,
+            "sigma0": 0.9868058541094737,
+            "pi0": 0.9363895275183377,
+            "method": "cm",
+            "n": 6392,
+            "interval": [
+              -0.5008725693767982,
+              0.43070773088467534
+            ],
+            "n_rows": 6392,
+            "own_fit": true
+          }
+        },
+        "gpd|mle|pct0=0.25|family=source|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "B cell": {
+              "delta0": -0.1771092738659909,
+              "sigma0": 0.9521405893579307,
+              "pi0": 0.9117805253574998,
+              "method": "mle",
+              "n": 6392,
+              "interval": [
+                -0.7363454475396485,
+                0.7196565552601593
+              ],
+              "n_rows": 636,
+              "own_fit": false
+            },
+            "CD4-positive, alpha-beta T cell": {
+              "delta0": -0.1771092738659909,
+              "sigma0": 0.9521405893579307,
+              "pi0": 0.9117805253574998,
+              "method": "mle",
+              "n": 6392,
+              "interval": [
+                -0.7363454475396485,
+                0.7196565552601593
+              ],
+              "n_rows": 267,
+              "own_fit": false
+            },
+            "CD8-positive, alpha-beta T cell": {
+              "delta0": -0.1771092738659909,
+              "sigma0": 0.9521405893579307,
+              "pi0": 0.9117805253574998,
+              "method": "mle",
+              "n": 6392,
+              "interval": [
+                -0.7363454475396485,
+                0.7196565552601593
+              ],
+              "n_rows": 266,
+              "own_fit": false
+            }
+          }
+        },
+        "gpd|mle|pct0=0.25|family=target|fit=nondegenerate": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "B cell": {
+              "delta0": -0.1771092738659909,
+              "sigma0": 0.9521405893579307,
+              "pi0": 0.9117805253574998,
+              "method": "mle",
+              "n": 6392,
+              "interval": [
+                -0.7363454475396485,
+                0.7196565552601593
+              ],
+              "n_rows": 653,
+              "own_fit": false
+            },
+            "CD4-positive, alpha-beta T cell": {
+              "delta0": -0.1771092738659909,
+              "sigma0": 0.9521405893579307,
+              "pi0": 0.9117805253574998,
+              "method": "mle",
+              "n": 6392,
+              "interval": [
+                -0.7363454475396485,
+                0.7196565552601593
+              ],
+              "n_rows": 279,
+              "own_fit": false
+            },
+            "CD8-positive, alpha-beta T cell": {
+              "delta0": -0.1771092738659909,
+              "sigma0": 0.9521405893579307,
+              "pi0": 0.9117805253574998,
+              "method": "mle",
+              "n": 6392,
+              "interval": [
+                -0.7363454475396485,
+                0.7196565552601593
+              ],
+              "n_rows": 275,
+              "own_fit": false
+            }
+          }
+        },
+        "gpd|mle|pct0=0.25|family=None|fit=scored": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -2.1368065971990293,
+            "sigma0": 3.124600211828407,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 2765,
+            "interval": [
+              -0.5436623259235196,
+              1.0494819453519901
+            ],
+            "n_rows": 2765,
+            "own_fit": true
+          }
+        },
+        "pearson3|mle|pct0=0.25|family=None|fit=scored": {
+          "0.01": 0,
+          "0.05": 0,
+          "0.1": 0,
+          "fit": {
+            "delta0": -2.1368065971990293,
+            "sigma0": 3.124600211828407,
+            "pi0": 1.0,
+            "method": "mle",
+            "n": 2765,
+            "interval": [
+              -0.5436623259235196,
+              1.0494819453519901
+            ],
+            "n_rows": 2765,
+            "own_fit": true
+          }
+        }
+      },
+      "p_calibration": {
+        "gpd": {
+          "0.05": 0.06664580725907385,
+          "0.01": 0.008135168961201502,
+          "0.001": 0.00015644555694618273,
+          "0.0001": 0.0
+        },
+        "pearson3": {
+          "0.05": 0.06664580725907385,
+          "0.01": 0.008291614518147685,
+          "0.001": 0.00015644555694618273,
+          "0.0001": 0.0
+        },
+        "permutation": {
+          "0.05": 0.06664580725907385,
+          "0.01": 0.00860450563204005,
+          "0.001": 0.00015644555694618273,
+          "0.0001": 0.0
+        },
+        "naive": {
+          "0.05": 0.05053191489361702,
+          "0.01": 0.027847309136420525,
+          "0.001": 0.013141426783479349,
+          "0.0001": 0.007509386733416771
+        }
+      },
+      "how": {
+        "gpd": {
+          "permutation": 6349,
+          "tail": 24,
+          "capped": 19
+        },
+        "pearson3": {
+          "permutation": 6349,
+          "tail": 24,
+          "capped": 19
+        },
+        "permutation": {
+          "permutation": 6392,
+          "tail": 0,
+          "capped": 0
+        }
+      }
+    }
+  ],
+  "summary": {
+    "fdr": {
+      "null_a|cellchat-convention|bh|scored": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "pearson3|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 4.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 5.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 5.5,
+          "n_datasets": 2
+        }
+      },
+      "pearson3|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 4.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 4.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 5.0,
+          "n_datasets": 2
+        }
+      },
+      "permutation|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "permutation|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "naive|theoretical|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 1.0,
+          "fdr_ci95": [
+            0.15811388300841897,
+            1.0
+          ],
+          "mean_calls": 119.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 1.0,
+          "fdr_ci95": [
+            0.15811388300841897,
+            1.0
+          ],
+          "mean_calls": 171.5,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 1.0,
+          "fdr_ci95": [
+            0.15811388300841897,
+            1.0
+          ],
+          "mean_calls": 215.5,
+          "n_datasets": 2
+        }
+      },
+      "naive|mle|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 1.0,
+          "fdr_ci95": [
+            0.15811388300841897,
+            1.0
+          ],
+          "mean_calls": 1044.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 1.0,
+          "fdr_ci95": [
+            0.15811388300841897,
+            1.0
+          ],
+          "mean_calls": 1179.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 1.0,
+          "fdr_ci95": [
+            0.15811388300841897,
+            1.0
+          ],
+          "mean_calls": 1225.5,
+          "n_datasets": 2
+        }
+      },
+      "gpd|mle|pct0=0.1|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|mle|pct0=0.33|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 2.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 87.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 160.5,
+          "n_datasets": 2
+        }
+      },
+      "gpd|cm|pct0=0.1|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|cm|pct0=0.25|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|cm|pct0=0.33|family=None|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|mle|pct0=0.25|family=source|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|mle|pct0=0.25|family=target|fit=nondegenerate": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.841886116991581
+          ],
+          "mean_calls": 0.0,
+          "n_datasets": 2
+        }
+      },
+      "gpd|mle|pct0=0.25|family=None|fit=scored": {
+        "0.01": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 2.0,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 80.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 133.0,
+          "n_datasets": 2
+        }
+      },
+      "pearson3|mle|pct0=0.25|family=None|fit=scored": {
+        "0.01": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 7.5,
+          "n_datasets": 2
+        },
+        "0.05": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 75.0,
+          "n_datasets": 2
+        },
+        "0.1": {
+          "fdr": 0.5,
+          "fdr_ci95": [
+            0.01257911709342505,
+            0.9874208829065749
+          ],
+          "mean_calls": 133.0,
+          "n_datasets": 2
+        }
+      }
+    },
+    "p_calibration": {
+      "gpd": {
+        "0.05": 0.0694569715817867,
+        "0.01": 0.013020752524677886,
+        "0.001": 0.000629186965800915,
+        "0.0001": 9.182736455463728e-05
+      },
+      "pearson3": {
+        "0.05": 0.0694569715817867,
+        "0.01": 0.013466284761369528,
+        "0.001": 0.0009505827417421456,
+        "0.0001": 0.000505050505050505
+      },
+      "permutation": {
+        "0.05": 0.0694569715817867,
+        "0.01": 0.01394412609425694,
+        "0.001": 0.0006751006480782337,
+        "0.0001": 9.182736455463728e-05
+      },
+      "naive": {
+        "0.05": 0.05510985092706562,
+        "0.01": 0.032151386432305765,
+        "0.001": 0.01781956554968274,
+        "0.0001": 0.012294638270289654
+      }
+    }
+  }
+}

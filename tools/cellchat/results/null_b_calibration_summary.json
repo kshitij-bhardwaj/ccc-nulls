@@ -1,0 +1,2536 @@
+{
+  "liver": {
+    "labels": {
+      "null_a": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_b": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_b|delta=0.01": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_b|delta=0.05": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "sender_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "receiver_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_a|reported_rows": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_b|reported_rows": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      }
+    },
+    "ligand": {
+      "null_a": {
+        "0.01": {
+          "fdr": 0.7106057269630963,
+          "fdr_ci95": [
+            0.6307299767663899,
+            0.7904814771598028
+          ],
+          "p_any_false_call": 0.95,
+          "p_any_false_call_ci95": [
+            0.7512672372279722,
+            0.9987349105020502
+          ],
+          "mean_false_calls": 4016.55,
+          "mean_calls": 5335.95,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.7458983450195652,
+          "fdr_ci95": [
+            0.7200352853677446,
+            0.7717614046713858
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4473.5,
+          "mean_calls": 5925.7,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.7517115637655652,
+          "fdr_ci95": [
+            0.7259970812045092,
+            0.7774260463266213
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4676.5,
+          "mean_calls": 6147.3,
+          "n_datasets": 20
+        }
+      },
+      "null_b": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.028738950344724356,
+          "fdr_ci95": [
+            0.012875792014112392,
+            0.044602108675336316
+          ],
+          "p_any_false_call": 0.7,
+          "p_any_false_call_ci95": [
+            0.45721081772371086,
+            0.8810684095942722
+          ],
+          "mean_false_calls": 27.25,
+          "mean_calls": 644.2,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.058435785543530495,
+          "fdr_ci95": [
+            0.037659352061951465,
+            0.07921221902510953
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 58.75,
+          "mean_calls": 965.6,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.01": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.05": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "sender_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.04058334836257014,
+          "fdr_ci95": [
+            0.02478252722743328,
+            0.056384169497707
+          ],
+          "p_any_false_call": 0.95,
+          "p_any_false_call_ci95": [
+            0.7512672372279722,
+            0.9987349105020502
+          ],
+          "mean_false_calls": 55.45,
+          "mean_calls": 1323.65,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.07803930941649101,
+          "fdr_ci95": [
+            0.055748876044337106,
+            0.10032974278864491
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 113.75,
+          "mean_calls": 1410.7,
+          "n_datasets": 20
+        }
+      },
+      "receiver_side_only": {
+        "0.01": {
+          "fdr": 0.76207112414268,
+          "fdr_ci95": [
+            0.6769209524365989,
+            0.847221295848761
+          ],
+          "p_any_false_call": 0.95,
+          "p_any_false_call_ci95": [
+            0.7512672372279722,
+            0.9987349105020502
+          ],
+          "mean_false_calls": 4661.45,
+          "mean_calls": 5777.1,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.7912118192641683,
+          "fdr_ci95": [
+            0.7678185320250944,
+            0.8146051065032421
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4958.3,
+          "mean_calls": 6198.45,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.7923324864975341,
+          "fdr_ci95": [
+            0.7692353959350385,
+            0.8154295770600296
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 5112.75,
+          "mean_calls": 6383.85,
+          "n_datasets": 20
+        }
+      },
+      "null_a|reported_rows": {
+        "0.01": {
+          "fdr": 0.7460558514670302,
+          "fdr_ci95": [
+            0.720564800970059,
+            0.7715469019640014
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4472.1,
+          "mean_calls": 5925.15,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.7592273222859663,
+          "fdr_ci95": [
+            0.7345253970936401,
+            0.7839292474782926
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4965.85,
+          "mean_calls": 6467.65,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.7643645951191286,
+          "fdr_ci95": [
+            0.7398843137912184,
+            0.7888448764470387
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 5197.9,
+          "mean_calls": 6724.8,
+          "n_datasets": 20
+        }
+      },
+      "null_b|reported_rows": {
+        "0.01": {
+          "fdr": 0.028871820688522787,
+          "fdr_ci95": [
+            0.012975413800908633,
+            0.04476822757613694
+          ],
+          "p_any_false_call": 0.7,
+          "p_any_false_call_ci95": [
+            0.45721081772371086,
+            0.8810684095942722
+          ],
+          "mean_false_calls": 27.45,
+          "mean_calls": 645.85,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.12068628787588656,
+          "fdr_ci95": [
+            0.09290444250715706,
+            0.14846813324461605
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 136.5,
+          "mean_calls": 1091.95,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.19985266948946992,
+          "fdr_ci95": [
+            0.17496259105965356,
+            0.22474274791928628
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 252.8,
+          "mean_calls": 1242.9,
+          "n_datasets": 20
+        }
+      }
+    },
+    "real": {
+      "n_lr": 2173,
+      "n_rows": 1251648,
+      "n_scored": 15839,
+      "n_testable": 80850,
+      "n_known_null_scored": 0,
+      "seconds": 419.8,
+      "calls": {
+        "null_a": {
+          "0.01": {
+            "R": 12287,
+            "V": 0
+          },
+          "0.05": {
+            "R": 12753,
+            "V": 0
+          },
+          "0.1": {
+            "R": 13012,
+            "V": 0
+          }
+        },
+        "null_b": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 7559,
+            "V": 0
+          },
+          "0.1": {
+            "R": 7798,
+            "V": 0
+          }
+        },
+        "null_b|delta=0.01": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 1781,
+            "V": 0
+          },
+          "0.1": {
+            "R": 1853,
+            "V": 0
+          }
+        },
+        "null_b|delta=0.05": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 0,
+            "V": 0
+          },
+          "0.1": {
+            "R": 0,
+            "V": 0
+          }
+        },
+        "sender_side_only": {
+          "0.01": {
+            "R": 9623,
+            "V": 0
+          },
+          "0.05": {
+            "R": 10115,
+            "V": 0
+          },
+          "0.1": {
+            "R": 10318,
+            "V": 0
+          }
+        },
+        "receiver_side_only": {
+          "0.01": {
+            "R": 11357,
+            "V": 0
+          },
+          "0.05": {
+            "R": 11896,
+            "V": 0
+          },
+          "0.1": {
+            "R": 12208,
+            "V": 0
+          }
+        },
+        "null_a|reported_rows": {
+          "0.01": {
+            "R": 12797,
+            "V": 0
+          },
+          "0.05": {
+            "R": 13314,
+            "V": 0
+          },
+          "0.1": {
+            "R": 13556,
+            "V": 0
+          }
+        },
+        "null_b|reported_rows": {
+          "0.01": {
+            "R": 7559,
+            "V": 0
+          },
+          "0.05": {
+            "R": 8400,
+            "V": 0
+          },
+          "0.1": {
+            "R": 8718,
+            "V": 0
+          }
+        }
+      },
+      "a_only": {
+        "n": 5194,
+        "sender_side_fails": 3216,
+        "receiver_side_fails": 1978,
+        "median_prob": 0.005284447846917203
+      },
+      "b_only": 0,
+      "both": 7559,
+      "median_prob_both": 0.008879154033465156
+    },
+    "receptor": {
+      "null_a": {
+        "0.01": {
+          "fdr": 0.6269116705644266,
+          "fdr_ci95": [
+            0.6048200974188966,
+            0.6490032437099567
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4346.2,
+          "mean_calls": 6875.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.6425498834570533,
+          "fdr_ci95": [
+            0.6211521306027751,
+            0.6639476363113316
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4765.8,
+          "mean_calls": 7357.8,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.6491799553050666,
+          "fdr_ci95": [
+            0.6283424895008531,
+            0.67001742110928
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4950.6,
+          "mean_calls": 7567.45,
+          "n_datasets": 20
+        }
+      },
+      "null_b": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.030549319920408668,
+          "fdr_ci95": [
+            0.019245115500654494,
+            0.041853524340162845
+          ],
+          "p_any_false_call": 0.95,
+          "p_any_false_call_ci95": [
+            0.7512672372279722,
+            0.9987349105020502
+          ],
+          "mean_false_calls": 40.2,
+          "mean_calls": 1286.45,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.04641490419562194,
+          "fdr_ci95": [
+            0.030354168311014652,
+            0.06247564008022923
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 65.5,
+          "mean_calls": 1373.5,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.01": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.05": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "sender_side_only": {
+        "0.01": {
+          "fdr": 0.6858882766155047,
+          "fdr_ci95": [
+            0.6661445574652127,
+            0.7056319957657966
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 5067.7,
+          "mean_calls": 7335.65,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.6879540293364295,
+          "fdr_ci95": [
+            0.6682305167752676,
+            0.7076775418975914
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 5306.2,
+          "mean_calls": 7657.6,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.6919309835994893,
+          "fdr_ci95": [
+            0.6727357905105347,
+            0.711126176688444
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 5430.15,
+          "mean_calls": 7793.55,
+          "n_datasets": 20
+        }
+      },
+      "receiver_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.03868471664598598,
+          "fdr_ci95": [
+            0.02587337945596551,
+            0.05149605383600645
+          ],
+          "p_any_false_call": 0.95,
+          "p_any_false_call_ci95": [
+            0.7512672372279722,
+            0.9987349105020502
+          ],
+          "mean_false_calls": 84.75,
+          "mean_calls": 2134.3,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.06233727822186197,
+          "fdr_ci95": [
+            0.04519065519271041,
+            0.07948390125101353
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 142.55,
+          "mean_calls": 2230.55,
+          "n_datasets": 20
+        }
+      },
+      "null_a|reported_rows": {
+        "0.01": {
+          "fdr": 0.6413062171559312,
+          "fdr_ci95": [
+            0.6200051817854572,
+            0.6626072525264052
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 4727.3,
+          "mean_calls": 7313.45,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.6571114166095777,
+          "fdr_ci95": [
+            0.6367790771343652,
+            0.6774437560847902
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 5214.05,
+          "mean_calls": 7876.55,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.6660026805045405,
+          "fdr_ci95": [
+            0.6464539212380976,
+            0.6855514397709833
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 5499.7,
+          "mean_calls": 8200.65,
+          "n_datasets": 20
+        }
+      },
+      "null_b|reported_rows": {
+        "0.01": {
+          "fdr": 0.026336413799700913,
+          "fdr_ci95": [
+            0.014161535484814157,
+            0.03851129211458767
+          ],
+          "p_any_false_call": 0.8,
+          "p_any_false_call_ci95": [
+            0.5633859970033317,
+            0.9426660029499672
+          ],
+          "mean_false_calls": 34.65,
+          "mean_calls": 1031.2,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0898389459192434,
+          "fdr_ci95": [
+            0.07083951550263082,
+            0.10883837633585597
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 139.25,
+          "mean_calls": 1527.4,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.15571810909195466,
+          "fdr_ci95": [
+            0.13287067742359956,
+            0.17856554076030975
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 271.4,
+          "mean_calls": 1715.6,
+          "n_datasets": 20
+        }
+      }
+    }
+  },
+  "mammary": {
+    "labels": {
+      "null_a": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_b": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_b|delta=0.01": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_b|delta=0.05": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "sender_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "receiver_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      },
+      "null_a|reported_rows": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.3,
+          "fdr_ci95": [
+            -0.045550214413643764,
+            0.6455502144136438
+          ],
+          "p_any_false_call": 0.3,
+          "p_any_false_call_ci95": [
+            0.06673951117773447,
+            0.6524528500599973
+          ],
+          "mean_false_calls": 32.9,
+          "mean_calls": 32.9,
+          "n_datasets": 10
+        }
+      },
+      "null_b|reported_rows": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.3084971078187608
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 10
+        }
+      }
+    },
+    "ligand": {
+      "null_a": {
+        "0.01": {
+          "fdr": 0.07777265531832818,
+          "fdr_ci95": [
+            -0.034271963678026277,
+            0.18981727431468265
+          ],
+          "p_any_false_call": 0.1,
+          "p_any_false_call_ci95": [
+            0.012348527170294808,
+            0.31698271401908235
+          ],
+          "mean_false_calls": 238.35,
+          "mean_calls": 306.25,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.7169091065639305,
+          "fdr_ci95": [
+            0.6914699734459627,
+            0.7423482396818982
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1868.55,
+          "mean_calls": 2573.4,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.7212201156947196,
+          "fdr_ci95": [
+            0.6957781723790463,
+            0.7466620590103928
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1942.15,
+          "mean_calls": 2658.6,
+          "n_datasets": 20
+        }
+      },
+      "null_b": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.022857791174584047,
+          "fdr_ci95": [
+            0.013404396492386653,
+            0.032311185856781444
+          ],
+          "p_any_false_call": 0.85,
+          "p_any_false_call_ci95": [
+            0.621073173454686,
+            0.9679290628145363
+          ],
+          "mean_false_calls": 8.45,
+          "mean_calls": 364.3,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.01": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.05": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "sender_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.023640022854378728,
+          "fdr_ci95": [
+            0.01160237829494287,
+            0.03567766741381458
+          ],
+          "p_any_false_call": 0.8,
+          "p_any_false_call_ci95": [
+            0.5633859970033317,
+            0.9426660029499672
+          ],
+          "mean_false_calls": 15.8,
+          "mean_calls": 588.45,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0615318579587795,
+          "fdr_ci95": [
+            0.03865439621124503,
+            0.08440931970631398
+          ],
+          "p_any_false_call": 0.95,
+          "p_any_false_call_ci95": [
+            0.7512672372279722,
+            0.9987349105020502
+          ],
+          "mean_false_calls": 43.75,
+          "mean_calls": 681.9,
+          "n_datasets": 20
+        }
+      },
+      "receiver_side_only": {
+        "0.01": {
+          "fdr": 0.33178388316925356,
+          "fdr_ci95": [
+            0.13663870182637897,
+            0.5269290645121282
+          ],
+          "p_any_false_call": 0.4,
+          "p_any_false_call_ci95": [
+            0.19119006072530717,
+            0.6394574126925103
+          ],
+          "mean_false_calls": 1067.7,
+          "mean_calls": 1286.15,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.789291453767461,
+          "fdr_ci95": [
+            0.7677885197114361,
+            0.8107943878234859
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 2273.35,
+          "mean_calls": 2848.95,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.7922219527658747,
+          "fdr_ci95": [
+            0.7716458384252317,
+            0.8127980671065177
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 2348.8,
+          "mean_calls": 2934.8,
+          "n_datasets": 20
+        }
+      },
+      "null_a|reported_rows": {
+        "0.01": {
+          "fdr": 0.7176009148982724,
+          "fdr_ci95": [
+            0.6924732643282646,
+            0.7427285654682801
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1876.7,
+          "mean_calls": 2583.25,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.7322657267918735,
+          "fdr_ci95": [
+            0.708230267246929,
+            0.7563011863368181
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 2078.1,
+          "mean_calls": 2804.6,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.7423030858375106,
+          "fdr_ci95": [
+            0.7188602867952547,
+            0.7657458848797665
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 2227.4,
+          "mean_calls": 2966.2,
+          "n_datasets": 20
+        }
+      },
+      "null_b|reported_rows": {
+        "0.01": {
+          "fdr": 0.0005617977528089887,
+          "fdr_ci95": [
+            -0.0006140584575327578,
+            0.0017376539631507352
+          ],
+          "p_any_false_call": 0.05,
+          "p_any_false_call_ci95": [
+            0.0012650894979498038,
+            0.24873276277202777
+          ],
+          "mean_false_calls": 0.2,
+          "mean_calls": 17.8,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.09376572924678671,
+          "fdr_ci95": [
+            0.0734377794293497,
+            0.11409367906422371
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 39.5,
+          "mean_calls": 411.7,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.1753411566547988,
+          "fdr_ci95": [
+            0.14992488437310697,
+            0.20075742893649062
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 83.9,
+          "mean_calls": 469.15,
+          "n_datasets": 20
+        }
+      }
+    },
+    "real": {
+      "n_lr": 2024,
+      "n_rows": 518144,
+      "n_scored": 8952,
+      "n_testable": 71322,
+      "n_known_null_scored": 0,
+      "seconds": 510.6,
+      "calls": {
+        "null_a": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 6876,
+            "V": 0
+          },
+          "0.1": {
+            "R": 6944,
+            "V": 0
+          }
+        },
+        "null_b": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 3290,
+            "V": 0
+          },
+          "0.1": {
+            "R": 3400,
+            "V": 0
+          }
+        },
+        "null_b|delta=0.01": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 0,
+            "V": 0
+          },
+          "0.1": {
+            "R": 716,
+            "V": 0
+          }
+        },
+        "null_b|delta=0.05": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 0,
+            "V": 0
+          },
+          "0.1": {
+            "R": 0,
+            "V": 0
+          }
+        },
+        "sender_side_only": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 6142,
+            "V": 0
+          },
+          "0.1": {
+            "R": 6206,
+            "V": 0
+          }
+        },
+        "receiver_side_only": {
+          "0.01": {
+            "R": 0,
+            "V": 0
+          },
+          "0.05": {
+            "R": 5000,
+            "V": 0
+          },
+          "0.1": {
+            "R": 5273,
+            "V": 0
+          }
+        },
+        "null_a|reported_rows": {
+          "0.01": {
+            "R": 6927,
+            "V": 0
+          },
+          "0.05": {
+            "R": 7095,
+            "V": 0
+          },
+          "0.1": {
+            "R": 7180,
+            "V": 0
+          }
+        },
+        "null_b|reported_rows": {
+          "0.01": {
+            "R": 3344,
+            "V": 0
+          },
+          "0.05": {
+            "R": 3721,
+            "V": 0
+          },
+          "0.1": {
+            "R": 3867,
+            "V": 0
+          }
+        }
+      },
+      "a_only": {
+        "n": 3586,
+        "sender_side_fails": 1297,
+        "receiver_side_fails": 2289,
+        "median_prob": 0.006226395721365742
+      },
+      "b_only": 0,
+      "both": 3290,
+      "median_prob_both": 0.007118146123951799
+    },
+    "receptor": {
+      "null_a": {
+        "0.01": {
+          "fdr": 0.2645798097278089,
+          "fdr_ci95": [
+            0.22442421768961995,
+            0.3047354017659979
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1521.1,
+          "mean_calls": 5548.45,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.27133584424199164,
+          "fdr_ci95": [
+            0.23157899843643504,
+            0.31109269004754825
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1621.65,
+          "mean_calls": 5775.2,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.2748005380343893,
+          "fdr_ci95": [
+            0.23495663263654382,
+            0.3146444434322348
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1672.1,
+          "mean_calls": 5880.25,
+          "n_datasets": 20
+        }
+      },
+      "null_b": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.01227465557336824,
+          "fdr_ci95": [
+            0.007651047674780235,
+            0.016898263471956245
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 18.2,
+          "mean_calls": 1466.1,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.025544374211971782,
+          "fdr_ci95": [
+            0.016100748858798076,
+            0.03498799956514549
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 40.0,
+          "mean_calls": 1558.1,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.01": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "null_b|delta=0.05": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        }
+      },
+      "sender_side_only": {
+        "0.01": {
+          "fdr": 0.2712066063718165,
+          "fdr_ci95": [
+            0.23136291338582132,
+            0.31105029935781164
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1734.45,
+          "mean_calls": 6181.35,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.2755039730456999,
+          "fdr_ci95": [
+            0.23592864503488312,
+            0.31507930105651666
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1779.1,
+          "mean_calls": 6246.05,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.27945676363148314,
+          "fdr_ci95": [
+            0.24019457146419868,
+            0.31871895579876763
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1827.5,
+          "mean_calls": 6332.45,
+          "n_datasets": 20
+        }
+      },
+      "receiver_side_only": {
+        "0.01": {
+          "fdr": 0.0,
+          "fdr_ci95": [
+            0.0,
+            0.0
+          ],
+          "p_any_false_call": 0.0,
+          "p_any_false_call_ci95": [
+            0.0,
+            0.16843347098308528
+          ],
+          "mean_false_calls": 0.0,
+          "mean_calls": 0.0,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.018415056235892343,
+          "fdr_ci95": [
+            0.010412357669216853,
+            0.026417754802567833
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 38.5,
+          "mean_calls": 2033.95,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.03278363555095914,
+          "fdr_ci95": [
+            0.021012599377611612,
+            0.04455467172430666
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 70.75,
+          "mean_calls": 2123.4,
+          "n_datasets": 20
+        }
+      },
+      "null_a|reported_rows": {
+        "0.01": {
+          "fdr": 0.2715736434139443,
+          "fdr_ci95": [
+            0.2319562426994419,
+            0.31119104412844667
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1623.85,
+          "mean_calls": 5781.15,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.28023013008366726,
+          "fdr_ci95": [
+            0.2402958383527222,
+            0.32016442181461235
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1754.75,
+          "mean_calls": 6055.7,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.2841572060371788,
+          "fdr_ci95": [
+            0.24443841127393806,
+            0.32387600080041956
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 1812.8,
+          "mean_calls": 6174.05,
+          "n_datasets": 20
+        }
+      },
+      "null_b|reported_rows": {
+        "0.01": {
+          "fdr": 0.012486839659355523,
+          "fdr_ci95": [
+            0.007681185415591958,
+            0.01729249390311909
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 18.65,
+          "mean_calls": 1476.1,
+          "n_datasets": 20
+        },
+        "0.05": {
+          "fdr": 0.04335717249471319,
+          "fdr_ci95": [
+            0.031456003056841,
+            0.055258341932585386
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 72.45,
+          "mean_calls": 1660.35,
+          "n_datasets": 20
+        },
+        "0.1": {
+          "fdr": 0.07141197436643279,
+          "fdr_ci95": [
+            0.06009158059327884,
+            0.08273236813958673
+          ],
+          "p_any_false_call": 1.0,
+          "p_any_false_call_ci95": [
+            0.8315665290169146,
+            1.0
+          ],
+          "mean_false_calls": 130.75,
+          "mean_calls": 1820.9,
+          "n_datasets": 20
+        }
+      }
+    }
+  }
+}
