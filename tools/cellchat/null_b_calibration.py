@@ -19,7 +19,7 @@ Design (each choice and why):
 - Same pipeline, candidates, observed prob and permutations for both nulls: CellChat's pipeline once
   per data set, then null_a and null_b with the same seed (B = 1,000).
 - Decision: Benjamini-Hochberg at alpha in {0.01, 0.05, 0.10} over the testable rows
-  (``nulls.testable``: some labelling gives prob > 0), whose membership does not depend on which
+  (``adapter.testable``: some labelling gives prob > 0), whose membership does not depend on which
   labelling is the observed one. Ablation: BH over the rows CellChat reports (prob > 0), the family
   users correct over, which selects on the observed labels.
 - Error rates. On "labels" every call is false: FDR = P(at least one call), Clopper-Pearson 95% CI.
@@ -94,11 +94,11 @@ def one_dataset(adata, B, seed, known_null_side=None, shuffled=frozenset()):
     df = adapter.native_to_schema(adapter.run_native(adapter.prepare_inputs(adata, "label"), nboot=2, seed=1))
     t0 = time.time()
     a = nulls.null_a(adata, df, "label", B=B, seed=seed, rng="numpy")
-    b = nulls.null_b(adata, df, "label", B=B, seed=seed, rng="numpy", delta=DELTAS)
+    b = adapter.null_b(adata, df, "label", B=B, seed=seed, rng="numpy", delta=DELTAS)
     secs = time.time() - t0
     assert np.array_equal(a.score_null_a.to_numpy(), b.score_null_b.to_numpy())
     scored = b.score_null_b.to_numpy() > 0
-    family = nulls.testable(a, b)
+    family = adapter.testable(a, b)
     p = {"null_a": a.p_null_a.to_numpy(), "null_b": b.p_null_b.to_numpy(),
          **{f"null_b|delta={d:g}": b[f"p_null_b_delta={d:g}"].to_numpy() for d in DELTAS[1:]},
          "sender_side_only": b.p_L_null_b.to_numpy(), "receiver_side_only": b.p_R_null_b.to_numpy()}

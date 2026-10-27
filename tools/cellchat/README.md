@@ -16,8 +16,8 @@ One owner, assigned within the team. Only the owner edits this folder; anything 
 | File | What it is |
 |---|---|
 | `cellchat_py.py` | CellChat ported line by line from R: CellChatDB, `subsetDB`, `subsetData`, `identifyOverExpressedGenes` (presto's Wilcoxon test), `identifyOverExpressedInteractions`, `computeCommunProb` (2.1.2, 2.2.0.9001, 1.0.0), and R's random-number generator (`set.seed`, `sample.int`) |
-| `adapter.py` | dataset → CellChat inputs (`prepare_inputs`) → CellChat run (`run_native`, the port) → common schema (`native_to_schema`) |
-| `nulls.py` | `null_a`: CellChat's permutation test, vectorised; `null_b`: the composite null (max of the sender-side and receiver-side permutation p); `testable`: the multiple-testing family; `null_b_empirical`: B1, kept for the negative result |
+| `adapter.py` | dataset → CellChat inputs (`prepare_inputs`) → CellChat run (`run_native`, the port) → common schema (`native_to_schema`); Null B through the shared engine: `side_score` (CellChat's score split into sender and receiver sides), `null_b`, `testable` |
+| `nulls.py` | CellChat's score (`TriMean`, `CellChatScore`); `null_a`: CellChat's permutation test, vectorised; `null_b_empirical`: B1, kept for the negative result |
 | `match_null_a.py` | TNBC: port vs Null A for every version, independent permutations, version differences, ground-truth metrics with bootstrap CIs |
 | `calibrate_null_a.py` | Tabula Sapiens (Mammary, Liver): full-permutation calibration |
 | `null_b_calibration.py` | Tabula Sapiens: Null B vs Null A on known-null data (labels, receptor-side and ligand-side gene shuffles) and on the real labels |
@@ -243,7 +243,30 @@ What B1 leaves behind: the probit-p construction, the tail p-values, and the les
 hypothesis is false almost everywhere, so a useful Null B must change the hypothesis tested, not
 re-estimate the null of the same one. That is the Null B below.
 
-## Null B: a composite null for "s signals to t" (`nulls.null_b`)
+## Null B: a composite null for "s signals to t" (`adapter.null_b`)
+
+**Where it lives.** The test is in the shared library, `ccc_nulls.composite`; this folder only
+provides CellChat's score split into its two sides (`adapter.side_score`). Any tool can do the same:
+
+```
+ccc_nulls.composite  (shared, written once)          tools/<tool>/adapter.py  (per tool)
+  composite(side, codes, K, B, seed, delta)   <---   side_score(adata, rows) -> SideScore(
+    shuffle labels for one side -> p_L, p_R             summarize(codes, K): per-group statistics,
+    p = max(p_L, p_R)                                   score(sender, receiver): the tool's score)
+  testable(...), to_columns(...)                     null_b(..., method="composite")
+  register(name) / get(name): other Null B methods   = composite.get(method)(side_score(...))
+```
+
+| Tool | `summarize` | `score(sender, receiver)` |
+|---|---|---|
+| CellChat (here) | trimean per group of data.signaling / max | Hill function of ligand × receptor (complexes, co-receptors), agonists and antagonists per side |
+| any score on cluster means (`ccc_nulls.scores`, e.g. CellPhoneDB's mean) | `composite.mean_side_score`: mean per group | the score with the ligand read from the sender means and the receptor from the receiver means |
+
+Common-schema candidates go through `composite.null_b_table(X, genes, labels, candidates,
+score="mean")` with no tool code at all. A new Null B registered in `ccc_nulls.composite` runs on
+CellChat as `adapter.null_b(..., method="<name>")`, with no change to this folder. Moving the engine
+to the shared library changed no number: on the test data every output column is identical to the
+earlier CellChat-only implementation, for numpy and CellChat permutations.
 
 **The hypothesis.** Null A permutes all labels at once, so it tests "neither partner depends on cell
 type". Rejecting it shows that the ligand *or* the receptor varies with cell type. A user who reads a
@@ -274,7 +297,7 @@ is not specific to t".
 **The multiple-testing family.** CellChat reports only rows with prob > 0, a set chosen on the
 observed labels. BH over that set is biased: the observed labelling is the only one guaranteed to
 give prob > 0, so the selection conditions on the outcome (calibration below, row "reported rows").
-Null B corrects over the **testable** rows instead (`nulls.testable`). A row is testable when some
+Null B corrects over the **testable** rows instead (`adapter.testable`, i.e. `composite.testable`). A row is testable when some
 labelling gives prob > 0: the observed one, a Null A permutation, or a permutation of either side.
 Membership does not depend on which labelling is observed. Rows with prob = 0 get p = 1, as in Null A.
 
@@ -427,7 +450,7 @@ What this adds:
 - [x] complexes keep CellChat's names in `ligand` / `receptor`; genes are in `ligand_complex` / `receptor_complex`
 - [x] `nulls.null_a`: reproduce CellChat's own permutation test; compare with `p_native`
 - [x] calibration: 20 shuffles, two tissues, CIs; ground truth with bootstrap CIs
-- [x] `nulls.null_b`: composite null, calibrated on known-null data (20 replicates × 2 scenarios × 2 tissues), frozen (δ = 0, testable family), then run once on TNBC
+- [x] `adapter.null_b`: composite null (engine in `ccc_nulls.composite`, CellChat supplies `side_score`), calibrated on known-null data (20 replicates × 2 scenarios × 2 tissues), frozen (δ = 0, testable family), then run once on TNBC
 - [x] B1 (empirical null) written up as a negative result
 
 ## Run the tests and the checks

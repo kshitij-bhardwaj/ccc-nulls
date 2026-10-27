@@ -20,9 +20,11 @@ loop-by-loop port it is checked against (``match_null_a.py``, ``test_adapter.py`
     p = #{b : prob_b > prob} / B, with p = 1 wherever prob = 0. No multiple-testing correction;
     CellChat calls an interaction significant when p < 0.05 (subsetCommunication).
 
-    Null B (``null_b``): the composite null "the sender side is not specific to s OR the receiver
-    side is not specific to t". p_L shuffles the labels of the sender side only, p_R of the
-    receiver side only, p = max(p_L, p_R) (intersection-union test). BH over ``testable`` rows.
+    Null B (``adapter.null_b``): the composite null "the sender side is not specific to s OR the
+    receiver side is not specific to t", run by the shared engine ``ccc_nulls.composite`` on
+    CellChat's score split into sides (``CellChatScore(avg, avg_receiver=...)``, wrapped by
+    ``adapter.side_score``). p = max(p_L, p_R) (intersection-union test). BH over
+    ``adapter.testable`` rows.
 
     B1 (``null_b_empirical``): Efron's empirical null on Null A's z-values. Kept for the record;
     it is not identifiable for CellChat (README, "B1 ... a negative result").
@@ -413,112 +415,6 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     out.attrs["null_a"] = dict(version=version, B=int(B), seed=int(seed), keep_top=int(keep_top), rng=rng if permutations is None or rng == "cellchat" else "given",
                                data_max=data_max, n_lr=len(score.names), groups=[str(x) for x in levels])
     return out
-
-
-# ------------------------------------------------------------------ Null B
-def null_b(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int = 1000, seed: int = 0,
-           rng: str = "numpy", permutations: np.ndarray | None = None, genes_signaling: list[str] | None = None,
-           delta: float | tuple = 0.0, version: str = "2.1.2") -> pd.DataFrame:
-    """Null B: is the sender -> receiver edge specific on both sides? (composite null)
-
-    A CellChat call is read as "s signals to t through L-R", which needs two things: the ligand side
-    is specific to s AND the receptor side is specific to t. Null A shuffles the labels of both sides
-    at once, so it rejects as soon as either side is specific (a ligand made by s and a receptor made
-    everywhere is called for every receiver). Null B tests the null of that two-part claim, a union:
-
-        H0 = H0_L or H0_R
-        H0_L: the sender side's group profile is unrelated to the labels (receiver side as observed)
-        H0_R: the receiver side's group profile is unrelated to the labels (sender side as observed)
-
-    p_L: shuffle the labels for the sender side only (ligand, and the sender's agonist / antagonist
-    factor, from permuted groups; receptor side from the observed groups), recompute CellChat's prob,
-    and p_L = (1 + #{b : prob_b > prob - delta}) / (B + 1). p_R: the same with the sides swapped.
-
-        p_null_b = max(p_L, p_R)
-
-    is the intersection-union test of H0: level alpha for the union without adjustment (Berger 1982,
-    Technometrics 24:295; Berger & Hsu 1996, Statist. Sci. 11:283). It is the partial-conjunction
-    p-value for "2 of 2 components non-null", to which Benjamini-Hochberg applies (Benjamini & Heller
-    2008, Biometrics 64:1215). The same composite null is the null of no mediation, a x b, whose
-    joint-significance test is this max-p (MacKinnon et al. 2002, Psychol. Methods 7:83).
-
-    delta > 0 turns each side into an interval null, "this side adds at most delta to prob over random
-    labels" (minimum-effect testing: Hodges & Lehmann 1954; McCarthy & Smyth 2009, TREAT): a
-    sensitivity setting. Several deltas share one set of permutations.
-
-    Which rows to correct over. Benjamini-Hochberg must not run over the rows CellChat reports
-    (prob > 0) alone: prob > 0 needs the receiver side to be non-zero in the observed labelling, so
-    restricting to it selects on the very side H0_R says is random, and p_R is then too small (on
-    receptor-shuffled data this lets 6-14% false calls through; README). Use ``testable(...)``: rows
-    where some labelling, observed or permuted, of either side gives prob > 0. Whether a row is in that
-    set does not depend on which labelling is the observed one, and rows in it with prob = 0 have p = 1,
-    which only makes BH more conservative.
-
-    Same candidates and observed prob as ``null_a``, and for equal B, seed and rng the same
-    permutations. Version 2.x scores only (1.0.0 forms complexes per cell, so its sides do not split).
-
-    Returns
-    -------
-    ``interactions`` plus ``score_null_b`` (CellChat's prob), ``n_pos_{L,R}_null_b`` (#{prob_b > 0}
-    with that side permuted), ``p_L_null_b``, ``p_R_null_b``,
-    ``p_null_b`` (for the first delta), ``limiting_side_null_b`` ("L" or "R": the side with the larger p),
-    and ``p_null_b_delta=<d>`` for each further delta. p = 1 where prob = 0, as in Null A.
-    """
-    if version not in ("2.1.2", "2.2.0.9001"):
-        raise NotImplementedError("Null B splits CellChat 2.x's score; 1.0.0 forms complexes per cell")
-    deltas = (delta,) if np.isscalar(delta) else tuple(delta)
-    levels, codes, K, lr, U, gene_pos, data_max = _setup(adata, interactions, groupby, genes_signaling)
-    tm = TriMean(U, quantile="stats" if version == "2.1.2" else "collapse")
-    sc = CellChatScore(lr, gene_pos)
-    sizes = np.bincount(codes, minlength=K).astype(float)
-    a_obs = tm(codes, K)
-    P_obs = sc(a_obs, sizes)
-    kL = {d: np.zeros(P_obs.shape, dtype=np.int64) for d in deltas}
-    kR = {d: np.zeros(P_obs.shape, dtype=np.int64) for d in deltas}
-    nL, nR = np.zeros(P_obs.shape, dtype=np.int64), np.zeros(P_obs.shape, dtype=np.int64)  # #{prob_b > 0} per side
-    if permutations is None and rng == "cellchat":
-        from tools.cellchat.cellchat_py import r_permutations
-
-        permutations = r_permutations(len(codes), B, seed)
-    if permutations is not None:
-        permutations = np.asarray(permutations)
-        B = permutations.shape[1]
-    gen = np.random.default_rng(seed)                       # as null_a: the same permutations
-    for b in range(B):
-        a_b = tm(codes[permutations[:, b] - 1] if permutations is not None else gen.permutation(codes), K)
-        P_L = sc(a_b, sizes, avg_receiver=a_obs)            # sender side shuffled
-        P_R = sc(a_obs, sizes, avg_receiver=a_b)            # receiver side shuffled
-        nL += P_L > 0
-        nR += P_R > 0
-        for d in deltas:
-            kL[d] += P_L > P_obs - d
-            kR[d] += P_R > P_obs - d
-
-    out = interactions.copy()
-    i, s, t = _rows(out, sc.names, levels)
-    prob = P_obs[i, s, t]
-    pval = lambda k: np.where(prob == 0, 1.0, (1 + k[i, s, t]) / (B + 1))
-    out["score_null_b"] = prob
-    out["n_pos_L_null_b"], out["n_pos_R_null_b"] = nL[i, s, t], nR[i, s, t]
-    for j, d in enumerate(deltas):
-        pL, pR = pval(kL[d]), pval(kR[d])
-        if j == 0:
-            out["p_L_null_b"], out["p_R_null_b"] = pL, pR
-            out["p_null_b"] = np.maximum(pL, pR)
-            out["limiting_side_null_b"] = np.where(pL >= pR, "L", "R")
-        else:
-            out[f"p_null_b_delta={d:g}"] = np.maximum(pL, pR)
-    out.attrs["null_b"] = dict(test="intersection-union, p = max(p_L, p_R)", version=version, B=int(B),
-                               seed=int(seed), rng=rng if permutations is None or rng == "cellchat" else "given",
-                               deltas=[float(d) for d in deltas], data_max=data_max, groups=[str(x) for x in levels])
-    return out
-
-
-def testable(null_a_result: pd.DataFrame, null_b_result: pd.DataFrame) -> np.ndarray:
-    """The rows both nulls correct over: some labelling (observed, or permuted for Null A, either side
-    for Null B) gives prob > 0. Rows outside have prob = 0 under every labelling seen: p = 1 under both."""
-    return ((null_b_result.score_null_b.to_numpy() > 0) | (null_a_result.perm_npos_null_a.to_numpy() > 0)
-            | (null_b_result.n_pos_L_null_b.to_numpy() > 0) | (null_b_result.n_pos_R_null_b.to_numpy() > 0))
 
 
 # ------------------------------------------------------------------ B1 (empirical null): a negative result, README

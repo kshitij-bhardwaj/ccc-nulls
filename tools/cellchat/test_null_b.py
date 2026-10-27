@@ -15,7 +15,7 @@ def _candidates(adata):
 def test_null_b_contract_and_same_score_as_null_a(small_adata):
     df = _candidates(small_adata)
     a = nulls.null_a(small_adata, df, "label", B=50, seed=3, rng="numpy")
-    b = nulls.null_b(small_adata, df, "label", B=50, seed=3, rng="numpy", delta=(0.0, 0.05))
+    b = adapter.null_b(small_adata, df, "label", B=50, seed=3, rng="numpy", delta=(0.0, 0.05))
     assert np.array_equal(a.score_null_a.to_numpy(), b.score_null_b.to_numpy())     # the score is not changed
     pL, pR, p = b.p_L_null_b.to_numpy(), b.p_R_null_b.to_numpy(), b.p_null_b.to_numpy()
     assert np.array_equal(p, np.maximum(pL, pR))
@@ -31,12 +31,33 @@ def test_receptor_shuffle_is_a_known_null_for_null_b_not_for_null_a(small_adata)
     ad = shuffle_genes(small_adata, rec_only, np.random.default_rng(0))
     df = _candidates(ad)
     a = nulls.null_a(ad, df, "label", B=200, seed=1, rng="numpy")
-    b = nulls.null_b(ad, df, "label", B=200, seed=1, rng="numpy")
+    b = adapter.null_b(ad, df, "label", B=200, seed=1, rng="numpy")
     known_null = df.receptor_genes.map(lambda x: all(g in rec_only for g in nulls._genes(x))).to_numpy()
-    family = nulls.testable(a, b)
+    family = adapter.testable(a, b)
     calls = {}
     for name, pv in [("A", a.p_null_a.to_numpy()), ("B", b.p_null_b.to_numpy())]:
         q = np.ones(len(df))
         q[family] = bh(pv[family])
         calls[name] = int(((q <= 0.05) & known_null).sum())
     assert calls["A"] > 0 and calls["B"] == 0, calls
+
+
+def test_side_score_is_cellchats_prob_and_runs_any_registered_null_b(small_adata):
+    """The adapter's hook: equal sides give CellChat's prob; a Null B added to ccc_nulls.composite
+    runs on CellChat's score with no change to this folder."""
+    from ccc_nulls import composite
+
+    df = _candidates(small_adata)
+    h = adapter.side_score(small_adata, df, "label")
+    obs = h["side"].summarize(h["codes"], len(h["levels"]))
+    prob = h["side"].score(obs, obs)
+    i, s, t = nulls._rows(df, h["names"], h["levels"])
+    assert np.array_equal(prob[i, s, t], df.score.to_numpy())                         # CellChat's own prob
+
+    def sender_only(side, codes, n_types, **kw):                                       # a teammate's variant
+        r = composite.composite(side, codes, n_types, **kw)
+        return {**r, "p": r["p_L"]}
+
+    b = adapter.null_b(small_adata, df, "label", method=sender_only, B=20, seed=3)
+    assert np.array_equal(b.p_null_b.to_numpy(), b.p_L_null_b.to_numpy())
+    assert b.attrs["null_b"]["method"] == "sender_only"

@@ -3,7 +3,7 @@
     python -m tools.cellchat.null_b_checklist --part fake         # TNBC: E2 fake pairs, E4 abundance, A-only by expression
     python -m tools.cellchat.null_b_checklist --part pcal         # Mammary: p-value calibration on known-null rows
 
-Settings are the frozen ones (delta = 0, BH over ``nulls.testable``, B = 1,000); nothing here is tuned.
+Settings are the frozen ones (delta = 0, BH over ``adapter.testable``, B = 1,000); nothing here is tuned.
 
 fake (TNBC, as E2 / E4 of the repository's TNBC benchmark, benchmarks/tnbc_openproblems.py, so Null B
 sits in the same table as N1-N5):
@@ -110,9 +110,9 @@ def part_fake(args):
     both = pd.concat([df.assign(is_fake=False), fk.assign(is_fake=True)], ignore_index=True)
     log(f"real rows {len(df):,} ({df.interaction_name.nunique()} pairs), fake rows {len(fk):,}")
     a = nulls.null_a(adata, both, groupby, B=args.B, seed=0, rng="numpy")
-    b = nulls.null_b(adata, both, groupby, B=args.B, seed=0, rng="numpy")
+    b = adapter.null_b(adata, both, groupby, B=args.B, seed=0, rng="numpy")
     fake = both.is_fake.to_numpy()
-    fam = nulls.testable(a, b)
+    fam = adapter.testable(a, b)
     q = {"null_a": adjust(a.p_null_a.to_numpy(), fam), "null_b": adjust(b.p_null_b.to_numpy(), fam)}
     out = dict(dataset=name, B=args.B, n_real=int((~fake).sum()), n_fake=int(fake.sum()),
                n_testable_real=int((fam & ~fake).sum()), n_testable_fake=int((fam & fake).sum()), e2={})
@@ -151,8 +151,8 @@ def part_pcal(args):
             ad = shuffle_genes(adata, rec_only, rng)
         df = adapter.native_to_schema(adapter.run_native(adapter.prepare_inputs(ad, "label"), nboot=2, seed=1))
         a = nulls.null_a(ad, df, "label", B=args.B, seed=1, rng="numpy")
-        b = nulls.null_b(ad, df, "label", B=args.B, seed=1, rng="numpy")
-        fam = nulls.testable(a, b)
+        b = adapter.null_b(ad, df, "label", B=args.B, seed=1, rng="numpy")
+        fam = adapter.testable(a, b)
         if scen == "labels":
             known = np.ones(len(df), bool)
         else:

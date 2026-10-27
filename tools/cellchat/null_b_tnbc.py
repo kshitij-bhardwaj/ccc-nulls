@@ -9,7 +9,7 @@ Design (each choice and why):
   permutations (B = 1,000, seed 0). Frozen setting: delta = 0 (null_b_calibration.py).
 - Procedures (calls at alpha = 0.05):
     cellchat_p<0.05     CellChat as users run it: Null A p < 0.05, no correction.
-    null_a              Null A, BH over the testable rows (nulls.testable).
+    null_a              Null A, BH over the testable rows (adapter.testable).
     null_b              Null B = max(p_L, p_R), BH over the same rows.
     null_a|reported_rows  Null A, BH over CellChat's reported rows (prob > 0): what users do.
     null_b|delta=<d>    interval null (sensitivity).
@@ -52,9 +52,9 @@ def run(adata, groupby, B, seed):
     """Pipeline, both nulls on the same permutations; q-values of every procedure (call: q <= ALPHA)."""
     df = adapter.native_to_schema(adapter.run_native(adapter.prepare_inputs(adata, groupby), nboot=2, seed=1))
     a = nulls.null_a(adata, df, groupby, B=B, seed=seed, rng="numpy")
-    b = nulls.null_b(adata, df, groupby, B=B, seed=seed, rng="numpy", delta=DELTAS)
+    b = adapter.null_b(adata, df, groupby, B=B, seed=seed, rng="numpy", delta=DELTAS)
     scored = b.score_null_b.to_numpy() > 0
-    family = nulls.testable(a, b)
+    family = adapter.testable(a, b)
 
     def bh_over(p, rows):
         q = np.ones(len(p))
