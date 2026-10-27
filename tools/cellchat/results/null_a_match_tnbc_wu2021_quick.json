@@ -1,0 +1,462 @@
+{
+  "dataset": "tnbc_wu2021",
+  "tag": "quick",
+  "cellchat_release": "jinworks/CellChat@v2.1.2 (2.1.2), ported to Python",
+  "versions": {
+    "2.1.2": "jinworks/CellChat@v2.1.2",
+    "2.2.0.9001": "jinworks/CellChat@75253cd",
+    "1.0.0": "sqjin/CellChat@v1.0.0"
+  },
+  "nboot": 100,
+  "seed": 1,
+  "r_rng": {
+    "set.seed(1); runif(3)": {
+      "expected": [
+        0.2655087,
+        0.3721239,
+        0.5728534
+      ],
+      "ours": [
+        0.2655087,
+        0.3721239,
+        0.5728534
+      ],
+      "identical": true
+    },
+    "set.seed(123); runif(1)": {
+      "expected": [
+        0.2875775
+      ],
+      "ours": [
+        0.2875775
+      ],
+      "identical": true
+    },
+    "set.seed(1); sample(10)": {
+      "expected": [
+        9,
+        4,
+        7,
+        1,
+        2,
+        5,
+        3,
+        10,
+        6,
+        8
+      ],
+      "ours": [
+        9,
+        4,
+        7,
+        1,
+        2,
+        5,
+        3,
+        10,
+        6,
+        8
+      ],
+      "identical": true
+    },
+    "set.seed(42); sample(10)": {
+      "expected": [
+        1,
+        5,
+        10,
+        8,
+        2,
+        4,
+        6,
+        9,
+        7,
+        3
+      ],
+      "ours": [
+        1,
+        5,
+        10,
+        8,
+        2,
+        4,
+        6,
+        9,
+        7,
+        3
+      ],
+      "identical": true
+    },
+    "set.seed(123); sample(10)": {
+      "expected": [
+        3,
+        10,
+        2,
+        8,
+        6,
+        9,
+        1,
+        7,
+        5,
+        4
+      ],
+      "ours": [
+        3,
+        10,
+        2,
+        8,
+        6,
+        9,
+        1,
+        7,
+        5,
+        4
+      ],
+      "identical": true
+    }
+  },
+  "n_cells": 7996,
+  "n_groups": 28,
+  "inputs": {
+    "n_genes_signaling": 1147,
+    "n_features_sig": 1084,
+    "n_lr": 1930,
+    "secs": 0.5
+  },
+  "same_permutations": {
+    "2.1.2": {
+      "secs_port": 18.3,
+      "secs_null_a": 9.2,
+      "n_rows_all": 1513120,
+      "n_rows_prob_gt_0": 13374,
+      "prob_identical": 1513120,
+      "prob_max_abs_diff": 0.0,
+      "p_identical_all_rows": 1513120,
+      "n_rows": 13374,
+      "p_identical": 13374,
+      "p_max_abs_diff": 0.0,
+      "p_mean_abs_diff": 0.0,
+      "p_spearman": 1.0,
+      "q_identical": 13374,
+      "q_max_abs_diff": 0.0,
+      "calls_p_lt_0_05": {
+        "both": 11244,
+        "only_ours": 0,
+        "only_cellchat": 0,
+        "neither": 2130
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 11244,
+        "only_ours": 0,
+        "only_cellchat": 0,
+        "neither": 2130
+      },
+      "cellchat_significance": {
+        "p_lt_0_05": 11244,
+        "p_eq_0": 10850,
+        "bh_q_lt_0_05": 11244,
+        "bh_q_lt_0_10": 11396,
+        "min_q": 0.0,
+        "p_resolution": 0.01
+      }
+    },
+    "2.2.0.9001": {
+      "secs_port": 18.3,
+      "secs_null_a": 9.8,
+      "n_rows_all": 1513120,
+      "n_rows_prob_gt_0": 13374,
+      "prob_identical": 1513120,
+      "prob_max_abs_diff": 0.0,
+      "p_identical_all_rows": 1513120,
+      "n_rows": 13374,
+      "p_identical": 13374,
+      "p_max_abs_diff": 0.0,
+      "p_mean_abs_diff": 0.0,
+      "p_spearman": 1.0,
+      "q_identical": 13374,
+      "q_max_abs_diff": 0.0,
+      "calls_p_lt_0_05": {
+        "both": 11244,
+        "only_ours": 0,
+        "only_cellchat": 0,
+        "neither": 2130
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 11244,
+        "only_ours": 0,
+        "only_cellchat": 0,
+        "neither": 2130
+      },
+      "cellchat_significance": {
+        "p_lt_0_05": 11244,
+        "p_eq_0": 10850,
+        "bh_q_lt_0_05": 11244,
+        "bh_q_lt_0_10": 11396,
+        "min_q": 0.0,
+        "p_resolution": 0.01
+      }
+    },
+    "1.0.0": {
+      "secs_port": 135.9,
+      "secs_null_a": 11.7,
+      "n_rows_all": 1513120,
+      "n_rows_prob_gt_0": 12546,
+      "prob_identical": 1513120,
+      "prob_max_abs_diff": 0.0,
+      "p_identical_all_rows": 1513120,
+      "n_rows": 12546,
+      "p_identical": 12546,
+      "p_max_abs_diff": 0.0,
+      "p_mean_abs_diff": 0.0,
+      "p_spearman": 0.9999999999999998,
+      "q_identical": 12546,
+      "q_max_abs_diff": 0.0,
+      "calls_p_lt_0_05": {
+        "both": 10719,
+        "only_ours": 0,
+        "only_cellchat": 0,
+        "neither": 1827
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 10719,
+        "only_ours": 0,
+        "only_cellchat": 0,
+        "neither": 1827
+      },
+      "cellchat_significance": {
+        "p_lt_0_05": 10719,
+        "p_eq_0": 10321,
+        "bh_q_lt_0_05": 10719,
+        "bh_q_lt_0_10": 10867,
+        "min_q": 0.0,
+        "p_resolution": 0.01
+      }
+    }
+  },
+  "independent_permutations": {
+    "B100": {
+      "n_rows": 13374,
+      "p_identical": 11543,
+      "p_max_abs_diff": 0.20999999999999996,
+      "p_mean_abs_diff": 0.0052317930312546735,
+      "p_spearman": 0.9556602567805219,
+      "q_identical": 11615,
+      "q_max_abs_diff": 0.23315719299848298,
+      "calls_p_lt_0_05": {
+        "both": 11191,
+        "only_ours": 84,
+        "only_cellchat": 53,
+        "neither": 2046
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 11191,
+        "only_ours": 84,
+        "only_cellchat": 53,
+        "neither": 2046
+      },
+      "secs": 7.9,
+      "significance": {
+        "p_lt_0_05": 11275,
+        "p_eq_0": 10816,
+        "bh_q_lt_0_05": 11275,
+        "bh_q_lt_0_10": 11441,
+        "min_q": 0.0,
+        "p_resolution": 0.01
+      },
+      "frac_within_2_mc_sd": 0.9914012262599072,
+      "frac_within_3_mc_sd": 0.999775684163302
+    },
+    "B1000": {
+      "n_rows": 13374,
+      "p_identical": 10958,
+      "p_max_abs_diff": 0.135,
+      "p_mean_abs_diff": 0.003731045311799013,
+      "p_spearman": 0.9336533094105633,
+      "q_identical": 11301,
+      "q_max_abs_diff": 0.14532769396845507,
+      "calls_p_lt_0_05": {
+        "both": 11227,
+        "only_ours": 60,
+        "only_cellchat": 17,
+        "neither": 2070
+      },
+      "calls_bh_q_lt_0_05": {
+        "both": 11203,
+        "only_ours": 40,
+        "only_cellchat": 41,
+        "neither": 2090
+      },
+      "secs": 62.7,
+      "significance": {
+        "p_lt_0_05": 11287,
+        "p_eq_0": 10410,
+        "bh_q_lt_0_05": 11243,
+        "bh_q_lt_0_10": 11422,
+        "min_q": 0.0,
+        "p_resolution": 0.001
+      },
+      "frac_within_2_mc_sd": 0.9940182443547181,
+      "frac_within_3_mc_sd": 0.999775684163302
+    }
+  },
+  "vs_release": {
+    "2.2.0.9001": {
+      "prob_identical": 1511252,
+      "n_rows": 1513120,
+      "prob_differs_with_complex_or_coreceptor": 298,
+      "prob_max_abs_diff": 8.326672684688674e-17,
+      "prob_gt_0_release": 13374,
+      "prob_gt_0_this": 13374,
+      "prob_gt_0_both": 13374,
+      "p_identical_both": 13374,
+      "p_this_ge_release_both": 13374,
+      "calls_p_lt_0_05": {
+        "both": 11244,
+        "only_this": 0,
+        "only_release": 0
+      }
+    },
+    "1.0.0": {
+      "prob_identical": 1510191,
+      "n_rows": 1513120,
+      "prob_differs_with_complex_or_coreceptor": 2929,
+      "prob_max_abs_diff": 0.07754274022064236,
+      "prob_gt_0_release": 13374,
+      "prob_gt_0_this": 12546,
+      "prob_gt_0_both": 12546,
+      "p_identical_both": 12117,
+      "p_this_ge_release_both": 12202,
+      "calls_p_lt_0_05": {
+        "both": 10627,
+        "only_this": 92,
+        "only_release": 617
+      }
+    }
+  },
+  "openproblems": {
+    "n_truth_rows": 812,
+    "n_positive": 166,
+    "n_boot": 1000,
+    "reference": "cellchat_2.1.2",
+    "methods": {
+      "cellchat_2.1.2": {
+        "n_truth_rows_scored": 66,
+        "auprc": 0.2976748672017813,
+        "auprc_ci95": [
+          0.23094134634721797,
+          0.38560983224291234
+        ],
+        "odds_ratio": 3.8467768059604794,
+        "odds_ratio_ci95": [
+          1.886034453868849,
+          7.339976799880257
+        ],
+        "odds_ratio_nonfinite_resamples": 0,
+        "matches_openproblems_metrics": true
+      },
+      "cellchat_2.1.2_gated_by_null_a": {
+        "n_truth_rows_scored": 66,
+        "auprc": 0.2976748672017813,
+        "auprc_ci95": [
+          0.23094134634721797,
+          0.38560983224291234
+        ],
+        "odds_ratio": 3.8467768059604794,
+        "odds_ratio_ci95": [
+          1.886034453868849,
+          7.339976799880257
+        ],
+        "odds_ratio_nonfinite_resamples": 0,
+        "auprc_diff_ref_minus_this": 0.0,
+        "auprc_diff_ci95": [
+          0.0,
+          0.0
+        ],
+        "frac_resamples_ref_not_better": 1.0,
+        "matches_openproblems_metrics": true
+      },
+      "cellchat_2.2.0.9001": {
+        "n_truth_rows_scored": 66,
+        "auprc": 0.2976748672017813,
+        "auprc_ci95": [
+          0.23094134634721797,
+          0.38560983224291234
+        ],
+        "odds_ratio": 3.8467768059604794,
+        "odds_ratio_ci95": [
+          1.886034453868849,
+          7.339976799880257
+        ],
+        "odds_ratio_nonfinite_resamples": 0,
+        "auprc_diff_ref_minus_this": 0.0,
+        "auprc_diff_ci95": [
+          0.0,
+          0.0
+        ],
+        "frac_resamples_ref_not_better": 1.0,
+        "matches_openproblems_metrics": true
+      },
+      "cellchat_1.0.0": {
+        "n_truth_rows_scored": 51,
+        "auprc": 0.28915722741980643,
+        "auprc_ci95": [
+          0.21984131494458276,
+          0.378990620884982
+        ],
+        "odds_ratio": 2.7644444444444445,
+        "odds_ratio_ci95": [
+          1.3055702975750714,
+          6.324342510212076
+        ],
+        "odds_ratio_nonfinite_resamples": 0,
+        "auprc_diff_ref_minus_this": 0.008517639781974895,
+        "auprc_diff_ci95": [
+          -0.02013904166175985,
+          0.042092742720667826
+        ],
+        "frac_resamples_ref_not_better": 0.314,
+        "matches_openproblems_metrics": true
+      },
+      "liana_cellchat": {
+        "n_truth_rows_scored": 176,
+        "auprc": 0.21050991588677406,
+        "auprc_ci95": [
+          0.16809260678668128,
+          0.26690770967699734
+        ],
+        "odds_ratio": 2.1963562753036436,
+        "odds_ratio_ci95": [
+          0.8939565462591779,
+          4.013014450338394
+        ],
+        "odds_ratio_nonfinite_resamples": 0,
+        "auprc_diff_ref_minus_this": 0.08716495131500726,
+        "auprc_diff_ci95": [
+          0.035541237751021644,
+          0.1390871413504851
+        ],
+        "frac_resamples_ref_not_better": 0.001,
+        "matches_openproblems_metrics": true
+      },
+      "random": {
+        "n_truth_rows_scored": 812,
+        "auprc": 0.21410915457809934,
+        "auprc_ci95": [
+          0.17536506931325163,
+          0.2640115412627152
+        ],
+        "odds_ratio": 1.5098998887652948,
+        "odds_ratio_ci95": [
+          0.5678875207081571,
+          3.0763059163059165
+        ],
+        "odds_ratio_nonfinite_resamples": 0,
+        "auprc_diff_ref_minus_this": 0.08356571262368198,
+        "auprc_diff_ci95": [
+          0.01202746981935792,
+          0.1661414254972747
+        ],
+        "frac_resamples_ref_not_better": 0.013
+      }
+    }
+  }
+}
