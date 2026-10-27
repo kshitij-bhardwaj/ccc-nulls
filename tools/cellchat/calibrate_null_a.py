@@ -20,11 +20,8 @@ Writes tools/cellchat/results/calibration_<tissue>_<version>.json.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-import tempfile
 import time
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import numpy as np
@@ -38,13 +35,10 @@ from tools.cellchat import adapter, nulls
 from tools.cellchat import cellchat_py as cc
 
 HERE = Path(__file__).resolve().parent
-COLLECTION = "https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5"
-TISSUES = {
-    "mammary": dict(title="Tabula Sapiens - Mammary", size=1334205970, md5="6261c8dd5785c52fb8a18d0974602597",
-                    url="https://datasets.cellxgene.cziscience.com/33b25f68-a9d6-4643-9283-653e937ae608.h5ad"),
-    "liver": dict(title="Tabula Sapiens - Liver", size=834485899, md5="ccb220e15f2070c3c22c226fe89d5878",
-                  url="https://datasets.cellxgene.cziscience.com/a4b3a49e-062b-4e3f-8915-02f40607651f.h5ad"),
-}
+COLLECTION = datasets.TABULA_SAPIENS
+# the calibration tissues, registered in ccc_nulls.datasets as tabula_sapiens_<tissue>
+TISSUES = {t: {k: datasets.DATASETS[f"tabula_sapiens_{t}"][k] for k in ("title", "url", "size", "md5")}
+           for t in ("mammary", "liver")}
 ALPHA = 0.05
 
 
@@ -53,80 +47,21 @@ def log(*a):
 
 
 def path(tissue: str) -> Path:
-    return datasets.data_dir() / f"tabula_sapiens_{tissue}.h5ad"
+    return datasets.path(f"tabula_sapiens_{tissue}")
 
 
-def md5sum(p: Path) -> str:
-    h = hashlib.md5()
-    with open(p, "rb") as f:
-        while b := f.read(1 << 24):
-            h.update(b)
-    return h.hexdigest()
-
-
-def download(tissue: str, parts: int = 16) -> Path:
-    """Parallel byte-range download (single streams from the CELLxGENE CDN can be slow)."""
-    meta, out = TISSUES[tissue], path(tissue)
-    if out.exists() and out.stat().st_size == meta["size"]:
-        return out
-    out.parent.mkdir(parents=True, exist_ok=True)
-    size = meta["size"]
-    step = -(-size // parts)
-    with tempfile.TemporaryDirectory(dir=out.parent) as tmp:
-        chunks = [(i * step, min((i + 1) * step, size) - 1, Path(tmp) / f"part{i:02d}") for i in range(parts)]
-        with ThreadPoolExecutor(parts) as ex:
-            list(ex.map(lambda c: datasets._fetch_range(meta["url"], *c), chunks))
-        with open(out, "wb") as f:
-            for _, _, p in chunks:
-                f.write(p.read_bytes())
-    if out.stat().st_size != size or (meta["md5"] and md5sum(out) != meta["md5"]):
-        out.unlink()
-        raise RuntimeError("size or md5 mismatch; file removed")
-    return out
-
-
-def _h5_strings(f, key):
-    """A string column of an h5ad dataframe, plain or categorical."""
-    import h5py
-
-    o = f[key]
-    if isinstance(o, h5py.Group):                          # categorical: codes + categories
-        return np.asarray(o["categories"].asstr()[:], dtype=object)[o["codes"][:]]
-    return np.asarray(o.asstr()[:], dtype=object)
+def download(tissue: str) -> Path:
+    """``python -m ccc_nulls.datasets tabula_sapiens_<tissue>``: parallel download, md5-checked."""
+    return datasets.download(f"tabula_sapiens_{tissue}")
 
 
 def load(tissue: str, min_cells: int = 5):
-    """Lean AnnData: X = ln(1 + CP10k) of the raw counts (``raw/X``), restricted to CellChatDB
-    genes (library sizes use all genes), var_names = gene symbols, obs['label'] = cell_type.
-
-    Read with h5py: the files also hold a ``scale_data`` layer too large for 8 GB of memory.
-    Keeping only CellChatDB genes changes nothing for CellChat, which uses data.signaling only.
-    """
-    import anndata as ad
-    import h5py
-
-    with h5py.File(path(tissue), "r") as f:
-        g = f["raw/X"]
-        n_obs, n_var = len(g["indptr"]) - 1, len(f["raw/var/_index"])
-        counts = sparse.csr_matrix((g["data"][:], g["indices"][:].astype(np.int32), g["indptr"][:]),
-                                   shape=(n_obs, n_var))
-        symbols = _h5_strings(f, "raw/var/feature_name")
-        obs = pd.DataFrame({"cell_type": _h5_strings(f, "obs/cell_type"),
-                            "donor_id": _h5_strings(f, "obs/donor_id")}, index=_h5_strings(f, "obs/_index"))
-    lib = np.asarray(counts.sum(1, dtype=np.float64)).ravel()
-    keep = np.where(pd.Index(symbols).isin(set(cc.extract_gene(cc.subset_db(cc.load_db())))))[0]
-    X = sparse.csr_matrix(counts[:, keep], dtype=np.float64)
-    del counts
-    X = (sparse.diags(1e4 / np.where(lib > 0, lib, 1)) @ X).tocsr()
-    X.data = np.log1p(X.data)
-    adata = ad.AnnData(X=X.astype(np.float32), obs=obs)
-    adata.var_names = pd.Index(symbols[keep]).astype(str)
-    adata = adata[:, ~adata.var_names.duplicated()].copy()
-    adata.obs["label"] = adata.obs["cell_type"].astype(str)
-    vc = adata.obs.label.value_counts()
-    adata = adata[adata.obs.label.isin(vc[vc >= min_cells].index)].copy()
-    adata.obs["label"] = adata.obs.label.astype("category")
-    return adata
+    """``ccc_nulls.datasets.load_tabula_sapiens`` restricted to CellChatDB genes: X = ln(1 + CP10k)
+    of the raw counts (library sizes use all genes), var_names = gene symbols, obs['label'] =
+    cell_type. Keeping only CellChatDB genes changes nothing for CellChat, which uses
+    data.signaling only, and keeps the data small."""
+    return datasets.load_tabula_sapiens(f"tabula_sapiens_{tissue}",
+                                        genes=cc.extract_gene(cc.subset_db(cc.load_db())), min_cells=min_cells)
 
 
 def summarise(df, res, B):
@@ -277,7 +212,7 @@ def main():
         for t in tissues:
             log("downloading", TISSUES[t]["title"])
             p = download(t)
-            log("done", p, "md5", md5sum(p))
+            log("done", p, "md5", datasets.md5sum(p))
         return
     for t in tissues:
         calibrate(t, args.version, args.shuffles, args.B, args.seed, args.zero_hit_shuffles)
