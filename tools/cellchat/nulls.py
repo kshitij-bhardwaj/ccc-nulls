@@ -20,6 +20,15 @@ loop-by-loop port it is checked against (``match_null_a.py``, ``test_adapter.py`
     p = #{b : prob_b > prob} / B, with p = 1 wherever prob = 0. No multiple-testing correction;
     CellChat calls an interaction significant when p < 0.05 (subsetCommunication).
 
+    Null B (``adapter.null_b``): the composite null "the sender side is not specific to s OR the
+    receiver side is not specific to t", run by the shared engine ``ccc_nulls.composite`` on
+    CellChat's score split into sides (``CellChatScore(avg, avg_receiver=...)``, wrapped by
+    ``adapter.side_score``). p = max(p_L, p_R) (intersection-union test). BH over
+    ``adapter.testable`` rows.
+
+    B1 (``null_b_empirical``): Efron's empirical null on Null A's z-values. Kept for the record;
+    it is not identifiable for CellChat (README, "B1 ... a negative result").
+
 Every floating-point step follows R's order of operations (R's two-pass mean, sequential
 products, R's quantile interpolation) so that ties between permuted and
 observed probabilities resolve the same way. tools/cellchat/README.md records the check.
@@ -165,25 +174,28 @@ class CellChatScore:
         with np.errstate(divide="ignore"):
             return np.exp(_r_mean([np.log(avg[:, g]) for g in idx]))
 
-    def __call__(self, avg: np.ndarray, sizes: np.ndarray | None = None) -> np.ndarray:
-        """nLR x K x K probabilities from the K x G group averages ``avg``."""
+    def __call__(self, avg: np.ndarray, sizes: np.ndarray | None = None, avg_receiver: np.ndarray | None = None) -> np.ndarray:
+        """nLR x K x K probabilities from the K x G group averages ``avg``. With ``avg_receiver``,
+        the receiver side (receptor, co-receptors, the receiver's agonist / antagonist factor) is
+        read from it and the sender side (ligand, the sender's factor) from ``avg`` (Null B)."""
+        a_s, a_r = avg, avg if avg_receiver is None else avg_receiver
         K, Kh, n = avg.shape[0], self.Kh, self.n
         Khn = Kh ** n
         out = np.empty((len(self.names), K, K))
         for i in range(len(self.names)):
-            Lv = self._unit(avg, self.L[i])
-            Rv = self._unit(avg, self.R[i])
-            coA = _r_prod([1 + avg[:, g] for g in self.coA[i]]) if self.coA[i] else 1.0
-            coI = _r_prod([1 + avg[:, g] for g in self.coI[i]]) if self.coI[i] else 1.0
+            Lv = self._unit(a_s, self.L[i])
+            Rv = self._unit(a_r, self.R[i])
+            coA = _r_prod([1 + a_r[:, g] for g in self.coA[i]]) if self.coA[i] else 1.0
+            coI = _r_prod([1 + a_r[:, g] for g in self.coI[i]]) if self.coI[i] else 1.0
             Rv = Rv * coA / coI
             LR = Lv[:, None] * Rv[None, :]
             P = _pow(LR, n) / (Khn + _pow(LR, n))
             if self.ag[i]:
-                a = _r_prod([1 + _pow(avg[:, g], n) / (Khn + _pow(avg[:, g], n)) for g in self.ag[i]])
-                P = P * (a[:, None] * a[None, :])
+                ag = lambda a: _r_prod([1 + _pow(a[:, g], n) / (Khn + _pow(a[:, g], n)) for g in self.ag[i]])
+                P = P * (ag(a_s)[:, None] * ag(a_r)[None, :])
             if self.an[i]:
-                a = _r_prod([Khn / (Khn + _pow(avg[:, g], n)) for g in self.an[i]])
-                P = P * (a[:, None] * a[None, :])
+                an = lambda a: _r_prod([Khn / (Khn + _pow(a[:, g], n)) for g in self.an[i]])
+                P = P * (an(a_s)[:, None] * an(a_r)[None, :])
             if self.population_size:
                 f = sizes / sizes.sum()
                 P = P * (f[:, None] * f[None, :])
@@ -243,10 +255,42 @@ def signaling_genes() -> list[str]:
     return cc.extract_gene(cc.subset_db(cc.load_db("human")))
 
 
+def _setup(adata, interactions, groupby, genes_signaling):
+    """What both nulls start from: group codes, the L-R table, and the data CellChat scores
+    (the needed genes of data.signaling divided by its maximum)."""
+    labels = adata.obs[groupby].astype(str).to_numpy()
+    levels = np.unique(labels)
+    codes = np.searchsorted(levels, labels)
+    genes = pd.Index(adata.var_names.astype(str))
+
+    lr = _lr_table(interactions)
+    sig = genes_signaling if genes_signaling is not None else signaling_genes()
+    sig_idx = genes.get_indexer(pd.Index(sig).unique())
+    X = sparse.csc_matrix(adata.X)
+    data_max = float(X[:, sig_idx[sig_idx >= 0]].max())
+
+    need = sorted({g for c in GENE_COLS for x in lr[c] for g in _genes(x)} & set(genes))
+    missing = {g for c in ("ligand_genes", "receptor_genes") for x in lr[c] for g in _genes(x)} - set(need)
+    if missing:
+        raise ValueError(f"ligand / receptor genes not in the data: {sorted(missing)[:10]}")
+    U = sparse.csc_matrix(X[:, genes.get_indexer(need)], dtype=np.float64)
+    U.data = U.data / data_max          # true division, as R's data / max(data); scipy's U / x multiplies by 1/x
+    gene_pos = {g: j for j, g in enumerate(need)}
+    return levels, codes, len(levels), lr, U, gene_pos, data_max
+
+
+def _rows(out, names, levels):
+    """Indices (L-R pair, source, target) of each row of ``out`` into nLR x K x K arrays."""
+    i = pd.Index(names).get_indexer(_lr_key(out))
+    s = np.searchsorted(levels, out.source.astype(str).to_numpy())
+    t = np.searchsorted(levels, out.target.astype(str).to_numpy())
+    return i, s, t
+
+
 def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int = 1000, seed: int = 0,
            rng: str = "cellchat", permutations: np.ndarray | None = None,
            genes_signaling: list[str] | None = None, population_size: bool = False,
-           Kh: float = KH, n: int = HILL_N, version: str = "2.1.2") -> pd.DataFrame:
+           Kh: float = KH, n: int = HILL_N, version: str = "2.1.2", keep_top: int = 0) -> pd.DataFrame:
     """Null A: CellChat's permutation test on CellChat's score.
 
     Parameters
@@ -271,34 +315,23 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
         ``"2.2.0.9001"``: GitHub main; as 2.1.2 but triMean uses collapse::fquantile.
         ``"1.0.0"``: CellChat 1.0.0, the 2021 paper's version: complexes and co-receptors per cell,
         stats::quantile, and p counts prob_b >= prob (ties count against the interaction).
+    keep_top
+        If > 0, also keep the ``keep_top`` largest permuted probabilities of every interaction with
+        prob > 0, for tail p-values below 1/B (Null B, ``tail_pvalues.py``). Outputs are unchanged.
 
     Returns
     -------
-    ``interactions`` plus
+    ``interactions`` plus ``perm_mean_null_a``, ``perm_sd_null_a`` and ``z_null_a``
+    (``(prob - perm_mean) / perm_sd``, NaN where every permutation gives the same prob), the
+    permutation counts and moments Null B's p-values use (``n_tie_null_a`` = #{prob_b = prob},
+    ``perm_npos_null_a`` = #{prob_b > 0}, ``perm_pos_{mean,sd,skew}_null_a`` of the positive prob_b,
+    ``perm_top_null_a`` = the ``keep_top`` largest prob_b, descending), and
         ``score_null_a``       CellChat's prob recomputed here
         ``n_exceed_null_a``    #{b : prob_b > prob}
         ``p_null_a_cellchat``  CellChat's p-value: n_exceed / B, and 1 where prob = 0
         ``p_null_a``           the repository's convention, (1 + n_exceed) / (B + 1), 1 where prob = 0
     """
-    labels = adata.obs[groupby].astype(str).to_numpy()
-    levels = np.unique(labels)
-    codes = np.searchsorted(levels, labels)
-    K = len(levels)
-    genes = pd.Index(adata.var_names.astype(str))
-
-    lr = _lr_table(interactions)
-    sig = genes_signaling if genes_signaling is not None else signaling_genes()
-    sig_idx = genes.get_indexer(pd.Index(sig).unique())
-    X = sparse.csc_matrix(adata.X)
-    data_max = float(X[:, sig_idx[sig_idx >= 0]].max())
-
-    need = sorted({g for c in GENE_COLS for x in lr[c] for g in _genes(x)} & set(genes))
-    missing = {g for c in ("ligand_genes", "receptor_genes") for x in lr[c] for g in _genes(x)} - set(need)
-    if missing:
-        raise ValueError(f"ligand / receptor genes not in the data: {sorted(missing)[:10]}")
-    U = sparse.csc_matrix(X[:, genes.get_indexer(need)], dtype=np.float64)
-    U.data = U.data / data_max          # true division, as R's data / max(data); scipy's U / x multiplies by 1/x
-    gene_pos = {g: j for j, g in enumerate(need)}
+    levels, codes, K, lr, U, gene_pos, data_max = _setup(adata, interactions, groupby, genes_signaling)
     sizes = np.bincount(codes, minlength=K).astype(float)
     if version in ("2.1.2", "2.2.0.9001"):
         tm = TriMean(U, quantile="stats" if version == "2.1.2" else "collapse")
@@ -318,6 +351,10 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
 
     P_obs = score_of(codes)
     exceed = np.zeros(P_obs.shape, dtype=np.int64)
+    tie, npos = np.zeros(P_obs.shape, dtype=np.int64), np.zeros(P_obs.shape, dtype=np.int64)
+    s1, s2, s3 = np.zeros(P_obs.shape), np.zeros(P_obs.shape), np.zeros(P_obs.shape)  # sums of prob_b^1,2,3
+    scored = np.flatnonzero(P_obs > 0) if keep_top else np.array([], dtype=np.int64)
+    top, buf = np.empty((len(scored), 0)), []                 # running top-k of prob_b, scored cells only
     if permutations is None and rng == "cellchat":
         from tools.cellchat.cellchat_py import r_permutations
 
@@ -328,27 +365,134 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     gen = np.random.default_rng(seed)
     for b in range(B):
         cb = codes[permutations[:, b] - 1] if permutations is not None else gen.permutation(codes)
-        exceed += beats(score_of(cb) - P_obs, 0)          # R: rowSums(Pboot - Pnull > 0), or >= 0 in 1.0
+        Pb = score_of(cb)
+        exceed += beats(Pb - P_obs, 0)                    # R: rowSums(Pboot - Pnull > 0), or >= 0 in 1.0
+        tie += Pb == P_obs
+        npos += Pb > 0
+        s1 += Pb
+        s2 += Pb * Pb
+        s3 += Pb ** 3                                     # zeros add nothing: these are also the sums over prob_b > 0
+        if keep_top:
+            buf.append(Pb.ravel()[scored])
+            if len(buf) == keep_top or b == B - 1:        # merge in blocks: partition keeps the k largest
+                top = np.hstack([top, np.stack(buf, 1)])
+                top = -np.partition(-top, min(keep_top, top.shape[1]) - 1, axis=1)[:, :keep_top]
+                buf = []
 
     out = interactions.copy()
-    i = pd.Index(score.names).get_indexer(_lr_key(out))
-    s = np.searchsorted(levels, out.source.astype(str).to_numpy())
-    t = np.searchsorted(levels, out.target.astype(str).to_numpy())
+    i, s, t = _rows(out, score.names, levels)
     prob, k = P_obs[i, s, t], exceed[i, s, t]
     zero = prob == 0
     out["score_null_a"] = prob
     out["n_exceed_null_a"] = k
     out["p_null_a_cellchat"] = np.where(zero, 1.0, k / B)
     out["p_null_a"] = np.where(zero, 1.0, (1 + k) / (B + 1))
-    out.attrs["null_a"] = dict(version=version, B=int(B), seed=int(seed), rng=rng if permutations is None or rng == "cellchat" else "given",
+    # permutation moments of prob, for a standardized statistic (Null B, empirical null)
+    mean = s1 / B
+    sd = np.sqrt(np.maximum(s2 - B * mean * mean, 0) / max(B - 1, 1))
+    m_, sd_ = mean[i, s, t], sd[i, s, t]
+    out["perm_mean_null_a"] = m_
+    out["perm_sd_null_a"] = sd_
+    with np.errstate(divide="ignore", invalid="ignore"):
+        out["z_null_a"] = np.where(sd_ > 0, (prob - m_) / sd_, np.nan)    # NaN where the permutation null is degenerate
+        # moments of the positive part of the permutation distribution (Null B, Pearson type III tail)
+        c = np.maximum(npos, 1)
+        pm, p2, p3 = s1 / c, s2 / c, s3 / c
+        pv = np.maximum(p2 - pm * pm, 0)
+        psd = np.sqrt(pv * c / np.maximum(c - 1, 1))
+        pskew = np.where(pv > 0, (p3 - 3 * pm * p2 + 2 * pm ** 3) / pv ** 1.5, 0.0)
+    out["n_tie_null_a"] = tie[i, s, t]
+    out["perm_npos_null_a"] = npos[i, s, t]
+    out["perm_pos_mean_null_a"], out["perm_pos_sd_null_a"], out["perm_pos_skew_null_a"] = pm[i, s, t], psd[i, s, t], pskew[i, s, t]
+    if keep_top:
+        flat = (i * K + s) * K + t
+        where = np.searchsorted(scored, flat)
+        hit = (where < len(scored)) & (scored[np.minimum(where, len(scored) - 1)] == flat)
+        rows = np.full(len(out), None, dtype=object)
+        for r, v in zip(np.flatnonzero(hit), -np.sort(-top[where[hit]], axis=1)):
+            rows[r] = v
+        out["perm_top_null_a"] = rows
+    out.attrs["null_a"] = dict(version=version, B=int(B), seed=int(seed), keep_top=int(keep_top), rng=rng if permutations is None or rng == "cellchat" else "given",
                                data_max=data_max, n_lr=len(score.names), groups=[str(x) for x in levels])
     return out
 
 
-def null_b(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int = 1000,
-           seed: int = 0) -> pd.DataFrame:
-    """Null B: keep the labels and rank the observed score against abundance-matched decoy genes.
+# ------------------------------------------------------------------ B1 (empirical null): a negative result, README
+MIN_FAMILY = 5000          # below this the empirical-null fit is unreliable (known-answer test, README)
 
-    Returns ``interactions`` with ``p_null_b`` added.
+
+def null_b_empirical(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int = 1000, seed: int = 0,
+           rng: str = "numpy", version: str = "2.1.2", null_a_result: pd.DataFrame | None = None,
+           pvalue: str = "gpd", method: str = "mle", pct0: float = 0.25, family: str | None = None,
+           fit_rows: str = "nondegenerate", pvalues: tuple | None = None) -> pd.DataFrame:
+    """Null B (B1): Efron's empirical null on each interaction's Null-A z-value.
+
+    z = Phi^-1(1 - p) from Null A's permutation p (``tail_pvalues.py``), so z ~ N(0, 1) wherever Null
+    A's hypothesis holds. Null A tests every z against that theoretical N(0, 1). Null B estimates the
+    null from the bulk of the z's instead, N(delta0, sigma0^2) (``empirical_null.py``): a call means
+    "stronger than typical interactions", where Null A's call means "not explained by random labels".
+    With ``method="theoretical"`` this function is Null A with Benjamini-Hochberg on the same rows.
+
+    Parameters
+    ----------
+    null_a_result
+        Output of ``null_a(..., keep_top=tail_pvalues.N_EXC)``; computed here if absent. Both nulls
+        then use the same interactions, the same observed scores and the same permutations.
+    pvalue
+        "gpd" (default; option 1, Generalized Pareto tail), "pearson3" (option 2, moment-matched
+        tail), "permutation" (no tail model: resolution 1 / (B + 1)), or "naive" (ablation: the
+        standardized score (prob - perm mean) / perm sd used directly as z).
+    method, pct0
+        Null fit: "mle" (default), "cm" (central matching) or "theoretical" (N(0, 1)), on the
+        central [pct0, 1 - pct0] quantile interval.
+    family
+        Column whose values define separate families, each with its own null (Efron 2008), e.g.
+        "source" or "target". Families under ``MIN_FAMILY`` fitted rows use the pooled null.
+    fit_rows
+        "nondegenerate" (default): rows whose B + 1 values (observed and permuted) are not all equal.
+        The event is the same whichever of the B + 1 labellings is the observed one, so restricting
+        to it keeps p uniform under the null. "scored": rows with prob > 0, CellChat's reported set,
+        chosen with the observed labels (ablation).
+    pvalues
+        ``tail_pvalues.permutation_p(null_a_result, pvalue, seed)``, if already computed (reused across fits).
+
+    Returns
+    -------
+    ``interactions`` plus ``z_null_b``, ``p_null_b`` (upper tail under the fitted null), ``q_null_b``
+    (tail-area Fdr: call if <= alpha), ``lfdr_null_b``, ``pvalue_how_null_b``; fits in ``attrs["null_b"]``.
     """
-    raise NotImplementedError("cellchat: null_b is not implemented yet (see tools/cellchat/nulls.py)")
+    from scipy import stats as sstats
+
+    from tools.cellchat.empirical_null import empirical_null
+    from tools.cellchat.tail_pvalues import N_EXC, permutation_p
+
+    res = null_a_result if null_a_result is not None else null_a(
+        adata, interactions, groupby, B=B, seed=seed, rng=rng, version=version, keep_top=N_EXC)
+    B_ = res.attrs["null_a"]["B"]
+    if pvalue == "naive":
+        z, how = res["z_null_a"].to_numpy(dtype=float), np.full(len(res), "naive", dtype=object)
+        use = np.isfinite(z)
+    else:
+        p_perm, how = pvalues if pvalues is not None else permutation_p(res, pvalue, seed)
+        z = sstats.norm.isf(p_perm)
+        use = res["n_tie_null_a"].to_numpy() < B_
+    if fit_rows == "scored":
+        use = use & (res["score_null_a"].to_numpy() > 0)
+    out = res.copy()
+    p, q, lfdr = np.ones(len(z)), np.ones(len(z)), np.ones(len(z))
+    groups = {"all": use} if family is None else {g: use & (res[family].to_numpy() == g) for g in res[family].unique()}
+    pooled = empirical_null(np.where(use, z, np.nan), method, pct0)
+    fits = {}
+    for g, rows in groups.items():
+        own = family is not None and rows.sum() >= MIN_FAMILY
+        r = empirical_null(np.where(rows, z, np.nan), method, pct0) if own else pooled
+        p[rows], q[rows], lfdr[rows] = r["p"][rows], r["q"][rows], r["lfdr"][rows]
+        fits[str(g)] = dict(r["fit"].to_dict(), n_rows=int(rows.sum()), own_fit=bool(own or family is None))
+    out["z_null_b"] = np.where(use, z, np.nan)
+    out["p_null_b"], out["q_null_b"], out["lfdr_null_b"] = p, q, lfdr
+    out["pvalue_how_null_b"] = how
+    out.attrs["null_b"] = dict(pvalue=pvalue, method=method, pct0=pct0, family=family, fit_rows=fit_rows,
+                               fits=fits, n_fit=int(use.sum()),
+                               how={h: int(((how == h) & use).sum()) for h in np.unique(how)},
+                               null_a=res.attrs.get("null_a"))
+    return out

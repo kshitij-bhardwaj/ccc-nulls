@@ -41,6 +41,28 @@ dataset (h5ad) --prepare_inputs--> native input files --run_native--> native out
 p_native, ligand_complex, receptor_complex, tool`. One row per interaction, with the cell-type
 labels exactly as in the dataset. Run `ccc_nulls.schema.validate(df)` before returning.
 
+### Optional: Null B for your tool's exact score
+
+Null B (`ccc_nulls.composite`, the composite null "sender side specific AND receiver side
+specific") needs one more function in the adapter: the tool's score split into its two sides.
+
+```python
+from ccc_nulls import composite
+
+def side_score(adata, interactions, groupby, **kw) -> dict:
+    side = composite.SideScore(
+        summarize=lambda codes, K: ...,            # per-group statistics of the genes, for labels `codes`
+        score=lambda sender, receiver: ...,        # the tool's score: sender side from `sender`,
+    )                                              #   receiver side from `receiver`
+    return dict(side=side, codes=..., levels=..., names=...)
+```
+
+`score(summarize(c), summarize(c))` must equal the tool's score. Then
+`composite.get(method)(side, codes, K, B=..., seed=...)` runs any registered Null B on it;
+`tools/cellchat/adapter.py` (`side_score`, `null_b`) is the worked example. A score computed from
+cluster means needs no code: `composite.mean_side_score` or `composite.null_b_table`. New Null B
+methods go in `ccc_nulls.composite` with `@composite.register("<name>")` and then run on every tool.
+
 ## Definition of done for a tool
 
 1. `native_to_schema(run_native(prepare_inputs(adata, ...)))` passes `schema.validate`.

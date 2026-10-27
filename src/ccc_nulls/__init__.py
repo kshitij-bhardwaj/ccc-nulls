@@ -3,8 +3,9 @@
 >>> import ccc_nulls as cn
 >>> res = cn.significance_layer(X, genes, labels, candidates)   # adds p/q under Null A and Null B
 >>> cn.overlap_summary(res)                                      # both / A_only / B_only / none
+>>> cn.composite.null_b_table(X, genes, labels, candidates)     # Null B as a composite null (both sides)
 """
-from . import adapters, simulate
+from . import adapters, composite, simulate
 from .core import aggregate_complexes, flag_overlap, overlap_summary, significance_layer
 from .io import from_anndata, significance_layer_anndata
 from .nulls import gene_strata, null_a, null_b, null_b_binned_labels, perm_moments
@@ -18,5 +19,5 @@ __all__ = [
     "overlap_summary", "flag_overlap", "aggregate_complexes",
     "null_a", "null_b", "null_b_binned_labels", "gene_strata", "perm_moments",
     "score_mean", "score_product", "SCORES", "bh", "cauchy_combine",
-    "adapters", "simulate",
+    "adapters", "composite", "simulate",
 ]
