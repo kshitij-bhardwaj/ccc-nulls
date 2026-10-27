@@ -1,0 +1,343 @@
+{
+ "dataset": "tnbc_wu2021",
+ "B": 1000,
+ "alpha": 0.05,
+ "n_rows": 1308596,
+ "n_tested": 18815,
+ "n_testable": 946448,
+ "n_interactions": 1556,
+ "n_types": 29,
+ "seconds_null_a": 68.6,
+ "seconds_null_b": 79.0,
+ "score_max_abs_diff": 0.0005018606802109637,
+ "n_over_adapter_tolerance": 1,
+ "calls": {
+  "null_a": {
+   "0.01": 14163,
+   "0.05": 14780,
+   "0.1": 15067
+  },
+  "null_b": {
+   "0.01": 8559,
+   "0.05": 9518,
+   "0.1": 9986
+  },
+  "null_b|testable": {
+   "0.01": 0,
+   "0.05": 0,
+   "0.1": 8218
+  },
+  "null_a|by": {
+   "0.01": 0,
+   "0.05": 13891,
+   "0.1": 14163
+  },
+  "null_b|by": {
+   "0.01": 0,
+   "0.05": 8218,
+   "0.1": 8559
+  }
+ },
+ "overlap": {
+  "both": 9518,
+  "null_a_only": 5262,
+  "null_b_only": 0
+ },
+ "null_a_only_limiting_partner": {
+  "ligand": 2590,
+  "receptor": 2672
+ },
+ "by_ligand_decile": [
+  {
+   "decile": 0,
+   "rows": 1882,
+   "null_a": 1831,
+   "null_b": 1422,
+   "a_only": 409
+  },
+  {
+   "decile": 1,
+   "rows": 1881,
+   "null_a": 1768,
+   "null_b": 1334,
+   "a_only": 434
+  },
+  {
+   "decile": 2,
+   "rows": 1882,
+   "null_a": 1685,
+   "null_b": 1173,
+   "a_only": 512
+  },
+  {
+   "decile": 3,
+   "rows": 1881,
+   "null_a": 1660,
+   "null_b": 1107,
+   "a_only": 553
+  },
+  {
+   "decile": 4,
+   "rows": 1882,
+   "null_a": 1472,
+   "null_b": 832,
+   "a_only": 640
+  },
+  {
+   "decile": 5,
+   "rows": 1881,
+   "null_a": 1366,
+   "null_b": 756,
+   "a_only": 610
+  },
+  {
+   "decile": 6,
+   "rows": 1881,
+   "null_a": 1431,
+   "null_b": 722,
+   "a_only": 709
+  },
+  {
+   "decile": 7,
+   "rows": 1882,
+   "null_a": 1255,
+   "null_b": 789,
+   "a_only": 466
+  },
+  {
+   "decile": 8,
+   "rows": 1881,
+   "null_a": 1215,
+   "null_b": 634,
+   "a_only": 581
+  },
+  {
+   "decile": 9,
+   "rows": 1882,
+   "null_a": 1097,
+   "null_b": 749,
+   "a_only": 348
+  }
+ ],
+ "by_receptor_decile": [
+  {
+   "decile": 0,
+   "rows": 1882,
+   "null_a": 1491,
+   "null_b": 1163,
+   "a_only": 328
+  },
+  {
+   "decile": 1,
+   "rows": 1881,
+   "null_a": 1710,
+   "null_b": 1408,
+   "a_only": 302
+  },
+  {
+   "decile": 2,
+   "rows": 1882,
+   "null_a": 1574,
+   "null_b": 1091,
+   "a_only": 483
+  },
+  {
+   "decile": 3,
+   "rows": 1881,
+   "null_a": 1402,
+   "null_b": 932,
+   "a_only": 470
+  },
+  {
+   "decile": 4,
+   "rows": 1882,
+   "null_a": 1591,
+   "null_b": 1119,
+   "a_only": 472
+  },
+  {
+   "decile": 5,
+   "rows": 1881,
+   "null_a": 1644,
+   "null_b": 1031,
+   "a_only": 613
+  },
+  {
+   "decile": 6,
+   "rows": 1881,
+   "null_a": 1500,
+   "null_b": 728,
+   "a_only": 772
+  },
+  {
+   "decile": 7,
+   "rows": 1882,
+   "null_a": 1366,
+   "null_b": 746,
+   "a_only": 620
+  },
+  {
+   "decile": 8,
+   "rows": 1881,
+   "null_a": 1312,
+   "null_b": 726,
+   "a_only": 586
+  },
+  {
+   "decile": 9,
+   "rows": 1882,
+   "null_a": 1190,
+   "null_b": 574,
+   "a_only": 616
+  }
+ ],
+ "openproblems": {
+  "n_truth_rows": 812,
+  "n_positive": 166,
+  "n_boot": 1000,
+  "reference": "null_b",
+  "methods": {
+   "mean_ungated": {
+    "n_truth_rows_scored": 743,
+    "auprc": 0.22907825931177425,
+    "auprc_ci95": [
+     0.18229288566977495,
+     0.2896393296357598
+    ],
+    "odds_ratio": 2.467549668874172,
+    "odds_ratio_ci95": [
+     1.0110309930423782,
+     5.704577371489136
+    ],
+    "odds_ratio_nonfinite_resamples": 0,
+    "auprc_diff_ref_minus_this": 0.01306749169552976,
+    "auprc_diff_ci95": [
+     -0.0366195013954491,
+     0.05988511891202428
+    ],
+    "frac_resamples_ref_not_better": 0.288
+   },
+   "null_a": {
+    "n_truth_rows_scored": 169,
+    "auprc": 0.2777821027141355,
+    "auprc_ci95": [
+     0.21587010318400165,
+     0.35246378874768214
+    ],
+    "odds_ratio": 4.287671232876712,
+    "odds_ratio_ci95": [
+     2.1607244318181817,
+     8.33960097873141
+    ],
+    "odds_ratio_nonfinite_resamples": 0,
+    "auprc_diff_ref_minus_this": -0.03563635170683149,
+    "auprc_diff_ci95": [
+     -0.07773588392328293,
+     0.003213393165905586
+    ],
+    "frac_resamples_ref_not_better": 0.961
+   },
+   "null_b": {
+    "n_truth_rows_scored": 129,
+    "auprc": 0.242145751007304,
+    "auprc_ci95": [
+     0.184333564924979,
+     0.3111286793936985
+    ],
+    "odds_ratio": 2.1963562753036436,
+    "odds_ratio_ci95": [
+     1.011437908496732,
+     4.401459436066445
+    ],
+    "odds_ratio_nonfinite_resamples": 0
+   },
+   "null_b|testable": {
+    "n_truth_rows_scored": 0,
+    "auprc": 0.6022167487684729,
+    "auprc_ci95": [
+     0.5892857142857143,
+     0.6163793103448276
+    ],
+    "odds_ratio": 1.9479544904381505,
+    "odds_ratio_ci95": [
+     0.35053185920923285,
+     1.9480480228329007
+    ],
+    "odds_ratio_nonfinite_resamples": 0,
+    "auprc_diff_ref_minus_this": -0.36007099776116885,
+    "auprc_diff_ci95": [
+     -0.4108991425148321,
+     -0.2972591273266719
+    ],
+    "frac_resamples_ref_not_better": 1.0
+   },
+   "random": {
+    "n_truth_rows_scored": 812,
+    "auprc": 0.21410915457809934,
+    "auprc_ci95": [
+     0.17536506931325163,
+     0.2640115412627152
+    ],
+    "odds_ratio": 1.5098998887652948,
+    "odds_ratio_ci95": [
+     0.5678875207081571,
+     3.0763059163059165
+    ],
+    "odds_ratio_nonfinite_resamples": 0,
+    "auprc_diff_ref_minus_this": 0.02803659642920467,
+    "auprc_diff_ci95": [
+     -0.03371460411301486,
+     0.09587288116413849
+    ],
+    "frac_resamples_ref_not_better": 0.193
+   }
+  }
+ },
+ "fake_pairs": {
+  "n_fake_interactions": 910,
+  "n_tested_real": 31806,
+  "n_tested_fake": 24804,
+  "null_a": {
+   "real_calls": 25072,
+   "fake_calls": 6033,
+   "fake_rate_tested": 0.24322689888727625,
+   "real_rate_tested": 0.7882789410802993,
+   "fake_share_of_calls": 0.19395595563414242
+  },
+  "null_b": {
+   "real_calls": 16498,
+   "fake_calls": 1349,
+   "fake_rate_tested": 0.05438638929204967,
+   "real_rate_tested": 0.5187071621706596,
+   "fake_share_of_calls": 0.07558693337815879
+  }
+ },
+ "halves": {
+  "null_a": {
+   "n1": 13477,
+   "n2": 11375,
+   "jaccard": 0.41413451689996583
+  },
+  "null_b": {
+   "n1": 8159,
+   "n2": 6973,
+   "jaccard": 0.3427988286449552
+  },
+  "null_b|testable": {
+   "n1": 0,
+   "n2": 0,
+   "jaccard": 0.0
+  },
+  "null_a|by": {
+   "n1": 12373,
+   "n2": 10521,
+   "jaccard": 0.4137334815363715
+  },
+  "null_b|by": {
+   "n1": 6634,
+   "n2": 5655,
+   "jaccard": 0.3405694338387695
+  }
+ },
+ "seconds": 676.2
+}
