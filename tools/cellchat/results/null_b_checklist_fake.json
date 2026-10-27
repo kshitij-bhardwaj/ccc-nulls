@@ -1,0 +1,175 @@
+{
+  "dataset": "tnbc_wu2021",
+  "B": 1000,
+  "n_real": 1757690,
+  "n_fake": 1757690,
+  "n_testable_real": 28111,
+  "n_testable_fake": 40000,
+  "e2": {
+    "null_a": {
+      "real_calls": 12939,
+      "fake_calls": 10602,
+      "real_rate": 0.007361366338774187,
+      "fake_rate": 0.006031780348070479,
+      "real_rate_testable": 0.46028245170929527,
+      "fake_rate_testable": 0.26505,
+      "fake_share_of_calls": 0.45036319612590797
+    },
+    "null_b": {
+      "real_calls": 8723,
+      "fake_calls": 5753,
+      "real_rate": 0.00496276362726078,
+      "fake_rate": 0.003273045872707929,
+      "real_rate_testable": 0.31030557433033334,
+      "fake_rate_testable": 0.143825,
+      "fake_share_of_calls": 0.3974164133738602
+    }
+  },
+  "e4": {
+    "ligand": [
+      {
+        "decile": 0,
+        "rows": 175769,
+        "null_a_rate": 0.0,
+        "null_b_rate": 0.0,
+        "a_only": 0
+      },
+      {
+        "decile": 1,
+        "rows": 175769,
+        "null_a_rate": 0.0,
+        "null_b_rate": 0.0,
+        "a_only": 0
+      },
+      {
+        "decile": 2,
+        "rows": 175769,
+        "null_a_rate": 0.0,
+        "null_b_rate": 0.0,
+        "a_only": 0
+      },
+      {
+        "decile": 3,
+        "rows": 175769,
+        "null_a_rate": 3.41357122131889e-05,
+        "null_b_rate": 3.41357122131889e-05,
+        "a_only": 0
+      },
+      {
+        "decile": 4,
+        "rows": 175769,
+        "null_a_rate": 0.0,
+        "null_b_rate": 0.0,
+        "a_only": 0
+      },
+      {
+        "decile": 5,
+        "rows": 175769,
+        "null_a_rate": 0.0008932178029117762,
+        "null_b_rate": 0.000682714244263778,
+        "a_only": 37
+      },
+      {
+        "decile": 6,
+        "rows": 175769,
+        "null_a_rate": 0.0013824963446341504,
+        "null_b_rate": 0.0010752749347154504,
+        "a_only": 54
+      },
+      {
+        "decile": 7,
+        "rows": 175769,
+        "null_a_rate": 0.00900044945354414,
+        "null_b_rate": 0.0066621531669407005,
+        "a_only": 411
+      },
+      {
+        "decile": 8,
+        "rows": 175769,
+        "null_a_rate": 0.017904181055817578,
+        "null_b_rate": 0.013301549192405941,
+        "a_only": 809
+      },
+      {
+        "decile": 9,
+        "rows": 175769,
+        "null_a_rate": 0.04439918301862103,
+        "null_b_rate": 0.027871809022068737,
+        "a_only": 2905
+      }
+    ],
+    "receptor": [
+      {
+        "decile": 0,
+        "rows": 175769,
+        "null_a_rate": 0.0,
+        "null_b_rate": 0.0,
+        "a_only": 0
+      },
+      {
+        "decile": 1,
+        "rows": 175769,
+        "null_a_rate": 0.0,
+        "null_b_rate": 0.0,
+        "a_only": 0
+      },
+      {
+        "decile": 2,
+        "rows": 175769,
+        "null_a_rate": 4.551428295091853e-05,
+        "null_b_rate": 4.551428295091853e-05,
+        "a_only": 0
+      },
+      {
+        "decile": 3,
+        "rows": 175769,
+        "null_a_rate": 0.00011378570737729634,
+        "null_b_rate": 0.00011378570737729634,
+        "a_only": 0
+      },
+      {
+        "decile": 4,
+        "rows": 175769,
+        "null_a_rate": 0.000341357122131889,
+        "null_b_rate": 0.000341357122131889,
+        "a_only": 0
+      },
+      {
+        "decile": 5,
+        "rows": 175769,
+        "null_a_rate": 0.0008306356638542633,
+        "null_b_rate": 0.0008306356638542633,
+        "a_only": 0
+      },
+      {
+        "decile": 6,
+        "rows": 175769,
+        "null_a_rate": 0.0017921248911924174,
+        "null_b_rate": 0.0017010963252905803,
+        "a_only": 16
+      },
+      {
+        "decile": 7,
+        "rows": 175769,
+        "null_a_rate": 0.0058315175030864376,
+        "null_b_rate": 0.005188628256404713,
+        "a_only": 113
+      },
+      {
+        "decile": 8,
+        "rows": 175769,
+        "null_a_rate": 0.013938749153718802,
+        "null_b_rate": 0.01242539924560076,
+        "a_only": 266
+      },
+      {
+        "decile": 9,
+        "rows": 175769,
+        "null_a_rate": 0.05071997906342984,
+        "null_b_rate": 0.028981219668997377,
+        "a_only": 3821
+      }
+    ]
+  },
+  "seconds": 2492.9
+}

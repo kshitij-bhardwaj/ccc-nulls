@@ -22,6 +22,7 @@ One owner, assigned within the team. Only the owner edits this folder; anything 
 | `calibrate_null_a.py` | Tabula Sapiens (Mammary, Liver): full-permutation calibration |
 | `null_b_calibration.py` | Tabula Sapiens: Null B vs Null A on known-null data (labels, receptor-side and ligand-side gene shuffles) and on the real labels |
 | `null_b_tnbc.py` | TNBC, held out: Null B vs Null A against the cytokine truth, disagreements, patient-half reproducibility |
+| `null_b_checklist.py` | the remaining checklist points: type-I error and p-value calibration, BY, fake gene pairs, calls by expression |
 | `tail_pvalues.py`, `empirical_null.py` | B1: randomized permutation p, GPD and Pearson III tail p-values, Efron's empirical null |
 | `b1_calibration.py`, `b1_tail_accuracy.py`, `b1_diagnosis.py` | B1: calibration, tail accuracy against 100,000 shuffles, why the empirical null is not identifiable |
 | `results/` | the JSON outputs of the scripts |
@@ -257,7 +258,9 @@ is not specific to t".
   antagonists), and keep the receiver side at its observed group averages.
 - p_R: the mirror image (receptor, co-receptors, and the receiver's agonists and antagonists).
 - p_B = max(p_L, p_R). This is a valid p-value for the union null with no multiplicity
-  adjustment, and BH over p_B controls FDR for the composite hypotheses (Benjamini & Heller 2008).
+  adjustment. For BH over p_B, FDR control is proved for independent or positively dependent
+  p-values (Benjamini & Heller 2008); our permutation p-values share permutations, so control here is
+  shown empirically (calibration below), not proved.
   The same construction is the "joint significance" test of mediation analysis (MacKinnon et al.
   2002); HDMT (Dai et al. 2022) and DACT (Liu et al. 2022) are power refinements of it and were not
   needed here.
@@ -388,6 +391,23 @@ and the call set is less reproducible across patients. Null B is the right test 
 specific sender-to-receiver edge. It does not improve recovery of ligand-to-target responses, and the
 TNBC truth cannot judge the edge claim.
 
+### Null B against the remaining checklist points (`null_b_checklist.py`)
+
+Frozen settings, nothing tuned. `results/null_b_checklist_{pcal,fake}.json`, plus the B = 500 runs.
+
+| Point | Result |
+|---|---|
+| Level 1, type-I error and p-value calibration (Mammary, receptor-shuffle replicate 1, 14,134 known-null testable rows) | P(p ≤ 0.05): **Null A 14.1%, Null B 1.9%** (≤ 0.01: 13.1% vs 0.8%). Fully shuffled labels: 5.5% vs 0.4%. Null B's p is conservative, as a maximum of two p-values must be |
+| J15, dependence-robust FDR (Benjamini–Yekutieli) | **0 calls for both nulls** at B = 1,000, even on real signal: BY divides α by about 12 here, below the p-value floor 1/1,001. Not decisive; it needs B ≥ 5,000 |
+| G12 / T, B = 500 (Mammary) | real labels: 3,268 Null B calls at α = 0.05 (3,290 at B = 1,000); receptor shuffle: **0 Null B calls** in 3 replicates (resolution limit). B ≥ 1,000 is needed |
+| E2, fake gene pairs (TNBC; each candidate pair's subunits replaced by stratum-matched non-CellChatDB genes, scored in every sender-receiver, one BH family with the real rows) | Null A calls 10,602 fake and 12,939 real rows; **Null B 5,753 fake and 8,723 real**. Fake pairs are **40% of Null B's calls vs 45% of Null A's** |
+| E4 / L, calls by expression (TNBC, real rows) | calls rise with ligand and receptor expression for both nulls; top ligand-expression decile: 4.4% of rows called by Null A, 2.8% by Null B. **69% of the Null-A-only calls (2,905 of 4,216) are in the top ligand decile** |
+
+What this adds:
+- **Fake pairs are a negative result for Null B.** It halves the fake-pair calls but barely changes their share. A random gene pair whose two genes are each cell-type specific passes both halves of Null B, because Null B tests specificity, not whether the two genes interact. Separating real from fake pairs needs evidence of the interaction itself, such as receiver-side downstream targets (Level 3, the shared NicheNet step).
+- Null A's surplus calls sit at high expression, so Null B partly reduces the abundance bias the project set out to test.
+- The fake pairs skip CellChat's over-expression filter (it runs on CellChatDB genes only). The comparison is Null A vs Null B on the same rows, not CellChat vs the earlier tools.
+
 ### What Null B does not answer
 
 - **The receptor is not just "present" in t; it is specific to t.** A receptor expressed equally in
@@ -420,6 +440,7 @@ python -m tools.cellchat.calibrate_null_a --tissue all
 python -m tools.cellchat.null_b_calibration --tissue mammary --scenario receptor --reps 20   # also: ligand, labels, real; liver
 python -m tools.cellchat.null_b_calibration --summarise
 python -m tools.cellchat.null_b_tnbc
+python -m tools.cellchat.null_b_checklist --part pcal   # and --part fake
 python -m tools.cellchat.b1_diagnosis --tissue all
 python -m tools.cellchat.b1_tail_accuracy
 ```
