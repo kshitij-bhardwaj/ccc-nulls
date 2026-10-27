@@ -334,7 +334,16 @@ What the table shows:
 **Resolution limit.** With B = 1,000 the smallest p is 1/1,001. At α = 0.01, BH over about 75,000
 testable rows needs thousands of rows at that floor. Null B needs both sides at the floor, so at
 α = 0.01 it made **0 calls in every scenario**, real labels included. Null A made 0 on Mammary and
-12,287 on Liver. A B = 5,000 sensitivity run (Mammary, real labels and 3 receptor-shuffle replicates) is in progress and will be added here.
+12,287 on Liver. More permutations remove the limit. Sensitivity run, Mammary, B = 5,000 (`results/null_b_calibration_mammary_*_B5000.json`; receptor shuffle = the first 3 replicates of the B = 1,000 run, same data):
+
+| Mammary, B = 5,000 | α = 0.01 | α = 0.05 | α = 0.10 |
+|---|---|---|---|
+| real labels: Null A / Null B calls | 6,719 / 3,203 (B = 1,000: 0 / 0) | 6,888 / 3,332 (6,876 / 3,290) | 6,950 / 3,372 |
+| receptor shuffle, Null B FDP per replicate | 0.011, 0.002, 0.005 | 0.044, 0.008, 0.041 | 0.054, 0.010, 0.054 |
+| receptor shuffle, Null A FDP per replicate | 0.30, 0.40, 0.32 | 0.30, 0.40, 0.33 | 0.31, 0.41, 0.33 |
+
+At α = 0.05 the calls barely change between B = 1,000 and 5,000, so the frozen B = 1,000 results
+stand. For α = 0.01, use B ≥ 5,000.
 
 ### Held-out test: TNBC (`null_b_tnbc.py`, run once with the frozen settings)
 
@@ -389,7 +398,7 @@ TNBC truth cannot judge the edge claim.
   is the same for Null A and Null B, and its effect is the fully shuffled check above (0 calls).
 - **Cells are the unit, not donors.** Permuting labels within donor (or permuting donors) would test
   reproducibility across individuals. That needs a multi-donor design and is future work.
-- **Power at small α** is limited by B (see the resolution limit above).
+- **Power at small α** needs B ≥ 5,000 (see the resolution limit above); the cost is linear in B (about 40 minutes per Mammary run at B = 5,000).
 
 ## Checklist
 
