@@ -1,0 +1,98 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 11:15",
+ "amendment_3_sha256": "21fe25fc0127b0d26683627346995a76a630f529ab150b3366d88b10ee973601",
+ "dataset": "moffitt2018_hypothalamus",
+ "cellchat": {
+  "b2": {
+   "gated_rows": 4848,
+   "family": 5273,
+   "calls": {
+    "p_b2": 5,
+    "p_b2_uncorrected": 5,
+    "p_b2_unmatched": 8,
+    "p_b2_joint": 209
+   },
+   "vs_null_b": {
+    "calls_a": 5,
+    "calls_b": 928,
+    "same_call": 0.9921705347448425,
+    "jaccard": 0.005387931034482759
+   },
+   "vs_null_a": {
+    "calls_a": 5,
+    "calls_b": 1204,
+    "same_call": 0.9898293295331162,
+    "jaccard": 0.004152823920265781
+   },
+   "gated_in_family": 2888
+  },
+  "seconds": 10.3,
+  "write_back": {
+   "liana_rows": 10197,
+   "with_our_columns": 2170,
+   "our_family_rows_in_liana": 1027,
+   "our_family_rows": 5273
+  }
+ },
+ "cellphonedb": {
+  "b2": {
+   "gated_rows": 2012,
+   "family": 5491,
+   "calls": {
+    "p_b2": 0,
+    "p_b2_uncorrected": 0,
+    "p_b2_unmatched": 0,
+    "p_b2_joint": 77
+   },
+   "vs_null_b": {
+    "calls_a": 0,
+    "calls_b": 1350,
+    "same_call": 0.9870431511056511,
+    "jaccard": 0.0
+   },
+   "vs_null_a": {
+    "calls_a": 0,
+    "calls_b": 2600,
+    "same_call": 0.9750460687960688,
+    "jaccard": 0.0
+   },
+   "gated_in_family": 2011
+  },
+  "pr9": {
+   "n_rows": 104192,
+   "n_tested": 5491,
+   "n_testable": 100862,
+   "n_interactions": 1628,
+   "n_types": 8,
+   "seconds_null_a": 10.9,
+   "seconds_null_b": 11.7,
+   "score_max_abs_diff": 0.0005000203504257894,
+   "n_over_adapter_tolerance": 0,
+   "rows_matched": 104192,
+   "rows": 104192,
+   "B": 1000,
+   "seed": 0,
+   "calls": {
+    "null_b_pr9": 1350,
+    "null_b_pr9_testable": 1302,
+    "null_b_pr9_by": 1302
+   },
+   "vs_null_b": {
+    "calls_a": 1350,
+    "calls_b": 1350,
+    "same_call": 1.0,
+    "jaccard": 1.0
+   },
+   "p_identical_in_family": 0.877800036423238,
+   "spearman_p_in_family": 0.99748021880179
+  },
+  "seconds": 33.8,
+  "write_back": {
+   "liana_rows": 10197,
+   "with_our_columns": 0,
+   "our_family_rows_in_liana": 0,
+   "our_family_rows": 5491
+  }
+ }
+}

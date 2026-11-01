@@ -10,6 +10,7 @@ LABEL = {"null_a": "Null A (BH)", "null_b": "**Null B (BH), full**", "null_b|lig
          "null_b|pr9_testable": "Null B (#9), testable", "null_b|pr9_by": "Null B (#9), BY", "b2": "**B2 (CAMERA), full**",
          "b2|uncorrected": "B2, no correction (old premise)", "b2|unmatched": "B2, unmatched decoys", "b2|joint": "B2, joint (sides combined)"}
 SPATIAL = ["tnbc_wu2021", "allen_brain_atlas", "moffitt2018_hypothalamus"]
+SMALL_K = 20  # ORs resting on fewer kept calls carry their count
 
 
 def _or(d):
@@ -17,7 +18,8 @@ def _or(d):
         return "–"
     lo, hi = d["ci95"]
     mark = "↑" if lo > 1 else ("↓" if hi < 1 else "")
-    return f"{d['odds_ratio']:.2f} [{lo:.2f}, {hi:.2f}]{mark}"
+    small = f" (k={d['kept_calls']})" if d.get("kept_calls", SMALL_K) < SMALL_K else ""
+    return f"{d['odds_ratio']:.2f} [{lo:.2f}, {hi:.2f}]{mark}{small}"
 
 
 def power_section(lines):
@@ -90,11 +92,11 @@ def b2_section(lines):
             b = e.get(t, {}).get("b2")
             if b:
                 c = b["calls"]
-                rows.append(f"| {ds} | {t} | {b['family']:,} | {b['gated_rows']:,} | {c['p_b2']:,} | {c['p_b2_uncorrected']:,} | "
+                rows.append(f"| {ds} | {t} | {b['family']:,} | {b.get('gated_in_family', b['gated_rows']):,} | {c['p_b2']:,} | {c['p_b2_uncorrected']:,} | "
                             f"{c['p_b2_unmatched']:,} | {c['p_b2_joint']:,} | {b['vs_null_b']['jaccard']:.3f} |")
     if rows:
         lines += ["Real data: BH calls over the tool's family (B2's gate: every subunit in ≥ 10% of its type's cells).", "",
-                  "| Dataset | Tool | Family | Passing B2's gate | B2 | No correction | Unmatched | Joint | Jaccard B2 vs Null B |",
+                  "| Dataset | Tool | Family | In family, passing B2's gate | B2 | No correction | Unmatched | Joint | Jaccard B2 vs Null B |",
                   "|---|---|---|---|---|---|---|---|---|"] + rows + [""]
 
 
@@ -113,7 +115,8 @@ def ablation_section(lines):
             cells = [f"{a[ds][t][v]['calls']:,} ({a[ds][t][v]['jaccard_with_null_b']:.2f})" if v in a[ds][t] else "–" for ds in dss]
             lines.append(f"| {LABEL[v]} | " + " | ".join(cells) + " |")
         lines.append("")
-    lines += ["Biology of each variant: odds ratio, Null A's calls the variant keeps vs drops (95% bootstrap CI; ↑ above 1, ↓ below 1).", ""]
+    lines += ["Biology of each variant: odds ratio, Null A's calls the variant keeps vs drops (95% bootstrap CI; ↑ above 1, ↓ below 1). "
+              f"– where the variant keeps none or drops none; (k = n) where it keeps fewer than {SMALL_K}.", ""]
     for t in TOOLS:
         cols = [(ds, "spatial_kept_vs_dropped", f"{ds} spatial") for ds in SPATIAL] + \
                [(ds, f"D1_{res}", f"{ds} {res}") for ds in DATASETS for res in ("cytosig", "progeny")]
@@ -134,6 +137,14 @@ def amendment3(lines):
     pr9_section(lines)
     b2_section(lines)
     ablation_section(lines)
+    lines += ["Notes on reading Amendment 3:", "",
+              "- \"B2, no correction\" is B2 without the CAMERA variance term. It is not the October decoy null, which used a "
+              "different statistic and was not rerun here.",
+              "- Variants with 0 calls under BH or BY over a large family (#9's testable family, BY on Allen and Tabula Sapiens) "
+              "are the permutation floor: the smallest p is 1/(B+1), and too few rows reach it to pass the step-up threshold.",
+              f"- Two display rules were set after seeing the results; they change no number. An odds ratio is \"–\" when the "
+              f"variant keeps none or drops none of Null A's calls (the 0.5 correction otherwise prints a number), and carries "
+              f"its kept count when that count is below {SMALL_K}.", ""]
 
 
 STATUS_ROWS = [("A3.1 T2 small effects, B = 5,000", "Amendment 3", ["power_a3"]),

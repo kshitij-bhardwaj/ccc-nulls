@@ -1,0 +1,98 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 11:23",
+ "amendment_3_sha256": "21fe25fc0127b0d26683627346995a76a630f529ab150b3366d88b10ee973601",
+ "dataset": "allen_brain_atlas",
+ "cellchat": {
+  "b2": {
+   "gated_rows": 103832,
+   "family": 162047,
+   "calls": {
+    "p_b2": 10,
+    "p_b2_uncorrected": 10,
+    "p_b2_unmatched": 4,
+    "p_b2_joint": 1609
+   },
+   "vs_null_b": {
+    "calls_a": 10,
+    "calls_b": 13558,
+    "same_call": 0.9862971717435302,
+    "jaccard": 0.000737571913261543
+   },
+   "vs_null_a": {
+    "calls_a": 10,
+    "calls_b": 27973,
+    "same_call": 0.9717174353014714,
+    "jaccard": 0.0003574875773066886
+   },
+   "gated_in_family": 80322
+  },
+  "seconds": 44.1,
+  "write_back": {
+   "liana_rows": 235366,
+   "with_our_columns": 64181,
+   "our_family_rows_in_liana": 47424,
+   "our_family_rows": 162047
+  }
+ },
+ "cellphonedb": {
+  "b2": {
+   "gated_rows": 37140,
+   "family": 135279,
+   "calls": {
+    "p_b2": 1,
+    "p_b2_uncorrected": 1,
+    "p_b2_unmatched": 1,
+    "p_b2_joint": 399
+   },
+   "vs_null_b": {
+    "calls_a": 1,
+    "calls_b": 15121,
+    "same_call": 0.9818640668630593,
+    "jaccard": 6.613319224918987e-05
+   },
+   "vs_null_a": {
+    "calls_a": 1,
+    "calls_b": 46928,
+    "same_call": 0.9437126366192318,
+    "jaccard": 2.130923968632799e-05
+   },
+   "gated_in_family": 37140
+  },
+  "pr9": {
+   "n_rows": 833704,
+   "n_tested": 135279,
+   "n_testable": 787025,
+   "n_interactions": 1576,
+   "n_types": 23,
+   "seconds_null_a": 39.5,
+   "seconds_null_b": 45.8,
+   "score_max_abs_diff": 0.0005006228714612426,
+   "n_over_adapter_tolerance": 0,
+   "rows_matched": 833704,
+   "rows": 833704,
+   "B": 1000,
+   "seed": 0,
+   "calls": {
+    "null_b_pr9": 15237,
+    "null_b_pr9_testable": 0,
+    "null_b_pr9_by": 0
+   },
+   "vs_null_b": {
+    "calls_a": 15237,
+    "calls_b": 15121,
+    "same_call": 0.9994362507556639,
+    "jaccard": 0.9695082392630077
+   },
+   "p_identical_in_family": 0.7228394651054487,
+   "spearman_p_in_family": 0.9815167604036905
+  },
+  "seconds": 142.5,
+  "write_back": {
+   "liana_rows": 235366,
+   "with_our_columns": 0,
+   "our_family_rows_in_liana": 0,
+   "our_family_rows": 135279
+  }
+ }
+}

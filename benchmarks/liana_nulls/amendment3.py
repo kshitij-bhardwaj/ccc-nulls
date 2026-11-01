@@ -333,6 +333,8 @@ def part_ablation(args):
                             outside_null_a=int((c & ~calls["null_a"]).sum()))
                 if truth is not None and v != "null_a":
                     k = kept_vs_dropped(df.assign(call_null_b=c), truth)
+                    if not (k["kept_calls"] and k["dropped_calls"]):  # undefined; the 0.5 correction would print a number
+                        k |= dict(odds_ratio=None, ci95=None)
                     d[v]["spatial_kept_vs_dropped"] = {x: k[x] for x in ("odds_ratio", "ci95", "kept_calls", "dropped_calls")}
                 for res in ("cytosig", "progeny"):
                     pf = rows_dir() / f"downstream_{name}_{tool}_{res}.pkl"

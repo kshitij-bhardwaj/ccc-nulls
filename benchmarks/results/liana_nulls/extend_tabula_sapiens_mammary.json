@@ -1,0 +1,98 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 11:24",
+ "amendment_3_sha256": "21fe25fc0127b0d26683627346995a76a630f529ab150b3366d88b10ee973601",
+ "dataset": "tabula_sapiens_mammary",
+ "cellchat": {
+  "b2": {
+   "gated_rows": 29719,
+   "family": 71456,
+   "calls": {
+    "p_b2": 66,
+    "p_b2_uncorrected": 71,
+    "p_b2_unmatched": 71,
+    "p_b2_joint": 2240
+   },
+   "vs_null_b": {
+    "calls_a": 66,
+    "calls_b": 3297,
+    "same_call": 0.993641766372796,
+    "jaccard": 0.020018198362147407
+   },
+   "vs_null_a": {
+    "calls_a": 66,
+    "calls_b": 6873,
+    "same_call": 0.986604612720403,
+    "jaccard": 0.00960279353993889
+   },
+   "gated_in_family": 20237
+  },
+  "seconds": 3.3,
+  "write_back": {
+   "liana_rows": 86001,
+   "with_our_columns": 24354,
+   "our_family_rows_in_liana": 16194,
+   "our_family_rows": 71456
+  }
+ },
+ "cellphonedb": {
+  "b2": {
+   "gated_rows": 6987,
+   "family": 11767,
+   "calls": {
+    "p_b2": 17,
+    "p_b2_uncorrected": 18,
+    "p_b2_unmatched": 2,
+    "p_b2_joint": 1032
+   },
+   "vs_null_b": {
+    "calls_a": 17,
+    "calls_b": 2890,
+    "same_call": 0.9941941767977237,
+    "jaccard": 0.0058823529411764705
+   },
+   "vs_null_a": {
+    "calls_a": 17,
+    "calls_b": 6201,
+    "same_call": 0.987503233316089,
+    "jaccard": 0.0027414933075310434
+   },
+   "gated_in_family": 6977
+  },
+  "pr9": {
+   "n_rows": 494848,
+   "n_tested": 11767,
+   "n_testable": 389963,
+   "n_interactions": 1933,
+   "n_types": 16,
+   "seconds_null_a": 25.0,
+   "seconds_null_b": 29.2,
+   "score_max_abs_diff": 0.0005005956156551861,
+   "n_over_adapter_tolerance": 0,
+   "rows_matched": 494848,
+   "rows": 494848,
+   "B": 1000,
+   "seed": 0,
+   "calls": {
+    "null_b_pr9": 2902,
+    "null_b_pr9_testable": 0,
+    "null_b_pr9_by": 2409
+   },
+   "vs_null_b": {
+    "calls_a": 2902,
+    "calls_b": 2890,
+    "same_call": 0.9998989588722194,
+    "jaccard": 0.9828825744608011
+   },
+   "p_identical_in_family": 0.6423047505736381,
+   "spearman_p_in_family": 0.992655778786524
+  },
+  "seconds": 69.2,
+  "write_back": {
+   "liana_rows": 86001,
+   "with_our_columns": 4895,
+   "our_family_rows_in_liana": 4895,
+   "our_family_rows": 11767
+  }
+ }
+}

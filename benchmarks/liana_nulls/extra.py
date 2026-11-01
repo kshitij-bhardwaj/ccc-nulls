@@ -89,7 +89,7 @@ def add_extra(adata, groupby: str, tool, df: pd.DataFrame, workdir: Path, specie
     b2 = b2_columns(a, groupby, df)
     for c in b2.columns:
         df[c] = b2[c].to_numpy()
-    meta["b2"] = dict(gated_rows=int(df.gate_b2.sum()), family=int(df.family.sum()),
+    meta["b2"] = dict(gated_rows=int(df.gate_b2.sum()), gated_in_family=int((df.gate_b2 & df.family).sum()), family=int(df.family.sum()),
                       calls={v: int(df[f"call_{v[2:]}"].sum()) for v in B2_COLUMNS},
                       vs_null_b=agreement(df.call_b2, df.call_null_b), vs_null_a=agreement(df.call_b2, df.call_null_a))
     log(f"    B2 calls {meta['b2']['calls']}")

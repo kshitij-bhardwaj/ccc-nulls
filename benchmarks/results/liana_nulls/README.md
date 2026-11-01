@@ -150,6 +150,183 @@ D1: odds of response, calls Null B keeps vs drops. D2: kept vs dropped because t
 
 Note: the T2 part of criterion (1) holds only vacuously at cellphonedb f=1.5, cellphonedb f=2.0, cellphonedb f=3.0, cellphonedb f=4.0 (Amendment 2).
 
+## Amendment 3 (an addition; not part of the pre-registered plan)
+
+`AMENDMENT_3.md` (SHA-256 `21fe25fc0127b0d2…`), written after every earlier result and before any of these. It changes neither verdict above.
+
+### A3.1 T2 at small effects and B = 5,000
+
+Check: f = 1.5, B = 1,000 reproduces `power.json` (Null A and Null B: calls, power, FDP, one-sided calls) in 10 of 10 runs.
+
+Power / FDR, mean over replicates (FDR 95% t-CI for Null B).
+
+| Tool | Setting | Null A (BH) | Null B (BH) | Null B calls (BH) | Null B, tool's rule | B2 (BH) |
+|---|---|---|---|---|---|---|
+| cellchat | f=1.1, B=1000 | 0.00 / 0.00 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.03 / 0.90 | 0.00 / 0.00 |
+| cellchat | f=1.2, B=1000 | 0.20 / 0.91 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.19 / 0.69 | 0.05 / 0.00 |
+| cellchat | f=1.2, B=5000 | 0.19 / 0.91 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.19 / 0.69 | 0.05 / 0.00 |
+| cellchat | f=1.3, B=1000 | 0.76 / 0.85 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.76 / 0.39 | 0.33 / 0.00 |
+| cellchat | f=1.5, B=1000 | 0.99 / 0.84 | 0.19 / 0.00 [0.00, 0.00] | 9.6 | 0.99 / 0.34 | 0.49 / 0.00 |
+| cellchat | f=1.5, B=5000 | 0.99 / 0.84 | 0.97 / 0.02 [-0.03, 0.06] | 50.0 | 0.99 / 0.33 | 0.49 / 0.00 |
+| cellphonedb | f=1.1, B=1000 | 0.27 / 0.34 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.71 / 0.67 | 0.03 / 0.00 |
+| cellphonedb | f=1.2, B=1000 | 0.93 / 0.92 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.93 / 0.62 | 0.14 / 0.00 |
+| cellphonedb | f=1.2, B=5000 | 0.95 / 0.92 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.93 / 0.61 | 0.14 / 0.00 |
+| cellphonedb | f=1.3, B=1000 | 0.99 / 0.93 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 0.99 / 0.60 | 0.30 / 0.00 |
+| cellphonedb | f=1.5, B=1000 | 1.00 / 0.94 | 0.00 / 0.00 [0.00, 0.00] | 0.0 | 1.00 / 0.58 | 0.47 / 0.00 |
+| cellphonedb | f=1.5, B=5000 | 1.00 / 0.94 | 0.20 / 0.00 [0.00, 0.00] | 10.4 | 1.00 / 0.58 | 0.47 / 0.00 |
+
+**Ablation on T2** (f = 1.5, B = 1,000; power / FDR / one-sided false calls, mean of 5 replicates):
+
+| Variant | CellChat | CellPhoneDB |
+|---|---|---|
+| Null A (BH) | 0.99 / 0.84 / 252 | 1.00 / 0.94 / 715 |
+| **Null B (BH), full** | 0.19 / 0.00 / 0 | 0.00 / 0.00 / 0 |
+| Null B, ligand side only | 0.99 / 0.73 / 133 | 0.97 / 0.89 / 376 |
+| Null B, receptor side only | 0.99 / 0.75 / 143 | 1.00 / 0.90 / 388 |
+| Null B, BY | 0.00 / 0.00 / 0 | 0.00 / 0.00 / 0 |
+| Null B, tool's rule | 0.99 / 0.34 / 16 | 1.00 / 0.58 / 32 |
+| Null A, tool's rule | 0.99 / 0.88 / 258 | 1.00 / 0.97 / 753 |
+| Null B, testable family | – | 0.00 / 0.00 / 0 |
+| Null B (#9), gate | – | 0.00 / 0.00 / 0 |
+| Null B (#9), testable | – | 0.00 / 0.00 / 0 |
+| Null B (#9), BY | – | 0.00 / 0.00 / 0 |
+| **B2 (CAMERA), full** | 0.49 / 0.00 / 0 | 0.47 / 0.00 / 0 |
+| B2, no correction (old premise) | 0.53 / 0.00 / 0 | 0.51 / 0.00 / 0 |
+| B2, unmatched decoys | 0.95 / 0.00 / 0 | 0.91 / 0.00 / 0 |
+| B2, joint (sides combined) | 0.59 / 0.91 / 282 | 0.59 / 0.95 / 457 |
+
+### A3.2 CellPhoneDB's Null B as pushed in #9
+
+#9's own code: float64 means, `default_rng(0)` permutations; ours: CellPhoneDB's permutation sequence and its float32 means.
+
+| Dataset | Calls, ours (BH, gate) | Calls, #9 (BH, gate) | Same call | Jaccard | p identical (family) | Spearman p | #9 testable | #9 BY |
+|---|---|---|---|---|---|---|---|---|
+| tnbc_wu2021 | 9,528 | 9,518 | 0.9999 | 0.985 | 0.643 | 0.9919 | 0 | 8,218 |
+| allen_brain_atlas | 15,121 | 15,237 | 0.9994 | 0.970 | 0.723 | 0.9815 | 0 | 0 |
+| tabula_sapiens_mammary | 2,890 | 2,902 | 0.9999 | 0.983 | 0.642 | 0.9927 | 0 | 2,409 |
+| tabula_sapiens_liver | 7,203 | 7,170 | 0.9999 | 0.977 | 0.640 | 0.9940 | 0 | 0 |
+| moffitt2018_hypothalamus | 1,350 | 1,350 | 1.0000 | 1.000 | 0.878 | 0.9975 | 1,302 | 1,302 |
+
+### A3.3 Null B2: decoy genes with the CAMERA correction
+
+Validity (Tabula Sapiens, 10 replicates). Shuffled labels: side-level type-I error at α = 0.05 (95% t-CI) and P(any BH call). Receptor genes shuffled: FDR (95% t-CI). Calibrated = type-I CI reaches ≤ 0.05 and FDR upper bound ≤ 0.05.
+
+| Tissue | Tool | Variant | Type-I (labels shuffled) | P(any call) | FDR (receptor shuffled) | Calibrated |
+|---|---|---|---|---|---|---|
+| tabula_sapiens_mammary | cellchat | **B2 (CAMERA), full** | 0.033 [0.030, 0.035] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_mammary | cellchat | B2, no correction (old premise) | 0.042 [0.039, 0.045] | 1/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_mammary | cellchat | B2, unmatched decoys | 0.032 [0.029, 0.036] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_mammary | cellchat | B2, joint (sides combined) | 0.034 [0.031, 0.038] | 2/10 | 0.399 [0.394, 0.404] | – |
+| tabula_sapiens_mammary | cellphonedb | **B2 (CAMERA), full** | 0.032 [0.029, 0.035] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_mammary | cellphonedb | B2, no correction (old premise) | 0.041 [0.038, 0.045] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_mammary | cellphonedb | B2, unmatched decoys | 0.032 [0.029, 0.035] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_mammary | cellphonedb | B2, joint (sides combined) | 0.041 [0.034, 0.047] | 0/10 | 1.000 [1.000, 1.000] | – |
+| tabula_sapiens_liver | cellchat | **B2 (CAMERA), full** | 0.033 [0.031, 0.035] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_liver | cellchat | B2, no correction (old premise) | 0.046 [0.044, 0.049] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_liver | cellchat | B2, unmatched decoys | 0.035 [0.032, 0.037] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_liver | cellchat | B2, joint (sides combined) | 0.035 [0.034, 0.036] | 0/10 | 0.654 [0.652, 0.657] | – |
+| tabula_sapiens_liver | cellphonedb | **B2 (CAMERA), full** | 0.032 [0.029, 0.035] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_liver | cellphonedb | B2, no correction (old premise) | 0.045 [0.042, 0.047] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_liver | cellphonedb | B2, unmatched decoys | 0.035 [0.032, 0.038] | 0/10 | 0.000 [0.000, 0.000] | yes |
+| tabula_sapiens_liver | cellphonedb | B2, joint (sides combined) | 0.035 [0.031, 0.039] | 0/10 | 1.000 [1.000, 1.000] | – |
+
+Real data: BH calls over the tool's family (B2's gate: every subunit in ≥ 10% of its type's cells).
+
+| Dataset | Tool | Family | In family, passing B2's gate | B2 | No correction | Unmatched | Joint | Jaccard B2 vs Null B |
+|---|---|---|---|---|---|---|---|---|
+| tnbc_wu2021 | cellchat | 27,942 | 19,521 | 204 | 214 | 185 | 6,256 | 0.023 |
+| tnbc_wu2021 | cellphonedb | 18,815 | 13,442 | 13 | 11 | 12 | 1,609 | 0.001 |
+| allen_brain_atlas | cellchat | 162,047 | 80,322 | 10 | 10 | 4 | 1,609 | 0.001 |
+| allen_brain_atlas | cellphonedb | 135,279 | 37,140 | 1 | 1 | 1 | 399 | 0.000 |
+| tabula_sapiens_mammary | cellchat | 71,456 | 20,237 | 66 | 71 | 71 | 2,240 | 0.020 |
+| tabula_sapiens_mammary | cellphonedb | 11,767 | 6,977 | 17 | 18 | 2 | 1,032 | 0.006 |
+| tabula_sapiens_liver | cellchat | 80,794 | 31,063 | 3 | 5 | 43 | 3,938 | 0.000 |
+| tabula_sapiens_liver | cellphonedb | 31,315 | 18,529 | 3 | 3 | 29 | 1,843 | 0.000 |
+| moffitt2018_hypothalamus | cellchat | 5,273 | 2,888 | 5 | 5 | 8 | 209 | 0.005 |
+| moffitt2018_hypothalamus | cellphonedb | 5,491 | 2,011 | 0 | 0 | 0 | 77 | 0.000 |
+
+### A3.4 Ablation on the five data sets
+
+Calls (Jaccard with the full Null B). One part changed at a time.
+
+**cellchat**
+
+| Variant | tnbc_wu2021 | allen_brain_atlas | tabula_sapiens_mammary | tabula_sapiens_liver | moffitt2018_hypothalamus |
+|---|---|---|---|---|---|
+| Null A (BH) | 12,972 (0.68) | 27,973 (0.48) | 6,873 (0.48) | 12,798 (0.60) | 1,204 (0.77) |
+| **Null B (BH), full** | 8,837 (1.00) | 13,558 (1.00) | 3,297 (1.00) | 7,617 (1.00) | 928 (1.00) |
+| Null B, ligand side only | 12,069 (0.73) | 26,902 (0.50) | 6,137 (0.54) | 10,157 (0.75) | 1,119 (0.83) |
+| Null B, receptor side only | 10,792 (0.82) | 25,785 (0.53) | 5,010 (0.66) | 11,908 (0.64) | 1,197 (0.78) |
+| Null B, BY | 7,905 (0.89) | 0 (0.00) | 0 (0.00) | 0 (0.00) | 0 (0.00) |
+| Null B, tool's rule | 8,961 (0.99) | 15,876 (0.85) | 3,820 (0.86) | 8,666 (0.88) | 939 (0.99) |
+| Null A, tool's rule | 13,033 (0.68) | 29,573 (0.46) | 7,122 (0.46) | 13,375 (0.57) | 1,211 (0.77) |
+| **B2 (CAMERA), full** | 204 (0.02) | 10 (0.00) | 66 (0.02) | 3 (0.00) | 5 (0.01) |
+| B2, no correction (old premise) | 214 (0.02) | 10 (0.00) | 71 (0.02) | 5 (0.00) | 5 (0.01) |
+| B2, unmatched decoys | 185 (0.02) | 4 (0.00) | 71 (0.02) | 43 (0.01) | 8 (0.01) |
+| B2, joint (sides combined) | 6,256 (0.50) | 1,609 (0.07) | 2,240 (0.36) | 3,938 (0.34) | 209 (0.14) |
+
+**cellphonedb**
+
+| Variant | tnbc_wu2021 | allen_brain_atlas | tabula_sapiens_mammary | tabula_sapiens_liver | moffitt2018_hypothalamus |
+|---|---|---|---|---|---|
+| Null A (BH) | 14,765 (0.65) | 46,928 (0.32) | 6,201 (0.47) | 15,773 (0.46) | 2,600 (0.52) |
+| **Null B (BH), full** | 9,528 (1.00) | 15,121 (1.00) | 2,890 (1.00) | 7,203 (1.00) | 1,350 (1.00) |
+| Null B, ligand side only | 13,495 (0.71) | 44,199 (0.34) | 6,031 (0.48) | 15,065 (0.48) | 2,177 (0.62) |
+| Null B, receptor side only | 13,982 (0.68) | 49,588 (0.30) | 6,187 (0.47) | 15,859 (0.45) | 3,384 (0.40) |
+| Null B, BY | 8,243 (0.87) | 0 (0.00) | 0 (0.00) | 0 (0.00) | 1,303 (0.97) |
+| Null B, tool's rule | 9,959 (0.96) | 19,181 (0.79) | 3,213 (0.90) | 8,272 (0.87) | 1,460 (0.92) |
+| Null A, tool's rule | 14,870 (0.64) | 49,561 (0.31) | 6,438 (0.45) | 16,364 (0.44) | 2,631 (0.51) |
+| Null B, testable family | 0 (0.00) | 13,723 (0.91) | 0 (0.00) | 0 (0.00) | 1,303 (0.97) |
+| Null B (#9), gate | 9,518 (0.98) | 15,237 (0.97) | 2,902 (0.98) | 7,170 (0.98) | 1,350 (1.00) |
+| Null B (#9), testable | 0 (0.00) | 0 (0.00) | 0 (0.00) | 0 (0.00) | 1,302 (0.96) |
+| Null B (#9), BY | 8,218 (0.86) | 0 (0.00) | 2,409 (0.83) | 0 (0.00) | 1,302 (0.96) |
+| **B2 (CAMERA), full** | 13 (0.00) | 1 (0.00) | 17 (0.01) | 3 (0.00) | 0 (0.00) |
+| B2, no correction (old premise) | 11 (0.00) | 1 (0.00) | 18 (0.01) | 3 (0.00) | 0 (0.00) |
+| B2, unmatched decoys | 12 (0.00) | 1 (0.00) | 2 (0.00) | 29 (0.00) | 0 (0.00) |
+| B2, joint (sides combined) | 1,609 (0.14) | 399 (0.02) | 1,032 (0.20) | 1,843 (0.18) | 77 (0.04) |
+
+Biology of each variant: odds ratio, Null A's calls the variant keeps vs drops (95% bootstrap CI; ↑ above 1, ↓ below 1). – where the variant keeps none or drops none; (k = n) where it keeps fewer than 20.
+
+**cellchat**
+
+| Variant | tnbc_wu2021 spatial | allen_brain_atlas spatial | moffitt2018_hypothalamus spatial | tnbc_wu2021 cytosig | tnbc_wu2021 progeny | allen_brain_atlas cytosig | allen_brain_atlas progeny | tabula_sapiens_mammary cytosig | tabula_sapiens_mammary progeny | tabula_sapiens_liver cytosig | tabula_sapiens_liver progeny | moffitt2018_hypothalamus cytosig | moffitt2018_hypothalamus progeny |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **Null B (BH), full** | 1.05 [0.65, 1.53] | 1.16 [0.88, 1.57] | 1.89 [1.18, 3.34]↑ | 0.39 [0.05, 8.66] | 11.69 [2.90, 63.73]↑ | 5.38 [1.86, 12.10]↑ | 0.88 [0.06, 2.39] | 7.04 [1.16, 51.16]↑ | 6.94 [3.51, 16.53]↑ | 0.65 [0.23, 2.69] | 2.39 [0.68, 10.68] | – | 0.74 [0.06, 2.71] |
+| Null B, ligand side only | 1.19 [0.68, 3.70] | 1.39 [0.93, 2.10] | 2.03 [1.13, 5.07]↑ | – | – | 0.84 [0.24, 3.95] | 0.85 [0.37, 8.12] | 6.37 [1.63, 13.08]↑ | 2.04 [0.22, 5.83] | 1.15 [0.43, 5.41] | 2.40 [1.13, 7.18]↑ | – | 0.52 [0.03, 2.05] |
+| Null B, receptor side only | 0.95 [0.41, 2.45] | 0.98 [0.68, 1.49] | 1.46 [0.72, 3.63] | 0.39 [0.05, 8.66] | 11.69 [2.90, 63.73]↑ | 8.31 [1.62, 49.19]↑ | 0.90 [0.01, 27.29] | 3.24 [0.50, 26.63] | 6.31 [3.18, 14.66]↑ | 0.69 [0.19, 34.69] | 2.03 [0.38, 24.97] | – | 0.23 [0.01, 0.88]↓ |
+| Null B, BY | 0.72 [0.52, 1.12] | – | – | 0.82 [0.16, 12.01] | 1.75 [0.65, 5.81] | – | – | – | – | – | – | – | – |
+| Null B, tool's rule | 1.22 [0.64, 2.04] | 1.12 [0.86, 1.54] | 1.77 [1.11, 3.11]↑ | 0.37 [0.04, 8.41] | 11.69 [2.90, 63.73]↑ | 6.47 [1.56, 29.51]↑ | 1.48 [0.38, 8.65] | 3.09 [0.52, 22.47] | 4.67 [2.44, 10.15]↑ | 0.47 [0.16, 2.17] | 1.32 [0.37, 6.12] | – | 0.74 [0.06, 2.71] |
+| Null A, tool's rule | – | – | – | – | – | – | – | – | – | – | – | – | – |
+| **B2 (CAMERA), full** | 0.22 [0.12, 0.66]↓ | 3.43 [1.09, 15.85]↑ (k=8) | 0.74 [0.26, 5.13] (k=2) | – | 2.47 [0.63, 12.44] (k=18) | – | – | 2.06 [0.80, 10.44] (k=5) | 2.49 [0.70, 25.46] (k=1) | – | – | 3.00 [0.71, 11.00] (k=1) | – |
+| B2, no correction (old premise) | 0.21 [0.11, 0.62]↓ | 3.43 [1.09, 15.85]↑ (k=8) | 0.74 [0.26, 5.13] (k=2) | – | 1.88 [0.50, 5.86] | – | – | 2.06 [0.80, 10.44] (k=5) | 2.49 [0.70, 25.46] (k=1) | 1.38 [0.42, 13.82] (k=2) | – | 3.00 [0.71, 11.00] (k=1) | – |
+| B2, unmatched decoys | 0.25 [0.13, 0.75]↓ | 3.43 [1.51, 23.41]↑ (k=3) | 1.87 [0.36, 18.33] (k=3) | 0.53 [0.20, 3.56] (k=8) | 0.47 [0.12, 3.51] (k=14) | – | – | – | – | – | – | – | – |
+| B2, joint (sides combined) | 0.70 [0.54, 1.02] | 1.19 [0.88, 1.61] | 1.92 [0.92, 4.36] | 1.17 [0.51, 4.71] | 1.62 [0.65, 4.59] | 1.77 [0.36, 7.02] | 0.22 [0.10, 0.97]↓ | 2.43 [0.50, 13.40] | 0.87 [0.22, 2.48] | 0.47 [0.16, 1.27] | 1.28 [0.43, 5.41] | 0.33 [0.09, 1.40] (k=4) | 1.16 [0.31, 13.01] (k=8) |
+
+**cellphonedb**
+
+| Variant | tnbc_wu2021 spatial | allen_brain_atlas spatial | moffitt2018_hypothalamus spatial | tnbc_wu2021 cytosig | tnbc_wu2021 progeny | allen_brain_atlas cytosig | allen_brain_atlas progeny | tabula_sapiens_mammary cytosig | tabula_sapiens_mammary progeny | tabula_sapiens_liver cytosig | tabula_sapiens_liver progeny | moffitt2018_hypothalamus cytosig | moffitt2018_hypothalamus progeny |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **Null B (BH), full** | 0.80 [0.59, 1.32] | 1.10 [0.78, 1.48] | 0.64 [0.35, 1.60] | 2.16 [1.27, 3.71]↑ | 2.69 [1.73, 4.28]↑ | 2.55 [1.55, 3.89]↑ | 0.65 [0.02, 17.43] | 1.12 [0.38, 3.50] | 1.70 [1.08, 2.94]↑ | 1.08 [0.57, 2.40] | 0.89 [0.69, 1.25] | 0.71 [0.09, 3.05] | – |
+| Null B, ligand side only | 0.80 [0.47, 2.11] | 1.04 [0.74, 1.47] | 0.74 [0.33, 2.70] | 1.39 [0.88, 3.39] | 0.33 [0.19, 0.47]↓ | 0.50 [0.28, 0.98]↓ | 10.96 [2.45, 23.14]↑ | 0.76 [0.23, 3.11] | 0.55 [0.31, 0.88]↓ | 1.54 [0.72, 7.90] | 0.93 [0.69, 1.16] | – | – |
+| Null B, receptor side only | 1.04 [0.66, 1.66] | 1.12 [0.82, 1.65] | 0.69 [0.32, 1.74] | 3.52 [0.93, 58.36] | 91.14 [22.96, 209.01]↑ | 9.62 [3.47, 37.81]↑ | 0.25 [0.01, 6.95] | 1.30 [0.32, 13.01] | 9.33 [1.88, 56.25]↑ | 0.88 [0.40, 2.36] | 8.56 [1.41, 25.10]↑ | 0.71 [0.09, 3.05] | – |
+| Null B, BY | 0.60 [0.34, 1.17] | – | 0.66 [0.35, 1.75] | 3.20 [1.88, 5.24]↑ | 1.77 [1.24, 2.81]↑ | – | – | – | – | – | – | 0.71 [0.09, 3.05] | – |
+| Null B, tool's rule | 0.94 [0.70, 1.49] | 1.26 [0.98, 1.63] | 0.75 [0.50, 1.52] | 2.19 [1.26, 3.67]↑ | 2.54 [1.62, 4.04]↑ | 2.93 [2.10, 4.42]↑ | 0.47 [0.02, 13.18] | 1.10 [0.39, 3.86] | 1.65 [1.01, 2.94]↑ | 0.95 [0.49, 2.26] | 1.63 [1.18, 2.26]↑ | 0.71 [0.09, 3.05] | – |
+| Null A, tool's rule | – | – | – | – | – | – | – | – | – | – | – | – | – |
+| Null B, testable family | – | 1.11 [0.77, 1.52] | 0.66 [0.35, 1.75] | – | – | 2.91 [1.73, 4.50]↑ | 0.53 [0.03, 3.88] | – | – | – | – | 0.71 [0.09, 3.05] | – |
+| Null B (#9), gate | 0.78 [0.59, 1.32] | 1.10 [0.78, 1.50] | 0.64 [0.35, 1.60] | 2.11 [1.24, 3.63]↑ | 2.69 [1.73, 4.28]↑ | 2.94 [1.78, 4.55]↑ | 0.65 [0.02, 17.43] | 1.06 [0.37, 3.35] | 1.70 [1.08, 2.94]↑ | 1.08 [0.57, 2.40] | 1.21 [0.91, 1.72] | 0.71 [0.09, 3.05] | – |
+| Null B (#9), testable | – | – | 0.67 [0.36, 1.75] | – | – | – | – | – | – | – | – | 1.22 [0.18, 4.97] | – |
+| Null B (#9), BY | 0.61 [0.31, 1.36] | – | 0.67 [0.36, 1.75] | 3.04 [1.79, 4.97]↑ | 3.13 [2.01, 5.50]↑ | – | – | 1.22 [0.41, 3.91] | 1.70 [1.08, 2.94]↑ | – | – | 1.22 [0.18, 4.97] | – |
+| **B2 (CAMERA), full** | 2.94 [1.39, 10.35]↑ (k=13) | 66.61 [15.72, 206.71]↑ (k=1) | – | – | 50.04 [31.84, 69.35]↑ (k=4) | 4.47 [1.60, 22.87]↑ (k=1) | – | 1.90 [0.77, 11.80] (k=4) | – | 3.35 [1.10, 17.62]↑ (k=1) | – | – | – |
+| B2, no correction (old premise) | 3.45 [1.63, 12.39]↑ (k=11) | 66.61 [15.72, 206.71]↑ (k=1) | – | – | – | 4.47 [1.60, 22.87]↑ (k=1) | – | 1.56 [0.65, 7.40] (k=5) | – | 3.35 [1.10, 17.62]↑ (k=1) | – | – | – |
+| B2, unmatched decoys | 3.18 [1.57, 10.73]↑ (k=12) | 7.40 [2.49, 34.64]↑ (k=1) | – | 4.35 [1.44, 27.16]↑ (k=1) | – | – | – | – | – | – | – | – | – |
+| B2, joint (sides combined) | 0.82 [0.39, 1.27] | 1.69 [0.94, 2.93] | 1.49 [0.68, 3.41] | 2.05 [0.35, 6.75] | 39.49 [6.90, 358.85]↑ | 0.28 [0.08, 1.35] | 0.75 [0.22, 4.39] (k=19) | 1.02 [0.20, 3.49] | 0.45 [0.24, 0.74]↓ | 0.55 [0.12, 1.30] | 25.93 [12.50, 73.00]↑ | 0.34 [0.10, 6.74] (k=10) | – |
+
+Notes on reading Amendment 3:
+
+- "B2, no correction" is B2 without the CAMERA variance term. It is not the October decoy null, which used a different statistic and was not rerun here.
+- Variants with 0 calls under BH or BY over a large family (#9's testable family, BY on Allen and Tabula Sapiens) are the permutation floor: the smallest p is 1/(B+1), and too few rows reach it to pass the step-up threshold.
+- Two display rules were set after seeing the results; they change no number. An odds ratio is "–" when the variant keeps none or drops none of Null A's calls (the 0.5 correction otherwise prints a number), and carries its kept count when that count is below 20.
+
 ## Status
 
 | Component | Plan | Result files | Status |
@@ -162,3 +339,8 @@ Note: the T2 part of criterion (1) holds only vacuously at cellphonedb f=1.5, ce
 | A1 hypothalamus: core | Amendment 1 | 1/1 | done |
 | A1 hypothalamus: spatial truth | Amendment 1 | 1/1 | done |
 | A2 downstream truths (CytoSig, PROGENy) | Amendment 1 | 1/1 | done |
+| A3.1 T2 small effects, B = 5,000 | Amendment 3 | 1/1 | done |
+| A3.2 #9's CellPhoneDB Null B | Amendment 3 | 5/5 | done |
+| A3.3 B2 on real data | Amendment 3 | 5/5 | done |
+| A3.3 B2 validity | Amendment 3 | 1/1 | done |
+| A3.4 ablation | Amendment 3 | 1/1 | done |
