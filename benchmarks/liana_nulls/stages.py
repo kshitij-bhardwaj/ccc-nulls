@@ -13,6 +13,7 @@ from scipy import stats as sstats
 
 from .common import AMENDMENT_DATASETS, CORE_DATASETS, OUT, amendment_hash, cpdb_database, log, rows_dir, save
 from .core import ALPHA, add_q, keyed
+from .amendment3 import part_ablation, part_b2_validity, part_extend, part_power_a3  # noqa: F401  (Amendment 3)
 
 ROOT = Path(__file__).resolve().parents[2]
 TISSUES = ["mammary", "liver"]

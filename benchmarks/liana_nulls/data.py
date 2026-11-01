@@ -82,3 +82,20 @@ def to_human(adata, species: str = "mouse"):
     out = adata[:, keep].copy()
     out.var_names = [mp[g] for g in keep]
     return out, dict(source="HCOP, min_evidence = 3, one-to-one", genes_in=int(adata.n_vars), genes_mapped=len(keep))
+
+
+def decoy_universe(name: str, n: int = 5000, seed: int = 0) -> set:
+    """Amendment 3: for Tabula Sapiens (loaded as database genes only), ``n`` genes outside every
+    database, drawn with ``seed``, to load as well so B2 has decoys. Empty for the other data sets,
+    which are loaded with all their genes."""
+    if not name.startswith("tabula_sapiens_"):
+        return set()
+    import h5py
+    import numpy as np
+
+    with h5py.File(datasets.path(name), "r") as f:
+        symbols = np.unique(datasets._h5_strings(f, "raw/var/feature_name").astype(str))
+    db = {g.upper() for g in database_genes("human") | database_genes("mouse")}
+    pool = np.array([g for g in symbols if g.upper() not in db])
+    rng = np.random.default_rng(seed)
+    return set(rng.choice(pool, min(n, len(pool)), replace=False).tolist())

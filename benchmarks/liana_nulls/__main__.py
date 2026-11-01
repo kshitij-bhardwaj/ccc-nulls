@@ -12,6 +12,10 @@ Parts:
   calibration  T1 on Tabula Sapiens: known-null data (receptor or ligand genes shuffled), shuffled labels.
   power        T2: planted edges on shuffled Tabula Sapiens Mammary.
   biology      T3: spatial colocalisation (TNBC Visium, Allen brain), cytokines, fake pairs.
+  extend       Amendment 3: Null B2 and #9's Null B added to cached core rows and liana_res.
+  power_a3     Amendment 3: T2 at f = 1.1-1.5 (B = 1,000) and f = 1.2, 1.5 (B = 5,000), every variant.
+  b2_validity  Amendment 3: B2 and its variants on shuffled labels and receptor-shuffled Tabula Sapiens.
+  ablation     Amendment 3: every variant on the five data sets: calls, overlap, spatial and downstream.
   amendment    Amendment 1 (AMENDMENT_1.md): hypothalamus MERFISH truth (needs core on
                moffitt2018_hypothalamus), downstream-response truths on every dataset.
   report       results/liana_nulls/README tables from the JSON files.
@@ -38,22 +42,25 @@ def make_tools(species: str, B: int, native: bool = True, r_cache: Path | None =
 
 def part_core(args):
     from . import core
-    from .data import load
+    from .data import decoy_universe, load
 
     for name in args.dataset or CORE_DATASETS:
         log("core:", name)
         adata, groupby, extras = load(name)
+        decoys = decoy_universe(name)                       # Amendment 3: B2's decoys for Tabula Sapiens
+        extra_adata = load(name, extra_genes=decoys)[0] if decoys else None
         r_cache = Path(datasets.data_dir()) / "cellchat_r" / f"{name}_nboot100_seed1"
         sp = extras["species"]
         rows, summary = core.run_dataset(adata, groupby, make_tools(sp, args.B, r_cache=r_cache), rows_dir() / name,
-                                         liana_resource="consensus" if sp == "human" else f"{sp}consensus", log=log)
+                                         liana_resource="consensus" if sp == "human" else f"{sp}consensus",
+                                         extra_adata=extra_adata, log=log)
         for tool, df in rows.items():
             df.to_pickle(rows_dir() / f"{name}_{tool}.pkl")
         if "liana_res" in adata.uns:
             adata.uns["liana_res"].to_pickle(rows_dir() / f"{name}_liana_res.pkl")
         save(f"core_{name}", {"dataset": name, "groupby": groupby, "B": args.B, **summary},
              amendment=name in AMENDMENT_DATASETS)
-        del adata, rows
+        del adata, rows, extra_adata
 
 
 def main():

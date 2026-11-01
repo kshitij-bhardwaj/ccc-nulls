@@ -206,7 +206,7 @@ def amendment(lines, t3_above, t3_below):
 
 
 def status(lines):
-    """One row per component: pre-registered or Amendment 1, and whether its result file exists."""
+    """One row per component: pre-registered or an amendment, and whether its result files exist."""
     rows = [("T0 fidelity + columns 1-3", "pre-registered", [f"core_{d}" for d in DATASETS[:4]]),
             ("T1 calibration", "pre-registered", ["calibration"]),
             ("T2 power", "pre-registered", ["power"]),
@@ -215,6 +215,8 @@ def status(lines):
             ("A1 hypothalamus: core", "Amendment 1", ["core_moffitt2018_hypothalamus"]),
             ("A1 hypothalamus: spatial truth", "Amendment 1", ["amendment_1"]),
             ("A2 downstream truths (CytoSig, PROGENy)", "Amendment 1", ["amendment_1"])]
+    from .report3 import STATUS_ROWS
+    rows += STATUS_ROWS
     lines += ["## Status", "", "| Component | Plan | Result files | Status |", "|---|---|---|---|"]
     for name, plan, files in rows:
         have = [f for f in files if (OUT / f"{f}.json").exists()]
@@ -251,6 +253,8 @@ def write():
     if verdict.get("t2_vacuous_at"):
         lines += [f"Note: the T2 part of criterion (1) holds only vacuously at {', '.join(verdict['t2_vacuous_at'])} "
                   "(Amendment 2).", ""]
+    from .report3 import amendment3
+    amendment3(lines)
     status(lines)
     (OUT / "README.md").write_text("\n".join(lines))
     print("\n".join(lines))

@@ -4,7 +4,8 @@
 1. ``li.mt.rank_aggregate`` (LIANA+'s consensus, unchanged) -> ``adata.uns["liana_res"]``.
 2. Each tool's LIANA+ re-implementation (the extra column).
 3. ``Tool.run``: columns 1-3 (native, our Null A, Null B); BH over the tool's family for both nulls.
-4. Our columns joined onto ``liana_res`` and the tool's LIANA+ table by (source, target, ligand
+4. Amendment 3 (``extra.add_extra``): Null B2 for both tools and #9's Null B for CellPhoneDB.
+5. Our columns joined onto ``liana_res`` and the tool's LIANA+ table by (source, target, ligand
    complex, receptor complex); the join coverage is reported, never assumed.
 """
 from __future__ import annotations
@@ -23,7 +24,9 @@ from .tools import complex_key
 ALPHA = 0.05
 KEY = ["source", "target", "ligand_complex", "receptor_complex"]
 OUR_COLUMNS = ["p_native", "call_native", "p_port_native", "p_null_a", "q_null_a", "call_null_a",
-               "p_null_b", "q_null_b", "call_null_b", "limiting_partner", "family"]
+               "p_null_b", "q_null_b", "call_null_b", "limiting_partner", "family",
+               "p_b2", "q_b2", "call_b2",                                        # Amendment 3
+               "p_null_b_pr9", "q_null_b_pr9", "call_null_b_pr9"]
 
 
 def bh_over(p, family):
@@ -100,7 +103,8 @@ def write_back(liana_res: pd.DataFrame, tool_name: str, df: pd.DataFrame) -> tup
     tmp = [f"_key_{k}" for k in KEY]
     ours = df[KEY + cols].drop_duplicates(KEY).rename(columns={c: f"{tool_name}_{c}" for c in cols})
     ours.columns = tmp + list(ours.columns[len(KEY):])
-    merged = liana_res.reset_index(drop=True).assign(**{t: lr[k].to_numpy() for t, k in zip(tmp, KEY)})
+    old = [c for c in liana_res.columns if c.startswith(f"{tool_name}_") and c[len(tool_name) + 1:] in OUR_COLUMNS]
+    merged = liana_res.drop(columns=old).reset_index(drop=True).assign(**{t: lr[k].to_numpy() for t, k in zip(tmp, KEY)})
     merged = merged.merge(ours, on=tmp, how="left").drop(columns=tmp)
     hit = merged[f"{tool_name}_p_null_a"].notna()
     in_liana = ours.merge(lr[KEY].drop_duplicates().set_axis(tmp, axis=1), on=tmp)
@@ -111,8 +115,11 @@ def write_back(liana_res: pd.DataFrame, tool_name: str, df: pd.DataFrame) -> tup
 
 
 def run_dataset(adata, groupby: str, tools: list, workdir: Path, *, liana_aggregate: bool = True,
-                liana_builtin_column: bool = True, liana_resource: str = "consensus", log=print) -> tuple[dict, dict]:
-    """Returns ({tool: rows}, summary dict); ``adata.uns["liana_res"]`` gains our columns."""
+                liana_builtin_column: bool = True, liana_resource: str = "consensus", extra_nulls: bool = True,
+                extra_adata=None, log=print) -> tuple[dict, dict]:
+    """Returns ({tool: rows}, summary dict); ``adata.uns["liana_res"]`` gains our columns.
+    ``extra_adata``: the same cells with more genes (Tabula Sapiens' decoy universe), for Amendment 3
+    only, so LIANA+ and the tools see exactly the genes they saw before."""
     import liana as li
 
     out, rows = {"n_cells": int(adata.n_obs), "n_types": int(adata.obs[groupby].nunique())}, {}
@@ -132,6 +139,9 @@ def run_dataset(adata, groupby: str, tools: list, workdir: Path, *, liana_aggreg
             ref = liana_builtin(adata, groupby, tool)
             df = df.merge(ref, on=KEY, how="left")
             meta["seconds_liana_builtin"] = round(time.time() - t0, 1)
+        if extra_nulls:
+            from .extra import add_extra
+            df, meta["amendment_3"] = add_extra(adata if extra_adata is None else extra_adata, groupby, tool, df, Path(workdir) / tool.name, tool.species, log=log)
         out[tool.name] = summary(df, tool, meta)
         if liana_aggregate:
             adata.uns["liana_res"], out[tool.name]["write_back"] = write_back(adata.uns["liana_res"], tool.name, df)
