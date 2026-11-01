@@ -88,14 +88,17 @@ pytest tools/cellchat                             # includes exact-match tests o
 | our fast Null A = our line-by-line port | **yes, exactly** | prob, p, BH q and calls identical on every TNBC row, for all three versions |
 | our permutations = the ones R draws for `set.seed(1)` | **yes** | `RRandom` reproduces 5 known R outputs |
 | the port = CellChat's R source | **by reading the code** | every formula and operation order follows R/modeling.R of the version named |
-| our numbers = what CellChat prints when run in R | **not checked** | CellChat in R was never run (the project is Python only) |
+| our numbers = what CellChat prints when run in R | **yes, exactly** | CellChat 2.1.2 in R (`run_cellchat.R`, nboot = 100, seed 1) vs the port on 5 datasets: identical genes, L-R pairs, prob, p and calls on every row (TNBC 1,757,690; Allen brain 988,701; Tabula Sapiens Mammary 508,160 and Liver 1,251,072; hypothalamus 117,888). `benchmarks/results/liana_nulls/core_*.json` |
 
 What could still differ from running CellChat in R, and why it should not:
 - `log` / `exp`: numpy matches the C library bit for bit (checked on 10⁶ values each).
 - R's `mean` uses long double; on Apple Silicon long double is double, which the port assumes.
   On x86 Linux R's `mean` may differ in the last bit, which can only flip an exact tie between a
   permuted and an observed probability.
-- presto's p-values at exactly the 0.05 boundary can only change which L-R pairs enter, not Null A.
+- presto (1.1.0, dense input as CellChat passes it) averages tied ranks in single precision: 22,207 tied
+  zeros rank 11103.63, not 11104. On very sparse genes this moves the Wilcoxon p across 0.05, so
+  the port does the same (`_presto_tie_rank`). What is left is R's `pnorm` against scipy's `ndtr`,
+  at most about 1e-16 in a p-value.
 
 ## Results: Null A on TNBC (Open Problems `tnbc_wu2021`, 42,512 cells, 29 groups)
 

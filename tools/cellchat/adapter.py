@@ -35,15 +35,15 @@ def liana_reference(adata, groupby: str = "label", **kw) -> pd.DataFrame:
     return _liana.run(adata, LIANA_METHOD, groupby, **kw)
 
 
-def prepare_inputs(adata, groupby: str, out_dir: Path | None = None) -> dict:
+def prepare_inputs(adata, groupby: str, out_dir: Path | None = None, species: str = "human") -> dict:
     """What ``computeCommunProb`` starts from, built as CellChat's tutorial pipeline does:
 
     ``subsetDB(CellChatDB.human)`` -> ``subsetData`` (data.signaling = the CellChatDB genes of
     ``adata.X``, taken as the normalised data) -> ``identifyOverExpressedGenes`` ->
     ``identifyOverExpressedInteractions`` (LRsig). Writes LRsig.csv and the gene lists to
-    ``out_dir`` if given.
+    ``out_dir`` if given. ``species``: "human" (CellChatDB.human) or "mouse" (CellChatDB.mouse).
     """
-    db = cc.subset_db(cc.load_db("human"))
+    db = cc.subset_db(cc.load_db(species))
     X, genes = cc.data_signaling(adata, db)
     codes, levels = cc.labels_and_levels(adata.obs[groupby])
     features = [genes[j] for j in cc.identify_overexpressed_genes(X, codes, len(levels))]
