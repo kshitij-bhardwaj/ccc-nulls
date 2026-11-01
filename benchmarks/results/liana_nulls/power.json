@@ -1,0 +1,2890 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 06:57",
+ "amendment_2_sha256": "bcfff59ab5eb1ccc5014da747a34681d6f0138e245918382774e1f96f48b17bf",
+ "design": {
+  "n_cells": 10000,
+  "n_pairs": 30,
+  "effects": [
+   1.5,
+   2.0,
+   3.0,
+   4.0
+  ],
+  "reps": 5,
+  "B": 1000,
+  "n_candidate_pairs": 150
+ },
+ "summary": {
+  "cellchat": {
+   "1.5": {
+    "native_rule": {
+     "power": [
+      0.9933333333333334,
+      [
+       0.9748236992986814,
+       1.0118429673679854
+      ]
+     ],
+     "fdr": [
+      0.8793742430600021,
+      [
+       0.8707059503913875,
+       0.8880425357286167
+      ]
+     ],
+     "one_sided_false_calls": 257.8,
+     "calls": 413.8
+    },
+    "null_a": {
+     "power": [
+      0.9933333333333334,
+      [
+       0.9748236992986814,
+       1.0118429673679854
+      ]
+     ],
+     "fdr": [
+      0.8436855979637752,
+      [
+       0.8152218221154424,
+       0.872149373812108
+      ]
+     ],
+     "one_sided_false_calls": 251.6,
+     "calls": 323.6
+    },
+    "null_b": {
+     "power": [
+      0.19333333333333333,
+      [
+       -0.3434460536715733,
+       0.73011272033824
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 9.6
+    },
+    "null_a_tool_rule": {
+     "power": [
+      0.9933333333333334,
+      [
+       0.9748236992986814,
+       1.0118429673679854
+      ]
+     ],
+     "fdr": [
+      0.880066591764279,
+      [
+       0.870347792183187,
+       0.889785391345371
+      ]
+     ],
+     "one_sided_false_calls": 257.8,
+     "calls": 416.6
+    },
+    "null_b_tool_rule": {
+     "power": [
+      0.9933333333333334,
+      [
+       0.9748236992986814,
+       1.0118429673679854
+      ]
+     ],
+     "fdr": [
+      0.33618003273040037,
+      [
+       0.2934214453289812,
+       0.37893862013181956
+      ]
+     ],
+     "one_sided_false_calls": 15.8,
+     "calls": 75.2
+    },
+    "reps": 5
+   },
+   "2.0": {
+    "native_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8800731397577328,
+      [
+       0.871684244312382,
+       0.8884620352030836
+      ]
+     ],
+     "one_sided_false_calls": 268.4,
+     "calls": 419.6
+    },
+    "null_a": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8478552209561174,
+      [
+       0.8194774383156161,
+       0.8762330035966187
+      ]
+     ],
+     "one_sided_false_calls": 263.6,
+     "calls": 335.8
+    },
+    "null_b": {
+     "power": [
+      0.2,
+      [
+       -0.3552890210395587,
+       0.7552890210395586
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 10.0
+    },
+    "null_a_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8805291598491636,
+      [
+       0.8718192739961083,
+       0.8892390457022189
+      ]
+     ],
+     "one_sided_false_calls": 268.4,
+     "calls": 421.4
+    },
+    "null_b_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.32028751239277553,
+      [
+       0.28256465548901766,
+       0.3580103692965334
+      ]
+     ],
+     "one_sided_false_calls": 14.6,
+     "calls": 74.0
+    },
+    "reps": 5
+   },
+   "3.0": {
+    "native_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.880341038784295,
+      [
+       0.87320777708927,
+       0.8874743004793201
+      ]
+     ],
+     "one_sided_false_calls": 272.2,
+     "calls": 420.2
+    },
+    "null_a": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8484750106986436,
+      [
+       0.8219593641150492,
+       0.874990657282238
+      ]
+     ],
+     "one_sided_false_calls": 268.0,
+     "calls": 336.4
+    },
+    "null_b": {
+     "power": [
+      0.2,
+      [
+       -0.3552890210395587,
+       0.7552890210395586
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 10.0
+    },
+    "null_a_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8806069835126402,
+      [
+       0.8735558463809566,
+       0.8876581206443238
+      ]
+     ],
+     "one_sided_false_calls": 271.6,
+     "calls": 421.2
+    },
+    "null_b_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.31312376970271705,
+      [
+       0.28391949485806384,
+       0.34232804454737026
+      ]
+     ],
+     "one_sided_false_calls": 13.8,
+     "calls": 73.2
+    },
+    "reps": 5
+   },
+   "4.0": {
+    "native_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8802972050416988,
+      [
+       0.8733086224096374,
+       0.8872857876737603
+      ]
+     ],
+     "one_sided_false_calls": 272.8,
+     "calls": 420.0
+    },
+    "null_a": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8491692412096834,
+      [
+       0.8226173384261772,
+       0.8757211439931896
+      ]
+     ],
+     "one_sided_false_calls": 269.8,
+     "calls": 338.0
+    },
+    "null_b": {
+     "power": [
+      0.2,
+      [
+       -0.3552890210395587,
+       0.7552890210395586
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 10.0
+    },
+    "null_a_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.8806512811990084,
+      [
+       0.8741466434840475,
+       0.8871559189139693
+      ]
+     ],
+     "one_sided_false_calls": 273.0,
+     "calls": 421.2
+    },
+    "null_b_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.30162758014931923,
+      [
+       0.27372537133913166,
+       0.3295297889595068
+      ]
+     ],
+     "one_sided_false_calls": 12.6,
+     "calls": 72.0
+    },
+    "reps": 5
+   }
+  },
+  "cellphonedb": {
+   "1.5": {
+    "native_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9678550579339478,
+      [
+       0.9644836411990166,
+       0.9712264746688789
+      ]
+     ],
+     "one_sided_false_calls": 753.6,
+     "calls": 1457.6
+    },
+    "null_a": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9412139579763071,
+      [
+       0.934892326258387,
+       0.9475355896942272
+      ]
+     ],
+     "one_sided_false_calls": 715.4,
+     "calls": 797.0
+    },
+    "null_b": {
+     "power": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 0.0
+    },
+    "null_a_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9675804364814778,
+      [
+       0.9641922556472318,
+       0.9709686173157239
+      ]
+     ],
+     "one_sided_false_calls": 753.4,
+     "calls": 1445.2
+    },
+    "null_b_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.5752772788838363,
+      [
+       0.4839634379637824,
+       0.6665911198038902
+      ]
+     ],
+     "one_sided_false_calls": 32.2,
+     "calls": 112.0
+    },
+    "reps": 5
+   },
+   "2.0": {
+    "native_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9676823479135809,
+      [
+       0.9640834155711919,
+       0.9712812802559698
+      ]
+     ],
+     "one_sided_false_calls": 766.0,
+     "calls": 1450.4
+    },
+    "null_a": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9439070430626055,
+      [
+       0.9371810067602678,
+       0.9506330793649432
+      ]
+     ],
+     "one_sided_false_calls": 754.4,
+     "calls": 835.8
+    },
+    "null_b": {
+     "power": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 0.0
+    },
+    "null_a_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9674215928743589,
+      [
+       0.9637985592500653,
+       0.9710446264986525
+      ]
+     ],
+     "one_sided_false_calls": 766.0,
+     "calls": 1438.8
+    },
+    "null_b_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.5582287564975017,
+      [
+       0.4799897655774339,
+       0.6364677474175695
+      ]
+     ],
+     "one_sided_false_calls": 28.2,
+     "calls": 107.0
+    },
+    "reps": 5
+   },
+   "3.0": {
+    "native_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9675284681248197,
+      [
+       0.9638903135654411,
+       0.9711666226841984
+      ]
+     ],
+     "one_sided_false_calls": 772.8,
+     "calls": 1443.6
+    },
+    "null_a": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9447664480254196,
+      [
+       0.9379255374666903,
+       0.951607358584149
+      ]
+     ],
+     "one_sided_false_calls": 768.0,
+     "calls": 849.0
+    },
+    "null_b": {
+     "power": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 0.0
+    },
+    "null_a_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9672778943650255,
+      [
+       0.9636049106748287,
+       0.9709508780552224
+      ]
+     ],
+     "one_sided_false_calls": 772.8,
+     "calls": 1432.6
+    },
+    "null_b_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.5480250253567585,
+      [
+       0.455121102052598,
+       0.640928948660919
+      ]
+     ],
+     "one_sided_false_calls": 26.4,
+     "calls": 105.0
+    },
+    "reps": 5
+   },
+   "4.0": {
+    "native_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9674286695166595,
+      [
+       0.9637286709818086,
+       0.9711286680515104
+      ]
+     ],
+     "one_sided_false_calls": 773.0,
+     "calls": 1439.4
+    },
+    "null_a": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9447743528817638,
+      [
+       0.9379000913018407,
+       0.9516486144616869
+      ]
+     ],
+     "one_sided_false_calls": 768.6,
+     "calls": 849.2
+    },
+    "null_b": {
+     "power": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "fdr": [
+      0.0,
+      [
+       0.0,
+       0.0
+      ]
+     ],
+     "one_sided_false_calls": 0.0,
+     "calls": 0.0
+    },
+    "null_a_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.9671825209822504,
+      [
+       0.9634593259297207,
+       0.9709057160347802
+      ]
+     ],
+     "one_sided_false_calls": 773.0,
+     "calls": 1428.6
+    },
+    "null_b_tool_rule": {
+     "power": [
+      1.0,
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "fdr": [
+      0.5450799262621834,
+      [
+       0.449619036977143,
+       0.6405408155472238
+      ]
+     ],
+     "one_sided_false_calls": 25.8,
+     "calls": 104.4
+    },
+    "reps": 5
+   }
+  }
+ },
+ "runs": [
+  {
+   "rep": 0,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3492,
+   "seconds": 79.3,
+   "native_rule": {
+    "calls": 370,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8702702702702703,
+    "one_sided_false_calls": 230,
+    "null_false_calls": 92
+   },
+   "null_a": {
+    "calls": 266,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8195488721804511,
+    "one_sided_false_calls": 214,
+    "null_false_calls": 4
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 364,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8681318681318682,
+    "one_sided_false_calls": 227,
+    "null_false_calls": 89
+   },
+   "null_b_tool_rule": {
+    "calls": 67,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.2835820895522388,
+    "one_sided_false_calls": 14,
+    "null_false_calls": 5
+   },
+   "n_rows": 47300,
+   "n_true_rows": 48,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1715,
+   "n_ambiguous_rows": 132
+  },
+  {
+   "rep": 0,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12343,
+   "seconds": 36.4,
+   "native_rule": {
+    "calls": 1462,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9699042407660738,
+    "one_sided_false_calls": 701,
+    "null_false_calls": 717
+   },
+   "null_a": {
+    "calls": 762,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9422572178477691,
+    "one_sided_false_calls": 655,
+    "null_false_calls": 63
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1455,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9697594501718213,
+    "one_sided_false_calls": 701,
+    "null_false_calls": 710
+   },
+   "null_b_tool_rule": {
+    "calls": 108,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5925925925925926,
+    "one_sided_false_calls": 33,
+    "null_false_calls": 31
+   },
+   "n_rows": 228536,
+   "n_true_rows": 44,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2111,
+   "n_ambiguous_rows": 33
+  },
+  {
+   "rep": 0,
+   "effect": 2.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3592,
+   "seconds": 82.2,
+   "native_rule": {
+    "calls": 375,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.872,
+    "one_sided_false_calls": 241,
+    "null_false_calls": 86
+   },
+   "null_a": {
+    "calls": 275,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8254545454545454,
+    "one_sided_false_calls": 224,
+    "null_false_calls": 3
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 370,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8702702702702703,
+    "one_sided_false_calls": 240,
+    "null_false_calls": 82
+   },
+   "null_b_tool_rule": {
+    "calls": 66,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.2727272727272727,
+    "one_sided_false_calls": 13,
+    "null_false_calls": 5
+   },
+   "n_rows": 47300,
+   "n_true_rows": 48,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1715,
+   "n_ambiguous_rows": 132
+  },
+  {
+   "rep": 0,
+   "effect": 2.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12343,
+   "seconds": 36.0,
+   "native_rule": {
+    "calls": 1468,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9700272479564033,
+    "one_sided_false_calls": 712,
+    "null_false_calls": 712
+   },
+   "null_a": {
+    "calls": 806,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9454094292803971,
+    "one_sided_false_calls": 700,
+    "null_false_calls": 62
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1461,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9698836413415469,
+    "one_sided_false_calls": 712,
+    "null_false_calls": 705
+   },
+   "null_b_tool_rule": {
+    "calls": 107,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5887850467289719,
+    "one_sided_false_calls": 32,
+    "null_false_calls": 31
+   },
+   "n_rows": 228536,
+   "n_true_rows": 44,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2111,
+   "n_ambiguous_rows": 33
+  },
+  {
+   "rep": 0,
+   "effect": 3.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3785,
+   "seconds": 81.7,
+   "native_rule": {
+    "calls": 382,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8743455497382199,
+    "one_sided_false_calls": 250,
+    "null_false_calls": 84
+   },
+   "null_a": {
+    "calls": 287,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8327526132404182,
+    "one_sided_false_calls": 238,
+    "null_false_calls": 1
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 379,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8733509234828496,
+    "one_sided_false_calls": 250,
+    "null_false_calls": 81
+   },
+   "null_b_tool_rule": {
+    "calls": 66,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.2727272727272727,
+    "one_sided_false_calls": 13,
+    "null_false_calls": 5
+   },
+   "n_rows": 47300,
+   "n_true_rows": 48,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1715,
+   "n_ambiguous_rows": 132
+  },
+  {
+   "rep": 0,
+   "effect": 3.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12343,
+   "seconds": 35.8,
+   "native_rule": {
+    "calls": 1465,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9699658703071672,
+    "one_sided_false_calls": 713,
+    "null_false_calls": 708
+   },
+   "null_a": {
+    "calls": 819,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9462759462759462,
+    "one_sided_false_calls": 713,
+    "null_false_calls": 62
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1458,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9698216735253772,
+    "one_sided_false_calls": 713,
+    "null_false_calls": 701
+   },
+   "null_b_tool_rule": {
+    "calls": 107,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5887850467289719,
+    "one_sided_false_calls": 32,
+    "null_false_calls": 31
+   },
+   "n_rows": 228536,
+   "n_true_rows": 44,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2111,
+   "n_ambiguous_rows": 33
+  },
+  {
+   "rep": 0,
+   "effect": 4.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3920,
+   "seconds": 81.7,
+   "native_rule": {
+    "calls": 383,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8746736292428199,
+    "one_sided_false_calls": 253,
+    "null_false_calls": 82
+   },
+   "null_a": {
+    "calls": 290,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8344827586206897,
+    "one_sided_false_calls": 242,
+    "null_false_calls": 0
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 383,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8746736292428199,
+    "one_sided_false_calls": 254,
+    "null_false_calls": 81
+   },
+   "null_b_tool_rule": {
+    "calls": 66,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.2727272727272727,
+    "one_sided_false_calls": 13,
+    "null_false_calls": 5
+   },
+   "n_rows": 47300,
+   "n_true_rows": 48,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1715,
+   "n_ambiguous_rows": 132
+  },
+  {
+   "rep": 0,
+   "effect": 4.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12343,
+   "seconds": 35.7,
+   "native_rule": {
+    "calls": 1464,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9699453551912568,
+    "one_sided_false_calls": 713,
+    "null_false_calls": 707
+   },
+   "null_a": {
+    "calls": 817,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9461444308445532,
+    "one_sided_false_calls": 713,
+    "null_false_calls": 60
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1456,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9697802197802198,
+    "one_sided_false_calls": 713,
+    "null_false_calls": 699
+   },
+   "null_b_tool_rule": {
+    "calls": 107,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5887850467289719,
+    "one_sided_false_calls": 32,
+    "null_false_calls": 31
+   },
+   "n_rows": 228536,
+   "n_true_rows": 44,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2111,
+   "n_ambiguous_rows": 33
+  },
+  {
+   "rep": 1,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3175,
+   "seconds": 76.5,
+   "native_rule": {
+    "calls": 422,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8767772511848341,
+    "one_sided_false_calls": 307,
+    "null_false_calls": 63
+   },
+   "null_a": {
+    "calls": 361,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8559556786703602,
+    "one_sided_false_calls": 299,
+    "null_false_calls": 10
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 430,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8790697674418605,
+    "one_sided_false_calls": 308,
+    "null_false_calls": 70
+   },
+   "null_b_tool_rule": {
+    "calls": 78,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3333333333333333,
+    "one_sided_false_calls": 18,
+    "null_false_calls": 8
+   },
+   "n_rows": 46585,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1946,
+   "n_ambiguous_rows": 121
+  },
+  {
+   "rep": 1,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11763,
+   "seconds": 35.4,
+   "native_rule": {
+    "calls": 1374,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9665211062590975,
+    "one_sided_false_calls": 768,
+    "null_false_calls": 560
+   },
+   "null_a": {
+    "calls": 783,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9412515964240102,
+    "one_sided_false_calls": 718,
+    "null_false_calls": 19
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1362,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9662261380323054,
+    "one_sided_false_calls": 767,
+    "null_false_calls": 549
+   },
+   "null_b_tool_rule": {
+    "calls": 110,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5818181818181818,
+    "one_sided_false_calls": 33,
+    "null_false_calls": 31
+   },
+   "n_rows": 223245,
+   "n_true_rows": 46,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2207,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 1,
+   "effect": 2.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3261,
+   "seconds": 77.1,
+   "native_rule": {
+    "calls": 422,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8767772511848341,
+    "one_sided_false_calls": 311,
+    "null_false_calls": 59
+   },
+   "null_a": {
+    "calls": 369,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8590785907859079,
+    "one_sided_false_calls": 307,
+    "null_false_calls": 10
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 430,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8790697674418605,
+    "one_sided_false_calls": 312,
+    "null_false_calls": 66
+   },
+   "null_b_tool_rule": {
+    "calls": 76,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3157894736842105,
+    "one_sided_false_calls": 17,
+    "null_false_calls": 7
+   },
+   "n_rows": 46585,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1946,
+   "n_ambiguous_rows": 121
+  },
+  {
+   "rep": 1,
+   "effect": 2.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11763,
+   "seconds": 35.6,
+   "native_rule": {
+    "calls": 1363,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9662509170946442,
+    "one_sided_false_calls": 786,
+    "null_false_calls": 531
+   },
+   "null_a": {
+    "calls": 833,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9447779111644657,
+    "one_sided_false_calls": 768,
+    "null_false_calls": 19
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1350,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.965925925925926,
+    "one_sided_false_calls": 786,
+    "null_false_calls": 518
+   },
+   "null_b_tool_rule": {
+    "calls": 102,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5490196078431373,
+    "one_sided_false_calls": 28,
+    "null_false_calls": 28
+   },
+   "n_rows": 223245,
+   "n_true_rows": 46,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2207,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 1,
+   "effect": 3.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3425,
+   "seconds": 78.2,
+   "native_rule": {
+    "calls": 426,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8779342723004695,
+    "one_sided_false_calls": 317,
+    "null_false_calls": 57
+   },
+   "null_a": {
+    "calls": 370,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8594594594594595,
+    "one_sided_false_calls": 310,
+    "null_false_calls": 8
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 432,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8796296296296297,
+    "one_sided_false_calls": 316,
+    "null_false_calls": 64
+   },
+   "null_b_tool_rule": {
+    "calls": 76,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3157894736842105,
+    "one_sided_false_calls": 17,
+    "null_false_calls": 7
+   },
+   "n_rows": 46585,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1946,
+   "n_ambiguous_rows": 121
+  },
+  {
+   "rep": 1,
+   "effect": 3.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11763,
+   "seconds": 34.7,
+   "native_rule": {
+    "calls": 1358,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9661266568483063,
+    "one_sided_false_calls": 802,
+    "null_false_calls": 510
+   },
+   "null_a": {
+    "calls": 853,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9460726846424384,
+    "one_sided_false_calls": 790,
+    "null_false_calls": 17
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1345,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9657992565055762,
+    "one_sided_false_calls": 802,
+    "null_false_calls": 497
+   },
+   "null_b_tool_rule": {
+    "calls": 102,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5490196078431373,
+    "one_sided_false_calls": 28,
+    "null_false_calls": 28
+   },
+   "n_rows": 223245,
+   "n_true_rows": 46,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2207,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 1,
+   "effect": 4.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3532,
+   "seconds": 80.0,
+   "native_rule": {
+    "calls": 425,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8776470588235294,
+    "one_sided_false_calls": 317,
+    "null_false_calls": 56
+   },
+   "null_a": {
+    "calls": 374,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8609625668449198,
+    "one_sided_false_calls": 314,
+    "null_false_calls": 8
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 431,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8793503480278422,
+    "one_sided_false_calls": 317,
+    "null_false_calls": 62
+   },
+   "null_b_tool_rule": {
+    "calls": 75,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.30666666666666664,
+    "one_sided_false_calls": 16,
+    "null_false_calls": 7
+   },
+   "n_rows": 46585,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1946,
+   "n_ambiguous_rows": 121
+  },
+  {
+   "rep": 1,
+   "effect": 4.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11763,
+   "seconds": 37.8,
+   "native_rule": {
+    "calls": 1351,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9659511472982976,
+    "one_sided_false_calls": 802,
+    "null_false_calls": 503
+   },
+   "null_a": {
+    "calls": 854,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9461358313817331,
+    "one_sided_false_calls": 791,
+    "null_false_calls": 17
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1340,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9656716417910448,
+    "one_sided_false_calls": 802,
+    "null_false_calls": 492
+   },
+   "null_b_tool_rule": {
+    "calls": 101,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5445544554455446,
+    "one_sided_false_calls": 27,
+    "null_false_calls": 28
+   },
+   "n_rows": 223245,
+   "n_true_rows": 46,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2207,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 2,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2775,
+   "seconds": 84.5,
+   "native_rule": {
+    "calls": 438,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8881278538812786,
+    "one_sided_false_calls": 254,
+    "null_false_calls": 135
+   },
+   "null_a": {
+    "calls": 348,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8591954022988506,
+    "one_sided_false_calls": 252,
+    "null_false_calls": 47
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 441,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8888888888888888,
+    "one_sided_false_calls": 255,
+    "null_false_calls": 137
+   },
+   "null_b_tool_rule": {
+    "calls": 79,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.379746835443038,
+    "one_sided_false_calls": 20,
+    "null_false_calls": 10
+   },
+   "n_rows": 47949,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1710,
+   "n_ambiguous_rows": 88
+  },
+  {
+   "rep": 2,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11627,
+   "seconds": 34.8,
+   "native_rule": {
+    "calls": 1512,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9715608465608465,
+    "one_sided_false_calls": 783,
+    "null_false_calls": 686
+   },
+   "null_a": {
+    "calls": 820,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.947560975609756,
+    "one_sided_false_calls": 744,
+    "null_false_calls": 33
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1494,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9712182061579652,
+    "one_sided_false_calls": 783,
+    "null_false_calls": 668
+   },
+   "null_b_tool_rule": {
+    "calls": 129,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.6666666666666666,
+    "one_sided_false_calls": 46,
+    "null_false_calls": 40
+   },
+   "n_rows": 226028,
+   "n_true_rows": 43,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2279,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 2,
+   "effect": 2.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2853,
+   "seconds": 85.6,
+   "native_rule": {
+    "calls": 434,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8870967741935484,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 126
+   },
+   "null_a": {
+    "calls": 355,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8619718309859155,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 47
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 436,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8876146788990825,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 128
+   },
+   "null_b_tool_rule": {
+    "calls": 76,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.35526315789473684,
+    "one_sided_false_calls": 18,
+    "null_false_calls": 9
+   },
+   "n_rows": 47949,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1710,
+   "n_ambiguous_rows": 88
+  },
+  {
+   "rep": 2,
+   "effect": 2.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11627,
+   "seconds": 34.7,
+   "native_rule": {
+    "calls": 1510,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.971523178807947,
+    "one_sided_false_calls": 797,
+    "null_false_calls": 670
+   },
+   "null_a": {
+    "calls": 861,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9500580720092915,
+    "one_sided_false_calls": 785,
+    "null_false_calls": 33
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1494,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9712182061579652,
+    "one_sided_false_calls": 797,
+    "null_false_calls": 654
+   },
+   "null_b_tool_rule": {
+    "calls": 117,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.6324786324786325,
+    "one_sided_false_calls": 36,
+    "null_false_calls": 38
+   },
+   "n_rows": 226028,
+   "n_true_rows": 43,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2279,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 2,
+   "effect": 3.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2972,
+   "seconds": 86.0,
+   "native_rule": {
+    "calls": 433,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8868360277136259,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 125
+   },
+   "null_a": {
+    "calls": 345,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8579710144927536,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 37
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 436,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8876146788990825,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 128
+   },
+   "null_b_tool_rule": {
+    "calls": 72,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3194444444444444,
+    "one_sided_false_calls": 14,
+    "null_false_calls": 9
+   },
+   "n_rows": 47949,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1710,
+   "n_ambiguous_rows": 88
+  },
+  {
+   "rep": 2,
+   "effect": 3.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11627,
+   "seconds": 34.8,
+   "native_rule": {
+    "calls": 1501,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9713524317121919,
+    "one_sided_false_calls": 804,
+    "null_false_calls": 654
+   },
+   "null_a": {
+    "calls": 877,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.95096921322691,
+    "one_sided_false_calls": 801,
+    "null_false_calls": 33
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1487,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9710827168796234,
+    "one_sided_false_calls": 804,
+    "null_false_calls": 640
+   },
+   "null_b_tool_rule": {
+    "calls": 113,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.6194690265486725,
+    "one_sided_false_calls": 33,
+    "null_false_calls": 37
+   },
+   "n_rows": 226028,
+   "n_true_rows": 43,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2279,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 2,
+   "effect": 4.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3064,
+   "seconds": 85.7,
+   "native_rule": {
+    "calls": 433,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8868360277136259,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 125
+   },
+   "null_a": {
+    "calls": 344,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8575581395348837,
+    "one_sided_false_calls": 258,
+    "null_false_calls": 37
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 436,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8876146788990825,
+    "one_sided_false_calls": 259,
+    "null_false_calls": 128
+   },
+   "null_b_tool_rule": {
+    "calls": 69,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.2898550724637681,
+    "one_sided_false_calls": 11,
+    "null_false_calls": 9
+   },
+   "n_rows": 47949,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1710,
+   "n_ambiguous_rows": 88
+  },
+  {
+   "rep": 2,
+   "effect": 4.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11627,
+   "seconds": 35.0,
+   "native_rule": {
+    "calls": 1498,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9712950600801068,
+    "one_sided_false_calls": 804,
+    "null_false_calls": 651
+   },
+   "null_a": {
+    "calls": 877,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.95096921322691,
+    "one_sided_false_calls": 801,
+    "null_false_calls": 33
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1484,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9710242587601078,
+    "one_sided_false_calls": 804,
+    "null_false_calls": 637
+   },
+   "null_b_tool_rule": {
+    "calls": 112,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.6160714285714286,
+    "one_sided_false_calls": 32,
+    "null_false_calls": 37
+   },
+   "n_rows": 226028,
+   "n_true_rows": 43,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2279,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 3,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2759,
+   "seconds": 76.2,
+   "native_rule": {
+    "calls": 424,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8773584905660378,
+    "one_sided_false_calls": 225,
+    "null_false_calls": 147
+   },
+   "null_a": {
+    "calls": 286,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8181818181818182,
+    "one_sided_false_calls": 222,
+    "null_false_calls": 12
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 431,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8793503480278422,
+    "one_sided_false_calls": 225,
+    "null_false_calls": 154
+   },
+   "null_b_tool_rule": {
+    "calls": 79,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.34177215189873417,
+    "one_sided_false_calls": 12,
+    "null_false_calls": 15
+   },
+   "n_rows": 43538,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1680,
+   "n_ambiguous_rows": 143
+  },
+  {
+   "rep": 3,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11747,
+   "seconds": 34.6,
+   "native_rule": {
+    "calls": 1516,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9656992084432717,
+    "one_sided_false_calls": 718,
+    "null_false_calls": 746
+   },
+   "null_a": {
+    "calls": 780,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9333333333333333,
+    "one_sided_false_calls": 696,
+    "null_false_calls": 32
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1504,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9654255319148937,
+    "one_sided_false_calls": 718,
+    "null_false_calls": 734
+   },
+   "null_b_tool_rule": {
+    "calls": 122,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.5737704918032787,
+    "one_sided_false_calls": 23,
+    "null_false_calls": 47
+   },
+   "n_rows": 223971,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2140,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 3,
+   "effect": 2.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2848,
+   "seconds": 76.7,
+   "native_rule": {
+    "calls": 424,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8773584905660378,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 144
+   },
+   "null_a": {
+    "calls": 291,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8213058419243986,
+    "one_sided_false_calls": 226,
+    "null_false_calls": 13
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 430,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8790697674418605,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 150
+   },
+   "null_b_tool_rule": {
+    "calls": 78,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3333333333333333,
+    "one_sided_false_calls": 11,
+    "null_false_calls": 15
+   },
+   "n_rows": 43538,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1680,
+   "n_ambiguous_rows": 143
+  },
+  {
+   "rep": 3,
+   "effect": 2.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11747,
+   "seconds": 34.5,
+   "native_rule": {
+    "calls": 1497,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9652638610554443,
+    "one_sided_false_calls": 725,
+    "null_false_calls": 720
+   },
+   "null_a": {
+    "calls": 802,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9351620947630923,
+    "one_sided_false_calls": 718,
+    "null_false_calls": 32
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1487,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9650302622730329,
+    "one_sided_false_calls": 725,
+    "null_false_calls": 710
+   },
+   "null_b_tool_rule": {
+    "calls": 118,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.559322033898305,
+    "one_sided_false_calls": 19,
+    "null_false_calls": 47
+   },
+   "n_rows": 223971,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2140,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 3,
+   "effect": 3.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2968,
+   "seconds": 77.7,
+   "native_rule": {
+    "calls": 421,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8764845605700713,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 141
+   },
+   "null_a": {
+    "calls": 289,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8200692041522492,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 9
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 425,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8776470588235294,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 145
+   },
+   "null_b_tool_rule": {
+    "calls": 78,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3333333333333333,
+    "one_sided_false_calls": 11,
+    "null_false_calls": 15
+   },
+   "n_rows": 43538,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1680,
+   "n_ambiguous_rows": 143
+  },
+  {
+   "rep": 3,
+   "effect": 3.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11747,
+   "seconds": 37.3,
+   "native_rule": {
+    "calls": 1492,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9651474530831099,
+    "one_sided_false_calls": 732,
+    "null_false_calls": 708
+   },
+   "null_a": {
+    "calls": 811,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.935881627620222,
+    "one_sided_false_calls": 727,
+    "null_false_calls": 32
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1482,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9649122807017544,
+    "one_sided_false_calls": 732,
+    "null_false_calls": 698
+   },
+   "null_b_tool_rule": {
+    "calls": 118,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.559322033898305,
+    "one_sided_false_calls": 19,
+    "null_false_calls": 47
+   },
+   "n_rows": 223971,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2140,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 3,
+   "effect": 4.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 3041,
+   "seconds": 78.8,
+   "native_rule": {
+    "calls": 421,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8764845605700713,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 141
+   },
+   "null_a": {
+    "calls": 289,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8200692041522492,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 9
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 424,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8773584905660378,
+    "one_sided_false_calls": 228,
+    "null_false_calls": 144
+   },
+   "null_b_tool_rule": {
+    "calls": 78,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3333333333333333,
+    "one_sided_false_calls": 11,
+    "null_false_calls": 15
+   },
+   "n_rows": 43538,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1680,
+   "n_ambiguous_rows": 143
+  },
+  {
+   "rep": 3,
+   "effect": 4.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 11747,
+   "seconds": 35.4,
+   "native_rule": {
+    "calls": 1489,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9650772330423103,
+    "one_sided_false_calls": 732,
+    "null_false_calls": 705
+   },
+   "null_a": {
+    "calls": 810,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9358024691358025,
+    "one_sided_false_calls": 726,
+    "null_false_calls": 32
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1479,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.964841108857336,
+    "one_sided_false_calls": 732,
+    "null_false_calls": 695
+   },
+   "null_b_tool_rule": {
+    "calls": 118,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.559322033898305,
+    "one_sided_false_calls": 19,
+    "null_false_calls": 47
+   },
+   "n_rows": 223971,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2140,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 4,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2011,
+   "seconds": 93.2,
+   "native_rule": {
+    "calls": 415,
+    "planted_calls": 29,
+    "power": 0.9666666666666667,
+    "fdp": 0.8843373493975903,
+    "one_sided_false_calls": 273,
+    "null_false_calls": 94
+   },
+   "null_a": {
+    "calls": 357,
+    "planted_calls": 29,
+    "power": 0.9666666666666667,
+    "fdp": 0.865546218487395,
+    "one_sided_false_calls": 271,
+    "null_false_calls": 38
+   },
+   "null_b": {
+    "calls": 48,
+    "planted_calls": 29,
+    "power": 0.9666666666666667,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 417,
+    "planted_calls": 29,
+    "power": 0.9666666666666667,
+    "fdp": 0.8848920863309353,
+    "one_sided_false_calls": 274,
+    "null_false_calls": 95
+   },
+   "null_b_tool_rule": {
+    "calls": 73,
+    "planted_calls": 29,
+    "power": 0.9666666666666667,
+    "fdp": 0.3424657534246575,
+    "one_sided_false_calls": 15,
+    "null_false_calls": 10
+   },
+   "n_rows": 51117,
+   "n_true_rows": 48,
+   "n_planted_rows": 29,
+   "n_one_sided_rows": 1572,
+   "n_ambiguous_rows": 66
+  },
+  {
+   "rep": 4,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12019,
+   "seconds": 35.7,
+   "native_rule": {
+    "calls": 1424,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9655898876404494,
+    "one_sided_false_calls": 798,
+    "null_false_calls": 577
+   },
+   "null_a": {
+    "calls": 840,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9416666666666667,
+    "one_sided_false_calls": 764,
+    "null_false_calls": 27
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1411,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9652728561304039,
+    "one_sided_false_calls": 798,
+    "null_false_calls": 564
+   },
+   "null_b_tool_rule": {
+    "calls": 91,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.46153846153846156,
+    "one_sided_false_calls": 26,
+    "null_false_calls": 16
+   },
+   "n_rows": 224939,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2201,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 4,
+   "effect": 2.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2255,
+   "seconds": 94.1,
+   "native_rule": {
+    "calls": 443,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8871331828442438,
+    "one_sided_false_calls": 303,
+    "null_false_calls": 90
+   },
+   "null_a": {
+    "calls": 389,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.87146529562982,
+    "one_sided_false_calls": 302,
+    "null_false_calls": 37
+   },
+   "null_b": {
+    "calls": 50,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 441,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8866213151927438,
+    "one_sided_false_calls": 303,
+    "null_false_calls": 88
+   },
+   "null_b_tool_rule": {
+    "calls": 74,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.32432432432432434,
+    "one_sided_false_calls": 14,
+    "null_false_calls": 10
+   },
+   "n_rows": 51480,
+   "n_true_rows": 50,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1623,
+   "n_ambiguous_rows": 66
+  },
+  {
+   "rep": 4,
+   "effect": 2.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12019,
+   "seconds": 34.8,
+   "native_rule": {
+    "calls": 1414,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9653465346534653,
+    "one_sided_false_calls": 810,
+    "null_false_calls": 555
+   },
+   "null_a": {
+    "calls": 877,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9441277080957811,
+    "one_sided_false_calls": 801,
+    "null_false_calls": 27
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1402,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9650499286733238,
+    "one_sided_false_calls": 810,
+    "null_false_calls": 543
+   },
+   "null_b_tool_rule": {
+    "calls": 91,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.46153846153846156,
+    "one_sided_false_calls": 26,
+    "null_false_calls": 16
+   },
+   "n_rows": 224939,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2201,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 4,
+   "effect": 3.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2385,
+   "seconds": 96.4,
+   "native_rule": {
+    "calls": 439,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8861047835990888,
+    "one_sided_false_calls": 307,
+    "null_false_calls": 82
+   },
+   "null_a": {
+    "calls": 391,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8721227621483376,
+    "one_sided_false_calls": 305,
+    "null_false_calls": 36
+   },
+   "null_b": {
+    "calls": 50,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 434,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8847926267281107,
+    "one_sided_false_calls": 305,
+    "null_false_calls": 79
+   },
+   "null_b_tool_rule": {
+    "calls": 74,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.32432432432432434,
+    "one_sided_false_calls": 14,
+    "null_false_calls": 10
+   },
+   "n_rows": 51480,
+   "n_true_rows": 50,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1623,
+   "n_ambiguous_rows": 66
+  },
+  {
+   "rep": 4,
+   "effect": 3.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12019,
+   "seconds": 34.7,
+   "native_rule": {
+    "calls": 1402,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9650499286733238,
+    "one_sided_false_calls": 813,
+    "null_false_calls": 540
+   },
+   "null_a": {
+    "calls": 885,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9446327683615819,
+    "one_sided_false_calls": 809,
+    "null_false_calls": 27
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1391,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9647735442127966,
+    "one_sided_false_calls": 813,
+    "null_false_calls": 529
+   },
+   "null_b_tool_rule": {
+    "calls": 85,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.4235294117647059,
+    "one_sided_false_calls": 20,
+    "null_false_calls": 16
+   },
+   "n_rows": 224939,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2201,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 4,
+   "effect": 4.0,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "n_family": 2436,
+   "seconds": 95.3,
+   "native_rule": {
+    "calls": 438,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8858447488584474,
+    "one_sided_false_calls": 307,
+    "null_false_calls": 81
+   },
+   "null_a": {
+    "calls": 393,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8727735368956743,
+    "one_sided_false_calls": 307,
+    "null_false_calls": 36
+   },
+   "null_b": {
+    "calls": 50,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 432,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.8842592592592593,
+    "one_sided_false_calls": 307,
+    "null_false_calls": 75
+   },
+   "null_b_tool_rule": {
+    "calls": 72,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.3055555555555556,
+    "one_sided_false_calls": 12,
+    "null_false_calls": 10
+   },
+   "n_rows": 51480,
+   "n_true_rows": 50,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1623,
+   "n_ambiguous_rows": 66
+  },
+  {
+   "rep": 4,
+   "effect": 4.0,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "n_family": 12019,
+   "seconds": 34.9,
+   "native_rule": {
+    "calls": 1395,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9648745519713262,
+    "one_sided_false_calls": 814,
+    "null_false_calls": 532
+   },
+   "null_a": {
+    "calls": 888,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9448198198198198,
+    "one_sided_false_calls": 812,
+    "null_false_calls": 27
+   },
+   "null_b": {
+    "calls": 0,
+    "planted_calls": 0,
+    "power": 0.0,
+    "fdp": 0.0,
+    "one_sided_false_calls": 0,
+    "null_false_calls": 0
+   },
+   "null_a_tool_rule": {
+    "calls": 1384,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.9645953757225434,
+    "one_sided_false_calls": 814,
+    "null_false_calls": 521
+   },
+   "null_b_tool_rule": {
+    "calls": 84,
+    "planted_calls": 30,
+    "power": 1.0,
+    "fdp": 0.4166666666666667,
+    "one_sided_false_calls": 19,
+    "null_false_calls": 16
+   },
+   "n_rows": 224939,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2201,
+   "n_ambiguous_rows": 0
+  }
+ ]
+}

@@ -1,0 +1,177 @@
+{
+ "slices": {
+  "-29.0": {
+   "cells": 6509,
+   "cells_per_class": {
+    "Astrocyte": 763,
+    "Endothelial": 495,
+    "Ependymal": 202,
+    "Excitatory": 1319,
+    "Inhibitory": 2013,
+    "Microglia": 135,
+    "OD Immature": 221,
+    "OD Mature": 323,
+    "Pericytes": 46
+   }
+  },
+  "-24.0": {
+   "cells": 6412,
+   "cells_per_class": {
+    "Astrocyte": 745,
+    "Endothelial": 437,
+    "Ependymal": 219,
+    "Excitatory": 1219,
+    "Inhibitory": 2219,
+    "Microglia": 106,
+    "OD Immature": 230,
+    "OD Mature": 306,
+    "Pericytes": 62
+   }
+  },
+  "-19.0": {
+   "cells": 6507,
+   "cells_per_class": {
+    "Astrocyte": 664,
+    "Endothelial": 425,
+    "Ependymal": 232,
+    "Excitatory": 1194,
+    "Inhibitory": 2607,
+    "Microglia": 121,
+    "OD Immature": 205,
+    "OD Mature": 303,
+    "Pericytes": 52
+   }
+  },
+  "-14.0": {
+   "cells": 6605,
+   "cells_per_class": {
+    "Astrocyte": 668,
+    "Endothelial": 414,
+    "Ependymal": 273,
+    "Excitatory": 1212,
+    "Inhibitory": 2730,
+    "Microglia": 140,
+    "OD Immature": 191,
+    "OD Mature": 273,
+    "Pericytes": 25
+   }
+  },
+  "-9.0": {
+   "cells": 6185,
+   "cells_per_class": {
+    "Astrocyte": 634,
+    "Endothelial": 428,
+    "Ependymal": 305,
+    "Excitatory": 1087,
+    "Inhibitory": 2530,
+    "Microglia": 108,
+    "OD Immature": 188,
+    "OD Mature": 240,
+    "Pericytes": 37
+   }
+  },
+  "-4.0": {
+   "cells": 6154,
+   "cells_per_class": {
+    "Astrocyte": 695,
+    "Endothelial": 469,
+    "Ependymal": 258,
+    "Excitatory": 1075,
+    "Inhibitory": 2283,
+    "Microglia": 119,
+    "OD Immature": 231,
+    "OD Mature": 330,
+    "Pericytes": 28
+   }
+  },
+  "1.0": {
+   "cells": 6111,
+   "cells_per_class": {
+    "Astrocyte": 646,
+    "Endothelial": 469,
+    "Ependymal": 268,
+    "Excitatory": 1180,
+    "Inhibitory": 1965,
+    "Microglia": 97,
+    "OD Immature": 200,
+    "OD Mature": 457,
+    "Pericytes": 56
+   }
+  },
+  "6.0": {
+   "cells": 6144,
+   "cells_per_class": {
+    "Astrocyte": 703,
+    "Endothelial": 605,
+    "Ependymal": 180,
+    "Excitatory": 997,
+    "Inhibitory": 1745,
+    "Microglia": 124,
+    "OD Immature": 229,
+    "OD Mature": 648,
+    "Pericytes": 112
+   }
+  },
+  "11.0": {
+   "cells": 5799,
+   "cells_per_class": {
+    "Astrocyte": 747,
+    "Endothelial": 495,
+    "Ependymal": 22,
+    "Excitatory": 1088,
+    "Inhibitory": 1576,
+    "Microglia": 114,
+    "OD Immature": 211,
+    "OD Mature": 793,
+    "Pericytes": 24
+   }
+  },
+  "16.0": {
+   "cells": 6067,
+   "cells_per_class": {
+    "Astrocyte": 726,
+    "Endothelial": 507,
+    "Ependymal": 0,
+    "Excitatory": 578,
+    "Inhibitory": 1684,
+    "Microglia": 134,
+    "OD Immature": 218,
+    "OD Mature": 1254,
+    "Pericytes": 68
+   }
+  },
+  "21.0": {
+   "cells": 5578,
+   "cells_per_class": {
+    "Astrocyte": 647,
+    "Endothelial": 487,
+    "Ependymal": 1,
+    "Excitatory": 438,
+    "Inhibitory": 1666,
+    "Microglia": 141,
+    "OD Immature": 213,
+    "OD Mature": 1136,
+    "Pericytes": 58
+   }
+  },
+  "26.0": {
+   "cells": 5584,
+   "cells_per_class": {
+    "Astrocyte": 755,
+    "Endothelial": 518,
+    "Ependymal": 1,
+    "Excitatory": 370,
+    "Inhibitory": 1743,
+    "Microglia": 133,
+    "OD Immature": 211,
+    "OD Mature": 1031,
+    "Pericytes": 70
+   }
+  }
+ },
+ "n_pairs": 72,
+ "n_colocalised": 10,
+ "k_nn": 10,
+ "n_perm": 200,
+ "z_threshold": 1.645
+}

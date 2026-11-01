@@ -1,0 +1,140 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 06:16",
+ "dataset": "tabula_sapiens_liver",
+ "groupby": "label",
+ "B": 1000,
+ "n_cells": 22214,
+ "n_types": 24,
+ "liana_rank_aggregate": {
+  "rows": 196381,
+  "resource": "consensus",
+  "seconds": 562.8
+ },
+ "cellchat": {
+  "tool": "cellchat",
+  "native_rule": "p < 0.05 and prob > 0 (subsetCommunication, thresh = 0.05)",
+  "rows": 1251072,
+  "family": 80794,
+  "calls": {
+   "1_native_tool_rule": 13366,
+   "2_our_null_a_tool_rule": 13366,
+   "2_our_null_a_bh": 12798,
+   "3_null_b_bh": 7617
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 3235,
+   "receptor": 1946
+  },
+  "fidelity": {
+   "features_sig_identical": true,
+   "n_lr_r": 2172,
+   "n_lr_python": 2172,
+   "lr_identical": true,
+   "groups_identical": true,
+   "n_rows": 1251072,
+   "prob_identical": 1251072,
+   "prob_max_abs_diff": 0.0,
+   "pval_identical": 1251072,
+   "pval_max_abs_diff": 0.0,
+   "calls_r": 13366,
+   "calls_python": 13366,
+   "calls_identical": true,
+   "calls_only_r": 0,
+   "calls_only_python": 0
+  },
+  "meta": {
+   "seconds_prepare": 6.0,
+   "seconds_port_native": 30.8,
+   "seconds_native": 0.4,
+   "native_session": [
+    "R version 4.3.2 (2023-10-31)",
+    "CellChat 2.1.2",
+    "presto 1.1.0",
+    "nboot 100",
+    "seed 1",
+    "seconds 527.6",
+    "dim prob 24 x 24 x 2172"
+   ],
+   "seconds_null_a": 292.4,
+   "seconds_null_b": 360.2,
+   "B": 1000,
+   "seed": 1,
+   "rng": "cellchat (R's generator)",
+   "species": "human",
+   "n_rows": 1251072,
+   "n_family": 80794,
+   "n_lr": 2172,
+   "n_types": 24,
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives prob > 0",
+   "seconds_liana_builtin": 314.0
+  },
+  "liana_builtin": {
+   "rows_matched": 39100,
+   "calls_p_lt_0.05": 10568,
+   "jaccard_with_native_rule": 0.9599486756484282,
+   "spearman_score": 0.9984813749445578
+  },
+  "write_back": {
+   "liana_rows": 196381,
+   "with_our_columns": 36017,
+   "our_family_rows_in_liana": 23182,
+   "our_family_rows": 80794
+  }
+ },
+ "cellphonedb": {
+  "tool": "cellphonedb",
+  "native_rule": "p <= 0.05 (significant_means, pvalue = 0.05)",
+  "rows": 1129536,
+  "family": 31315,
+  "calls": {
+   "1_native_tool_rule": 16383,
+   "2_our_null_a_tool_rule": 16383,
+   "2_our_null_a_bh": 15773,
+   "3_null_b_bh": 7203
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "receptor": 4538,
+   "ligand": 4032
+  },
+  "fidelity": {
+   "n_rows": 1653120,
+   "pval_identical": 1653120,
+   "pval_max_abs_diff": 0.0,
+   "calls_native": 23558,
+   "calls_python": 23558,
+   "calls_identical": true
+  },
+  "meta": {
+   "seconds_prepare": 1.4,
+   "seconds_native": 1655.5,
+   "seconds_null_a": 29.5,
+   "seconds_null_b": 35.7,
+   "B": 1000,
+   "seed": 0,
+   "rng": "cellphonedb (np.random.seed, shuffle)",
+   "species": "human",
+   "n_rows": 1129536,
+   "n_family": 31315,
+   "n_lr": 2870,
+   "n_types": 24,
+   "family_rule": "CellPhoneDB's gate: both partners in > 10% of their type's cells, and score > 0",
+   "score_max_abs_diff": 0.000500023365020752,
+   "seconds_liana_builtin": 1073.4
+  },
+  "liana_builtin": {
+   "rows_matched": 10745,
+   "calls_p_lt_0.05": 6461,
+   "jaccard_with_native_rule": 0.9906081601231717,
+   "spearman_score": 0.9999999999298704
+  },
+  "write_back": {
+   "liana_rows": 196381,
+   "with_our_columns": 12423,
+   "our_family_rows_in_liana": 12414,
+   "our_family_rows": 31315
+  }
+ }
+}

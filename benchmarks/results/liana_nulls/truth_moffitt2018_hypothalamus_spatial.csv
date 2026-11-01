@@ -1,0 +1,73 @@
+source,target,z_mean,n_slices,colocalised
+Astrocyte,Endothelial,4.184482133391504,12,True
+Astrocyte,Ependymal,-7.742746503942838,9,False
+Astrocyte,Excitatory,0.8478832076645881,12,False
+Astrocyte,Inhibitory,-1.9598017776557795,12,False
+Astrocyte,Microglia,0.7683442274555348,12,False
+Astrocyte,OD Immature,2.2949117811441675,12,True
+Astrocyte,OD Mature,-6.486930098115678,12,False
+Astrocyte,Pericytes,0.020318423515543582,12,False
+Endothelial,Astrocyte,4.184482133391504,12,True
+Endothelial,Ependymal,-6.794783986581359,9,False
+Endothelial,Excitatory,-2.967999839467994,12,False
+Endothelial,Inhibitory,-3.7230133790002213,12,False
+Endothelial,Microglia,0.7851879867485391,12,False
+Endothelial,OD Immature,-0.5560700161433628,12,False
+Endothelial,OD Mature,-4.464900102469579,12,False
+Endothelial,Pericytes,3.950176333862244,12,True
+Ependymal,Astrocyte,-7.742746503942838,9,False
+Ependymal,Endothelial,-6.794783986581359,9,False
+Ependymal,Excitatory,-16.045644889111372,9,False
+Ependymal,Inhibitory,-23.686456318293025,9,False
+Ependymal,Microglia,-4.135386858518062,9,False
+Ependymal,OD Immature,-5.412214968225931,9,False
+Ependymal,OD Mature,-10.231467097088723,9,False
+Ependymal,Pericytes,-3.5048800860037463,9,False
+Excitatory,Astrocyte,0.8478832076645881,12,False
+Excitatory,Endothelial,-2.967999839467994,12,False
+Excitatory,Ependymal,-16.045644889111372,9,False
+Excitatory,Inhibitory,-10.729153367228411,12,False
+Excitatory,Microglia,-1.717908400541992,12,False
+Excitatory,OD Immature,-1.2892604143900408,12,False
+Excitatory,OD Mature,-12.071415929365733,12,False
+Excitatory,Pericytes,-4.120514841565808,12,False
+Inhibitory,Astrocyte,-1.9598017776557795,12,False
+Inhibitory,Endothelial,-3.7230133790002213,12,False
+Inhibitory,Ependymal,-23.686456318293025,9,False
+Inhibitory,Excitatory,-10.729153367228411,12,False
+Inhibitory,Microglia,-1.1572067709889442,12,False
+Inhibitory,OD Immature,2.078655114041879,12,True
+Inhibitory,OD Mature,-29.42545591996887,12,False
+Inhibitory,Pericytes,-7.293904934115157,12,False
+Microglia,Astrocyte,0.7683442274555348,12,False
+Microglia,Endothelial,0.7851879867485391,12,False
+Microglia,Ependymal,-4.135386858518062,9,False
+Microglia,Excitatory,-1.717908400541992,12,False
+Microglia,Inhibitory,-1.1572067709889442,12,False
+Microglia,OD Immature,0.9060777124106664,12,False
+Microglia,OD Mature,4.320009460566805,12,True
+Microglia,Pericytes,-1.1186560885415333,12,False
+OD Immature,Astrocyte,2.2949117811441675,12,True
+OD Immature,Endothelial,-0.5560700161433628,12,False
+OD Immature,Ependymal,-5.412214968225931,9,False
+OD Immature,Excitatory,-1.2892604143900408,12,False
+OD Immature,Inhibitory,2.078655114041879,12,True
+OD Immature,Microglia,0.9060777124106664,12,False
+OD Immature,OD Mature,0.2575287607128198,12,False
+OD Immature,Pericytes,-1.4145189775606575,12,False
+OD Mature,Astrocyte,-6.486930098115678,12,False
+OD Mature,Endothelial,-4.464900102469579,12,False
+OD Mature,Ependymal,-10.231467097088723,9,False
+OD Mature,Excitatory,-12.071415929365733,12,False
+OD Mature,Inhibitory,-29.42545591996887,12,False
+OD Mature,Microglia,4.320009460566805,12,True
+OD Mature,OD Immature,0.2575287607128198,12,False
+OD Mature,Pericytes,-4.0889286835142995,12,False
+Pericytes,Astrocyte,0.020318423515543582,12,False
+Pericytes,Endothelial,3.950176333862244,12,True
+Pericytes,Ependymal,-3.5048800860037463,9,False
+Pericytes,Excitatory,-4.120514841565808,12,False
+Pericytes,Inhibitory,-7.293904934115157,12,False
+Pericytes,Microglia,-1.1186560885415333,12,False
+Pericytes,OD Immature,-1.4145189775606575,12,False
+Pericytes,OD Mature,-4.0889286835142995,12,False
