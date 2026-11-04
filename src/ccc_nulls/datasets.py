@@ -96,7 +96,7 @@ DATASETS = {
         role="held-out confirmation (benchmarks/liana_final/AMENDMENT_2.md): no ground truth",
         url="https://datasets.cellxgene.cziscience.com/fddf43a3-b7c8-49e9-ac0a-5e24b390849f.h5ad",
         filename="tabula_sapiens_lung.h5ad",
-        md5=None,
+        md5="2efb556c5950390d8d42ca7828c3f3f3",
         size=3_196_847_981,
         organism="human",
         groupby="label",
@@ -206,13 +206,15 @@ def _h5_strings(f, key):
     return np.asarray(o.asstr()[:], dtype=object)
 
 
-def load_tabula_sapiens(name: str, genes=None, min_cells: int = 5):
+def load_tabula_sapiens(name: str, genes=None, min_cells: int = 5, obs_cols=()):
     """Load a registered Tabula Sapiens tissue: AnnData with X = ln(1 + CP10k) of the raw counts.
 
     X is the raw counts (``raw/X``) scaled to 10,000 per cell, where library sizes use all genes, then
     log1p, as float32. ``var_names`` are gene symbols (``raw/var/feature_name``; duplicates keep the
     first), ``obs`` holds ``cell_type``, ``donor_id`` and ``label`` (= cell_type, the groupby), and
     cell types with fewer than ``min_cells`` cells are dropped, as LIANA does.
+
+    ``obs_cols``: further ``obs`` columns to read (e.g. ``broad_cell_class``, ``free_annotation``).
 
     ``genes``: keep only these genes (e.g. a tool's database). Library sizes still use all genes, so
     the values are the same as without it. The file is read with h5py, because it also holds a
@@ -234,7 +236,8 @@ def load_tabula_sapiens(name: str, genes=None, min_cells: int = 5):
                                    shape=(n_obs, n_var))
         symbols = _h5_strings(f, "raw/var/feature_name")
         obs = pd.DataFrame({"cell_type": _h5_strings(f, "obs/cell_type"),
-                            "donor_id": _h5_strings(f, "obs/donor_id")}, index=_h5_strings(f, "obs/_index"))
+                            "donor_id": _h5_strings(f, "obs/donor_id"),
+                            **{c: _h5_strings(f, f"obs/{c}") for c in obs_cols}}, index=_h5_strings(f, "obs/_index"))
     lib = np.asarray(counts.sum(1, dtype=np.float64)).ravel()
     keep = np.arange(n_var) if genes is None else np.where(pd.Index(symbols).isin(set(genes)))[0]
     X = sparse.csr_matrix(counts[:, keep], dtype=np.float64)

@@ -16,7 +16,7 @@ is the partial-conjunction p-value for "2 of 2 components non-null" (Benjamini &
 Biometrics 64:1215), and the joint-significance test of no mediation (MacKinnon et al. 2002,
 Psychol. Methods 7:83). No gene bins, no decoys: the tool's own score is tested.
 
-How a tool plugs in: its adapter builds a :class:`SideScore` from two callables,
+How a tool plugs in: its adapter builds a :class:`SideScore` from two callables::
 
     summarize(codes, n_types) -> per-group statistics of the genes, for the labelling ``codes``
     score(sender, receiver)   -> the tool's score, with the sender side (ligand, sender factors)

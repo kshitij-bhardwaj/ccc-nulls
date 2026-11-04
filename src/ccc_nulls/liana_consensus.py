@@ -3,7 +3,7 @@
 LIANA+ 1.8.0 ranks interactions by five methods (CellPhoneDB, Connectome, log2FC, NATMI,
 SingleCellSignalR) and aggregates their ranks (RRA). Here CellChat is the sixth. CellPhoneDB and
 CellChat are the two with a permutation null, and their p-value (the method's "specificity") can be
-replaced by one of ours. Their score (the "magnitude": ``lr_means``, ``lr_probs``) is always LIANA+'s.
+replaced by one of ours. Their score (the "magnitude": ``lr_means``, ``lr_probs``) is always LIANA+'s. The nulls::
 
     null_a   LIANA+'s own p: all labels permuted together, p = #{s_b >= s} / B (unchanged)
     null_b   the composite null (:mod:`ccc_nulls.composite`) on LIANA+'s score and LIANA+'s own
@@ -15,7 +15,7 @@ How: LIANA+ scores a permutation method with ``fun(x, perm_stats)``, where ``x``
 (source, target, complexes, the observed ligand and receptor statistics) and ``perm_stats`` the
 ligand and receptor statistics under each of its label permutations. :func:`capture` wraps ``fun``:
 LIANA+'s output is returned untouched, and Null B is computed from the same ``perm_stats``. One
-LIANA+ run then gives every variant (:func:`variants`), each aggregated by LIANA+'s own ``_aggregate``:
+LIANA+ run then gives every variant (:func:`variants`), each aggregated by LIANA+'s own ``_aggregate``::
 
     liana5        LIANA+'s rank_aggregate as shipped (five methods)
     liana6        the five plus CellChat, LIANA+'s own p (= swap_null_a)
@@ -25,8 +25,14 @@ LIANA+ run then gives every variant (:func:`variants`), each aggregated by LIANA
 
 A LIANA+ detail inherited here: for a complex, ``perm_stats`` follows the one subunit that is lowest
 under the observed labels, as LIANA+'s own permutation test does.
+
+``strata`` (e.g. donor per cell) restricts every permutation to within a stratum
+(:func:`stratified_permutations`), for Null A and Null B alike. :func:`rank_aggregate` is the
+user-facing call: LIANA+'s ``rank_aggregate`` with our null in place of the tools'.
 """
 from __future__ import annotations
+
+from contextlib import contextmanager
 
 import numpy as np
 import pandas as pd
@@ -93,19 +99,64 @@ def capture(method, store: dict):
     return Method(_method=meta)
 
 
+@contextmanager
+def stratified_permutations(strata: pd.Series):
+    """Within this block, LIANA+ permutes cell labels only within each stratum (``strata``: one value
+    per cell, indexed by obs name, e.g. the donor). Same seed handling and aggregation as LIANA+'s
+    ``_get_means_perms``; every cell must have a stratum."""
+    import liana.method.sc._liana_pipe as pipe
+    from liana.method._pipe_utils import _get_mean_perms as gm
+
+    original = pipe._get_means_perms
+
+    def perms(adata, n_perms, seed, agg_fun, norm_factor, n_jobs, verbose):
+        if isinstance(norm_factor, np.float32):
+            adata.X /= norm_factor
+        labels = adata.obs["@label"].cat.categories
+        mask = np.stack([(adata.obs["@label"] == lab).to_numpy() for lab in labels], axis=1)
+        s = strata.reindex(adata.obs_names)
+        if s.isna().any():
+            raise ValueError(f"{int(s.isna().sum())} cells have no stratum")
+        codes = pd.Categorical(s.astype(str)).codes
+        groups = [np.where(codes == k)[0] for k in np.unique(codes)]
+        rng = np.random.default_rng(seed)
+        out = np.zeros((n_perms, len(labels), adata.n_vars))
+        for b in range(n_perms):
+            idx = np.arange(adata.n_obs)
+            for g in groups:
+                idx[g] = g[rng.permutation(len(g))]
+            _, m = gm._permute_and_aggregate(b, idx, adata.X, mask, agg_fun)
+            out[b] = np.reshape(m, (len(labels), adata.n_vars))
+        return out
+
+    pipe._get_means_perms = perms
+    try:
+        yield
+    finally:
+        pipe._get_means_perms = original
+
+
 def run(adata, groupby: str, *, resource_name: str = "consensus", n_perms: int = 1000, seed: int = 1337,
-        expr_prop: float = 0.1, **kw) -> tuple[dict, dict]:
-    """One LIANA+ run of the six methods with CellPhoneDB and CellChat captured. Returns
-    ({method name: its table, keys + magnitude + specificity}, {tool: captured rows})."""
+        expr_prop: float = 0.1, strata: pd.Series | None = None, tools_only: bool = False, use_raw: bool = False,
+        **kw) -> tuple[dict, dict]:
+    """One LIANA+ run of the six methods with CellPhoneDB and CellChat captured (``tools_only``: just
+    those two). Returns ({method name: its table, keys + magnitude + specificity}, {tool: captured rows})."""
     import liana as li
     from liana.method.sc._rank_aggregate import AggregateClass, _rank_aggregate_meta
 
     store = {}
     methods = [capture(li.mt.cellphonedb, store), li.mt.connectome, li.mt.logfc, li.mt.natmi,
                li.mt.singlecellsignalr, capture(li.mt.cellchat, store)]   # CellChat last: it rescales X in place
+    if tools_only:
+        methods = [methods[0], methods[-1]]
     agg = AggregateClass(_rank_aggregate_meta, methods=methods)
-    lrs = agg(adata, groupby=groupby, resource_name=resource_name, n_perms=n_perms, seed=seed, expr_prop=expr_prop,
-              consensus_opts=False, inplace=False, use_raw=False, **kw)
+    kw = dict(groupby=groupby, resource_name=resource_name, n_perms=n_perms, seed=seed, expr_prop=expr_prop,
+              consensus_opts=False, inplace=False, use_raw=use_raw, **kw)
+    if strata is None:
+        lrs = agg(adata, **kw)
+    else:
+        with stratified_permutations(strata):
+            lrs = agg(adata, **kw)
     return lrs, store
 
 
@@ -165,3 +216,58 @@ def variants(lrs: dict, store: dict, nulls=NULLS, aggregate_method: str = "rra")
             metas.append(_meta(name, f"{mag}__{n}", f"{spec}__{n}"))
         out[f"extra_{n}"] = agg(extra, metas)
     return out
+
+
+def rank_aggregate(adata, groupby: str, *, null: str = "null_b", mode: str = "swap", resource_name: str = "consensus",
+                   n_perms: int = 1000, seed: int = 1337, expr_prop: float = 0.1, strata: str | None = None,
+                   aggregate_method: str = "rra", use_raw: bool = False, key_added: str = "liana_res",
+                   inplace: bool = True, return_tools: bool = False, **kw):
+    """LIANA+'s ``rank_aggregate`` (six methods: its five plus CellChat) with the permutation tools'
+    p-values from our null.
+
+    Parameters
+    ----------
+    adata
+        Log-normalised expression in ``X``; it is not modified.
+    groupby
+        Column of ``adata.obs`` with the cell types.
+    null
+        ``"null_b"`` (composite null: both sides must be specific) or ``"null_a"`` (LIANA+'s own p).
+    mode
+        ``"swap"``: CellPhoneDB's and CellChat's p replaced by the null's (recommended);
+        ``"extra"``: the null's p added as two more methods (7th and 8th).
+    strata
+        Optional column of ``adata.obs`` (e.g. donor): permutations stay within each stratum.
+    aggregate_method
+        ``"rra"`` (LIANA+'s default) or ``"mean"``.
+    use_raw
+        Score ``adata.raw`` instead of ``X``.
+    return_tools
+        Also return the two tools' rows with every p (``p_null_a``, ``p_L_null_b``, ``p_R_null_b``, ``p_null_b``).
+
+    Returns
+    -------
+    The consensus table (``magnitude_rank``, ``specificity_rank`` and each method's columns), also written to
+    ``adata.uns[key_added]`` when ``inplace``; with ``return_tools``, ``(table, tools)``.
+
+    Examples
+    --------
+    >>> import scanpy as sc
+    >>> from ccc_nulls import liana_consensus as lc
+    >>> adata = sc.datasets.pbmc68k_reduced()
+    >>> res = lc.rank_aggregate(adata, "bulk_labels", use_raw=True, n_perms=100, inplace=False)
+    """
+    if null not in ("null_a", "null_b"):
+        raise ValueError("null must be 'null_a' or 'null_b' (B2 needs decoy genes: see add_b2)")
+    if mode not in ("swap", "extra"):
+        raise ValueError("mode must be 'swap' or 'extra'")
+    s = adata.obs[strata].astype(str) if strata is not None else None
+    lrs, store = run(adata.copy(), groupby, resource_name=resource_name, n_perms=n_perms, seed=seed,
+                     expr_prop=expr_prop, strata=s, use_raw=use_raw, **kw)
+    V = variants(lrs, store, nulls=("null_a", "null_b"), aggregate_method=aggregate_method)
+    name = "liana6" if (null, mode) == ("null_a", "swap") else f"{mode}_{null}"
+    res = V[name].sort_values("specificity_rank", kind="stable").reset_index(drop=True)
+    if inplace:
+        adata.uns[key_added] = res
+    tools = {k: d.drop(columns="score_check") for k, d in store.items()}
+    return (res, tools) if return_tools else res
