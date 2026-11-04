@@ -1,0 +1,104 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "written": "2026-11-03 23:25",
+ "dataset": "tabula_sapiens_liver",
+ "meta": {
+  "resource": "consensus",
+  "n_perms": 1000,
+  "seed": 1337,
+  "n_cells": 22214,
+  "n_types": 24,
+  "seconds_liana": 2956.4,
+  "seconds_total": 2970.2,
+  "rows": {
+   "liana5": 196381,
+   "liana6": 196381,
+   "extra_null_a": 196381,
+   "swap_null_b": 196381,
+   "extra_null_b": 196381,
+   "swap_b2": 196381,
+   "extra_b2": 196381
+  }
+ },
+ "fidelity": {
+  "liana5_vs_rank_aggregate": {
+   "rows_ours": 196381,
+   "rows_liana": 196381,
+   "rows_matched": 196381,
+   "identical": {
+    "magnitude_rank": true,
+    "specificity_rank": true,
+    "lr_means": true,
+    "cellphone_pvals": true,
+    "expr_prod": true,
+    "lrscore": true
+   }
+  },
+  "passed": true
+ },
+ "rows": 196381,
+ "calls": {
+  "liana5": {
+   "calls": 42982,
+   "jaccard_with_liana6": 0.6006668484073228,
+   "kept_of_liana6": 28644,
+   "outside_liana6": 14338
+  },
+  "liana6": {
+   "calls": 33349,
+   "jaccard_with_liana6": 1.0,
+   "kept_of_liana6": 33349,
+   "outside_liana6": 0
+  },
+  "swap_null_b": {
+   "calls": 33740,
+   "jaccard_with_liana6": 0.7500717360114778,
+   "kept_of_liana6": 28754,
+   "outside_liana6": 4986
+  },
+  "swap_b2": {
+   "calls": 45527,
+   "jaccard_with_liana6": 0.6513000879286521,
+   "kept_of_liana6": 31110,
+   "outside_liana6": 14417
+  },
+  "extra_null_a": {
+   "calls": 39560,
+   "jaccard_with_liana6": 0.7670197038365527,
+   "kept_of_liana6": 31648,
+   "outside_liana6": 7912
+  },
+  "extra_null_b": {
+   "calls": 34632,
+   "jaccard_with_liana6": 0.7489773341223083,
+   "kept_of_liana6": 29112,
+   "outside_liana6": 5520
+  },
+  "extra_b2": {
+   "calls": 44768,
+   "jaccard_with_liana6": 0.6511033141697666,
+   "kept_of_liana6": 30805,
+   "outside_liana6": 13963
+  }
+ },
+ "tools": {
+  "CellPhoneDB": {
+   "rows": 196381,
+   "p_null_a_lt_05": 92765,
+   "p_null_b_lt_05": 44638,
+   "p_b2_lt_05": 5308,
+   "b2_gate": 0.9677871077140864,
+   "null_b_ge_null_a": 0.9877686741589053,
+   "score_max_abs_diff": 1.1920928955078125e-07
+  },
+  "CellChat": {
+   "rows": 196381,
+   "p_null_a_lt_05": 55445,
+   "p_null_b_lt_05": 30038,
+   "p_b2_lt_05": 5308,
+   "b2_gate": 0.9677871077140864,
+   "null_b_ge_null_a": 0.9977492730966845,
+   "score_max_abs_diff": 0.0
+  }
+ }
+}
