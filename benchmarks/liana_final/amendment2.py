@@ -37,6 +37,23 @@ LUNG = "tabula_sapiens_lung"
 MAMMARY = "tabula_sapiens_mammary"
 
 
+SUBSAMPLE: dict = {}          # dataset -> cells (A2.1's memory fallback: --lung-cells)
+
+
+def load_data(name: str):
+    """evaluate.load, with a dataset in SUBSAMPLE cut to that many cells, stratified by cell type (seed 0)."""
+    adata, groupby, sp, extra = load(name)
+    n = SUBSAMPLE.get(name)
+    if n and adata.n_obs > n:
+        rng = np.random.default_rng(0)
+        lab = adata.obs[groupby].astype(str).to_numpy()
+        keep = np.concatenate([rng.choice(i, max(1, int(round(n * len(i) / adata.n_obs))), replace=False)
+                               for i in (np.where(lab == t)[0] for t in np.unique(lab))])
+        adata = adata[np.sort(keep)].copy()
+        log(f"{name}: subsampled to {adata.n_obs:,} cells (stratified by {groupby}, seed 0)")
+    return adata, groupby, sp, extra
+
+
 def a2_dir():
     d = rows_dir() / "amendment2"
     d.mkdir(parents=True, exist_ok=True)
@@ -187,7 +204,7 @@ def calibration_part(part: str, name: str, *, reps=3, scenarios=("receptor", "li
                      tag="", pcal=False, **kw):
     res = Results(part)
     if adata is None:
-        adata, groupby, sp, extra = load(name)
+        adata, groupby, sp, extra = load_data(name)
     else:
         from benchmarks.liana_nulls.data import SPECIES
         sp, extra = SPECIES[name], set()
@@ -321,7 +338,7 @@ def power_part(part: str, name: str, *, effects, reps, design: str = "f2", n_cel
                rep_list=None, **kw):
     from benchmarks.liana_nulls import power
     res = Results(part)
-    adata, groupby, sp, extra = load(name)
+    adata, groupby, sp, extra = load_data(name)
     base = adata[:, ~adata.var_names.isin(list(extra))]
     singles = consensus_candidates(base)
     complexes = complex_candidates(base) if design == "hard" else None
@@ -347,7 +364,11 @@ def power_part(part: str, name: str, *, effects, reps, design: str = "f2", n_cel
 
 # ------------------------------------------------------------------ parts
 def part_confirm(args):
-    """A2.1: the frozen rule on Tabula Sapiens Lung."""
+    """A2.1: the frozen rule on Tabula Sapiens Lung (``--lung-cells``: the memory fallback)."""
+    if args.lung_cells:
+        for part in ("confirm_calibration", "confirm_power"):
+            r = Results(part)
+            r.write(lung_cells=args.lung_cells)
     calibration_part("confirm_calibration", LUNG, reps=3)
     power_part("confirm_power", LUNG, effects=(1.5, 2.0), reps=5)
 
@@ -374,7 +395,7 @@ def part_donor(args):
     from benchmarks.liana_nulls.data import SPECIES
     res = Results("donor_null")
     for name, donor in DONOR.items():
-        adata, groupby, sp, extra = load(name)
+        adata, groupby, sp, extra = load_data(name)
         a0 = liana_view(adata, extra)
         for rep in range(3):
             for scheme in ("global", "donor"):
@@ -639,7 +660,10 @@ PARTS = {"confirm": part_confirm, "hard_power": part_hard_power, "donor": part_d
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="python -m benchmarks.liana_final.amendment2")
     ap.add_argument("--part", choices=[*PARTS, "report", "all"], default="all")
+    ap.add_argument("--lung-cells", type=int, default=None, help="A2.1 fallback: Lung subsampled to this many cells")
     args = ap.parse_args(argv)
+    if args.lung_cells:
+        SUBSAMPLE[LUNG] = args.lung_cells
     for p in (PARTS if args.part == "all" else [args.part] if args.part != "report" else []):
         PARTS[p](args)
     if args.part in ("report", "all"):

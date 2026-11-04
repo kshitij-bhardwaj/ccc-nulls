@@ -281,6 +281,9 @@ def write():
           "- **Permutations (A2.5).** 5,000 permutations on Tabula Sapiens Mammary need a 2 × 5,000 × 86,000 permutation tensor "
           "(about 7 GB), beyond the 8 GB machine. The comparison was run on the hypothalamus (10,197 rows), real labels and the "
           "receptor-shuffled calibration (rep 0).", ""]
+    if cc and cc.get("lung_cells"):
+        L[-1:-1] = [f"- **Lung (A2.1, A2.3).** A full-Lung run (65,847 cells) was killed by the operating system for memory, alone on the "
+                    f"machine; as pre-registered, Lung was subsampled to {cc['lung_cells']:,} cells, stratified by cell type (seed 0)."]
     OUT2.mkdir(parents=True, exist_ok=True)
     (OUT2 / "README.md").write_text("\n".join(L) + "\n")
     print("wrote", OUT2 / "README.md")
