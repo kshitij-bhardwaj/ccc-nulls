@@ -92,6 +92,21 @@ DATASETS = {
         summary="A second organ of similar size: 22,214 cells, 4 donors. Raw counts in raw/X; "
                 "load_tabula_sapiens() normalises them to ln(1 + CP10k).",
     ),
+    "tabula_sapiens_lung": dict(
+        role="held-out confirmation (benchmarks/liana_final/AMENDMENT_2.md): no ground truth",
+        url="https://datasets.cellxgene.cziscience.com/fddf43a3-b7c8-49e9-ac0a-5e24b390849f.h5ad",
+        filename="tabula_sapiens_lung.h5ad",
+        md5=None,
+        size=3_196_847_981,
+        organism="human",
+        groupby="label",
+        sample_key="donor_id",
+        truth_keys=None,
+        collection=TABULA_SAPIENS,
+        title="Tabula Sapiens - Lung",
+        summary="A third tissue, untouched until AMENDMENT_2's rule was frozen: 65,847 cells, 4 donors. Raw "
+                "counts in raw/X; load_tabula_sapiens() normalises them to ln(1 + CP10k).",
+    ),
 }
 
 
