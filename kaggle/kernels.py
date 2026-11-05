@@ -119,6 +119,7 @@ def dispatch(only=None):
     """Push sessions whose inputs are complete; a session already complete is not pushed again."""
     todo = [k for k in SESSIONS if only is None or k in only]
     state = {k: status(k) for k in SESSIONS}
+    state |= {k: "new" for k in todo if state[k] in ("error", "cancel")}       # a failed session runs again
     while True:
         for k in todo:
             if state[k] in ("running", "queued"):
