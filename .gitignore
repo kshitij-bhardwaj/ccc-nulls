@@ -15,3 +15,5 @@ benchmarks/results/tnbc/liana_*.pkl
 benchmarks/results/tnbc/*.log
 benchmarks/results/tnbc/results_quick.json
 docs/_build/
+kaggle/build/
+kaggle/outputs/

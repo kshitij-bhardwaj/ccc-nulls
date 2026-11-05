@@ -58,7 +58,10 @@ def merge_runs(f: Path, dst: Path, machine: str) -> int:
 def merge_file(f: Path, dst: Path, machine: str) -> int:
     new = json.loads(f.read_text())
     if not dst.exists():
-        dst.write_text(json.dumps(new | {"machine": machine}, indent=1, default=str))
+        new = {"machine": machine} | new                       # a label from further upstream wins
+        if f.name == "calibration.json":
+            new["machine_by_tissue"] = {t: new["machine"] for t in new["results"]} | new.get("machine_by_tissue", {})
+        dst.write_text(json.dumps(new, indent=1, default=str))
         return 1
     old = json.loads(dst.read_text())
     _check(f.name, old, new, f.parent)
