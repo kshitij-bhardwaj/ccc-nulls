@@ -13,6 +13,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import re
 import time
 
 import numpy as np
@@ -38,6 +40,7 @@ MAMMARY = "tabula_sapiens_mammary"
 
 
 SUBSAMPLE: dict = {}          # dataset -> cells (A2.1's memory fallback: --lung-cells)
+SHARD: str | None = None      # --only: a regex; runs whose tag does not match are left to another machine
 
 
 def load_data(name: str):
@@ -69,7 +72,8 @@ class Results:
         self.obj = json.loads(self.f.read_text()) if self.f.exists() else {"runs": {}}
 
     def __contains__(self, tag):
-        return tag in self.obj["runs"]
+        """Done, or outside this machine's shard (``--only``)."""
+        return tag in self.obj["runs"] or (SHARD is not None and not re.search(SHARD, tag))
 
     def add(self, tag: str, rec: dict):
         self.obj["runs"][tag] = rec
@@ -203,6 +207,8 @@ def calibration_run(adata, groupby, sp, extra, scen, rep, only, *, pcal=False, *
 def calibration_part(part: str, name: str, *, reps=3, scenarios=("receptor", "ligand"), adata=None, groupby=None,
                      tag="", pcal=False, **kw):
     res = Results(part)
+    if all(f"{name}{tag}|{scen}|{rep}" in res for rep in range(reps) for scen in scenarios):
+        return
     if adata is None:
         adata, groupby, sp, extra = load_data(name)
     else:
@@ -338,6 +344,9 @@ def power_part(part: str, name: str, *, effects, reps, design: str = "f2", n_cel
                rep_list=None, **kw):
     from benchmarks.liana_nulls import power
     res = Results(part)
+    if all(f"{name}{tag}|{design}|f{f}|{rep}" in res for rep in (rep_list if rep_list is not None else range(reps))
+           for f in effects):
+        return
     adata, groupby, sp, extra = load_data(name)
     base = adata[:, ~adata.var_names.isin(list(extra))]
     singles = consensus_candidates(base)
@@ -395,6 +404,8 @@ def part_donor(args):
     from benchmarks.liana_nulls.data import SPECIES
     res = Results("donor_null")
     for name, donor in DONOR.items():
+        if all(f"{name}|{scheme}|{rep}" in res for rep in range(3) for scheme in ("global", "donor")):
+            continue
         adata, groupby, sp, extra = load_data(name)
         a0 = liana_view(adata, extra)
         for rep in range(3):
@@ -446,7 +457,7 @@ def part_recal(args):
 
 
 def part_sensitivity(args):
-    """A2.5 on Tabula Sapiens Mammary (permutations: the hypothalamus; see the README)."""
+    """A2.5 on Tabula Sapiens Mammary (permutations: the hypothalamus, and Mammary where memory allows)."""
     from benchmarks.liana_nulls.data import load as load_dataset
     adata, groupby, sp, extra = load(MAMMARY)
     # seeds, real labels: against the saved run (seed 1337)
@@ -498,6 +509,21 @@ def part_sensitivity(args):
     for B in (1000, 5000):
         calibration_part("sensitivity_permutations_calibration", H, reps=1, scenarios=("receptor",), adata=adata,
                          groupby=groupby, tag=f"@n_perms={B}", n_perms=B, filters=False)
+    del adata
+    # ... and, where memory allows (>= 16 GB), on Mammary as pre-registered
+    ram = os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES") / 2**30
+    if ram < 16:
+        log(f"sensitivity permutations on Mammary skipped: {ram:.0f} GB of memory, 16 GB needed")
+        return
+    t = f"real@{MAMMARY}"
+    if t not in res:
+        adata, groupby, sp, extra = load(MAMMARY)
+        tbl, _, secs = run_all(adata, groupby, sp, extra, n_perms=5000, filters=False, b2=False)
+        res.add(t, stability(table(MAMMARY), tbl) | {"seconds": secs, "dataset": MAMMARY})
+        del adata, tbl
+    for B in (1000, 5000):
+        calibration_part("sensitivity_permutations_calibration", MAMMARY, reps=1, scenarios=("receptor",),
+                         tag=f"@n_perms={B}", n_perms=B, filters=False)
 
 
 def stability(a: pd.DataFrame, b: pd.DataFrame) -> dict:
@@ -661,7 +687,12 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="python -m benchmarks.liana_final.amendment2")
     ap.add_argument("--part", choices=[*PARTS, "report", "all"], default="all")
     ap.add_argument("--lung-cells", type=int, default=None, help="A2.1 fallback: Lung subsampled to this many cells")
+    ap.add_argument("--only", default=None, metavar="REGEX",
+                    help="run only the runs whose tag matches (e.g. one machine runs '^tabula_sapiens_lung', "
+                         "another '^(?!tabula_sapiens_lung)'); the result files are merged with merge_results.py")
     args = ap.parse_args(argv)
+    global SHARD
+    SHARD = args.only
     if args.lung_cells:
         SUBSAMPLE[LUNG] = args.lung_cells
     for p in (PARTS if args.part == "all" else [args.part] if args.part != "report" else []):
