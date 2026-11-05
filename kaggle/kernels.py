@@ -21,7 +21,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 BUILD, OUTPUTS = HERE / "build", HERE / "outputs"
 MAX_ACTIVE = 5                     # Kaggle's limit on concurrent batch CPU sessions
-LF, A2 = "python -m benchmarks.liana_final", "python -m benchmarks.liana_final.amendment2"
+LF, A2, A3 = ("python -m benchmarks.liana_final", "python -m benchmarks.liana_final.amendment2",
+              "python -m benchmarks.liana_final.amendment3")
 RUNS = {"tnbc": "tnbc_wu2021", "allen": "allen_brain_atlas", "mammary": "tabula_sapiens_mammary",
         "liver": "tabula_sapiens_liver", "hypothalamus": "moffitt2018_hypothalamus"}
 LUNG = "tabula_sapiens_lung"
@@ -60,8 +61,15 @@ SESSIONS["a2-sensitivity-perms-mammary"] = S(f"{A2} --part sensitivity --only '^
                                              ["data", "run-mammary", "run-hypothalamus"])
 SESSIONS["a2-cases"] = S(f"{A2} --part cases", ["data"] + [f"run-{k}" for k in RUNS])
 SESSIONS["a2-biology"] = S(f"{A2} --part biology", ["data", "biology", "a2-donor-real"] + [f"run-{k}" for k in RUNS])
+# AMENDMENT_3.md: T2 (PR #11) in the same runs
+SESSIONS |= {f"a3-real-{k}": S(f"{A3} --part real --only '^{v}$'", ["data", f"run-{k}"]) for k, v in RUNS.items()}
+SESSIONS |= {f"a3-calibration-{k}": S(f"{A3} --part calibration --only '^{RUNS[k]}\\|'", ["data"]) for k in ("mammary", "liver")}
+SESSIONS["a3-power"] = S(f"{A3} --part power", ["data"])
+SESSIONS["a3-hard-power"] = S(f"{A3} --part hard_power", ["data"])
+SESSIONS["a3-biology"] = S(f"{A3} --part biology", ["data", "biology"] + [f"a3-real-{k}" for k in RUNS])
 # everything merged; reports and figures
-SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", "python -m benchmarks.liana_final.figures"],
+SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report",
+                        "python -m benchmarks.liana_final.figures"],
                        [k for k in SESSIONS if k != "data"])
 
 

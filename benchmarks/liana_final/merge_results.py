@@ -3,10 +3,10 @@
     python -m benchmarks.liana_final.merge_results <dir> --machine "Kaggle CPU, 32 GB"
 
 ``<dir>`` mirrors ``benchmarks/results/liana_final``: the plan's files at its top, AMENDMENT_2's in
-``amendment2/``. Rules:
+``amendment2/`` and AMENDMENT_3's in ``amendment3/``. Rules:
 
 - every file must carry the same plan and amendment SHA-256 as this checkout's, else this stops;
-- AMENDMENT_2 files hold one record per run (``--only`` shards): runs are merged and tagged with
+- AMENDMENT_2 and AMENDMENT_3 files hold one record per run (``--only`` shards): runs are merged and tagged with
   ``machine``; a run present on both sides must be identical;
 - the plan's ``calibration.json`` holds one entry per tissue (``--dataset``): tissues are merged;
 - any other file is copied if absent here; if present, it must be identical apart from ``written``.
@@ -20,7 +20,7 @@ from pathlib import Path
 from .amendment2 import OUT2
 from .pipeline import OUT
 
-SHAS = ("plan_sha256", "amendment_1_sha256", "amendment_2_sha256")
+SHAS = ("plan_sha256", "amendment_1_sha256", "amendment_2_sha256", "amendment_3_sha256")
 
 
 def _strip(d: dict, drop=("written", "machine", "merged_from")) -> dict:
@@ -81,7 +81,7 @@ def merge_file(f: Path, dst: Path, machine: str) -> int:
 
 
 def merge(src: Path, machine: str) -> None:
-    for sub, dst_dir in (("", OUT), ("amendment2", OUT2)):
+    for sub, dst_dir in (("", OUT), ("amendment2", OUT2), ("amendment3", OUT / "amendment3")):
         dst_dir.mkdir(parents=True, exist_ok=True)
         for f in sorted((src / sub).glob("*.json")):
             dst = dst_dir / f.name

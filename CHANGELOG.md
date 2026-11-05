@@ -17,6 +17,9 @@ versions follow [Semantic Versioning](https://semver.org/).
 - `lazy_permutations`: the permutation tools score rows in blocks, so LIANA+'s per-row permutation tensor
   (2 x B x rows) is never built whole; same numbers, bounded memory (Tabula Sapiens Lung needed over 30 GB).
 - Running on several machines (`--only`, `merge_results`, `RUN.md`) and on Kaggle (`kaggle/`).
+- T2, the restandardised cell-type-ID null (PR #11: `ccc_nulls.type_perm`, `ccc_nulls.nullb_type_restd`), and
+  `AMENDMENT_3.md`: T2 inside LIANA+'s consensus (`swap_t2`, `extra_t2`) on the same calibration, power, real-data
+  and biology runs as Null B.
 
 ### Changed
 - Open Problems disabled its S3 bucket: TNBC and Allen brain come from a mirror with the original md5 sums.

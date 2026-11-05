@@ -63,7 +63,7 @@ magnitude scores and the rank aggregation are LIANA+'s own. Details: [Method](do
 
 The benchmark was pre-registered ([`PLAN.md`](benchmarks/liana_final/PLAN.md), then
 [`AMENDMENT_1.md`](benchmarks/liana_final/AMENDMENT_1.md) and
-[`AMENDMENT_2.md`](benchmarks/liana_final/AMENDMENT_2.md), each hashed before its runs). It covers six data sets:
+[`AMENDMENT_2.md`](benchmarks/liana_final/AMENDMENT_2.md) and [`AMENDMENT_3.md`](benchmarks/liana_final/AMENDMENT_3.md), each hashed before its runs). AMENDMENT_3 adds a second Null B candidate, T2 (a leave-one-out test of each cell-type pair against the interaction's other pairs), to the same runs. It covers six data sets:
 the two Open Problems communication sets that LIANA+'s authors built (TNBC and Allen brain), Tabula Sapiens
 Mammary, Liver and Lung, and the mouse hypothalamus. Full results: [Benchmark](docs/benchmark.md).
 
