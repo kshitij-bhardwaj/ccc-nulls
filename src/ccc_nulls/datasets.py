@@ -14,6 +14,7 @@ import hashlib
 import os
 import sys
 import tempfile
+import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -131,8 +132,8 @@ def md5sum(p: Path, chunk: int = 1 << 24) -> str:
 
 
 def _fetch_range(url: str, start: int, end: int, dest: Path, retries: int = 5) -> None:
-    want = end - start + 1
-    for _ in range(retries):
+    want, err = end - start + 1, None
+    for i in range(retries):
         req = urllib.request.Request(url, headers={"Range": f"bytes={start}-{end}"})
         try:
             with urllib.request.urlopen(req, timeout=120) as r, open(dest, "wb") as f:
@@ -140,9 +141,10 @@ def _fetch_range(url: str, start: int, end: int, dest: Path, retries: int = 5) -
                     f.write(block)
             if dest.stat().st_size == want:
                 return
-        except OSError:
-            pass
-    raise RuntimeError(f"failed to fetch bytes {start}-{end} of {url}")
+        except OSError as e:
+            err = e
+        time.sleep(2 ** i)
+    raise RuntimeError(f"failed to fetch bytes {start}-{end} of {url}: {err}")
 
 
 def download(name: str, parts: int = 16, force: bool = False) -> Path:

@@ -41,6 +41,7 @@ KEY = ["source", "target", "ligand_complex", "receptor_complex"]
 NULLS = ("null_a", "null_b", "b2")
 TOOLS = {"CellPhoneDB": ("lr_means", "cellphone_pvals"), "CellChat": ("lr_probs", "cellchat_pvals")}
 CHUNK = 20_000
+ROWS_AT_ONCE = 100_000      # rows scored at once: their permutation statistics are 2 x B x rows float64
 
 
 def _cpdb(L, R):
@@ -84,8 +85,17 @@ def capture(method, store: dict):
     score, (lcol, rcol) = SCORES[name]
 
     def fun(x, perm_stats):
-        mag, p = method.fun(x, perm_stats)
-        nb = side_p(score, x[lcol].to_numpy(), x[rcol].to_numpy(), perm_stats)
+        # LIANA+'s scores and ours are row by row, so rows are scored in blocks (see lazy_permutations)
+        lazy = isinstance(perm_stats, _PermStats)
+        blocks = [slice(a, a + ROWS_AT_ONCE) for a in range(0, len(x), ROWS_AT_ONCE)] if lazy else [slice(None)]
+        out = []
+        for z in blocks:
+            xz, ps = x.iloc[z], perm_stats.rows(z) if lazy else perm_stats
+            mag, p = method.fun(xz, ps)
+            nb = side_p(score, xz[lcol].to_numpy(), xz[rcol].to_numpy(), ps)
+            out.append((np.asarray(mag), np.asarray(p), nb))
+        mag, p = (np.concatenate([o[i] for o in out]) for i in (0, 1))
+        nb = {k: np.concatenate([o[2][k] for o in out]) for k in out[0][2]}
         store[name] = pd.DataFrame({**{k: x[k].to_numpy() for k in KEY + ["ligand", "receptor"]},
                                     "magnitude": mag, "p_null_a": p, "p_L_null_b": nb["p_L"],
                                     "p_R_null_b": nb["p_R"], "p_null_b": nb["p"],
@@ -97,6 +107,63 @@ def capture(method, store: dict):
                       specificity=method.specificity, specificity_ascending=method.specificity_ascending,
                       permute=method.permute, reference=method.reference)
     return Method(_method=meta)
+
+
+class _PermStats:
+    """LIANA+'s ``perm_stats`` (2, B, rows) before it is built: ``rows(z)`` builds rows ``z`` only."""
+
+    def __init__(self, cube, sides):
+        self.cube, self.sides = cube, sides          # sides: [(cell types, genes)] for ligand, receptor
+        self.shape = (2, cube.shape[0], len(sides[0][0]))
+
+    def rows(self, z):
+        return np.stack([self.cube[:, c[z], g[z]] for c, g in self.sides], axis=0)
+
+    def __array__(self, dtype=None, copy=None):      # any other consumer gets the whole array, as in LIANA+
+        a = self.rows(slice(None))
+        return a if dtype is None else a.astype(dtype)
+
+
+class _Side:
+    """``perms[:, cell types, genes]`` not yet taken; ``np.stack`` of the two sides gives a ``_PermStats``."""
+
+    def __init__(self, cube, c, g):
+        self.cube, self.c, self.g = cube, c, g
+
+    def __array_function__(self, func, types, args, kwargs):
+        if func is np.stack and kwargs.get("axis", 0) == 0 and all(isinstance(a, _Side) for a in args[0]):
+            return _PermStats(self.cube, [(a.c, a.g) for a in args[0]])
+        return func(*[np.asarray(self.cube[:, self.c, self.g]) if a is self else a for a in args], **kwargs)
+
+    def __array__(self, dtype=None, copy=None):
+        a = self.cube[:, self.c, self.g]
+        return a if dtype is None else a.astype(dtype)
+
+
+class _Cube:
+    def __init__(self, a):
+        self.a, self.shape = a, a.shape
+
+    def __getitem__(self, key):
+        if isinstance(key, tuple) and len(key) == 3 and key[0] == slice(None):
+            return _Side(self.a, np.asarray(key[1]), np.asarray(key[2]))
+        return self.a[key]
+
+
+@contextmanager
+def lazy_permutations():
+    """Within this block LIANA+ does not build ``perm_stats`` for every row at once: the captured tools
+    score rows in blocks of ``ROWS_AT_ONCE``. Same permutations, same arithmetic per row, so the same
+    numbers; memory is 2 x B x ROWS_AT_ONCE floats instead of 2 x B x rows (over 30 GB on Tabula
+    Sapiens Lung: 34 cell types)."""
+    import liana.method.sc._liana_pipe as pipe
+
+    inner = pipe._get_means_perms
+    pipe._get_means_perms = lambda *a, **k: _Cube(inner(*a, **k))
+    try:
+        yield
+    finally:
+        pipe._get_means_perms = inner
 
 
 @contextmanager
@@ -153,9 +220,10 @@ def run(adata, groupby: str, *, resource_name: str = "consensus", n_perms: int =
     kw = dict(groupby=groupby, resource_name=resource_name, n_perms=n_perms, seed=seed, expr_prop=expr_prop,
               consensus_opts=False, inplace=False, use_raw=use_raw, **kw)
     if strata is None:
-        lrs = agg(adata, **kw)
+        with lazy_permutations():
+            lrs = agg(adata, **kw)
     else:
-        with stratified_permutations(strata):
+        with stratified_permutations(strata), lazy_permutations():
             lrs = agg(adata, **kw)
     return lrs, store
 

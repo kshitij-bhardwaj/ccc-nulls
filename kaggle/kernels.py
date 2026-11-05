@@ -100,7 +100,8 @@ def build():
         (d / "kernel-metadata.json").write_text(json.dumps({
             "id": f"{OWNER}/{slug(k)}", "title": slug(k), "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False, "enable_internet": True,
-            "dataset_sources": [f"{OWNER}/ccc-nulls-code"] + ([] if s.get("download") else [f"{OWNER}/ccc-nulls-aux"]),
+            "dataset_sources": [f"{OWNER}/ccc-nulls-code"] + ([f"{OWNER}/ccc-nulls-openproblems"] if s.get("download")
+                                                             else [f"{OWNER}/ccc-nulls-aux"]),
             "kernel_sources": [f"{OWNER}/{slug(n)}" for n in s["needs"]], "competition_sources": [], "model_sources": []},
             indent=1))
     print(f"built {len(SESSIONS)} sessions in {BUILD}")

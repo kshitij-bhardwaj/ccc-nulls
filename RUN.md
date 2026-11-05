@@ -18,6 +18,10 @@ export CCC_NULLS_DATA=$PWD/data PYTHONPATH=$PWD                    # put both in
 python -m ccc_nulls.datasets tnbc_wu2021 allen_brain_atlas tabula_sapiens_mammary tabula_sapiens_liver tabula_sapiens_lung
 ```
 
+Open Problems disabled its S3 bucket (`s3://openproblems-data`, `AllAccessDisabled` on 2026-11-05), so TNBC and
+Allen brain no longer download. Copies taken before that are the Kaggle dataset `kshitijbhardwaj1729/ccc-nulls-openproblems`
+(private: ask to be added); put the two files in `data/` and the command above checks them against the original md5.
+
 The auxiliary inputs (CellChat and CellPhoneDB databases, CytoSig and PROGENy, HCOP, the processed
 hypothalamus) are one archive, `ccc-nulls-aux.tgz` (200 MB). It is the Kaggle dataset `kshitijbhardwaj1729/ccc-nulls-aux`,
 which is private: ask to be added, or copy it from a teammate. Then:

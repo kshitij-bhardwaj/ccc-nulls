@@ -157,3 +157,17 @@ def test_rank_aggregate_public_call(adata):
     assert a.uns["liana_res"] is res and res.specificity_rank.is_monotonic_increasing
     cp = _merge(res, tools["CellPhoneDB"])
     np.testing.assert_array_equal(cp.cellphone_pvals, cp.p_null_b)
+
+
+def test_rows_in_blocks_give_the_same_numbers(adata, run, monkeypatch):
+    """lazy_permutations: rows scored 7 at a time give exactly what one block gives (and LIANA+'s own
+    outputs are checked against li.mt.* above, through the same path)."""
+    monkeypatch.setattr(lc, "ROWS_AT_ONCE", 7)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        lrs, store = lc.run(adata.copy(), "type", n_perms=N_PERMS, seed=SEED)
+    for tool, d in store.items():
+        assert len(d) > 7
+        pd.testing.assert_frame_equal(d, run[1][tool][d.columns])     # other tests add p_b2 to the fixture
+    for k, t in lrs.items():
+        pd.testing.assert_frame_equal(t, run[0][k])

@@ -14,6 +14,12 @@ versions follow [Semantic Versioning](https://semver.org/).
   fidelity, calibration, power, biology, held-out confirmation, sensitivity, donor structure, filter
   baselines, p-value calibration, a second species, case studies, run time.
 - Tabula Sapiens Lung in the dataset registry.
+- `lazy_permutations`: the permutation tools score rows in blocks, so LIANA+'s per-row permutation tensor
+  (2 x B x rows) is never built whole; same numbers, bounded memory (Tabula Sapiens Lung needed over 30 GB).
+- Running on several machines (`--only`, `merge_results`, `RUN.md`) and on Kaggle (`kaggle/`).
+
+### Changed
+- Open Problems disabled its S3 bucket: TNBC and Allen brain come from a mirror with the original md5 sums.
 - `requirements/lock-liana-final.txt`: the environment the results were produced in.
 - Documentation (Sphinx), a quickstart notebook, continuous integration, BSD-3-Clause licence, `CITATION.cff`.
 

@@ -44,11 +44,16 @@ sh("pip install -q uv")
 sh(f"uv venv {os.path.dirname(os.path.dirname(PY))} --python 3.12 --python-preference only-managed -q")
 sh(f"uv pip install -q --python {PY} -r {CODE}/requirements/lock-liana-final.txt")
 sh(f"uv pip install -q --python {PY} --no-deps -e {CODE}")
-env = dict(os.environ, CCC_NULLS_DATA=DATA, PYTHONPATH=f"{CODE}:{CODE}/src", PYTHONUNBUFFERED="1")
+env = dict(os.environ, CCC_NULLS_DATA=DATA, PYTHONPATH=f"{CODE}:{CODE}/src", PYTHONUNBUFFERED="1",
+           PATH=f"{os.path.dirname(PY)}:{os.environ['PATH']}")
 os.makedirs(f"{DATA}/liana_final", exist_ok=True)
 
 # ---------------------------------------------------------------- data
 if DOWNLOAD:
+    # Open Problems disabled its bucket (s3://openproblems-data, checked 2026-11-05): TNBC and Allen brain come from
+    # the mirror dataset ccc-nulls-openproblems and must match the md5 in ccc_nulls.datasets; Tabula Sapiens from CELLxGENE.
+    for f in find("*_log_cp10k.h5ad"):
+        shutil.copy(f, DATA)
     sh(f"{PY} -m ccc_nulls.datasets tnbc_wu2021 allen_brain_atlas tabula_sapiens_mammary tabula_sapiens_liver "
        "tabula_sapiens_lung", cwd=CODE, env=env)
 else:
@@ -75,8 +80,8 @@ start = time.time()
 os.makedirs(OUT, exist_ok=True)
 status = "complete"
 try:
-    for c in COMMANDS:
-        sh(c, cwd=CODE, env=env)
+    for c in COMMANDS:          # under kaggle/watch.py: memory every minute, the stack every 5 minutes
+        sh(c.replace("python -m ", f"python {CODE}/kaggle/watch.py ", 1), cwd=CODE, env=env)
 except subprocess.CalledProcessError as e:
     status = f"failed: {e.cmd}"
     raise
