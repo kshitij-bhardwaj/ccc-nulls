@@ -6,17 +6,19 @@ Inputs:
 
 - code: [ccc-nulls-code](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-code) (`git archive` of the commit in `COMMIT`)
 - auxiliary files: [ccc-nulls-aux](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux) (md5: `benchmarks/liana_final/aux_files.md5`)
-- h5ad files: the output of [ccc-nulls-data](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-data), downloaded from Open Problems and CELLxGENE, md5-checked
+- h5ad files: the output of [ccc-nulls-data](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-data): Tabula Sapiens from CELLxGENE, TNBC and Allen brain from the [Open Problems copies](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems) (the Open Problems bucket is closed), all md5-checked
+
+The sessions and data sets are private to the project team; to be added as a collaborator, ask a maintainer.
 
 | Session | Needs | Command | Run time |
 |---|---|---|---|
 | [data](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-data) | – | download the five h5ad files |  |
-| [run-tnbc](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-tnbc) | – | `python -m benchmarks.liana_final --part run --dataset tnbc_wu2021` |  |
-| [run-allen](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-allen) | – | `python -m benchmarks.liana_final --part run --dataset allen_brain_atlas` |  |
-| [run-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-mammary) | – | `python -m benchmarks.liana_final --part run --dataset tabula_sapiens_mammary` |  |
-| [run-liver](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-liver) | – | `python -m benchmarks.liana_final --part run --dataset tabula_sapiens_liver` |  |
-| [run-hypothalamus](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-hypothalamus) | – | `python -m benchmarks.liana_final --part run --dataset moffitt2018_hypothalamus` |  |
-| [calibration-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-calibration-mammary) | – | `python -m benchmarks.liana_final --part calibration --dataset tabula_sapiens_mammary` |  |
+| [run-tnbc](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-tnbc) | – | `python -m benchmarks.liana_final --part run --dataset tnbc_wu2021` | 0.9 h |
+| [run-allen](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-allen) | – | `python -m benchmarks.liana_final --part run --dataset allen_brain_atlas` | 0.4 h |
+| [run-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-mammary) | – | `python -m benchmarks.liana_final --part run --dataset tabula_sapiens_mammary` | 0.6 h |
+| [run-liver](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-liver) | – | `python -m benchmarks.liana_final --part run --dataset tabula_sapiens_liver` | 0.6 h |
+| [run-hypothalamus](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-hypothalamus) | – | `python -m benchmarks.liana_final --part run --dataset moffitt2018_hypothalamus` | 1.0 h |
+| [calibration-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-calibration-mammary) | – | `python -m benchmarks.liana_final --part calibration --dataset tabula_sapiens_mammary` | 3.9 h |
 | [calibration-liver](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-calibration-liver) | – | `python -m benchmarks.liana_final --part calibration --dataset tabula_sapiens_liver` |  |
 | [power](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-power) | – | `python -m benchmarks.liana_final --part power` |  |
 | [biology](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-biology) | run-tnbc, run-allen, run-mammary, run-liver, run-hypothalamus | `python -m benchmarks.liana_final --part biology` |  |

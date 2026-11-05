@@ -4,6 +4,7 @@
 [![Docs](https://github.com/kshitij-bhardwaj/ccc-nulls/actions/workflows/docs.yml/badge.svg)](https://kshitij-bhardwaj.github.io/ccc-nulls/)
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+[![Kaggle runs](https://img.shields.io/badge/Kaggle-benchmark%20runs-20BEFF?logo=kaggle&logoColor=white)](kaggle/README.md)
 
 **Is the sender specific *and* the receiver specific?**
 
@@ -66,6 +67,13 @@ The benchmark was pre-registered ([`PLAN.md`](benchmarks/liana_final/PLAN.md), t
 the two Open Problems communication sets that LIANA+'s authors built (TNBC and Allen brain), Tabula Sapiens
 Mammary, Liver and Lung, and the mouse hypothalamus. Full results: [Benchmark](docs/benchmark.md).
 
+The benchmark runs on Kaggle (4 CPUs, 32 GB per session), one session per part, from one commit and the locked
+environment. Each result file records the link of the session that produced it, and
+[`kaggle/README.md`](kaggle/README.md) lists every session with its link, inputs, command and run time. The inputs
+are three Kaggle data sets: the [code](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-code) (a `git archive` of the commit), the [auxiliary files](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux)
+(ligand–receptor databases, CytoSig, PROGENy, HCOP) and the [Open Problems copies](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems). The sessions and data sets
+are private to the project team; to be added as a collaborator, ask a maintainer.
+
 <!-- RESULTS -->
 
 ## Reproducing
@@ -76,7 +84,7 @@ make data       # ~9 GB, md5-checked
 make reproduce  # every result in benchmarks/results/liana_final/
 ```
 
-To split the runs across machines or run over SSH, see [`RUN.md`](RUN.md). Every part resumes where it stopped. Every result file records the SHA-256 of the plan and amendments it was
+To rerun everything on Kaggle, see [`kaggle/README.md`](kaggle/README.md). To split the runs across machines or run over SSH, see [`RUN.md`](RUN.md). Every part resumes where it stopped. Every result file records the SHA-256 of the plan and amendments it was
 produced under. See [Reproducibility](docs/reproducibility.md).
 
 ## Repository layout

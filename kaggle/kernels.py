@@ -173,7 +173,10 @@ def readme():
          f"- code: [ccc-nulls-code](https://www.kaggle.com/datasets/{OWNER}/ccc-nulls-code) (`git archive` of the commit in `COMMIT`)",
          f"- auxiliary files: [ccc-nulls-aux](https://www.kaggle.com/datasets/{OWNER}/ccc-nulls-aux) "
          "(md5: `benchmarks/liana_final/aux_files.md5`)",
-         f"- h5ad files: the output of [ccc-nulls-data]({url('data')}), downloaded from Open Problems and CELLxGENE, md5-checked", "",
+         f"- h5ad files: the output of [ccc-nulls-data]({url('data')}): Tabula Sapiens from CELLxGENE, TNBC and Allen brain "
+         f"from the [Open Problems copies](https://www.kaggle.com/datasets/{OWNER}/ccc-nulls-openproblems) (the Open Problems "
+         "bucket is closed), all md5-checked", "",
+         "The sessions and data sets are private to the project team; to be added as a collaborator, ask a maintainer.", "",
          "| Session | Needs | Command | Run time |", "|---|---|---|---|"]
     for k, s in SESSIONS.items():
         f = OUTPUTS / slug(k) / "out" / "session.json"

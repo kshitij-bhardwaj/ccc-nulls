@@ -19,12 +19,12 @@ python -m ccc_nulls.datasets tnbc_wu2021 allen_brain_atlas tabula_sapiens_mammar
 ```
 
 Open Problems disabled its S3 bucket (`s3://openproblems-data`, `AllAccessDisabled` on 2026-11-05), so TNBC and
-Allen brain no longer download. Copies taken before that are the Kaggle dataset `kshitijbhardwaj1729/ccc-nulls-openproblems`
-(private: ask to be added); put the two files in `data/` and the command above checks them against the original md5.
+Allen brain no longer download. Copies taken before that are the Kaggle dataset [`kshitijbhardwaj1729/ccc-nulls-openproblems`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems)
+(private: ask to be added as a collaborator); put the two files in `data/` and the command above checks them against the original md5.
 
 The auxiliary inputs (CellChat and CellPhoneDB databases, CytoSig and PROGENy, HCOP, the processed
-hypothalamus) are one archive, `ccc-nulls-aux.tgz` (200 MB). It is the Kaggle dataset `kshitijbhardwaj1729/ccc-nulls-aux`,
-which is private: ask to be added, or copy it from a teammate. Then:
+hypothalamus) are one archive, `ccc-nulls-aux.tgz` (200 MB). It is the Kaggle dataset [`kshitijbhardwaj1729/ccc-nulls-aux`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux),
+which is private: ask to be added as a collaborator, or copy it from a teammate. Then:
 
 ```bash
 tar xzf ccc-nulls-aux.tgz -C data
@@ -57,6 +57,8 @@ matches, so a tissue or a replicate can go to another machine.
 
 "`run` tables" are the files `data/liana_final/<name>_wide.pkl` and `<name>_store.pkl`. Copy `data/liana_final/`
 between machines when a later step runs elsewhere.
+
+No machine with 32 GB? Every step also runs on Kaggle: [`kaggle/README.md`](kaggle/README.md).
 
 ## 4. Collect
 
