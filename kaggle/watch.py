@@ -1,5 +1,6 @@
 """python kaggle/watch.py <module> [args]: run ``python -m <module>`` printing memory every minute (resident,
-peak, available) and every thread's stack every 5 minutes, so a session killed for memory shows where."""
+peak, available), and the stack on a fatal signal. (Periodic stack dumps, ``faulthandler.dump_traceback_later``,
+read other threads without the GIL and crashed a session with SIGSEGV; they are not used.)"""
 import faulthandler
 import runpy
 import sys
@@ -20,6 +21,6 @@ def loop():
 
 
 threading.Thread(target=loop, daemon=True).start()
-faulthandler.dump_traceback_later(300, repeat=True)
+faulthandler.enable()
 mod, sys.argv = sys.argv[1], [sys.argv[1]] + sys.argv[2:]
 runpy.run_module(mod, run_name="__main__", alter_sys=True)
