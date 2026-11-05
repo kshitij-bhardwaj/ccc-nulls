@@ -20,6 +20,8 @@ versions follow [Semantic Versioning](https://semver.org/).
 - T2, the restandardised cell-type-ID null (PR #11: `ccc_nulls.type_perm`, `ccc_nulls.nullb_type_restd`), and
   `AMENDMENT_3.md`: T2 inside LIANA+'s consensus (`swap_t2`, `extra_t2`) on the same calibration, power, real-data
   and biology runs as Null B.
+- `AMENDMENT_4.md`: T2 on the rest of AMENDMENT_2 (Lung, donor-aware permutations, sensitivity, mouse, what it
+  drops, timing).
 
 ### Changed
 - Open Problems disabled its S3 bucket: TNBC and Allen brain come from a mirror with the original md5 sums.

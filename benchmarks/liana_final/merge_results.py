@@ -3,24 +3,25 @@
     python -m benchmarks.liana_final.merge_results <dir> --machine "Kaggle CPU, 32 GB"
 
 ``<dir>`` mirrors ``benchmarks/results/liana_final``: the plan's files at its top, AMENDMENT_2's in
-``amendment2/`` and AMENDMENT_3's in ``amendment3/``. Rules:
+``amendment2/``, AMENDMENT_3's in ``amendment3/`` and AMENDMENT_4's in ``amendment4/``. Rules:
 
 - every file must carry the same plan and amendment SHA-256 as this checkout's, else this stops;
-- AMENDMENT_2 and AMENDMENT_3 files hold one record per run (``--only`` shards): runs are merged and tagged with
+- AMENDMENT_2, 3 and 4 files hold one record per run (``--only`` shards): runs are merged and tagged with
   ``machine``; a run present on both sides must be identical;
 - the plan's ``calibration.json`` holds one entry per tissue (``--dataset``): tissues are merged;
-- any other file is copied if absent here; if present, it must be identical apart from ``written``.
+- any other file (``.csv`` included) is copied if absent here; if present, it must be identical apart from ``written``.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import shutil
 from pathlib import Path
 
 from .amendment2 import OUT2
 from .pipeline import OUT
 
-SHAS = ("plan_sha256", "amendment_1_sha256", "amendment_2_sha256", "amendment_3_sha256")
+SHAS = ("plan_sha256", "amendment_1_sha256", "amendment_2_sha256", "amendment_3_sha256", "amendment_4_sha256")
 
 
 def _strip(d: dict, drop=("written", "machine", "merged_from")) -> dict:
@@ -81,12 +82,17 @@ def merge_file(f: Path, dst: Path, machine: str) -> int:
 
 
 def merge(src: Path, machine: str) -> None:
-    for sub, dst_dir in (("", OUT), ("amendment2", OUT2), ("amendment3", OUT / "amendment3")):
+    for sub, dst_dir in (("", OUT), ("amendment2", OUT2), ("amendment3", OUT / "amendment3"), ("amendment4", OUT / "amendment4")):
         dst_dir.mkdir(parents=True, exist_ok=True)
         for f in sorted((src / sub).glob("*.json")):
             dst = dst_dir / f.name
             n = merge_runs(f, dst, machine) if "runs" in json.loads(f.read_text()) and sub else merge_file(f, dst, machine)
             print(f"{sub + '/' if sub else ''}{f.name}: {n} merged from {machine}")
+        for f in sorted((src / sub).glob("*.csv")):              # A2.9's and AMENDMENT_4's case tables
+            if not (dst_dir / f.name).exists():
+                shutil.copyfile(f, dst_dir / f.name)
+            elif (dst_dir / f.name).read_bytes() != f.read_bytes():
+                raise SystemExit(f"{sub}/{f.name}: differs between the two sources")
 
 
 def main(argv=None):

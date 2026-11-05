@@ -21,8 +21,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 BUILD, OUTPUTS = HERE / "build", HERE / "outputs"
 MAX_ACTIVE = 5                     # Kaggle's limit on concurrent batch CPU sessions
-LF, A2, A3 = ("python -m benchmarks.liana_final", "python -m benchmarks.liana_final.amendment2",
-              "python -m benchmarks.liana_final.amendment3")
+LF, A2, A3, A4 = ("python -m benchmarks.liana_final", "python -m benchmarks.liana_final.amendment2",
+                  "python -m benchmarks.liana_final.amendment3", "python -m benchmarks.liana_final.amendment4")
 RUNS = {"tnbc": "tnbc_wu2021", "allen": "allen_brain_atlas", "mammary": "tabula_sapiens_mammary",
         "liver": "tabula_sapiens_liver", "hypothalamus": "moffitt2018_hypothalamus"}
 LUNG = "tabula_sapiens_lung"
@@ -67,8 +67,26 @@ SESSIONS |= {f"a3-calibration-{k}": S(f"{A3} --part calibration --only '^{RUNS[k
 SESSIONS["a3-power"] = S(f"{A3} --part power", ["data"])
 SESSIONS["a3-hard-power"] = S(f"{A3} --part hard_power", ["data"])
 SESSIONS["a3-biology"] = S(f"{A3} --part biology", ["data", "biology"] + [f"a3-real-{k}" for k in RUNS])
+# AMENDMENT_4.md: T2 on the rest of AMENDMENT_2
+for scen in ("receptor", "ligand"):
+    for rep in range(3):
+        SESSIONS[f"a4-lung-{scen}-{rep}"] = S(f"{A4} --part lung --only '^{LUNG}\\|{scen}\\|{rep}$'", ["data"])
+SESSIONS["a4-lung-power"] = S(f"{A4} --part lung --only '^{LUNG}\\|f2\\|'", ["data"])
+SESSIONS |= {f"a4-donor-lung-{rep}": S(f"{A4} --part donor --only '^{LUNG}\\|global\\|{rep}$'", ["data"]) for rep in range(3)}
+SESSIONS |= {f"a4-donor-{k}": S(f"{A4} --part donor --only '^{RUNS[k]}\\|'", ["data"]) for k in ("tnbc", "mammary", "liver")}
+SESSIONS["a4-donor-real"] = S(f"{A4} --part donor --only '^({RUNS['tnbc']}|{RUNS['mammary']}|{RUNS['liver']})$'",
+                              ["data", "a3-real-tnbc", "a3-real-mammary", "a3-real-liver"])
+SESSIONS["a4-sensitivity-seed-expr"] = S(f"{A4} --part sensitivity --only '^seed|@expr_prop='", ["data", "a3-real-mammary"])
+SESSIONS["a4-sensitivity-cells-labels"] = S(f"{A4} --part sensitivity --only '@(cells|labels)='", ["data", "a3-real-mammary"])
+SESSIONS["a4-sensitivity-perms-hypothalamus"] = S(f"{A4} --part sensitivity --only '^real$|^{RUNS['hypothalamus']}@n_perms'",
+                                                  ["data", "a3-real-hypothalamus"])
+SESSIONS["a4-sensitivity-perms-mammary"] = S(f"{A4} --part sensitivity --only '^real@|^{RUNS['mammary']}@n_perms'",
+                                             ["data", "a3-real-mammary"])
+SESSIONS["a4-mouse"] = S(f"{A4} --part mouse", ["data"])
+SESSIONS["a4-cases"] = S(f"{A4} --part cases", ["data"] + [f"run-{k}" for k in RUNS] + [f"a3-real-{k}" for k in RUNS])
+SESSIONS["a4-timing"] = S(f"{A4} --part timing", ["data", "run-mammary", "run-hypothalamus"])
 # everything merged; reports and figures
-SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report",
+SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report",
                         "python -m benchmarks.liana_final.figures"],
                        [k for k in SESSIONS if k != "data"])
 
