@@ -158,7 +158,33 @@ def collect():
         merge(d / "out" / "results", meta["machine"])
 
 
+def readme():
+    """kaggle/README.md: every session, its link, inputs and command (with run time once collected)."""
+    url = lambda k: f"https://www.kaggle.com/code/{OWNER}/{slug(k)}"
+    L = ["# The benchmark on Kaggle", "",
+         "Every result in `benchmarks/results/liana_final/` was produced by one of the Kaggle sessions below (CPU, 4 cores, "
+         "32 GB), from one commit of this repository, in the locked environment (`requirements/lock-liana-final.txt`). "
+         "Each result file, and each run inside AMENDMENT_2's files, records the link of the session that produced it "
+         "(`machine`). To rerun: `python kaggle/kernels.py code && python kaggle/kernels.py build && "
+         "python kaggle/kernels.py dispatch && python kaggle/kernels.py collect`. To run elsewhere: [`RUN.md`](../RUN.md).", "",
+         "Inputs:", "",
+         f"- code: [ccc-nulls-code](https://www.kaggle.com/datasets/{OWNER}/ccc-nulls-code) (`git archive` of the commit in `COMMIT`)",
+         f"- auxiliary files: [ccc-nulls-aux](https://www.kaggle.com/datasets/{OWNER}/ccc-nulls-aux) "
+         "(md5: `benchmarks/liana_final/aux_files.md5`)",
+         f"- h5ad files: the output of [ccc-nulls-data]({url('data')}), downloaded from Open Problems and CELLxGENE, md5-checked", "",
+         "| Session | Needs | Command | Run time |", "|---|---|---|---|"]
+    for k, s in SESSIONS.items():
+        f = OUTPUTS / slug(k) / "out" / "session.json"
+        secs = json.loads(f.read_text())["seconds"] if f.exists() else None
+        cmd = "download the five h5ad files" if s.get("download") else "<br>".join(f"`{c}`" for c in s["commands"])
+        needs = ", ".join(n for n in s["needs"] if n != "data") if k != "report" else "all"
+        L.append(f"| [{k}]({url(k)}) | {needs or '–'} | {cmd.replace('|', '\\|')} | "
+                 f"{'' if secs is None else f'{secs / 3600:.1f} h'} |")
+    (HERE / "README.md").write_text("\n".join(L) + "\n")
+    print("wrote", HERE / "README.md")
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
-    {"code": code, "build": build, "dispatch": lambda: sys.exit(dispatch(sys.argv[2:] or None)), "collect": collect}.get(
-        cmd, lambda: sys.exit(__doc__))()
+    {"code": code, "build": build, "dispatch": lambda: sys.exit(dispatch(sys.argv[2:] or None)), "collect": collect,
+     "readme": readme}.get(cmd, lambda: sys.exit(__doc__))()
