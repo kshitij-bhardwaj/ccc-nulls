@@ -1,9 +1,10 @@
 """Our nulls inside LIANA+'s consensus (``rank_aggregate``): the final pipeline's engine.
 
 LIANA+ 1.8.0 ranks interactions by five methods (CellPhoneDB, Connectome, log2FC, NATMI,
-SingleCellSignalR) and aggregates their ranks (RRA). Here CellChat is the sixth. CellPhoneDB and
-CellChat are the two with a permutation null, and their p-value (the method's "specificity") can be
-replaced by one of ours. Their score (the "magnitude": ``lr_means``, ``lr_probs``) is always LIANA+'s.
+SingleCellSignalR) and aggregates their ranks (RRA). Here CellChat is the sixth. CellPhoneDB,
+CellChat, and Connectome are the methods with a permutation null, and their p-value (the method's
+"specificity") can be replaced by one of ours. Their score (the "magnitude": ``lr_means``,
+``lr_probs``, ``expr_prod``) is always LIANA+'s.
 
     null_a   LIANA+'s own p: all labels permuted together, p = #{s_b >= s} / B (unchanged)
     null_b   the composite null (:mod:`ccc_nulls.composite`) on LIANA+'s score and LIANA+'s own
@@ -13,15 +14,16 @@ replaced by one of ours. Their score (the "magnitude": ``lr_means``, ``lr_probs`
 
 How: LIANA+ scores a permutation method with ``fun(x, perm_stats)``, where ``x`` holds the rows
 (source, target, complexes, the observed ligand and receptor statistics) and ``perm_stats`` the
-ligand and receptor statistics under each of its label permutations. :func:`capture` wraps ``fun``:
-LIANA+'s output is returned untouched, and Null B is computed from the same ``perm_stats``. One
-LIANA+ run then gives every variant (:func:`variants`), each aggregated by LIANA+'s own ``_aggregate``:
+ligand and receptor statistics under each of its label permutations. :func:`capture` and
+:func:`capture_connectome` wrap ``fun``: LIANA+'s output is returned untouched, and Null B is
+computed from the same ``perm_stats``. One LIANA+ run then gives every variant (:func:`variants`),
+each aggregated by LIANA+'s own ``_aggregate``:
 
     liana5        LIANA+'s rank_aggregate as shipped (five methods)
     liana6        the five plus CellChat, LIANA+'s own p (= swap_null_a)
-    swap_<n>      liana6 with CellPhoneDB's and CellChat's p replaced by null <n>'s
-    extra_<n>     liana6 plus two methods, CellPhoneDB·<n> and CellChat·<n> (the tool's magnitude,
-                  null <n>'s p), as the 7th and 8th
+    swap_<n>      liana6 with CellPhoneDB's, CellChat's, and Connectome's p replaced by null <n>'s
+    extra_<n>     liana6 plus methods CellPhoneDB·<n>, CellChat·<n>, Connectome·<n> (the tool's
+                  magnitude, null <n>'s p)
 
 A LIANA+ detail inherited here: for a complex, ``perm_stats`` follows the one subunit that is lowest
 under the observed labels, as LIANA+'s own permutation test does.
@@ -33,7 +35,11 @@ import pandas as pd
 
 KEY = ["source", "target", "ligand_complex", "receptor_complex"]
 NULLS = ("null_a", "null_b", "b2")
-TOOLS = {"CellPhoneDB": ("lr_means", "cellphone_pvals"), "CellChat": ("lr_probs", "cellchat_pvals")}
+TOOLS = {
+    "CellPhoneDB": ("lr_means", "cellphone_pvals"),
+    "CellChat": ("lr_probs", "cellchat_pvals"),
+    "Connectome": ("expr_prod", "connectome_pvals")
+}
 CHUNK = 20_000
 
 
@@ -49,8 +55,16 @@ def _cellchat(L, R):
     return p / (cellchat._kh + p)
 
 
-SCORES = {"CellPhoneDB": (_cpdb, ("ligand_means", "receptor_means")),
-          "CellChat": (_cellchat, ("ligand_trimean", "receptor_trimean"))}
+def _connectome(L, R):
+    """Connectome's score as LIANA+ computes it for the observed labels (expr_prod)."""
+    return L * R
+
+
+SCORES = {
+    "CellPhoneDB": (_cpdb, ("ligand_means", "receptor_means")),
+    "CellChat": (_cellchat, ("ligand_trimean", "receptor_trimean")),
+    "Connectome": (_connectome, ("ligand_means", "receptor_means"))
+}
 
 
 def side_p(score, L, R, perm_stats, chunk: int = CHUNK) -> dict:
@@ -93,16 +107,63 @@ def capture(method, store: dict):
     return Method(_method=meta)
 
 
+def capture_connectome(store: dict):
+    """A permutation-enabled copy of LIANA+'s Connectome whose scoring writes its rows,
+    Null A p and Null B into ``store['Connectome']``."""
+    from liana.method.sc._Method import Method, MethodMeta
+
+    score, (lcol, rcol) = SCORES["Connectome"]
+
+    def fun(x, perm_stats):
+        L = x[lcol].to_numpy(float)
+        R = x[rcol].to_numpy(float)
+        mag = score(L, R)
+        B = perm_stats.shape[1]
+        k_A = (perm_stats[0] * perm_stats[1] >= mag[None, :]).sum(0)
+        p_a = np.where(mag == 0, 1.0, (1 + k_A) / (B + 1))
+        nb = side_p(score, L, R, perm_stats)
+        store["Connectome"] = pd.DataFrame({
+            **{k: x[k].to_numpy() for k in KEY + ["ligand", "receptor"]},
+            "magnitude": mag,
+            "p_null_a": p_a,
+            "p_L_null_b": nb["p_L"],
+            "p_R_null_b": nb["p_R"],
+            "p_null_b": nb["p"],
+            "score_check": nb["score"]
+        })
+        return mag, p_a
+
+    meta = MethodMeta(
+        method_name="Connectome",
+        complex_cols=["ligand_means", "receptor_means"],
+        add_cols=["ligand_zscores", "receptor_zscores"],
+        fun=fun,
+        magnitude="expr_prod",
+        magnitude_ascending=False,
+        specificity="connectome_pvals",
+        specificity_ascending=True,
+        permute=True,
+        reference="msraredon/Connectome"
+    )
+    return Method(_method=meta)
+
+
 def run(adata, groupby: str, *, resource_name: str = "consensus", n_perms: int = 1000, seed: int = 1337,
         expr_prop: float = 0.1, **kw) -> tuple[dict, dict]:
-    """One LIANA+ run of the six methods with CellPhoneDB and CellChat captured. Returns
+    """One LIANA+ run of the six methods with CellPhoneDB, Connectome, and CellChat captured. Returns
     ({method name: its table, keys + magnitude + specificity}, {tool: captured rows})."""
     import liana as li
     from liana.method.sc._rank_aggregate import AggregateClass, _rank_aggregate_meta
 
     store = {}
-    methods = [capture(li.mt.cellphonedb, store), li.mt.connectome, li.mt.logfc, li.mt.natmi,
-               li.mt.singlecellsignalr, capture(li.mt.cellchat, store)]   # CellChat last: it rescales X in place
+    methods = [
+        capture(li.mt.cellphonedb, store),
+        capture_connectome(store),
+        li.mt.logfc,
+        li.mt.natmi,
+        li.mt.singlecellsignalr,
+        capture(li.mt.cellchat, store)   # CellChat last: it rescales X in place
+    ]
     agg = AggregateClass(_rank_aggregate_meta, methods=methods)
     lrs = agg(adata, groupby=groupby, resource_name=resource_name, n_perms=n_perms, seed=seed, expr_prop=expr_prop,
               consensus_opts=False, inplace=False, use_raw=False, **kw)
@@ -130,14 +191,19 @@ def _meta(name, magnitude, specificity):
                       permute=False, reference="")
 
 
-def variants(lrs: dict, store: dict, nulls=NULLS, aggregate_method: str = "rra") -> dict:
+def variants(lrs: dict, store: dict, nulls=None, aggregate_method: str = "rra") -> dict:
     """Every consensus variant, each a LIANA+ consensus table (keys, the methods' scores,
     ``magnitude_rank``, ``specificity_rank``)."""
     import liana as li
     from liana.method._pipe_utils._aggregate import _aggregate
     from liana.method.sc._rank_aggregate import AggregateClass, _rank_aggregate_meta
 
-    six = {m.method_name: m for m in [li.mt.cellphonedb, li.mt.connectome, li.mt.logfc, li.mt.natmi,
+    if nulls is None:
+        # Automatically include b2 only if add_b2 was called
+        first_store = next(iter(store.values()))
+        nulls = [n for n in NULLS if f"p_{n}" in first_store.columns]
+
+    six = {m.method_name: m for m in [li.mt.cellphonedb, capture_connectome({}), li.mt.logfc, li.mt.natmi,
                                      li.mt.singlecellsignalr, li.mt.cellchat]}
     base = {k: v.copy() for k, v in lrs.items()}
 
