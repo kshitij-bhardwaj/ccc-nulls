@@ -286,8 +286,38 @@ def variants(lrs: dict, store: dict, nulls=NULLS, aggregate_method: str = "rra")
     return out
 
 
+DONOR_KEYS = ("donor_id", "donor", "patient_id", "patient", "individual", "subject", "orig.ident", "sample_id", "sample")
+
+
+def donor_strata(adata, groupby: str, strata: str | None = "auto") -> str | None:
+    """The ``obs`` column whose values the permutations stay within, or None for LIANA+'s global permutations.
+
+    ``"auto"``: the first of ``DONOR_KEYS`` in ``adata.obs`` with two or more values, provided at least two of its
+    groups hold two or more cell types (else no label could move and the test would have no power: global
+    permutations, with a warning). A column name is used as given; None means global permutations.
+
+    Why: with several donors and labels that follow donors, global permutations let donor differences pass as
+    cell-type specificity. On labels shuffled within donor, Null B with global permutations gave p <= 0.05 for
+    11-18% of rows (TNBC, Tabula Sapiens Liver), and 0.3% with permutations within donor (AMENDMENT_2, A2.3).
+    """
+    import warnings
+    if strata != "auto":
+        if strata is not None and strata not in adata.obs:
+            raise KeyError(f"strata: no column {strata!r} in adata.obs")
+        return strata
+    for k in DONOR_KEYS:
+        if k in adata.obs and adata.obs[k].nunique() >= 2:
+            types_per_group = adata.obs.groupby(adata.obs[k].astype(str), observed=True)[groupby].nunique()
+            if (types_per_group >= 2).sum() < 2:
+                warnings.warn(f"strata='auto': {k!r} has {adata.obs[k].nunique()} values but fewer than two hold two "
+                              f"or more cell types; using LIANA+'s global permutations", stacklevel=3)
+                return None
+            return k
+    return None
+
+
 def rank_aggregate(adata, groupby: str, *, null: str = "null_b", mode: str = "swap", resource_name: str = "consensus",
-                   n_perms: int = 1000, seed: int = 1337, expr_prop: float = 0.1, strata: str | None = None,
+                   n_perms: int = 1000, seed: int = 1337, expr_prop: float = 0.1, strata: str | None = "auto",
                    aggregate_method: str = "rra", use_raw: bool = False, key_added: str = "liana_res",
                    inplace: bool = True, return_tools: bool = False, **kw):
     """LIANA+'s ``rank_aggregate`` (six methods: its five plus CellChat) with the permutation tools'
@@ -305,7 +335,10 @@ def rank_aggregate(adata, groupby: str, *, null: str = "null_b", mode: str = "sw
         ``"swap"``: CellPhoneDB's and CellChat's p replaced by the null's (recommended);
         ``"extra"``: the null's p added as two more methods (7th and 8th).
     strata
-        Optional column of ``adata.obs`` (e.g. donor): permutations stay within each stratum.
+        ``"auto"`` (default): with several donors, permutations stay within each donor. The donor column is the
+        first of ``DONOR_KEYS`` present with two or more values (see :func:`donor_strata`); without one, LIANA+'s
+        global permutations. A column name: permutations stay within each of its values. None: global
+        permutations, as LIANA+. The column used is in the result's ``attrs["strata"]``.
     aggregate_method
         ``"rra"`` (LIANA+'s default) or ``"mean"``.
     use_raw
@@ -329,12 +362,14 @@ def rank_aggregate(adata, groupby: str, *, null: str = "null_b", mode: str = "sw
         raise ValueError("null must be 'null_a' or 'null_b' (B2 needs decoy genes: see add_b2)")
     if mode not in ("swap", "extra"):
         raise ValueError("mode must be 'swap' or 'extra'")
+    strata = donor_strata(adata, groupby, strata)
     s = adata.obs[strata].astype(str) if strata is not None else None
     lrs, store = run(adata.copy(), groupby, resource_name=resource_name, n_perms=n_perms, seed=seed,
                      expr_prop=expr_prop, strata=s, use_raw=use_raw, **kw)
     V = variants(lrs, store, nulls=("null_a", "null_b"), aggregate_method=aggregate_method)
     name = "liana6" if (null, mode) == ("null_a", "swap") else f"{mode}_{null}"
     res = V[name].sort_values("specificity_rank", kind="stable").reset_index(drop=True)
+    res.attrs["strata"] = strata
     if inplace:
         adata.uns[key_added] = res
     tools = {k: d.drop(columns="score_check") for k, d in store.items()}

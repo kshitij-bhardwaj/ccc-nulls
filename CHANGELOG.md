@@ -24,6 +24,9 @@ versions follow [Semantic Versioning](https://semver.org/).
   drops, timing).
 
 ### Changed
+- `rank_aggregate` permutes within donor by default (`strata="auto"`) when `obs` has a donor column with two or
+  more donors; `strata=None` gives LIANA+'s global permutations. Global permutations let donor differences pass
+  as specificity (AMENDMENT_2, A2.3).
 - Open Problems disabled its S3 bucket: TNBC and Allen brain come from a mirror with the original md5 sums.
 - `requirements/lock-liana-final.txt`: the environment the results were produced in.
 - Documentation (Sphinx), a quickstart notebook, continuous integration, BSD-3-Clause licence, `CITATION.cff`.

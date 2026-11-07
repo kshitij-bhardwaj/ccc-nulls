@@ -56,9 +56,21 @@ own Null A p-values stay in the consensus.
 
 ## Donor structure
 
-Permuting labels across all cells treats cells of one donor as independent. With `strata="donor"`, every
-permutation stays within a donor, for Null A and Null B alike
-(`ccc_nulls.liana_consensus.stratified_permutations`).
+Permuting labels across all cells treats cells of one donor as independent. When cell types follow donors,
+donor differences then pass as cell-type specificity. On labels shuffled within donor (a known null), Null B with
+global permutations gave p ≤ 0.05 for 11–18% of rows on TNBC and Tabula Sapiens Liver; with permutations within
+donor, 0.3% (AMENDMENT_2, A2.3).
+
+So `rank_aggregate` permutes **within donor by default** (`strata="auto"`), for Null A and Null B alike
+(`ccc_nulls.liana_consensus.stratified_permutations`):
+- the donor column is the first of `donor_id`, `donor`, `patient_id`, `patient`, `individual`, `subject`,
+  `orig.ident`, `sample_id`, `sample` in `adata.obs` with two or more values;
+- if fewer than two donors hold two or more cell types, no label could move: global permutations, with a warning;
+- without a donor column: global permutations, as LIANA+;
+- `strata="<column>"` names the column; `strata=None` asks for global permutations.
+
+The column used is in `res.attrs["strata"]`. The pre-registered benchmark runs used global permutations, as
+LIANA+ does, apart from A2.3.
 
 ## What is inherited from LIANA+
 

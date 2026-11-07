@@ -42,7 +42,7 @@ adata.uns["liana_res"].head()
 |---|---|---|
 | `null` | `"null_b"` | `"null_a"` gives LIANA+'s consensus with CellChat as a sixth method |
 | `mode` | `"swap"` | `"swap"` replaces CellPhoneDB's and CellChat's p with Null B; `"extra"` adds Null B as two more methods |
-| `strata` | `None` | an `obs` column (e.g. donor): every permutation stays within it |
+| `strata` | `"auto"` | with several donors (`donor_id`, `patient`, `orig.ident`, … in `obs`), every permutation stays within a donor; `None`: global, as LIANA+ ([why](docs/method.md#donor-structure)) |
 | `return_tools` | `False` | also return the CellPhoneDB and CellChat tables, with `p_L`, `p_R` and Null A and Null B p-values |
 
 The [quickstart notebook](docs/notebooks/quickstart.ipynb) runs this end to end. On these PBMCs, 197 of the 437
@@ -61,13 +61,36 @@ magnitude scores and the rank aggregation are LIANA+'s own. Details: [Method](do
 
 ## Benchmark
 
-The benchmark was pre-registered ([`PLAN.md`](benchmarks/liana_final/PLAN.md), then
-[`AMENDMENT_1.md`](benchmarks/liana_final/AMENDMENT_1.md) and
-[`AMENDMENT_2.md`](benchmarks/liana_final/AMENDMENT_2.md), [`AMENDMENT_3.md`](benchmarks/liana_final/AMENDMENT_3.md) and [`AMENDMENT_4.md`](benchmarks/liana_final/AMENDMENT_4.md), each hashed before its runs). AMENDMENTS 3 and 4 add a second Null B candidate, T2 (a leave-one-out test of each cell-type pair against the interaction's other pairs), to every run of the benchmark. It covers six data sets:
-the two Open Problems communication sets that LIANA+'s authors built (TNBC and Allen brain), Tabula Sapiens
-Mammary, Liver and Lung, and the mouse hypothalamus. Full results: [Benchmark](docs/benchmark.md).
+Two pre-registered benchmarks answer two questions, in this order. Each has its own plan and amendments, every
+one hashed before its runs.
 
-The benchmark runs on Kaggle (4 CPUs, 32 GB per session), one session per part, from one commit and the locked
+**1. Are each tool's own p-values valid?** ([`benchmarks/liana_nulls`](benchmarks/liana_nulls/PLAN.md);
+results: [`benchmarks/results/liana_nulls`](benchmarks/results/liana_nulls/README.md))
+- **Three columns per tool:** the tool itself (CellChat 2.1.2 in R, CellPhoneDB 5.0.1), our Python Null A on the
+  tool's own permutations, and Null B. Columns 1 and 2 agree on every row of five data sets.
+- **Calibration:** on Tabula Sapiens with one side's genes shuffled, Null A's FDR at 5% is 0.27–1.00; Null B's
+  is 0–0.03.
+- **Power:** with BH, Null B needs about 5,000 permutations (CellChat at f = 1.5: power 0.19 at 1,000, 0.97 at
+  5,000).
+- **Also compared:** B2 (decoy genes, CAMERA-corrected) and PR #9's CellPhoneDB Null B.
+
+**2. Does Null B improve LIANA+'s consensus ranking?** ([`benchmarks/liana_final`](benchmarks/liana_final/PLAN.md),
+then [`AMENDMENT_1.md`](benchmarks/liana_final/AMENDMENT_1.md) to
+[`AMENDMENT_4.md`](benchmarks/liana_final/AMENDMENT_4.md); results:
+[`benchmarks/results/liana_final`](benchmarks/results/liana_final/README.md))
+- **What is compared:** LIANA+'s six methods (its five plus CellChat), with the p-values of CellPhoneDB and CellChat
+  replaced by Null B ("swap") or added as two more methods ("extra"), against LIANA+ as it is.
+- **Measures:** calibration, power and biology (spatial and downstream-response truths), then a held-out
+  confirmation on Tabula Sapiens Lung, donor-aware permutations, sensitivity, a second species and comparison with
+  simple filters (AMENDMENT_2).
+- **Second candidate:** AMENDMENTS 3 and 4 add T2 (PR #11: a leave-one-out test of each cell-type pair against the
+  interaction's other pairs) to every run.
+
+Both cover the two Open Problems communication sets that LIANA+'s authors built (TNBC and Allen brain), Tabula
+Sapiens Mammary and Liver, and the mouse hypothalamus; the second adds Tabula Sapiens Lung. Full results:
+[Benchmark](docs/benchmark.md).
+
+The second benchmark runs on Kaggle (4 CPUs, 32 GB per session), one session per part, from one commit and the locked
 environment. Each result file records the link of the session that produced it, and
 [`kaggle/README.md`](kaggle/README.md) lists every session with its link, inputs, command and run time. The inputs
 are three Kaggle data sets: the [code](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-code) (a `git archive` of the commit), the [auxiliary files](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux)
@@ -91,7 +114,8 @@ produced under. See [Reproducibility](docs/reproducibility.md).
 
 ```
 src/ccc_nulls/          the package: rank_aggregate, liana_consensus, composite, competitive (B2), datasets
-benchmarks/liana_final/ the pre-registered benchmark: PLAN, amendments, code
+benchmarks/liana_nulls/ benchmark 1, each tool's own p-values: PLAN, amendments, code
+benchmarks/liana_final/ benchmark 2, LIANA+'s consensus: PLAN, amendments, code
 benchmarks/results/     result JSON files, results READMEs, figures
 docs/                   documentation (Sphinx) and the quickstart notebook
 tools/                  native adapters for CellPhoneDB, CellChat, NATMI, Connectome
