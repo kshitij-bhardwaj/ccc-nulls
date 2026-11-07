@@ -149,6 +149,10 @@ A change means calibrating again on Tabula Sapiens and a new, documented TNBC ru
 - **Two functions are called Null B.** Null B is `ccc_nulls.composite` (`method="composite"`, through
   the adapter's `null_b`). `ccc_nulls.nulls.null_b` is the earlier abundance-matched decoy null, kept
   for the record, and is not Null B.
+- **B2 is that decoy null with its premise repaired** (`ccc_nulls.competitive`, Amendment 3 of
+  `benchmarks/liana_nulls`): the inter-gene correlation goes into the variance, as in CAMERA. It
+  needs no side score, works on any tool's rows, and takes the decoys from genes outside every
+  database, so data loaded as database genes only (Tabula Sapiens) needs extra genes loaded.
 - **`SideScore` requirements:**
   - `score(summarize(c, K), summarize(c, K))` must equal the tool's score exactly;
   - the score is non-negative, with 0 meaning no signal (p = 1 there);

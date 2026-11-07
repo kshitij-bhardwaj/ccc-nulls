@@ -1,0 +1,145 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 04:30",
+ "dataset": "allen_brain_atlas",
+ "groupby": "label",
+ "B": 1000,
+ "n_cells": 14249,
+ "n_types": 23,
+ "liana_rank_aggregate": {
+  "rows": 235366,
+  "resource": "mouseconsensus",
+  "seconds": 288.4
+ },
+ "cellchat": {
+  "tool": "cellchat",
+  "native_rule": "p < 0.05 and prob > 0 (subsetCommunication, thresh = 0.05)",
+  "rows": 988701,
+  "family": 162047,
+  "calls": {
+   "1_native_tool_rule": 29458,
+   "2_our_null_a_tool_rule": 29458,
+   "2_our_null_a_bh": 27973,
+   "3_null_b_bh": 13558
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "receptor": 7793,
+   "ligand": 6622
+  },
+  "fidelity": {
+   "features_sig_identical": true,
+   "n_lr_r": 1869,
+   "n_lr_python": 1869,
+   "lr_identical": true,
+   "groups_identical": true,
+   "n_rows": 988701,
+   "prob_identical": 988701,
+   "prob_max_abs_diff": 0.0,
+   "pval_identical": 988701,
+   "pval_max_abs_diff": 0.0,
+   "calls_r": 29458,
+   "calls_python": 29458,
+   "calls_identical": true,
+   "calls_only_r": 0,
+   "calls_only_python": 0
+  },
+  "meta": {
+   "seconds_prepare": 14.2,
+   "seconds_port_native": 23.9,
+   "seconds_native": 1.8,
+   "native_session": [
+    "R version 4.3.2 (2023-10-31)",
+    "CellChat 2.1.2",
+    "presto 1.1.0",
+    "nboot 100",
+    "seed 1",
+    "seconds 312.8",
+    "dim prob 23 x 23 x 1869"
+   ],
+   "seconds_null_a": 198.0,
+   "seconds_null_b": 242.1,
+   "B": 1000,
+   "seed": 1,
+   "rng": "cellchat (R's generator)",
+   "species": "mouse",
+   "n_rows": 988701,
+   "n_family": 162047,
+   "n_lr": 1869,
+   "n_types": 23,
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives prob > 0",
+   "seconds_liana_builtin": 556.7
+  },
+  "liana_builtin": {
+   "rows_matched": 64181,
+   "calls_p_lt_0.05": 18626,
+   "jaccard_with_native_rule": 0.9716802025102838,
+   "spearman_score": 0.9981967661981652
+  },
+  "write_back": {
+   "liana_rows": 235366,
+   "with_our_columns": 64181,
+   "our_family_rows_in_liana": 47424,
+   "our_family_rows": 162047
+  }
+ },
+ "cellphonedb": {
+  "tool": "cellphonedb",
+  "native_rule": "p <= 0.05 (significant_means, pvalue = 0.05)",
+  "rows": 833704,
+  "family": 135279,
+  "calls": {
+   "1_native_tool_rule": 49613,
+   "2_our_null_a_tool_rule": 49613,
+   "2_our_null_a_bh": 46928,
+   "3_null_b_bh": 15121
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 17587,
+   "receptor": 14220
+  },
+  "fidelity": {
+   "n_rows": 1242621,
+   "pval_identical": 1242621,
+   "pval_max_abs_diff": 0.0,
+   "calls_native": 67362,
+   "calls_python": 67362,
+   "calls_identical": true
+  },
+  "meta": {
+   "orthologs": {
+    "source": "HCOP, min_evidence = 3, one-to-one",
+    "genes_in": 34617,
+    "genes_mapped": 14458
+   },
+   "seconds_prepare": 10.8,
+   "seconds_native": 106.5,
+   "seconds_null_a": 17.6,
+   "seconds_null_b": 23.6,
+   "B": 1000,
+   "seed": 0,
+   "rng": "cellphonedb (np.random.seed, shuffle)",
+   "species": "mouse",
+   "n_rows": 833704,
+   "n_family": 135279,
+   "n_lr": 2349,
+   "n_types": 23,
+   "family_rule": "CellPhoneDB's gate: both partners in > 10% of their type's cells, and score > 0",
+   "score_max_abs_diff": 0.000500023365020752,
+   "seconds_liana_builtin": 283.7
+  },
+  "liana_builtin": {
+   "rows_matched": 0,
+   "calls_p_lt_0.05": 0,
+   "jaccard_with_native_rule": NaN,
+   "spearman_score": null
+  },
+  "write_back": {
+   "liana_rows": 235366,
+   "with_our_columns": 0,
+   "our_family_rows_in_liana": 0,
+   "our_family_rows": 135279
+  }
+ }
+}

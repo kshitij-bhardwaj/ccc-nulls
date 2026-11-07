@@ -1,0 +1,900 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 06:57",
+ "tnbc_wu2021": {
+  "spatial_truth": {
+   "pairs": 812,
+   "colocalised": 12
+  },
+  "cellchat": {
+   "primary_kept_vs_dropped": {
+    "odds_ratio": 1.0515397451456312,
+    "ci95": [
+     0.6469395840080971,
+     1.527994279051839
+    ],
+    "kept_calls": 8345,
+    "kept_colocalised": 105,
+    "dropped_calls": 4009,
+    "dropped_colocalised": 48,
+    "frac_colocalised_kept": 0.012582384661473937,
+    "frac_colocalised_dropped": 0.011973060613619356,
+    "n_pairs": 784
+   },
+   "pair_level_auprc": {
+    "n_truth_rows": 812,
+    "n_positive": 12,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 786,
+      "auprc": 0.013156160093797309,
+      "auprc_ci95": [
+       0.0062356634500087115,
+       0.029600750091499695
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       6.873873873873874
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.00025666102379747965,
+      "auprc_diff_ci95": [
+       -0.0014136167918502476,
+       0.0018296804356227442
+      ],
+      "frac_resamples_ref_not_better": 0.343
+     },
+     "null_a": {
+      "n_truth_rows_scored": 784,
+      "auprc": 0.013143610547846414,
+      "auprc_ci95": [
+       0.006245549442633115,
+       0.029330261045053378
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       6.873873873873874
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0002692105697483741,
+      "auprc_diff_ci95": [
+       -0.0014303558044011136,
+       0.0019407573839469105
+      ],
+      "frac_resamples_ref_not_better": 0.331
+     },
+     "null_b": {
+      "n_truth_rows_scored": 758,
+      "auprc": 0.013412821117594788,
+      "auprc_ci95": [
+       0.006511251500311071,
+       0.028941082828089437
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       6.873873873873874
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "liana_builtin": {
+      "n_truth_rows_scored": 758,
+      "auprc": 0.012554567029296486,
+      "auprc_ci95": [
+       0.006192462490200227,
+       0.02534865839541397
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       3.6411483253588517
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.000858254088298302,
+      "auprc_diff_ci95": [
+       -0.0009682909475417258,
+       0.005518869946700513
+      ],
+      "frac_resamples_ref_not_better": 0.195
+     }
+    }
+   },
+   "openproblems_source_target": {
+    "n_truth_rows": 812,
+    "n_positive": 12,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 786,
+      "auprc": 0.013159330306100602,
+      "auprc_ci95": [
+       0.006109418736224596,
+       0.02382758657456012
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0013311966944719433,
+      "auprc_diff_ci95": [
+       -0.0064234568435838765,
+       0.001530587570469436
+      ],
+      "frac_resamples_ref_not_better": 0.683
+     },
+     "null_a": {
+      "n_truth_rows_scored": 784,
+      "auprc": 0.013116565477481253,
+      "auprc_ci95": [
+       0.006133243113660658,
+       0.02383724527909939
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.001288431865852594,
+      "auprc_diff_ci95": [
+       -0.006322564529079694,
+       0.0016345802130402567
+      ],
+      "frac_resamples_ref_not_better": 0.671
+     },
+     "null_b": {
+      "n_truth_rows_scored": 758,
+      "auprc": 0.011828133611628659,
+      "auprc_ci95": [
+       0.005523203259908476,
+       0.0212237465655318
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "random": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.10127752927348276,
+      "auprc_ci95": [
+       0.008824701155828008,
+       0.29714414018640817
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       8.073684210526316
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0894493956618541,
+      "auprc_diff_ci95": [
+       -0.2848931412365096,
+       0.0007272854909424816
+      ],
+      "frac_resamples_ref_not_better": 0.971
+     }
+    }
+   },
+   "cytokine_ligand_target": {
+    "n_truth_rows": 812,
+    "n_positive": 166,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 41,
+      "auprc": 0.34971454717164707,
+      "auprc_ci95": [
+       0.25822791571162823,
+       0.44717824666737505
+      ],
+      "odds_ratio": 3.4496314496314495,
+      "odds_ratio_ci95": [
+       1.7264865561131997,
+       6.431759564385967
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0003685668107636375,
+      "auprc_diff_ci95": [
+       -0.031793210730359366,
+       0.03228047807712055
+      ],
+      "frac_resamples_ref_not_better": 0.483
+     },
+     "null_a": {
+      "n_truth_rows_scored": 41,
+      "auprc": 0.34971454717164707,
+      "auprc_ci95": [
+       0.25822791571162823,
+       0.44717824666737505
+      ],
+      "odds_ratio": 3.4496314496314495,
+      "odds_ratio_ci95": [
+       1.7264865561131997,
+       6.431759564385967
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0003685668107636375,
+      "auprc_diff_ci95": [
+       -0.031793210730359366,
+       0.03228047807712055
+      ],
+      "frac_resamples_ref_not_better": 0.483
+     },
+     "null_b": {
+      "n_truth_rows_scored": 36,
+      "auprc": 0.34934598036088343,
+      "auprc_ci95": [
+       0.2538696819215502,
+       0.4594120940474908
+      ],
+      "odds_ratio": 3.4496314496314495,
+      "odds_ratio_ci95": [
+       1.7056487061325771,
+       6.431506849315069
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "random": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.21410915457809934,
+      "auprc_ci95": [
+       0.17536506931325163,
+       0.2640115412627152
+      ],
+      "odds_ratio": 1.5098998887652948,
+      "odds_ratio_ci95": [
+       0.5678875207081571,
+       3.0763059163059165
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.1352368257827841,
+      "auprc_diff_ci95": [
+       0.03384508043034207,
+       0.24515491976544684
+      ],
+      "frac_resamples_ref_not_better": 0.005
+     }
+    }
+   }
+  },
+  "cellphonedb": {
+   "primary_kept_vs_dropped": {
+    "odds_ratio": 0.7984830707341602,
+    "ci95": [
+     0.59277272962086,
+     1.324970563122838
+    ],
+    "kept_calls": 9052,
+    "kept_colocalised": 103,
+    "dropped_calls": 5067,
+    "dropped_colocalised": 72,
+    "frac_colocalised_kept": 0.01137870083959346,
+    "frac_colocalised_dropped": 0.014209591474245116,
+    "n_pairs": 811
+   },
+   "pair_level_auprc": {
+    "n_truth_rows": 812,
+    "n_positive": 12,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 811,
+      "auprc": 0.012682155855442637,
+      "auprc_ci95": [
+       0.005952262329201067,
+       0.028166226315880925
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       6.873873873873874
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0009252418209671678,
+      "auprc_diff_ci95": [
+       -0.010643841866458753,
+       0.0012074229763558884
+      ],
+      "frac_resamples_ref_not_better": 0.716
+     },
+     "null_a": {
+      "n_truth_rows_scored": 811,
+      "auprc": 0.012544713219422143,
+      "auprc_ci95": [
+       0.005829767770637484,
+       0.028112590644577027
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       6.87795295295295
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.000787799184946673,
+      "auprc_diff_ci95": [
+       -0.01046345482212262,
+       0.0012576905860216215
+      ],
+      "frac_resamples_ref_not_better": 0.674
+     },
+     "null_b": {
+      "n_truth_rows_scored": 779,
+      "auprc": 0.01175691403447547,
+      "auprc_ci95": [
+       0.005898364667946944,
+       0.02057629592973946
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "liana_builtin": {
+      "n_truth_rows_scored": 806,
+      "auprc": 0.01375069521231506,
+      "auprc_ci95": [
+       0.005438951050668296,
+       0.03842744188487913
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       6.87795295295295
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0019937811778395903,
+      "auprc_diff_ci95": [
+       -0.022667006005006703,
+       0.0023137150180768274
+      ],
+      "frac_resamples_ref_not_better": 0.665
+     }
+    }
+   },
+   "openproblems_source_target": {
+    "n_truth_rows": 812,
+    "n_positive": 12,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 811,
+      "auprc": 0.00958489353801473,
+      "auprc_ci95": [
+       0.0047322604477605034,
+       0.017265176677600958
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0003299442170918536,
+      "auprc_diff_ci95": [
+       -0.002551327490142505,
+       0.0017529862243479983
+      ],
+      "frac_resamples_ref_not_better": 0.338
+     },
+     "null_a": {
+      "n_truth_rows_scored": 811,
+      "auprc": 0.009592489082024366,
+      "auprc_ci95": [
+       0.004735776011488265,
+       0.01729090021766322
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0003223486730822185,
+      "auprc_diff_ci95": [
+       -0.0025722907147553652,
+       0.001744658548430493
+      ],
+      "frac_resamples_ref_not_better": 0.341
+     },
+     "null_b": {
+      "n_truth_rows_scored": 779,
+      "auprc": 0.009914837755106584,
+      "auprc_ci95": [
+       0.005034951331403647,
+       0.01683251728402201
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "random": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.10127752927348276,
+      "auprc_ci95": [
+       0.008824701155828008,
+       0.29714414018640817
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       8.073684210526316
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.09136269151837617,
+      "auprc_diff_ci95": [
+       -0.2899297213367812,
+       -0.0009887917191492397
+      ],
+      "frac_resamples_ref_not_better": 0.986
+     }
+    }
+   },
+   "cytokine_ligand_target": {
+    "n_truth_rows": 812,
+    "n_positive": 166,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 169,
+      "auprc": 0.2777821027141355,
+      "auprc_ci95": [
+       0.21587010318400165,
+       0.35246378874768214
+      ],
+      "odds_ratio": 4.287671232876712,
+      "odds_ratio_ci95": [
+       2.1607244318181817,
+       8.33960097873141
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.03563635170683149,
+      "auprc_diff_ci95": [
+       -0.07773588392328293,
+       0.003213393165905586
+      ],
+      "frac_resamples_ref_not_better": 0.961
+     },
+     "null_a": {
+      "n_truth_rows_scored": 169,
+      "auprc": 0.2777821027141355,
+      "auprc_ci95": [
+       0.21587010318400165,
+       0.35246378874768214
+      ],
+      "odds_ratio": 4.287671232876712,
+      "odds_ratio_ci95": [
+       2.1607244318181817,
+       8.33960097873141
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.03563635170683149,
+      "auprc_diff_ci95": [
+       -0.07773588392328293,
+       0.003213393165905586
+      ],
+      "frac_resamples_ref_not_better": 0.961
+     },
+     "null_b": {
+      "n_truth_rows_scored": 129,
+      "auprc": 0.242145751007304,
+      "auprc_ci95": [
+       0.184333564924979,
+       0.3111286793936985
+      ],
+      "odds_ratio": 2.1963562753036436,
+      "odds_ratio_ci95": [
+       1.011437908496732,
+       4.401459436066445
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "random": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.21410915457809934,
+      "auprc_ci95": [
+       0.17536506931325163,
+       0.2640115412627152
+      ],
+      "odds_ratio": 1.5098998887652948,
+      "odds_ratio_ci95": [
+       0.5678875207081571,
+       3.0763059163059165
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.02803659642920467,
+      "auprc_diff_ci95": [
+       -0.03371460411301486,
+       0.09587288116413849
+      ],
+      "frac_resamples_ref_not_better": 0.193
+     }
+    }
+   }
+  }
+ },
+ "allen_brain_atlas": {
+  "spatial_truth": {
+   "pairs": 506,
+   "colocalised": 26
+  },
+  "cellchat": {
+   "primary_kept_vs_dropped": {
+    "odds_ratio": 1.1625060114545533,
+    "ci95": [
+     0.8844624472067038,
+     1.5692200564515357
+    ],
+    "kept_calls": 12648,
+    "kept_colocalised": 544,
+    "dropped_calls": 13809,
+    "dropped_colocalised": 514,
+    "frac_colocalised_kept": 0.043010752688172046,
+    "frac_colocalised_dropped": 0.03722210152798899,
+    "n_pairs": 506
+   },
+   "pair_level_auprc": {
+    "n_truth_rows": 506,
+    "n_positive": 26,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.039010723436708875,
+      "auprc_ci95": [
+       0.024055408001608443,
+       0.058961906874450146
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0073153424532880484,
+      "auprc_diff_ci95": [
+       0.0012297405986992475,
+       0.016753329974593084
+      ],
+      "frac_resamples_ref_not_better": 0.01
+     },
+     "null_a": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.03937930580489267,
+      "auprc_ci95": [
+       0.024175752487216366,
+       0.05946399517467442
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.006946760085104253,
+      "auprc_diff_ci95": [
+       0.001022757946704426,
+       0.01624841580902603
+      ],
+      "frac_resamples_ref_not_better": 0.01
+     },
+     "null_b": {
+      "n_truth_rows_scored": 500,
+      "auprc": 0.04632606588999692,
+      "auprc_ci95": [
+       0.027310211760000105,
+       0.07197429667442824
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "liana_builtin": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.03882653053711543,
+      "auprc_ci95": [
+       0.023891874566808646,
+       0.05805061095998507
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0074995353528814895,
+      "auprc_diff_ci95": [
+       0.0018515179689873051,
+       0.016366460174597152
+      ],
+      "frac_resamples_ref_not_better": 0.001
+     }
+    }
+   },
+   "openproblems_source_target": {
+    "n_truth_rows": 506,
+    "n_positive": 26,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.05871075735301388,
+      "auprc_ci95": [
+       0.03591875964991875,
+       0.09115192227680562
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       2.987012987012987
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.001440059591900869,
+      "auprc_diff_ci95": [
+       -0.021814026680942098,
+       0.014004846522877222
+      ],
+      "frac_resamples_ref_not_better": 0.547
+     },
+     "null_a": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.058519158382766785,
+      "auprc_ci95": [
+       0.035561186112624606,
+       0.091104764474244
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       2.987012987012987
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.001248460621653777,
+      "auprc_diff_ci95": [
+       -0.02191637913540502,
+       0.014020189259923488
+      ],
+      "frac_resamples_ref_not_better": 0.539
+     },
+     "null_b": {
+      "n_truth_rows_scored": 500,
+      "auprc": 0.05727069776111301,
+      "auprc_ci95": [
+       0.03322266404487554,
+       0.09108506675764681
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       2.987012987012987
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "random": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.04848820533940937,
+      "auprc_ci95": [
+       0.026876354679401637,
+       0.08367543959208426
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       5.47767857142857
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.00878249242170364,
+      "auprc_diff_ci95": [
+       -0.02054025065104373,
+       0.03253684664744324
+      ],
+      "frac_resamples_ref_not_better": 0.233
+     }
+    }
+   }
+  },
+  "cellphonedb": {
+   "primary_kept_vs_dropped": {
+    "odds_ratio": 1.097976488237069,
+    "ci95": [
+     0.7810347871235884,
+     1.479364511017658
+    ],
+    "kept_calls": 14113,
+    "kept_colocalised": 646,
+    "dropped_calls": 30196,
+    "dropped_colocalised": 1264,
+    "frac_colocalised_kept": 0.04577340041096861,
+    "frac_colocalised_dropped": 0.04185984898662074,
+    "n_pairs": 506
+   },
+   "pair_level_auprc": {
+    "n_truth_rows": 506,
+    "n_positive": 26,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.04254490954467954,
+      "auprc_ci95": [
+       0.02548831992075733,
+       0.06980899134241744
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       3.3157894736842106
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.00642879059725944,
+      "auprc_diff_ci95": [
+       -0.0012454340980676416,
+       0.015338662116428958
+      ],
+      "frac_resamples_ref_not_better": 0.065
+     },
+     "null_a": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.042757779558462564,
+      "auprc_ci95": [
+       0.025728858461836073,
+       0.07131464093956069
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       3.3157894736842106
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.00621592058347642,
+      "auprc_diff_ci95": [
+       -0.0011689714638393402,
+       0.014904575543711104
+      ],
+      "frac_resamples_ref_not_better": 0.055
+     },
+     "null_b": {
+      "n_truth_rows_scored": 503,
+      "auprc": 0.04897370014193898,
+      "auprc_ci95": [
+       0.02978537561179444,
+       0.07981040227368315
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       3.3157894736842106
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "liana_builtin": {
+      "n_truth_rows_scored": 0,
+      "auprc": 0.525691699604743,
+      "auprc_ci95": [
+       0.516798418972332,
+       0.5355731225296443
+      ],
+      "odds_ratio": 3.9740259740259742,
+      "odds_ratio_ci95": [
+       0.0,
+       3.626984126984127
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.4767179994628041,
+      "auprc_diff_ci95": [
+       -0.4887559073575573,
+       -0.4516470514562725
+      ],
+      "frac_resamples_ref_not_better": 1.0
+     }
+    }
+   },
+   "openproblems_source_target": {
+    "n_truth_rows": 506,
+    "n_positive": 26,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.06967438152458955,
+      "auprc_ci95": [
+       0.03306775069746976,
+       0.18266280553069483
+      ],
+      "odds_ratio": 1.6557971014492754,
+      "odds_ratio_ci95": [
+       0.0,
+       5.828721631903448
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.00042146467333163684,
+      "auprc_diff_ci95": [
+       -0.010348087923247306,
+       0.009021868762747307
+      ],
+      "frac_resamples_ref_not_better": 0.451
+     },
+     "null_a": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.069591933408875,
+      "auprc_ci95": [
+       0.033007954182947295,
+       0.18243949984603375
+      ],
+      "odds_ratio": 1.6557971014492754,
+      "odds_ratio_ci95": [
+       0.0,
+       5.828721631903448
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0005039127890461848,
+      "auprc_diff_ci95": [
+       -0.010233025067885248,
+       0.009158030213926364
+      ],
+      "frac_resamples_ref_not_better": 0.443
+     },
+     "null_b": {
+      "n_truth_rows_scored": 503,
+      "auprc": 0.07009584619792118,
+      "auprc_ci95": [
+       0.03412535532921331,
+       0.18829292373333162
+      ],
+      "odds_ratio": 1.6557971014492754,
+      "odds_ratio_ci95": [
+       0.0,
+       5.828721631903448
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "random": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.04848820533940937,
+      "auprc_ci95": [
+       0.026876354679401637,
+       0.08367543959208426
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       5.47767857142857
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.021607640858511815,
+      "auprc_diff_ci95": [
+       -0.02578934406624545,
+       0.13829372064539155
+      ],
+      "frac_resamples_ref_not_better": 0.194
+     }
+    }
+   }
+  }
+ }
+}

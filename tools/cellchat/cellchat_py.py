@@ -35,7 +35,6 @@ import numpy as np
 import pandas as pd
 from scipy import sparse
 from scipy.special import ndtr
-from scipy.stats import rankdata
 
 from ccc_nulls import datasets
 
@@ -191,9 +190,22 @@ def extract_gene(db: dict) -> list[str]:
 
 
 # ====================================================================== presto::wilcoxauc
+def _presto_tie_rank(start: int, n: int) -> float:
+    """presto's mean rank of a tie group of n values from 0-based sorted position ``start``
+    (cpp_rank_matrix_dense): the positions are summed one by one in single precision, then
+    ``rank_sum / n + 1`` in single precision. Exact for a singleton; for a large group (the zeros of
+    a sparse gene) it is off the exact mean rank, e.g. 11103.631 for 22,207 tied zeros, not 11104."""
+    if n == 1:
+        return float(start + 1)
+    rank_sum = np.cumsum(np.arange(start, start + n, dtype=np.float32))[-1]   # sequential, like the C++ loop
+    return float(np.float32(rank_sum / np.float32(n)) + np.float32(1))
+
+
 def wilcoxauc(X: sparse.spmatrix, codes: np.ndarray, K: int) -> dict:
     """presto's one-vs-rest Wilcoxon rank-sum test (normal approximation with continuity and
-    tie correction) and its auxiliary statistics, for a cells x genes matrix of values >= 0."""
+    tie correction) and its auxiliary statistics, for a cells x genes matrix of values >= 0.
+    CellChat hands presto a dense matrix, so the ranks are presto's dense ones: values compared in
+    single precision and tie groups averaged in single precision (``_presto_tie_rank``)."""
     X = sparse.csc_matrix(X, dtype=np.float64)
     N, G = X.shape
     n_g = np.bincount(codes, minlength=K).astype(np.float64)
@@ -201,19 +213,28 @@ def wilcoxauc(X: sparse.spmatrix, codes: np.ndarray, K: int) -> dict:
     sums = np.empty((K, G))
     nnz = np.empty((K, G))
     tie_term = np.empty(G)
+    zero_rank = {}
     for j in range(G):
         lo, hi = X.indptr[j], X.indptr[j + 1]
         rows, vals = X.indices[lo:hi], X.data[lo:hi]
         keep = vals != 0
         rows, vals = rows[keep], vals[keep]
         z = N - len(vals)
-        r = rankdata(vals, method="average") + z if len(vals) else vals
+        if z not in zero_rank:
+            zero_rank[z] = _presto_tie_rank(0, z) if z else 0.0
+        r = np.full(N, zero_rank[z])
+        f32 = vals.astype(np.float32)
+        uniq, inv, t = np.unique(f32, return_inverse=True, return_counts=True)
+        starts = z + np.concatenate([[0], np.cumsum(t)[:-1]])
+        rank = starts + 1.0
+        for k in np.where(t > 1)[0]:
+            rank[k] = _presto_tie_rank(int(starts[k]), int(t[k]))
+        r[rows] = rank[inv]
         g = codes[rows]
         nz_g = np.bincount(g, minlength=K)
-        grs[:, j] = (n_g - nz_g) * ((z + 1) / 2) + np.bincount(g, weights=r, minlength=K)
+        grs[:, j] = np.bincount(codes, weights=r, minlength=K)          # cell by cell, as presto's sumGroups
         sums[:, j] = np.bincount(g, weights=vals, minlength=K)
         nnz[:, j] = nz_g
-        _, t = np.unique(vals, return_counts=True)
         t = np.append(t, z).astype(np.float64)
         tie_term[j] = np.sum(t ** 3 - t)
     ustat = grs - (n_g * (n_g + 1) / 2)[:, None]

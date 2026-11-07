@@ -1,0 +1,56 @@
+{
+ "n_marker_genes": 671,
+ "slides": {
+  "1142243F": {
+   "spots": 4784,
+   "marker_genes_used": 649,
+   "subtype": "TNBC",
+   "mean_proportion_top5": {
+    "Cancer.Basal.SC": 0.626,
+    "Luminal.Progenitors": 0.148,
+    "Cycling.Myeloid": 0.054,
+    "Cancer.Cycling": 0.04,
+    "Plasmablasts": 0.036
+   }
+  },
+  "1160920F": {
+   "spots": 4895,
+   "marker_genes_used": 649,
+   "subtype": "TNBC",
+   "mean_proportion_top5": {
+    "Cancer.Basal.SC": 0.62,
+    "Plasmablasts": 0.139,
+    "Luminal.Progenitors": 0.097,
+    "B.cells.Memory": 0.063,
+    "Cycling.Myeloid": 0.053
+   }
+  },
+  "CID4465": {
+   "spots": 1211,
+   "marker_genes_used": 652,
+   "subtype": "TNBC",
+   "mean_proportion_top5": {
+    "Cancer.Cycling": 0.204,
+    "Cycling.Myeloid": 0.201,
+    "Cycling.PVL": 0.17,
+    "Plasmablasts": 0.134,
+    "Luminal.Progenitors": 0.072
+   }
+  },
+  "CID44971": {
+   "spots": 1162,
+   "marker_genes_used": 652,
+   "subtype": "TNBC",
+   "mean_proportion_top5": {
+    "Luminal.Progenitors": 0.371,
+    "Cancer.Basal.SC": 0.307,
+    "Cycling.Myeloid": 0.103,
+    "Cancer.Cycling": 0.084,
+    "Cycling.PVL": 0.045
+   }
+  }
+ },
+ "n_pairs": 812,
+ "n_colocalised": 12,
+ "z_threshold": 1.645
+}

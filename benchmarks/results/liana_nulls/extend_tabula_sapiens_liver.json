@@ -1,0 +1,98 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-01 11:26",
+ "amendment_3_sha256": "21fe25fc0127b0d26683627346995a76a630f529ab150b3366d88b10ee973601",
+ "dataset": "tabula_sapiens_liver",
+ "cellchat": {
+  "b2": {
+   "gated_rows": 44842,
+   "family": 80794,
+   "calls": {
+    "p_b2": 3,
+    "p_b2_uncorrected": 5,
+    "p_b2_unmatched": 43,
+    "p_b2_joint": 3938
+   },
+   "vs_null_b": {
+    "calls_a": 3,
+    "calls_b": 7617,
+    "same_call": 0.9939140193370166,
+    "jaccard": 0.00039385584875935406
+   },
+   "vs_null_a": {
+    "calls_a": 3,
+    "calls_b": 12798,
+    "same_call": 0.9897727708717005,
+    "jaccard": 0.00023441162681669012
+   },
+   "gated_in_family": 31063
+  },
+  "seconds": 4.8,
+  "write_back": {
+   "liana_rows": 196381,
+   "with_our_columns": 36017,
+   "our_family_rows_in_liana": 23182,
+   "our_family_rows": 80794
+  }
+ },
+ "cellphonedb": {
+  "b2": {
+   "gated_rows": 18538,
+   "family": 31315,
+   "calls": {
+    "p_b2": 3,
+    "p_b2_uncorrected": 3,
+    "p_b2_unmatched": 29,
+    "p_b2_joint": 1843
+   },
+   "vs_null_b": {
+    "calls_a": 3,
+    "calls_b": 7203,
+    "same_call": 0.993625701172871,
+    "jaccard": 0.00041649312786339027
+   },
+   "vs_null_a": {
+    "calls_a": 3,
+    "calls_b": 15773,
+    "same_call": 0.9860385149300244,
+    "jaccard": 0.00019019844037278895
+   },
+   "gated_in_family": 18529
+  },
+  "pr9": {
+   "n_rows": 1129536,
+   "n_tested": 31315,
+   "n_testable": 897788,
+   "n_interactions": 1961,
+   "n_types": 24,
+   "seconds_null_a": 27.6,
+   "seconds_null_b": 37.9,
+   "score_max_abs_diff": 0.0005017799540039114,
+   "n_over_adapter_tolerance": 1,
+   "rows_matched": 1129536,
+   "rows": 1129536,
+   "B": 1000,
+   "seed": 0,
+   "calls": {
+    "null_b_pr9": 7170,
+    "null_b_pr9_testable": 0,
+    "null_b_pr9_by": 0
+   },
+   "vs_null_b": {
+    "calls_a": 7170,
+    "calls_b": 7203,
+    "same_call": 0.9998503810414188,
+    "jaccard": 0.9767569797826984
+   },
+   "p_identical_in_family": 0.6397892383841609,
+   "spearman_p_in_family": 0.9940013434002417
+  },
+  "seconds": 92.9,
+  "write_back": {
+   "liana_rows": 196381,
+   "with_our_columns": 12423,
+   "our_family_rows_in_liana": 12414,
+   "our_family_rows": 31315
+  }
+ }
+}
