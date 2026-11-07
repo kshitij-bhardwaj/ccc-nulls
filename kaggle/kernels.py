@@ -96,7 +96,12 @@ def slug(k: str) -> str:
 
 
 def kaggle(*args, check=True) -> str:
-    r = subprocess.run(["kaggle", *args], capture_output=True, text=True)
+    try:
+        r = subprocess.run(["kaggle", *args], capture_output=True, text=True, timeout=300)
+    except subprocess.TimeoutExpired:
+        if check:
+            raise SystemExit(f"kaggle {' '.join(args)}: timed out")
+        return "timed out"
     if check and r.returncode:
         raise SystemExit(r.stdout + r.stderr)
     return (r.stdout + r.stderr).strip()
@@ -134,22 +139,29 @@ def build():
 
 
 def status(k: str) -> str:
+    """complete, error, cancel, running, queued; new if Kaggle has no such notebook; unknown if Kaggle could
+    not be asked (network down): the dispatcher then keeps what it knew, and never pushes on an unknown."""
     s = kaggle("kernels", "status", f"{OWNER}/{slug(k)}", check=False)
     for w in ("COMPLETE", "ERROR", "CANCEL", "RUNNING", "QUEUED"):
         if w in s:
             return w.lower()
-    return "new"
+    return "new" if ("Cannot access kernel" in s or "404" in s or "Not Found" in s) else "unknown"
 
 
 def dispatch(only=None):
     """Push sessions whose inputs are complete; a session already complete is not pushed again."""
     todo = [k for k in SESSIONS if only is None or k in only]
     state = {k: status(k) for k in SESSIONS}
+    if "unknown" in state.values():
+        raise SystemExit("Kaggle could not be reached; try again")
     state |= {k: "new" for k in todo if state[k] in ("error", "cancel")}       # a failed session runs again
     while True:
         for k in todo:
             if state[k] in ("running", "queued"):
-                state[k] = status(k)
+                now = status(k)
+                if now in ("unknown", "new"):             # Kaggle unreachable: keep what was known
+                    continue
+                state[k] = now
                 if state[k] == "complete":
                     print(time.strftime("%H:%M"), "complete", k, flush=True)
                 elif state[k] in ("error", "cancel"):
