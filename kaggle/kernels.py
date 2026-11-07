@@ -174,6 +174,9 @@ def dispatch(only=None):
             if "successfully" in r:
                 state[k] = "running"
                 print(time.strftime("%H:%M"), "pushed", k, flush=True)
+            elif status(k) in ("running", "queued"):          # accepted, though the reply did not say so
+                state[k] = "running"
+                print(time.strftime("%H:%M"), "pushed", k, "(reply:", r.splitlines()[-1][:80] + ")", flush=True)
             else:
                 print(time.strftime("%H:%M"), "push refused", k, r.splitlines()[-1], flush=True)
                 break
