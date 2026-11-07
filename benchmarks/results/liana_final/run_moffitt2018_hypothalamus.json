@@ -1,0 +1,122 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "written": "2026-11-03 21:23",
+ "dataset": "moffitt2018_hypothalamus",
+ "meta": {
+  "resource": "mouseconsensus",
+  "n_perms": 1000,
+  "seed": 1337,
+  "n_cells": 29917,
+  "n_types": 8,
+  "seconds_liana": 765.8,
+  "seconds_total": 773.2,
+  "rows": {
+   "liana5": 10197,
+   "liana6": 10197,
+   "extra_null_a": 10197,
+   "swap_null_b": 10197,
+   "extra_null_b": 10197,
+   "swap_b2": 10197,
+   "extra_b2": 10197
+  }
+ },
+ "fidelity": {
+  "liana5_vs_rank_aggregate": {
+   "rows_ours": 10197,
+   "rows_liana": 10197,
+   "rows_matched": 10197,
+   "identical": {
+    "magnitude_rank": true,
+    "specificity_rank": true,
+    "lr_means": true,
+    "cellphone_pvals": true,
+    "expr_prod": true,
+    "lrscore": true
+   }
+  },
+  "CellPhoneDB_vs_standalone": {
+   "rows_ours": 10197,
+   "rows_liana": 10197,
+   "rows_matched": 10197,
+   "identical": {
+    "lr_means": true,
+    "cellphone_pvals": true
+   }
+  },
+  "CellChat_vs_standalone": {
+   "rows_ours": 10197,
+   "rows_liana": 10197,
+   "rows_matched": 10197,
+   "identical": {
+    "lr_probs": true,
+    "cellchat_pvals": true
+   }
+  },
+  "passed": true
+ },
+ "rows": 10197,
+ "calls": {
+  "liana5": {
+   "calls": 766,
+   "jaccard_with_liana6": 0.39748427672955977,
+   "kept_of_liana6": 632,
+   "outside_liana6": 134
+  },
+  "liana6": {
+   "calls": 1456,
+   "jaccard_with_liana6": 1.0,
+   "kept_of_liana6": 1456,
+   "outside_liana6": 0
+  },
+  "swap_null_b": {
+   "calls": 1292,
+   "jaccard_with_liana6": 0.8873626373626373,
+   "kept_of_liana6": 1292,
+   "outside_liana6": 0
+  },
+  "swap_b2": {
+   "calls": 1937,
+   "jaccard_with_liana6": 0.6518987341772152,
+   "kept_of_liana6": 1339,
+   "outside_liana6": 598
+  },
+  "extra_null_a": {
+   "calls": 1757,
+   "jaccard_with_liana6": 0.746195652173913,
+   "kept_of_liana6": 1373,
+   "outside_liana6": 384
+  },
+  "extra_null_b": {
+   "calls": 1480,
+   "jaccard_with_liana6": 0.6873563218390805,
+   "kept_of_liana6": 1196,
+   "outside_liana6": 284
+  },
+  "extra_b2": {
+   "calls": 1814,
+   "jaccard_with_liana6": 0.7013527575442248,
+   "kept_of_liana6": 1348,
+   "outside_liana6": 466
+  }
+ },
+ "tools": {
+  "CellPhoneDB": {
+   "rows": 10197,
+   "p_null_a_lt_05": 6600,
+   "p_null_b_lt_05": 4292,
+   "p_b2_lt_05": 257,
+   "b2_gate": 0.9992154555261351,
+   "null_b_ge_null_a": 0.9986270471707365,
+   "score_max_abs_diff": 1.1920928955078125e-07
+  },
+  "CellChat": {
+   "rows": 10197,
+   "p_null_a_lt_05": 2667,
+   "p_null_b_lt_05": 1870,
+   "p_b2_lt_05": 257,
+   "b2_gate": 0.9992154555261351,
+   "null_b_ge_null_a": 0.9997057958223007,
+   "score_max_abs_diff": 0.0
+  }
+ }
+}
