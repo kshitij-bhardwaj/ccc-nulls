@@ -95,9 +95,36 @@ environment. Each result file records the link of the session that produced it, 
 [`kaggle/README.md`](kaggle/README.md) lists every session with its link, inputs, command and run time. The inputs
 are three Kaggle data sets: the [code](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-code) (a `git archive` of the commit), the [auxiliary files](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux)
 (ligand–receptor databases, CytoSig, PROGENy, HCOP) and the [Open Problems copies](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems). The sessions and data sets
-are private to the project team; to be added as a collaborator, ask a maintainer.
+are private to the project team; to be added as a collaborator, ask a maintainer. The two Mammary runs with 5,000 permutations needed more memory and ran on a lab server
+(see [`RUN.md`](RUN.md)); their result files record it.
 
-<!-- RESULTS -->
+### Results of the second benchmark
+
+False share of the top 1% on known nulls (one side's genes shuffled; lower is better) and planted-pair AUROC:
+
+| | LIANA+ (liana6) | swap: Null B | 7th/8th: Null B | swap: T2 |
+|---|---|---|---|---|
+| Tabula Sapiens Mammary and Liver (4 settings) | 0.80–0.86 | 0.60–0.69 | 0.69–0.73 | 0.80–0.89 |
+| Held-out Tabula Sapiens Lung (2 settings) | 0.83–0.88 | 0.68 | 0.73–0.75 | 0.87–0.89 |
+| Allen brain, mouse (2 settings) | 0.84–0.93 | 0.73–0.83 | 0.69–0.81 | 0.87–0.94 |
+| Lung, planted pairs at f = 2: AUROC | 0.945 | 0.997 | 0.994 | 0.982 |
+| Held-out confirmation (AMENDMENT_1's rule) | | confirmed | confirmed | not confirmed |
+
+- **Calibration and power:** Null B ranks fewer false rows at the top in every known-null setting and in all 16
+  sensitivity runs (seeds, `expr_prop`, subsampling, label resolution, 5,000 permutations, mouse), and ranks planted
+  pairs higher (power at f = 1.25: 0.99 against 0.73).
+- **Against filters:** a detection filter does nothing; a both-sides DE filter removes more false rows than Null B
+  (18 of 18 settings) but ranks planted pairs lower (AUROC, 9 of 9).
+- **Donors:** with global permutations and no cell-type signal left, LIANA+'s CellPhoneDB p is ≤ 0.05 on 18–37% of
+  rows (CellChat 19–51%). Within-donor permutations bring Null B to ≤ 0.6%, and are now the default.
+- **Biology:** none of 19 spatial tests is significant after BH, for any variant. Null B drops rows whose limiting
+  gene is broadly expressed (all 10 data set × tool pairs).
+- **T2** is about a thousand times faster but not calibrated in the consensus; AMENDMENT_3's verdict: not supported.
+- **The ceiling:** four of LIANA+'s six methods use no null, so 60–83% of the top 1% stays false even with Null B.
+
+Verdict under the plan: **Null B is valid and gives a better ranking than LIANA+ as shipped in every setting tested;
+on the available truths it is not biologically distinguishable.** Every run: 67 Kaggle sessions and two lab-server
+runs; [`RERUNS.md`](benchmarks/results/liana_final/RERUNS.md) compares them with the earlier laptop runs.
 
 ## Reproducing
 

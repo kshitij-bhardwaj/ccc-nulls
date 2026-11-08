@@ -187,7 +187,7 @@ def write():
             L += [f"| {t[4:]} | " + " | ".join(f"{r[v]['spearman']:.4f} / {r[v]['top1_jaccard']:.3f}" for v in ("liana6", "swap_null_b", "extra_null_b"))
                   + " |" for t, r in ss["runs"].items()] + [""]
         if sperm or spc:
-            L += ["Permutations, 1,000 vs 5,000 (the hypothalamus; see Deviations):", ""]
+            L += ["Permutations, 1,000 vs 5,000 (the hypothalamus, and Mammary):", ""]
             if sperm and "real" in sperm["runs"]:
                 r = sperm["runs"]["real"]
                 L += ["| Real labels | liana6 | swap: Null B | 7th/8th: Null B |", "|---|---|---|---|",
@@ -277,20 +277,26 @@ def write():
         L += ["## A2.10 Run time", "", "| Dataset | Cells | li.mt.rank_aggregate (s) | This pipeline (s) | Ratio |", "|---|---|---|---|---|"]
         L += [f"| {DS[d]} | {r['n_cells']:,} | {r['liana_rank_aggregate']:,.0f} | {r['this_pipeline']:,.0f} | {r['ratio']:.2f} |"
               for d, r in tm["runs"].items()] + ["", "This pipeline: six methods (LIANA+'s five and CellChat), Null B, and B2 with its decoy genes.", ""]
+    def machines(parts, keep=lambda tag: True):
+        return sorted({r["machine"] for p in parts if J(p) for t, r in J(p)["runs"].items() if "machine" in r and keep(t)})
+    lung = machines(("confirm_calibration", "confirm_power", "donor_null"), lambda t: t.startswith("tabula_sapiens_lung"))
+    perm = machines(("sensitivity_permutations_calibration",), lambda t: "tabula_sapiens_mammary@n_perms=5000" in t)
     L += ["## Deviations from AMENDMENT_2", "",
-          "- **Permutations (A2.5).** 5,000 permutations on Tabula Sapiens Mammary need a 2 × 5,000 × 86,000 permutation tensor "
-          "(about 7 GB), beyond the 8 GB machine. The comparison was run on the hypothalamus (10,197 rows), real labels and the "
-          "receptor-shuffled calibration (rep 0).", ""]
-    elsewhere = sorted({r["machine"] for p in ("confirm_calibration", "confirm_power", "donor_null") if J(p)
-                        for r in J(p)["runs"].values() if "machine" in r})
-    if elsewhere:
-        L[-1:-1] = ["- **Lung (A2.1, A2.3): another machine, not a subsample.** A full-Lung run was killed by the operating system "
-                    "for memory, alone on the 8 GB machine, and so was the pre-registered fallback of 30,000 cells: memory is set by "
-                    "the permutation tensor, 2 × 1,000 × rows, and rows grow with the square of the number of cell types (34 in "
-                    "Lung, about 370,000 rows), not with the number of cells. Instead of a subsample, every Lung run used all "
-                    f"65,847 cells on {', '.join(elsewhere)}, in the same locked environment (`requirements/lock-liana-final.txt`), "
-                    "with the same code, seeds and settings; its result files were merged with "
-                    "`benchmarks/liana_final/merge_results.py`, and each Lung run records the machine."]
+          "- **Machines.** AMENDMENT_2 was written for one 8 GB laptop. Every result here was produced on Kaggle (4 cores, "
+          "32 GB) or, where noted, a lab server, from one commit in the same locked environment "
+          "(`requirements/lock-liana-final.txt`), with the same code, seeds and settings. Each run records its machine; "
+          "`kaggle/README.md` lists the sessions and `RERUNS.md` compares them with earlier laptop runs."]
+    if lung:
+        L += ["- **Lung (A2.1, A2.3): all cells, not a subsample.** A full-Lung run was killed by the operating system for "
+              "memory on the laptop, and so was the pre-registered fallback of 30,000 cells: memory is set by the permutation "
+              "tensor, 2 × 1,000 × rows, and rows grow with the square of the number of cell types (34 in Lung, about 370,000 "
+              "rows), not with the number of cells. Every Lung run used all 65,847 cells, on " + ", ".join(lung) + "."]
+    L += ["- **Permutations (A2.5).** 5,000 permutations on Tabula Sapiens Mammary need a 2 × 5,000 × 86,000 permutation "
+          "tensor (about 7 GB) per tool, beyond the laptop. "
+          + ("The Mammary comparison (real labels, receptor-shuffled calibration rep 0) ran on a lab server with more "
+             "memory than a Kaggle session (" + ", ".join(perm) + "); the hypothalamus on Kaggle." if perm else
+             "The comparison was run on the hypothalamus (10,197 rows), real labels and the receptor-shuffled calibration (rep 0).")]
+    L += [""]
     OUT2.mkdir(parents=True, exist_ok=True)
     (OUT2 / "README.md").write_text("\n".join(L) + "\n")
     print("wrote", OUT2 / "README.md")
