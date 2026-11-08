@@ -1,0 +1,205 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "tnbc_wu2021": {
+   "CellPhoneDB": {
+    "kept": 18356,
+    "dropped": 3926,
+    "limiting_side_dropped": {
+     "ligand": 1814,
+     "receptor": 2101,
+     "tie": 11
+    },
+    "limiting_side_kept": {
+     "ligand": 283,
+     "receptor": 615,
+     "tie": 17458
+    },
+    "breadth_dropped_median": 0.896551724137931,
+    "breadth_kept_median": 0.5862068965517241,
+    "mann_whitney_p": 0.0
+   },
+   "CellChat": {
+    "kept": 18356,
+    "dropped": 3926,
+    "limiting_side_dropped": {
+     "ligand": 1585,
+     "receptor": 1714,
+     "tie": 627
+    },
+    "limiting_side_kept": {
+     "ligand": 355,
+     "receptor": 250,
+     "tie": 17751
+    },
+    "breadth_dropped_median": 0.896551724137931,
+    "breadth_kept_median": 0.5517241379310345,
+    "mann_whitney_p": 0.0
+   },
+   "promoted_rows": 4411,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-cases"
+  },
+  "allen_brain_atlas": {
+   "CellPhoneDB": {
+    "kept": 31456,
+    "dropped": 9443,
+    "limiting_side_dropped": {
+     "ligand": 4058,
+     "receptor": 5317,
+     "tie": 68
+    },
+    "limiting_side_kept": {
+     "ligand": 5405,
+     "receptor": 6057,
+     "tie": 19994
+    },
+    "breadth_dropped_median": 0.9130434782608695,
+    "breadth_kept_median": 0.8260869565217391,
+    "mann_whitney_p": 8.634917030380903e-167
+   },
+   "CellChat": {
+    "kept": 31456,
+    "dropped": 9443,
+    "limiting_side_dropped": {
+     "ligand": 3962,
+     "receptor": 5278,
+     "tie": 203
+    },
+    "limiting_side_kept": {
+     "ligand": 4172,
+     "receptor": 4415,
+     "tie": 22869
+    },
+    "breadth_dropped_median": 0.9130434782608695,
+    "breadth_kept_median": 0.8695652173913043,
+    "mann_whitney_p": 3.03853235297335e-132
+   },
+   "promoted_rows": 5881,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-cases"
+  },
+  "tabula_sapiens_mammary": {
+   "CellPhoneDB": {
+    "kept": 11178,
+    "dropped": 3468,
+    "limiting_side_dropped": {
+     "ligand": 1709,
+     "receptor": 1743,
+     "tie": 16
+    },
+    "limiting_side_kept": {
+     "ligand": 1594,
+     "receptor": 1279,
+     "tie": 8305
+    },
+    "breadth_dropped_median": 0.875,
+    "breadth_kept_median": 0.75,
+    "mann_whitney_p": 0.003071641624481616
+   },
+   "CellChat": {
+    "kept": 11178,
+    "dropped": 3468,
+    "limiting_side_dropped": {
+     "ligand": 1197,
+     "receptor": 1191,
+     "tie": 1080
+    },
+    "limiting_side_kept": {
+     "ligand": 1165,
+     "receptor": 1050,
+     "tie": 8963
+    },
+    "breadth_dropped_median": 0.875,
+    "breadth_kept_median": 0.75,
+    "mann_whitney_p": 1.9260872591176064e-15
+   },
+   "promoted_rows": 937,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-cases"
+  },
+  "tabula_sapiens_liver": {
+   "CellPhoneDB": {
+    "kept": 26979,
+    "dropped": 4394,
+    "limiting_side_dropped": {
+     "ligand": 2619,
+     "receptor": 1766,
+     "tie": 9
+    },
+    "limiting_side_kept": {
+     "ligand": 4009,
+     "receptor": 2958,
+     "tie": 20012
+    },
+    "breadth_dropped_median": 0.9583333333333334,
+    "breadth_kept_median": 0.9166666666666666,
+    "mann_whitney_p": 2.9314751305353955e-92
+   },
+   "CellChat": {
+    "kept": 26979,
+    "dropped": 4394,
+    "limiting_side_dropped": {
+     "ligand": 2586,
+     "receptor": 1761,
+     "tie": 47
+    },
+    "limiting_side_kept": {
+     "ligand": 3329,
+     "receptor": 2142,
+     "tie": 21508
+    },
+    "breadth_dropped_median": 0.9583333333333334,
+    "breadth_kept_median": 0.9166666666666666,
+    "mann_whitney_p": 2.627359756314908e-85
+   },
+   "promoted_rows": 4694,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-cases"
+  },
+  "moffitt2018_hypothalamus": {
+   "CellPhoneDB": {
+    "kept": 1083,
+    "dropped": 146,
+    "limiting_side_dropped": {
+     "ligand": 110,
+     "receptor": 36,
+     "tie": 0
+    },
+    "limiting_side_kept": {
+     "ligand": 28,
+     "receptor": 11,
+     "tie": 1044
+    },
+    "breadth_dropped_median": 1.0,
+    "breadth_kept_median": 0.75,
+    "mann_whitney_p": 1.047166325008718e-21
+   },
+   "CellChat": {
+    "kept": 1083,
+    "dropped": 146,
+    "limiting_side_dropped": {
+     "ligand": 96,
+     "receptor": 30,
+     "tie": 20
+    },
+    "limiting_side_kept": {
+     "ligand": 24,
+     "receptor": 9,
+     "tie": 1050
+    },
+    "breadth_dropped_median": 1.0,
+    "breadth_kept_median": 0.75,
+    "mann_whitney_p": 1.9912169176010506e-23
+   },
+   "promoted_rows": 0,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-cases"
+  }
+ },
+ "written": "2026-11-07 15:45",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-cases",
+   "runs": 5,
+   "written": "2026-11-07 15:45"
+  }
+ ]
+}

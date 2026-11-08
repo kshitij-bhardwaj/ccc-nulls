@@ -1,0 +1,67 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "runs": {
+  "seed1": {
+   "rows": 86001,
+   "liana6": {
+    "spearman": 0.9978771328778437,
+    "top1_jaccard": 0.9635119726339795
+   },
+   "swap_null_b": {
+    "spearman": 0.9964862967964137,
+    "top1_jaccard": 0.9348314606741573
+   },
+   "extra_null_b": {
+    "spearman": 0.9946652666508389,
+    "top1_jaccard": 0.9612756264236902
+   },
+   "swap_t2": {
+    "spearman": 0.9999999999999999,
+    "top1_jaccard": 1.0
+   },
+   "extra_t2": {
+    "spearman": 0.998035494348778,
+    "top1_jaccard": 0.9884526558891455
+   },
+   "seconds": 2207.2,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-sensitivity-seed-expr"
+  },
+  "seed2": {
+   "rows": 86001,
+   "liana6": {
+    "spearman": 0.997740155109114,
+    "top1_jaccard": 0.9793103448275862
+   },
+   "swap_null_b": {
+    "spearman": 0.996007180275282,
+    "top1_jaccard": 0.9725085910652921
+   },
+   "extra_null_b": {
+    "spearman": 0.9943045000915658,
+    "top1_jaccard": 0.9635119726339795
+   },
+   "swap_t2": {
+    "spearman": 0.9999999999999999,
+    "top1_jaccard": 1.0
+   },
+   "extra_t2": {
+    "spearman": 0.9980805165515442,
+    "top1_jaccard": 0.9838709677419355
+   },
+   "seconds": 2177.1,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-sensitivity-seed-expr"
+  }
+ },
+ "written": "2026-11-08 05:10",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-sensitivity-seed-expr",
+   "runs": 2,
+   "written": "2026-11-08 05:10"
+  }
+ ]
+}

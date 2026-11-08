@@ -1,0 +1,55 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "real": {
+   "rows": 10197,
+   "liana6": {
+    "spearman": 0.9991247380463616,
+    "top1_jaccard": 1.0
+   },
+   "swap_null_b": {
+    "spearman": 0.996905768808881,
+    "top1_jaccard": 1.0
+   },
+   "extra_null_b": {
+    "spearman": 0.9974905880522154,
+    "top1_jaccard": 0.8888888888888888
+   },
+   "seconds": 7525.3,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-perms-hypothalamus"
+  },
+  "real@tabula_sapiens_mammary": {
+   "rows": 86001,
+   "liana6": {
+    "spearman": 0.9970791139595696,
+    "top1_jaccard": 0.7553516819571865
+   },
+   "swap_null_b": {
+    "spearman": 0.9963338489619205,
+    "top1_jaccard": 0.7341389728096677
+   },
+   "extra_null_b": {
+    "spearman": 0.9944039828538942,
+    "top1_jaccard": 0.8556034482758621
+   },
+   "seconds": 8813.0,
+   "dataset": "tabula_sapiens_mammary",
+   "machine": "IITK lab server, 2 cores"
+  }
+ },
+ "written": "2026-11-07 16:17",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-perms-hypothalamus",
+   "runs": 1,
+   "written": "2026-11-07 16:17"
+  },
+  {
+   "machine": "IITK lab server, 2 cores",
+   "runs": 1,
+   "written": "2026-11-07 19:39"
+  }
+ ]
+}

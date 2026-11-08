@@ -135,7 +135,7 @@
       "rows": 130218,
       "false_rows": 119677,
       "false_share_all": 0.9190511296441353,
-      "seconds": 1184.1,
+      "seconds": 2296.9,
       "liana5": {
        "false_share_top": 0.7912509593246354,
        "calls": 24103,
@@ -176,7 +176,7 @@
       "rows": 133869,
       "false_rows": 123237,
       "false_share_all": 0.9205790735719248,
-      "seconds": 1220.6,
+      "seconds": 2307.7,
       "liana5": {
        "false_share_top": 0.80134428678118,
        "calls": 24975,
@@ -217,7 +217,7 @@
       "rows": 130861,
       "false_rows": 120259,
       "false_share_all": 0.9189827374083952,
-      "seconds": 1220.0,
+      "seconds": 2381.7,
       "liana5": {
        "false_share_top": 0.7998472116119175,
        "calls": 24280,
@@ -381,7 +381,7 @@
       "rows": 130913,
       "false_rows": 127533,
       "false_share_all": 0.9741813265298328,
-      "seconds": 1176.2,
+      "seconds": 2300.7,
       "liana5": {
        "false_share_top": 0.8114503816793893,
        "calls": 26193,
@@ -422,7 +422,7 @@
       "rows": 130351,
       "false_rows": 126971,
       "false_share_all": 0.9740700109703799,
-      "seconds": 1232.5,
+      "seconds": 2337.9,
       "liana5": {
        "false_share_top": 0.8128834355828221,
        "calls": 25857,
@@ -463,7 +463,7 @@
       "rows": 131113,
       "false_rows": 127733,
       "false_share_all": 0.9742207103795962,
-      "seconds": 1124.7,
+      "seconds": 2310.0,
       "liana5": {
        "false_share_top": 0.8094512195121951,
        "calls": 25997,
@@ -629,7 +629,7 @@
       "rows": 281168,
       "false_rows": 261138,
       "false_share_all": 0.9287614522278496,
-      "seconds": 1334.8,
+      "seconds": 1262.4,
       "liana5": {
        "false_share_top": 0.8830014224751067,
        "calls": 58949,
@@ -670,7 +670,7 @@
       "rows": 280153,
       "false_rows": 260253,
       "false_share_all": 0.92896738567854,
-      "seconds": 1270.0,
+      "seconds": 1486.1,
       "liana5": {
        "false_share_top": 0.8825838686652391,
        "calls": 58656,
@@ -711,7 +711,7 @@
       "rows": 279524,
       "false_rows": 259427,
       "false_share_all": 0.928102774717019,
-      "seconds": 1369.2,
+      "seconds": 1638.2,
       "liana5": {
        "false_share_top": 0.878755364806867,
        "calls": 58144,
@@ -875,7 +875,7 @@
       "rows": 234775,
       "false_rows": 225875,
       "false_share_all": 0.9620913640719838,
-      "seconds": 1127.9,
+      "seconds": 1413.8,
       "liana5": {
        "false_share_top": 0.7968483816013628,
        "calls": 49640,
@@ -916,7 +916,7 @@
       "rows": 240402,
       "false_rows": 231502,
       "false_share_all": 0.9629786773820518,
-      "seconds": 1222.9,
+      "seconds": 1588.3,
       "liana5": {
        "false_share_top": 0.8112266112266112,
        "calls": 50210,
@@ -957,7 +957,7 @@
       "rows": 238698,
       "false_rows": 229798,
       "false_share_all": 0.9627143922445935,
-      "seconds": 1077.7,
+      "seconds": 1456.7,
       "liana5": {
        "false_share_top": 0.8005865102639296,
        "calls": 49754,
@@ -997,5 +997,9 @@
     ]
    }
   }
+ },
+ "machine_by_tissue": {
+  "tabula_sapiens_mammary": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-calibration-mammary",
+  "tabula_sapiens_liver": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-calibration-liver"
  }
 }

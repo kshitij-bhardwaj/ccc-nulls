@@ -1,6 +1,8 @@
 {
+ "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-tnbc",
  "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
- "written": "2026-11-03 21:48",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "written": "2026-11-05 06:15",
  "dataset": "tnbc_wu2021",
  "meta": {
   "resource": "consensus",
@@ -8,8 +10,8 @@
   "seed": 1337,
   "n_cells": 42512,
   "n_types": 29,
-  "seconds_liana": 1209.3,
-  "seconds_total": 1230.2,
+  "seconds_liana": 2644.7,
+  "seconds_total": 2682.2,
   "rows": {
    "liana5": 154213,
    "liana6": 154213,

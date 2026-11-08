@@ -1,0 +1,583 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "tabula_sapiens_lung|global|0": {
+   "dataset": "tabula_sapiens_lung",
+   "scheme": "global",
+   "rep": 0,
+   "seconds": 6396.7,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 881163,
+    "null_a_le_0.01": 0.16840811518413734,
+    "null_a_le_0.05": 0.24232633462821293,
+    "null_b_le_0.01": 0.030652671526153506,
+    "null_b_le_0.05": 0.06395071059497505
+   },
+   "CellChat": {
+    "rows": 292593,
+    "null_a_le_0.01": 0.23078474194529602,
+    "null_a_le_0.05": 0.3081174190770114,
+    "null_b_le_0.01": 0.04458411513604221,
+    "null_b_le_0.05": 0.08219608808139635
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-global-0"
+  },
+  "tabula_sapiens_lung|global|1": {
+   "dataset": "tabula_sapiens_lung",
+   "scheme": "global",
+   "rep": 1,
+   "seconds": 7037.7,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 891091,
+    "null_a_le_0.01": 0.15993989390533628,
+    "null_a_le_0.05": 0.23115147611186737,
+    "null_b_le_0.01": 0.029617626033704752,
+    "null_b_le_0.05": 0.06013639459942924
+   },
+   "CellChat": {
+    "rows": 293570,
+    "null_a_le_0.01": 0.21497428211329495,
+    "null_a_le_0.05": 0.290622338794836,
+    "null_b_le_0.01": 0.040184623769458735,
+    "null_b_le_0.05": 0.07381203801478353
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-global-1"
+  },
+  "tabula_sapiens_lung|global|2": {
+   "dataset": "tabula_sapiens_lung",
+   "scheme": "global",
+   "rep": 2,
+   "seconds": 6937.1,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 855559,
+    "null_a_le_0.01": 0.15816092168979579,
+    "null_a_le_0.05": 0.23418139485412462,
+    "null_b_le_0.01": 0.026496127093514298,
+    "null_b_le_0.05": 0.056250942366335925
+   },
+   "CellChat": {
+    "rows": 288837,
+    "null_a_le_0.01": 0.21200192496113726,
+    "null_a_le_0.05": 0.2925698577398325,
+    "null_b_le_0.01": 0.036709285860191045,
+    "null_b_le_0.05": 0.07004296540955625
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-global-2"
+  },
+  "tabula_sapiens_lung|donor|0": {
+   "dataset": "tabula_sapiens_lung",
+   "scheme": "donor",
+   "rep": 0,
+   "seconds": 6778.5,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 881163,
+    "null_a_le_0.01": 0.014416174986920695,
+    "null_a_le_0.05": 0.06763107393297267,
+    "null_b_le_0.01": 0.00010327260677082447,
+    "null_b_le_0.05": 0.003537370497853405
+   },
+   "CellChat": {
+    "rows": 292593,
+    "null_a_le_0.01": 0.02109756556035175,
+    "null_a_le_0.05": 0.08201153137634871,
+    "null_b_le_0.01": 0.0001367086704056488,
+    "null_b_le_0.05": 0.003831260488118308
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-donor-0"
+  },
+  "tabula_sapiens_lung|donor|1": {
+   "dataset": "tabula_sapiens_lung",
+   "scheme": "donor",
+   "rep": 1,
+   "seconds": 6808.0,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 891091,
+    "null_a_le_0.01": 0.016685164590372926,
+    "null_a_le_0.05": 0.06700999112324106,
+    "null_b_le_0.01": 0.00021322176971824426,
+    "null_b_le_0.05": 0.004303713088786667
+   },
+   "CellChat": {
+    "rows": 293570,
+    "null_a_le_0.01": 0.017757264025615695,
+    "null_a_le_0.05": 0.0704465715161631,
+    "null_b_le_0.01": 0.0002282249548659604,
+    "null_b_le_0.05": 0.0039445447423101816
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-donor-1"
+  },
+  "tabula_sapiens_lung|donor|2": {
+   "dataset": "tabula_sapiens_lung",
+   "scheme": "donor",
+   "rep": 2,
+   "seconds": 5739.9,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 855559,
+    "null_a_le_0.01": 0.013857606547298316,
+    "null_a_le_0.05": 0.05820522021274979,
+    "null_b_le_0.01": 0.0001192202992429511,
+    "null_b_le_0.05": 0.0030424552836215853
+   },
+   "CellChat": {
+    "rows": 288837,
+    "null_a_le_0.01": 0.014603392224680356,
+    "null_a_le_0.05": 0.06653925916693498,
+    "null_b_le_0.01": 0.00010386480956387166,
+    "null_b_le_0.05": 0.0032336577377552046
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-donor-2"
+  },
+  "tnbc_wu2021|global|0": {
+   "dataset": "tnbc_wu2021",
+   "scheme": "global",
+   "rep": 0,
+   "seconds": 2998.6,
+   "n_donors": 10,
+   "CellPhoneDB": {
+    "rows": 186683,
+    "null_a_le_0.01": 0.29740790537970785,
+    "null_a_le_0.05": 0.36744106319268494,
+    "null_b_le_0.01": 0.08181784093891785,
+    "null_b_le_0.05": 0.12911727366712555
+   },
+   "CellChat": {
+    "rows": 21430,
+    "null_a_le_0.01": 0.4420905272981801,
+    "null_a_le_0.05": 0.5005132991133925,
+    "null_b_le_0.01": 0.1244050396640224,
+    "null_b_le_0.05": 0.18763415772281847
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-tnbc"
+  },
+  "tnbc_wu2021|donor|0": {
+   "dataset": "tnbc_wu2021",
+   "scheme": "donor",
+   "rep": 0,
+   "seconds": 3317.2,
+   "n_donors": 10,
+   "CellPhoneDB": {
+    "rows": 186683,
+    "null_a_le_0.01": 0.015464718265723178,
+    "null_a_le_0.05": 0.061874943085337177,
+    "null_b_le_0.01": 0.00019284026933357617,
+    "null_b_le_0.05": 0.0028818906917073327
+   },
+   "CellChat": {
+    "rows": 21430,
+    "null_a_le_0.01": 0.00867942137190854,
+    "null_a_le_0.05": 0.051003266448903406,
+    "null_b_le_0.01": 9.332711152589827e-05,
+    "null_b_le_0.05": 0.002379841343910406
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-tnbc"
+  },
+  "tnbc_wu2021|global|1": {
+   "dataset": "tnbc_wu2021",
+   "scheme": "global",
+   "rep": 1,
+   "seconds": 3116.9,
+   "n_donors": 10,
+   "CellPhoneDB": {
+    "rows": 177076,
+    "null_a_le_0.01": 0.2933655605502722,
+    "null_a_le_0.05": 0.36864397207978494,
+    "null_b_le_0.01": 0.08466421197677833,
+    "null_b_le_0.05": 0.12431385393842193
+   },
+   "CellChat": {
+    "rows": 20233,
+    "null_a_le_0.01": 0.4515889882864627,
+    "null_a_le_0.05": 0.5142588840013839,
+    "null_b_le_0.01": 0.1335442099540355,
+    "null_b_le_0.05": 0.18652696090545148
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-tnbc"
+  },
+  "tnbc_wu2021|donor|1": {
+   "dataset": "tnbc_wu2021",
+   "scheme": "donor",
+   "rep": 1,
+   "seconds": 3237.5,
+   "n_donors": 10,
+   "CellPhoneDB": {
+    "rows": 177076,
+    "null_a_le_0.01": 0.011012220741376585,
+    "null_a_le_0.05": 0.055524181707289524,
+    "null_b_le_0.01": 0.00018636065870021912,
+    "null_b_le_0.05": 0.0030834218075854436
+   },
+   "CellChat": {
+    "rows": 20233,
+    "null_a_le_0.01": 0.015667473928730292,
+    "null_a_le_0.05": 0.06449859141007265,
+    "null_b_le_0.01": 9.884841595413434e-05,
+    "null_b_le_0.05": 0.0034102703504176345
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-tnbc"
+  },
+  "tnbc_wu2021|global|2": {
+   "dataset": "tnbc_wu2021",
+   "scheme": "global",
+   "rep": 2,
+   "seconds": 2842.1,
+   "n_donors": 10,
+   "CellPhoneDB": {
+    "rows": 186119,
+    "null_a_le_0.01": 0.2981909423540853,
+    "null_a_le_0.05": 0.3715526088147905,
+    "null_b_le_0.01": 0.08543458754882628,
+    "null_b_le_0.05": 0.13034671366168957
+   },
+   "CellChat": {
+    "rows": 20082,
+    "null_a_le_0.01": 0.4380539786873817,
+    "null_a_le_0.05": 0.5018922418085848,
+    "null_b_le_0.01": 0.13195896823025596,
+    "null_b_le_0.05": 0.179265013444876
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-tnbc"
+  },
+  "tnbc_wu2021|donor|2": {
+   "dataset": "tnbc_wu2021",
+   "scheme": "donor",
+   "rep": 2,
+   "seconds": 3891.1,
+   "n_donors": 10,
+   "CellPhoneDB": {
+    "rows": 186119,
+    "null_a_le_0.01": 0.015430987701416836,
+    "null_a_le_0.05": 0.06716133226591589,
+    "null_b_le_0.01": 0.00018267882376329122,
+    "null_b_le_0.05": 0.00408878190834896
+   },
+   "CellChat": {
+    "rows": 20082,
+    "null_a_le_0.01": 0.016731401254855095,
+    "null_a_le_0.05": 0.06363907977293098,
+    "null_b_le_0.01": 0.00014938751120406333,
+    "null_b_le_0.05": 0.0032865252464893933
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-tnbc"
+  },
+  "tabula_sapiens_mammary|global|0": {
+   "dataset": "tabula_sapiens_mammary",
+   "scheme": "global",
+   "rep": 0,
+   "seconds": 2386.7,
+   "n_donors": 2,
+   "CellPhoneDB": {
+    "rows": 178906,
+    "null_a_le_0.01": 0.10664259443506646,
+    "null_a_le_0.05": 0.17862452908231138,
+    "null_b_le_0.01": 0.016897141515656265,
+    "null_b_le_0.05": 0.03755603501280002
+   },
+   "CellChat": {
+    "rows": 54318,
+    "null_a_le_0.01": 0.11730917927758754,
+    "null_a_le_0.05": 0.192164659965389,
+    "null_b_le_0.01": 0.01929378843109098,
+    "null_b_le_0.05": 0.04289554107294083
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-mammary"
+  },
+  "tabula_sapiens_mammary|donor|0": {
+   "dataset": "tabula_sapiens_mammary",
+   "scheme": "donor",
+   "rep": 0,
+   "seconds": 2507.1,
+   "n_donors": 2,
+   "CellPhoneDB": {
+    "rows": 178906,
+    "null_a_le_0.01": 0.018786401797592032,
+    "null_a_le_0.05": 0.0808916414206343,
+    "null_b_le_0.01": 0.0002459392082993304,
+    "null_b_le_0.05": 0.0036890881244899558
+   },
+   "CellChat": {
+    "rows": 54318,
+    "null_a_le_0.01": 0.02610552671306013,
+    "null_a_le_0.05": 0.108509149821422,
+    "null_b_le_0.01": 0.00011046062078868883,
+    "null_b_le_0.05": 0.006277845281490482
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-mammary"
+  },
+  "tabula_sapiens_mammary|global|1": {
+   "dataset": "tabula_sapiens_mammary",
+   "scheme": "global",
+   "rep": 1,
+   "seconds": 2399.7,
+   "n_donors": 2,
+   "CellPhoneDB": {
+    "rows": 177732,
+    "null_a_le_0.01": 0.11917381225665609,
+    "null_a_le_0.05": 0.19345418945378434,
+    "null_b_le_0.01": 0.018769833232057255,
+    "null_b_le_0.05": 0.04026849413724034
+   },
+   "CellChat": {
+    "rows": 53636,
+    "null_a_le_0.01": 0.1287381609366843,
+    "null_a_le_0.05": 0.20857260049220672,
+    "null_b_le_0.01": 0.01782384965321799,
+    "null_b_le_0.05": 0.03838839585353121
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-mammary"
+  },
+  "tabula_sapiens_mammary|donor|1": {
+   "dataset": "tabula_sapiens_mammary",
+   "scheme": "donor",
+   "rep": 1,
+   "seconds": 2396.8,
+   "n_donors": 2,
+   "CellPhoneDB": {
+    "rows": 177732,
+    "null_a_le_0.01": 0.02032273310377422,
+    "null_a_le_0.05": 0.0778531721918394,
+    "null_b_le_0.01": 0.00024193729885445503,
+    "null_b_le_0.05": 0.0041354398757680105
+   },
+   "CellChat": {
+    "rows": 53636,
+    "null_a_le_0.01": 0.029476471026922215,
+    "null_a_le_0.05": 0.1079685286001939,
+    "null_b_le_0.01": 9.322097098963382e-05,
+    "null_b_le_0.05": 0.005089865016034007
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-mammary"
+  },
+  "tabula_sapiens_mammary|global|2": {
+   "dataset": "tabula_sapiens_mammary",
+   "scheme": "global",
+   "rep": 2,
+   "seconds": 2322.2,
+   "n_donors": 2,
+   "CellPhoneDB": {
+    "rows": 176433,
+    "null_a_le_0.01": 0.10168165819319515,
+    "null_a_le_0.05": 0.1633481264842745,
+    "null_b_le_0.01": 0.014430407010026469,
+    "null_b_le_0.05": 0.03323074481531233
+   },
+   "CellChat": {
+    "rows": 53274,
+    "null_a_le_0.01": 0.10935916206780043,
+    "null_a_le_0.05": 0.17727221533956528,
+    "null_b_le_0.01": 0.01488530990727184,
+    "null_b_le_0.05": 0.03883695611367646
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-mammary"
+  },
+  "tabula_sapiens_mammary|donor|2": {
+   "dataset": "tabula_sapiens_mammary",
+   "scheme": "donor",
+   "rep": 2,
+   "seconds": 2401.1,
+   "n_donors": 2,
+   "CellPhoneDB": {
+    "rows": 176433,
+    "null_a_le_0.01": 0.016215787296027386,
+    "null_a_le_0.05": 0.06608740995165303,
+    "null_b_le_0.01": 0.00013036110024768608,
+    "null_b_le_0.05": 0.004698667482840512
+   },
+   "CellChat": {
+    "rows": 53274,
+    "null_a_le_0.01": 0.024815106806322033,
+    "null_a_le_0.05": 0.08812929383939633,
+    "null_b_le_0.01": 0.0003378758869242032,
+    "null_b_le_0.05": 0.005743890077711454
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-mammary"
+  },
+  "tabula_sapiens_liver|global|0": {
+   "dataset": "tabula_sapiens_liver",
+   "scheme": "global",
+   "rep": 0,
+   "seconds": 1739.7,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 333863,
+    "null_a_le_0.01": 0.21475575310831088,
+    "null_a_le_0.05": 0.2927038935132075,
+    "null_b_le_0.01": 0.05554374099555806,
+    "null_b_le_0.05": 0.10236534147240035
+   },
+   "CellChat": {
+    "rows": 124758,
+    "null_a_le_0.01": 0.272399365170971,
+    "null_a_le_0.05": 0.35603328043091426,
+    "null_b_le_0.01": 0.07212363135029418,
+    "null_b_le_0.05": 0.1359912791163693
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-liver"
+  },
+  "tabula_sapiens_liver|donor|0": {
+   "dataset": "tabula_sapiens_liver",
+   "scheme": "donor",
+   "rep": 0,
+   "seconds": 1763.5,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 333863,
+    "null_a_le_0.01": 0.010228746521776896,
+    "null_a_le_0.05": 0.05417491605838323,
+    "null_b_le_0.01": 8.985721688237391e-05,
+    "null_b_le_0.05": 0.002815526128981049
+   },
+   "CellChat": {
+    "rows": 124758,
+    "null_a_le_0.01": 0.013009185783677199,
+    "null_a_le_0.05": 0.06394780294650443,
+    "null_b_le_0.01": 0.00012824828868689784,
+    "null_b_le_0.05": 0.003206207217172446
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-liver"
+  },
+  "tabula_sapiens_liver|global|1": {
+   "dataset": "tabula_sapiens_liver",
+   "scheme": "global",
+   "rep": 1,
+   "seconds": 1853.1,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 335443,
+    "null_a_le_0.01": 0.23204836589226785,
+    "null_a_le_0.05": 0.31123916731009443,
+    "null_b_le_0.01": 0.05999827094320048,
+    "null_b_le_0.05": 0.1093062010535322
+   },
+   "CellChat": {
+    "rows": 120953,
+    "null_a_le_0.01": 0.3010012153481104,
+    "null_a_le_0.05": 0.3839673261514803,
+    "null_b_le_0.01": 0.09187039593891842,
+    "null_b_le_0.05": 0.1487023885310823
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-liver"
+  },
+  "tabula_sapiens_liver|donor|1": {
+   "dataset": "tabula_sapiens_liver",
+   "scheme": "donor",
+   "rep": 1,
+   "seconds": 1763.3,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 335443,
+    "null_a_le_0.01": 0.013802643071997328,
+    "null_a_le_0.05": 0.06248453537560778,
+    "null_b_le_0.01": 0.00011924529651833545,
+    "null_b_le_0.05": 0.0032106796087561823
+   },
+   "CellChat": {
+    "rows": 120953,
+    "null_a_le_0.01": 0.01863533769315354,
+    "null_a_le_0.05": 0.07999801575818706,
+    "null_b_le_0.01": 0.0001322827875290402,
+    "null_b_le_0.05": 0.004538953147090192
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-liver"
+  },
+  "tabula_sapiens_liver|global|2": {
+   "dataset": "tabula_sapiens_liver",
+   "scheme": "global",
+   "rep": 2,
+   "seconds": 1710.5,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 324804,
+    "null_a_le_0.01": 0.23682590115885271,
+    "null_a_le_0.05": 0.30923264491816604,
+    "null_b_le_0.01": 0.06335513109444466,
+    "null_b_le_0.05": 0.10930284109801604
+   },
+   "CellChat": {
+    "rows": 118679,
+    "null_a_le_0.01": 0.31174849804936006,
+    "null_a_le_0.05": 0.39004373140993776,
+    "null_b_le_0.01": 0.1017618955333294,
+    "null_b_le_0.05": 0.1534812393093976
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-liver"
+  },
+  "tabula_sapiens_liver|donor|2": {
+   "dataset": "tabula_sapiens_liver",
+   "scheme": "donor",
+   "rep": 2,
+   "seconds": 1815.2,
+   "n_donors": 4,
+   "CellPhoneDB": {
+    "rows": 324804,
+    "null_a_le_0.01": 0.014922845777761358,
+    "null_a_le_0.05": 0.06367840297533281,
+    "null_b_le_0.01": 0.00010467851381140627,
+    "null_b_le_0.05": 0.002927919606901393
+   },
+   "CellChat": {
+    "rows": 118679,
+    "null_a_le_0.01": 0.019801312784907186,
+    "null_a_le_0.05": 0.08190160011459482,
+    "null_b_le_0.01": 0.00013481744874830424,
+    "null_b_le_0.05": 0.003606366754017139
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-liver"
+  }
+ },
+ "written": "2026-11-05 21:31",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-global-0",
+   "runs": 1,
+   "written": "2026-11-05 21:31"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-global-1",
+   "runs": 1,
+   "written": "2026-11-05 22:37"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-global-2",
+   "runs": 1,
+   "written": "2026-11-05 22:56"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-donor-0",
+   "runs": 1,
+   "written": "2026-11-05 23:06"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-donor-1",
+   "runs": 1,
+   "written": "2026-11-05 23:28"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-donor-donor-2",
+   "runs": 1,
+   "written": "2026-11-06 23:09"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-tnbc",
+   "runs": 6,
+   "written": "2026-11-07 16:26"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-mammary",
+   "runs": 6,
+   "written": "2026-11-07 15:03"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-liver",
+   "runs": 6,
+   "written": "2026-11-07 14:00"
+  }
+ ]
+}

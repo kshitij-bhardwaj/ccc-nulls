@@ -1,0 +1,276 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "runs": {
+  "tnbc_wu2021": {
+   "rows": 154213,
+   "calls": {
+    "liana6": {
+     "calls": 23466,
+     "jaccard_with_liana6": 1.0
+    },
+    "swap_null_b": {
+     "calls": 24005,
+     "jaccard_with_liana6": 0.6898405239925958
+    },
+    "extra_null_b": {
+     "calls": 23122,
+     "jaccard_with_liana6": 0.7448035654095352
+    },
+    "swap_t2": {
+     "calls": 27935,
+     "jaccard_with_liana6": 0.7242871519624288
+    },
+    "extra_t2": {
+     "calls": 27946,
+     "jaccard_with_liana6": 0.7324437255694838
+    }
+   },
+   "tools": {
+    "CellPhoneDB": {
+     "rows": 154213,
+     "t2_untested": 0.0014914436526103358,
+     "p_t2_lt_05": 10890,
+     "p_null_b_lt_05": 66245,
+     "p_null_a_lt_05": 107960
+    },
+    "CellChat": {
+     "rows": 154213,
+     "t2_untested": 0.0014914436526103358,
+     "p_t2_lt_05": 9728,
+     "p_null_b_lt_05": 27114,
+     "p_null_a_lt_05": 41381
+    }
+   },
+   "seconds": 2508.3,
+   "same_as_run": {
+    "liana6": true,
+    "swap_null_b": true,
+    "extra_null_b": true
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-tnbc"
+  },
+  "allen_brain_atlas": {
+   "rows": 235366,
+   "calls": {
+    "liana6": {
+     "calls": 42879,
+     "jaccard_with_liana6": 1.0
+    },
+    "swap_null_b": {
+     "calls": 39249,
+     "jaccard_with_liana6": 0.6748511297822009
+    },
+    "extra_null_b": {
+     "calls": 42186,
+     "jaccard_with_liana6": 0.6761246083821009
+    },
+    "swap_t2": {
+     "calls": 47145,
+     "jaccard_with_liana6": 0.735268605794252
+    },
+    "extra_t2": {
+     "calls": 50343,
+     "jaccard_with_liana6": 0.7267170482329407
+    }
+   },
+   "tools": {
+    "CellPhoneDB": {
+     "rows": 235366,
+     "t2_untested": 0.00150828921764401,
+     "p_t2_lt_05": 15878,
+     "p_null_b_lt_05": 45033,
+     "p_null_a_lt_05": 111416
+    },
+    "CellChat": {
+     "rows": 235366,
+     "t2_untested": 0.00150828921764401,
+     "p_t2_lt_05": 13602,
+     "p_null_b_lt_05": 35452,
+     "p_null_a_lt_05": 72526
+    }
+   },
+   "seconds": 1120.8,
+   "same_as_run": {
+    "liana6": true,
+    "swap_null_b": true,
+    "extra_null_b": true
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-allen"
+  },
+  "tabula_sapiens_mammary": {
+   "rows": 86001,
+   "calls": {
+    "liana6": {
+     "calls": 15946,
+     "jaccard_with_liana6": 1.0
+    },
+    "swap_null_b": {
+     "calls": 13208,
+     "jaccard_with_liana6": 0.7223370945826195
+    },
+    "extra_null_b": {
+     "calls": 15041,
+     "jaccard_with_liana6": 0.7301507537688442
+    },
+    "swap_t2": {
+     "calls": 16151,
+     "jaccard_with_liana6": 0.7605726509791015
+    },
+    "extra_t2": {
+     "calls": 17450,
+     "jaccard_with_liana6": 0.7478411053540587
+    }
+   },
+   "tools": {
+    "CellPhoneDB": {
+     "rows": 86001,
+     "t2_untested": 0.00394181463006249,
+     "p_t2_lt_05": 6574,
+     "p_null_b_lt_05": 16710,
+     "p_null_a_lt_05": 36730
+    },
+    "CellChat": {
+     "rows": 86001,
+     "t2_untested": 0.00394181463006249,
+     "p_t2_lt_05": 5682,
+     "p_null_b_lt_05": 10560,
+     "p_null_a_lt_05": 20945
+    }
+   },
+   "seconds": 2267.0,
+   "same_as_run": {
+    "liana6": true,
+    "swap_null_b": true,
+    "extra_null_b": true
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-mammary"
+  },
+  "tabula_sapiens_liver": {
+   "rows": 196381,
+   "calls": {
+    "liana6": {
+     "calls": 33349,
+     "jaccard_with_liana6": 1.0
+    },
+    "swap_null_b": {
+     "calls": 33740,
+     "jaccard_with_liana6": 0.7500717360114778
+    },
+    "extra_null_b": {
+     "calls": 34632,
+     "jaccard_with_liana6": 0.7489773341223083
+    },
+    "swap_t2": {
+     "calls": 37991,
+     "jaccard_with_liana6": 0.7434869739478958
+    },
+    "extra_t2": {
+     "calls": 38757,
+     "jaccard_with_liana6": 0.7459925420117197
+    }
+   },
+   "tools": {
+    "CellPhoneDB": {
+     "rows": 196381,
+     "t2_untested": 0.002622453292324578,
+     "p_t2_lt_05": 13134,
+     "p_null_b_lt_05": 44638,
+     "p_null_a_lt_05": 92765
+    },
+    "CellChat": {
+     "rows": 196381,
+     "t2_untested": 0.002622453292324578,
+     "p_t2_lt_05": 12767,
+     "p_null_b_lt_05": 30038,
+     "p_null_a_lt_05": 55445
+    }
+   },
+   "seconds": 2074.1,
+   "same_as_run": {
+    "liana6": true,
+    "swap_null_b": true,
+    "extra_null_b": true
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-liver"
+  },
+  "moffitt2018_hypothalamus": {
+   "rows": 10197,
+   "calls": {
+    "liana6": {
+     "calls": 1456,
+     "jaccard_with_liana6": 1.0
+    },
+    "swap_null_b": {
+     "calls": 1292,
+     "jaccard_with_liana6": 0.8873626373626373
+    },
+    "extra_null_b": {
+     "calls": 1480,
+     "jaccard_with_liana6": 0.6873563218390805
+    },
+    "swap_t2": {
+     "calls": 1545,
+     "jaccard_with_liana6": 0.7356853672643147
+    },
+    "extra_t2": {
+     "calls": 1600,
+     "jaccard_with_liana6": 0.6653950953678475
+    }
+   },
+   "tools": {
+    "CellPhoneDB": {
+     "rows": 10197,
+     "t2_untested": 0.054427772874374836,
+     "p_t2_lt_05": 670,
+     "p_null_b_lt_05": 4292,
+     "p_null_a_lt_05": 6600
+    },
+    "CellChat": {
+     "rows": 10197,
+     "t2_untested": 0.054427772874374836,
+     "p_t2_lt_05": 635,
+     "p_null_b_lt_05": 1870,
+     "p_null_a_lt_05": 2667
+    }
+   },
+   "seconds": 1693.6,
+   "same_as_run": {
+    "liana6": true,
+    "swap_null_b": true,
+    "extra_null_b": true
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-hypothalamus"
+  }
+ },
+ "written": "2026-11-07 16:42",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-tnbc",
+   "runs": 1,
+   "written": "2026-11-07 16:42"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-allen",
+   "runs": 1,
+   "written": "2026-11-07 16:30"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-mammary",
+   "runs": 1,
+   "written": "2026-11-07 17:01"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-liver",
+   "runs": 1,
+   "written": "2026-11-07 17:04"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-hypothalamus",
+   "runs": 1,
+   "written": "2026-11-07 17:01"
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "tabula_sapiens_lung|receptor|0": {
+   "scenario": "receptor",
+   "rep": 0,
+   "rows": 672504,
+   "false_share_all": 0.9387661634726336,
+   "seconds": 7231.5,
+   "false_share_top": {
+    "liana5": 0.8797204876598276,
+    "liana6": 0.8797204876598276,
+    "swap_null_b": 0.6784121320249777,
+    "swap_b2": 0.7607790663098424,
+    "extra_null_a": 0.9134701159678859,
+    "extra_null_b": 0.7536425810288433,
+    "extra_b2": 0.7729705619982159,
+    "liana6_prop20": 0.868421052631579,
+    "liana6_prop30": 0.8666369313113291,
+    "liana6_de": 0.28203984537615223,
+    "liana6@mean": 0.8605411834671425,
+    "swap_null_b@mean": 0.6660719595599167,
+    "extra_null_b@mean": 0.6662206363366042
+   },
+   "dataset": "tabula_sapiens_lung",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-receptor-0"
+  },
+  "tabula_sapiens_lung|receptor|1": {
+   "scenario": "receptor",
+   "rep": 1,
+   "rows": 672599,
+   "false_share_all": 0.9385934263952221,
+   "seconds": 6358.6,
+   "false_share_top": {
+    "liana5": 0.8788284269997026,
+    "liana6": 0.8788284269997026,
+    "swap_null_b": 0.6718703538507285,
+    "swap_b2": 0.7528991971454059,
+    "extra_null_a": 0.9128754088611359,
+    "extra_null_b": 0.7475468331846565,
+    "extra_b2": 0.7659827534939042,
+    "liana6_prop20": 0.8693131132917038,
+    "liana6_prop30": 0.8647041332143919,
+    "liana6_de": 0.2815938150460898,
+    "liana6@mean": 0.8589057389235801,
+    "swap_null_b@mean": 0.659678858162355,
+    "extra_null_b@mean": 0.6592328278322926
+   },
+   "dataset": "tabula_sapiens_lung",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-receptor-1"
+  },
+  "tabula_sapiens_lung|receptor|2": {
+   "scenario": "receptor",
+   "rep": 2,
+   "rows": 672407,
+   "false_share_all": 0.9387573300099493,
+   "seconds": 6868.0,
+   "false_share_top": {
+    "liana5": 0.8807434944237919,
+    "liana6": 0.8810408921933085,
+    "swap_null_b": 0.6797026022304833,
+    "swap_b2": 0.7598513011152417,
+    "extra_null_a": 0.9104832713754647,
+    "extra_null_b": 0.756728624535316,
+    "extra_b2": 0.7701115241635688,
+    "liana6_prop20": 0.8707806691449814,
+    "liana6_prop30": 0.8639405204460967,
+    "liana6_de": 0.281635687732342,
+    "liana6@mean": 0.8565055762081785,
+    "swap_null_b@mean": 0.6681040892193308,
+    "extra_null_b@mean": 0.6681040892193308
+   },
+   "dataset": "tabula_sapiens_lung",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-receptor-2"
+  },
+  "tabula_sapiens_lung|ligand|0": {
+   "scenario": "ligand",
+   "rep": 0,
+   "rows": 564672,
+   "false_share_all": 0.9660156692734897,
+   "seconds": 7731.3,
+   "false_share_top": {
+    "liana5": 0.8252169293430139,
+    "liana6": 0.8337170178856029,
+    "swap_null_b": 0.6743403577120595,
+    "swap_b2": 0.7359659996458296,
+    "extra_null_a": 0.9268638214981406,
+    "extra_null_b": 0.7295909332388879,
+    "extra_b2": 0.7743934832654507,
+    "liana6_prop20": 0.8408004250044271,
+    "liana6_prop30": 0.8558526651319285,
+    "liana6_de": 0.36001416681423765,
+    "liana6@mean": 0.8199043740038958,
+    "swap_null_b@mean": 0.6869134053479724,
+    "extra_null_b@mean": 0.684434212856384
+   },
+   "dataset": "tabula_sapiens_lung",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-ligand-0"
+  },
+  "tabula_sapiens_lung|ligand|1": {
+   "scenario": "ligand",
+   "rep": 1,
+   "rows": 562149,
+   "false_share_all": 0.9658613641579012,
+   "seconds": 5438.3,
+   "false_share_top": {
+    "liana5": 0.8253290643898968,
+    "liana6": 0.8310209889718961,
+    "swap_null_b": 0.6828530771967272,
+    "swap_b2": 0.7390608324439701,
+    "extra_null_a": 0.928495197438634,
+    "extra_null_b": 0.7324795446460335,
+    "extra_b2": 0.7765919601565279,
+    "liana6_prop20": 0.8392031305585201,
+    "liana6_prop30": 0.8537886872998933,
+    "liana6_de": 0.3566346495908929,
+    "liana6@mean": 0.8187477765919602,
+    "swap_null_b@mean": 0.6929918178584134,
+    "extra_null_b@mean": 0.6915688367129136
+   },
+   "dataset": "tabula_sapiens_lung",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-ligand-1"
+  },
+  "tabula_sapiens_lung|ligand|2": {
+   "scenario": "ligand",
+   "rep": 2,
+   "rows": 567379,
+   "false_share_all": 0.9661778105992643,
+   "seconds": 6535.2,
+   "false_share_top": {
+    "liana5": 0.8265773704617554,
+    "liana6": 0.8343320408882623,
+    "swap_null_b": 0.6810010574550581,
+    "swap_b2": 0.740394783221713,
+    "extra_null_a": 0.9286217835741981,
+    "extra_null_b": 0.736164962989073,
+    "extra_b2": 0.7791681353542474,
+    "liana6_prop20": 0.8415579837856891,
+    "liana6_prop30": 0.8567148396193162,
+    "liana6_de": 0.3625308424391963,
+    "liana6@mean": 0.8200563976031019,
+    "swap_null_b@mean": 0.6906943954881918,
+    "extra_null_b@mean": 0.688755727881565
+   },
+   "dataset": "tabula_sapiens_lung",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-ligand-2"
+  }
+ },
+ "written": "2026-11-05 19:18",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-receptor-0",
+   "runs": 1,
+   "written": "2026-11-05 19:18"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-receptor-1",
+   "runs": 1,
+   "written": "2026-11-05 19:02"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-receptor-2",
+   "runs": 1,
+   "written": "2026-11-05 19:17"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-ligand-0",
+   "runs": 1,
+   "written": "2026-11-05 20:57"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-ligand-1",
+   "runs": 1,
+   "written": "2026-11-05 20:36"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-lung-ligand-2",
+   "runs": 1,
+   "written": "2026-11-05 21:09"
+  }
+ ]
+}

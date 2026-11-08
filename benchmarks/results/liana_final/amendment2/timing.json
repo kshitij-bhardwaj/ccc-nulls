@@ -1,0 +1,29 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "tabula_sapiens_mammary": {
+   "liana_rank_aggregate": 398.6,
+   "this_pipeline": 2208.5,
+   "ratio": 5.54,
+   "n_cells": 30934,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-timing"
+  },
+  "moffitt2018_hypothalamus": {
+   "liana_rank_aggregate": 200.9,
+   "this_pipeline": 1562.3,
+   "ratio": 7.78,
+   "n_cells": 29917,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-timing"
+  }
+ },
+ "written": "2026-11-06 11:34",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-timing",
+   "runs": 2,
+   "written": "2026-11-06 11:34"
+  }
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "runs": {
+  "tnbc_wu2021": {
+   "kept": 20481,
+   "dropped": 1801,
+   "breadth_dropped_median": 0.4827586206896552,
+   "breadth_kept_median": 0.6896551724137931,
+   "breadth_ligand_dropped_median": 0.3448275862068966,
+   "breadth_receptor_dropped_median": 0.3448275862068966,
+   "mann_whitney_p": 0.999999999999997,
+   "dropped_by_both": 652,
+   "dropped_t2_only": 1149,
+   "dropped_null_b_only": 3274,
+   "dropped_jaccard": 0.12847290640394088,
+   "promoted_rows": 6034,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-cases"
+  },
+  "allen_brain_atlas": {
+   "kept": 36313,
+   "dropped": 4586,
+   "breadth_dropped_median": 0.8260869565217391,
+   "breadth_kept_median": 0.9130434782608695,
+   "breadth_ligand_dropped_median": 0.43478260869565216,
+   "breadth_receptor_dropped_median": 0.43478260869565216,
+   "mann_whitney_p": 1.0,
+   "dropped_by_both": 2048,
+   "dropped_t2_only": 2538,
+   "dropped_null_b_only": 7395,
+   "dropped_jaccard": 0.17093731741924714,
+   "promoted_rows": 8644,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-cases"
+  },
+  "tabula_sapiens_mammary": {
+   "kept": 12687,
+   "dropped": 1959,
+   "breadth_dropped_median": 0.6875,
+   "breadth_kept_median": 0.875,
+   "breadth_ligand_dropped_median": 0.4375,
+   "breadth_receptor_dropped_median": 0.3125,
+   "mann_whitney_p": 1.0,
+   "dropped_by_both": 869,
+   "dropped_t2_only": 1090,
+   "dropped_null_b_only": 2599,
+   "dropped_jaccard": 0.1906537955243528,
+   "promoted_rows": 2159,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-cases"
+  },
+  "tabula_sapiens_liver": {
+   "kept": 28583,
+   "dropped": 2790,
+   "breadth_dropped_median": 0.9166666666666666,
+   "breadth_kept_median": 0.9583333333333334,
+   "breadth_ligand_dropped_median": 0.6666666666666666,
+   "breadth_receptor_dropped_median": 0.375,
+   "mann_whitney_p": 0.9998702071901611,
+   "dropped_by_both": 785,
+   "dropped_t2_only": 2005,
+   "dropped_null_b_only": 3609,
+   "dropped_jaccard": 0.12267541803406783,
+   "promoted_rows": 7215,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-cases"
+  },
+  "moffitt2018_hypothalamus": {
+   "kept": 1065,
+   "dropped": 164,
+   "breadth_dropped_median": 1.0,
+   "breadth_kept_median": 1.0,
+   "breadth_ligand_dropped_median": 0.625,
+   "breadth_receptor_dropped_median": 0.25,
+   "mann_whitney_p": 0.24158253070180746,
+   "dropped_by_both": 68,
+   "dropped_t2_only": 96,
+   "dropped_null_b_only": 78,
+   "dropped_jaccard": 0.2809917355371901,
+   "promoted_rows": 235,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-cases"
+  }
+ },
+ "written": "2026-11-08 06:17",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-cases",
+   "runs": 5,
+   "written": "2026-11-08 06:17"
+  }
+ ]
+}

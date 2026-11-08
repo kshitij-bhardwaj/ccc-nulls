@@ -1,0 +1,48 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "tnbc_wu2021": {
+   "rows": 154213,
+   "seconds": 2282.9,
+   "swap_null_b": {
+    "top1_jaccard": 0.7464629315223543,
+    "calls_global": 24005,
+    "calls_donor": 23393,
+    "call_jaccard": 0.912906610703043
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-real"
+  },
+  "tabula_sapiens_mammary": {
+   "rows": 86001,
+   "seconds": 2103.4,
+   "swap_null_b": {
+    "top1_jaccard": 0.799373040752351,
+    "calls_global": 13208,
+    "calls_donor": 12967,
+    "call_jaccard": 0.9129576847182636
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-real"
+  },
+  "tabula_sapiens_liver": {
+   "rows": 196381,
+   "seconds": 1531.9,
+   "swap_null_b": {
+    "top1_jaccard": 0.5967479674796748,
+    "calls_global": 33740,
+    "calls_donor": 33153,
+    "call_jaccard": 0.8682586230973328
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-real"
+  }
+ },
+ "written": "2026-11-07 12:42",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-donor-real",
+   "runs": 3,
+   "written": "2026-11-07 12:42"
+  }
+ ]
+}

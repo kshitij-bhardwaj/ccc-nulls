@@ -1,6 +1,8 @@
 {
+ "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-liver",
  "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
- "written": "2026-11-03 23:25",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "written": "2026-11-05 06:15",
  "dataset": "tabula_sapiens_liver",
  "meta": {
   "resource": "consensus",
@@ -8,8 +10,8 @@
   "seed": 1337,
   "n_cells": 22214,
   "n_types": 24,
-  "seconds_liana": 2956.4,
-  "seconds_total": 2970.2,
+  "seconds_liana": 1797.1,
+  "seconds_total": 1824.9,
   "rows": {
    "liana5": 196381,
    "liana6": 196381,

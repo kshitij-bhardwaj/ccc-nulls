@@ -1,0 +1,656 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "tabula_sapiens_mammary@expr_prop=0.05|f2|f1.5|0": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 42,
+   "n_one_sided_rows": 3590,
+   "rows": 154025,
+   "liana5": {
+    "precision_at_k": 0.3333333333333333,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9481522748375116
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.047619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9605199628597957
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.5952380952380952,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9967873723305478
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.35714285714285715,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9627948003714021
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.047619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9592850510677808
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.40476190476190477,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9951067780872794
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.2857142857142857,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9333565459610028
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.047619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9605199628597957
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.09523809523809523,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9670380687093779
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.9047619047619048,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9962674094707521
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.5476190476190477,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9841736304549675
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.7142857142857143,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9985236768802228
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.7142857142857143,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9985236768802228
+    }
+   },
+   "effect": 1.5,
+   "rep": 0,
+   "seconds": 989.4,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@expr_prop=0.05",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr"
+  },
+  "tabula_sapiens_mammary@expr_prop=0.05|f2|f1.5|1": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 53,
+   "n_one_sided_rows": 4140,
+   "rows": 154054,
+   "liana5": {
+    "precision_at_k": 0.4339622641509434,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9127415458937198
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9559983896940418
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.8113207547169812,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9969887278582931
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.5660377358490566,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9761111111111112
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.05660377358490566,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9431159420289855
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.41509433962264153,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9924396135265701
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9579911433172302
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9560064412238325
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.962842190016103
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.8679245283018868,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.99426731078905
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.6226415094339622,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.984255233494364
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.8301886792452831,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9982206119162641
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.8301886792452831,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9982206119162641
+    }
+   },
+   "effect": 1.5,
+   "rep": 1,
+   "seconds": 902.0,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@expr_prop=0.05",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr"
+  },
+  "tabula_sapiens_mammary@expr_prop=0.2|f2|f1.5|0": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 42,
+   "n_one_sided_rows": 2151,
+   "rows": 44544,
+   "liana5": {
+    "precision_at_k": 0.35714285714285715,
+    "single": {
+     "power_top": 0.8666666666666667,
+     "auroc": 0.9494188749418875
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.07142857142857142,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9334728033472803
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.5952380952380952,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9950565628389896
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.38095238095238093,
+    "single": {
+     "power_top": 0.8333333333333334,
+     "auroc": 0.9440415310708198
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.07142857142857142,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.931272276460561
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.5238095238095238,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9937238493723849
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.2857142857142857,
+    "single": {
+     "power_top": 0.6333333333333333,
+     "auroc": 0.8974120564078724
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.07142857142857142,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9334728033472803
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.09523809523809523,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9437935843793585
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.9047619047619048,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.993398419339842
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.5476190476190477,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9766542693320936
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.7142857142857143,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9982953664962033
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.7142857142857143,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9982953664962033
+    }
+   },
+   "effect": 1.5,
+   "rep": 0,
+   "seconds": 1018.5,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@expr_prop=0.2",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr"
+  },
+  "tabula_sapiens_mammary@expr_prop=0.2|f2|f1.5|1": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 53,
+   "n_one_sided_rows": 2050,
+   "rows": 43755,
+   "liana5": {
+    "precision_at_k": 0.4716981132075472,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9141626016260163
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.2641509433962264,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9137804878048781
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.8113207547169812,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9938536585365854
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.5849056603773585,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.965479674796748
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.07547169811320754,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.8913739837398374
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.4339622641509434,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9855284552845528
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 0.7666666666666667,
+     "auroc": 0.9195447154471544
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.2641509433962264,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9138130081300813
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.2641509433962264,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9267886178861788
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.8490566037735849,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9859756097560975
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.6226415094339622,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9707642276422764
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.8301886792452831,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.997040650406504
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.8301886792452831,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.997040650406504
+    }
+   },
+   "effect": 1.5,
+   "rep": 1,
+   "seconds": 773.7,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@expr_prop=0.2",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr"
+  },
+  "tabula_sapiens_mammary@cells=0.5|f2|f1.5|0": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 42,
+   "n_one_sided_rows": 2991,
+   "rows": 100151,
+   "liana5": {
+    "precision_at_k": 0.2857142857142857,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9345313718934581
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.11904761904761904,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9489524127939374
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.5952380952380952,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9931238158921208
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.5,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9702440655299231
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.09523809523809523,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.949693525019503
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.4523809523809524,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9884208180095843
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.35714285714285715,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9408057505850886
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.11904761904761904,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9489524127939374
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.11904761904761904,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9281288309372562
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.5,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9716649949849548
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.6190476190476191,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9817953861584754
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.6666666666666666,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9958486570823581
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.6666666666666666,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9959935361640477
+    }
+   },
+   "effect": 1.5,
+   "rep": 0,
+   "seconds": 434.0,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@cells=0.5",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-cells-labels"
+  },
+  "tabula_sapiens_mammary@cells=0.25|f2|f1.5|0": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 42,
+   "n_one_sided_rows": 2767,
+   "rows": 85668,
+   "liana5": {
+    "precision_at_k": 0.14285714285714285,
+    "single": {
+     "power_top": 0.8666666666666667,
+     "auroc": 0.8910613179135044
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.11904761904761904,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9196843753764606
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.6428571428571429,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9772918925430671
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.47619047619047616,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9455427056981086
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.11904761904761904,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9236537766534153
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.5,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9735393326105288
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.42857142857142855,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9277075051198651
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.11904761904761904,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9245512588844718
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.14285714285714285,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9134381399831346
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.2857142857142857,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9305264425972775
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.5476190476190477,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9267859294060956
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.6666666666666666,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.969509697626792
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.6666666666666666,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9642573183953741
+    }
+   },
+   "effect": 1.5,
+   "rep": 0,
+   "seconds": 240.9,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@cells=0.25",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-cells-labels"
+  }
+ },
+ "written": "2026-11-07 15:55",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr",
+   "runs": 4,
+   "written": "2026-11-07 15:55"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-cells-labels",
+   "runs": 2,
+   "written": "2026-11-07 13:29"
+  }
+ ]
+}
