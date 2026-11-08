@@ -195,6 +195,9 @@ def collect():
             continue
         d = OUTPUTS / slug(k)
         if not (d / "out" / "session.json").exists():
+            if status(k) != "complete":           # run elsewhere (RUN.md) or not run yet: merged by hand
+                print("skipped", k, flush=True)
+                continue
             d.mkdir(parents=True, exist_ok=True)
             kaggle("kernels", "output", f"{OWNER}/{slug(k)}", "-p", str(d), check=False)
         meta = json.loads((d / "out" / "session.json").read_text())
