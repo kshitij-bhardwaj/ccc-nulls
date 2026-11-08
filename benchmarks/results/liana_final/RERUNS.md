@@ -30,3 +30,9 @@ has, and ran on a lab server (2 cores; `machine`: "IITK lab server, 2 cores"). T
 Mammary run had to be repeated first. That repeat agreed with the Kaggle run on every value except
 `same_as_run`, which was false on the server. The server compared against the plan's local tables (commit b74aa63,
 copied with the data), not the Kaggle tables, and those differ as described above. The Kaggle run is kept.
+
+## AMENDMENT_2: laptop runs before Kaggle
+
+Before the Kaggle runs, most of AMENDMENT_2 had been run on the laptop (2026-11-04 and 05, not committed). Every
+result here comes from Kaggle or the lab server. Against the laptop runs, 11,105 of 11,109 values are identical;
+the other 4 are AUROCs in `hard_power.json` that differ in the fifth decimal (largest difference 1.2 × 10⁻⁵).
