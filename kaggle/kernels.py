@@ -79,7 +79,7 @@ SESSIONS["a4-donor-real"] = S(f"{A4} --part donor --only '^({RUNS['tnbc']}|{RUNS
 SESSIONS["a4-sensitivity-seed-expr"] = S(f"{A4} --part sensitivity --only '^seed|@expr_prop='", ["data", "a3-real-mammary"])
 SESSIONS["a4-sensitivity-cells-labels"] = S(f"{A4} --part sensitivity --only '@(cells|labels)='", ["data", "a3-real-mammary"])
 SESSIONS["a4-sensitivity-perms-hypothalamus"] = S(f"{A4} --part sensitivity --only '^real$|^{RUNS['hypothalamus']}@n_perms'",
-                                                  ["data", "a3-real-hypothalamus"])
+                                                  ["data", "a3-real-mammary", "a3-real-hypothalamus"])  # A2.5 loads Mammary first
 SESSIONS["a4-sensitivity-perms-mammary"] = S(f"{A4} --part sensitivity --only '^real@|^{RUNS['mammary']}@n_perms'",
                                              ["data", "a3-real-mammary"])
 SESSIONS["a4-mouse"] = S(f"{A4} --part mouse", ["data"])
