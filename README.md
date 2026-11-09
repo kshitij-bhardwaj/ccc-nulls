@@ -73,6 +73,9 @@ results: [`benchmarks/results/liana_nulls`](benchmarks/results/liana_nulls/READM
 - **Power:** with BH, Null B needs about 5,000 permutations (CellChat at f = 1.5: power 0.19 at 1,000, 0.97 at
   5,000).
 - **Also compared:** B2 (decoy genes, CAMERA-corrected) and PR #9's CellPhoneDB Null B.
+- **AMENDMENT_4:** T2 (PR #11's leave-one-out t-test) through every stage: FDR on known nulls 0.20–0.99, calls in
+  every labels-shuffled replicate, power 0.51–0.58 at FDR 0.24–0.39. Not valid at tool level. B2 with ligands
+  shuffled: FDR 0.
 
 **2. Does Null B improve LIANA+'s consensus ranking?** ([`benchmarks/liana_final`](benchmarks/liana_final/PLAN.md),
 then [`AMENDMENT_1.md`](benchmarks/liana_final/AMENDMENT_1.md) to
@@ -120,6 +123,9 @@ False share of the top 1% on known nulls (one side's genes shuffled; lower is be
 - **Biology:** none of 19 spatial tests is significant after BH, for any variant. Null B drops rows whose limiting
   gene is broadly expressed (all 10 data set × tool pairs).
 - **T2** is about a thousand times faster but not calibrated in the consensus; AMENDMENT_3's verdict: not supported.
+- **AMENDMENT_5** gives B2 and T2 the tests only Null B had: T2's biology with multiplicity correction (no spatial
+  test significant; AMENDMENT_2's 79 tests reproduced exactly), B2 under within-donor shuffles (0.3–4.6% of rows
+  at p ≤ 0.05) and what B2 drops (broadly expressed genes, 4 of 5 data sets).
 - **The ceiling:** four of LIANA+'s six methods use no null, so 60–83% of the top 1% stays false even with Null B.
 
 Verdict under the plan: **Null B is valid and gives a better ranking than LIANA+ as shipped in every setting tested;

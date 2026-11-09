@@ -20,6 +20,8 @@ The question: is the p-value of CellPhoneDB and CellChat valid under Null A and 
   B = 1,000 and 0.97 at B = 5,000 (FDR 0.02).
 - **Biology.** Null B is not distinguishable from Null A on the spatial and downstream-response truths.
 - **Also compared:** B2 (decoy genes, CAMERA-corrected) and PR #9's CellPhoneDB Null B (its AMENDMENT_3).
+- **T2 (AMENDMENT_4).** Through every stage: FDR on known nulls 0.20–0.99, calls whenever labels are shuffled,
+  power 0.51–0.58 at FDR 0.24–0.39. Not valid. B2 with ligands shuffled: FDR 0.
 
 Verdict under its plan: **valid, not biologically distinguishable from Null A.** Full results:
 `benchmarks/results/liana_nulls/README.md`.
@@ -74,6 +76,10 @@ Results (false share of the top 1% on known nulls, lower is better):
 - **T2.** About a thousand times faster (2 s per data set), permutation-free, and near nominal for CellPhoneDB under
   donor structure (5.5–6.2%), but not calibrated in the consensus: it beats the baseline in 4 of 14 sensitivity runs.
 - **Ceiling.** Four of the six methods use no null, so 60–83% of the top 1% stays false even with Null B.
+
+- **AMENDMENT_5.** B2 and T2 get the tests only Null B had: T2's biology with multiplicity correction (no spatial
+  test significant), B2 under within-donor shuffles (0.3–4.6% at p ≤ 0.05), and what B2 drops (broadly
+  expressed genes in 4 of 5 data sets).
 
 Verdict under the plan: **Null B is valid and gives a better ranking in every setting tested; it is not
 biologically distinguishable on the available truths. T2: not supported.** Full results:
