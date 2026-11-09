@@ -1,0 +1,234 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-09 13:37",
+ "amendment_4_sha256": "845e785b226d8365245141a83d015e75a3a467bcc19b446d1abb58e9170cd7f2",
+ "effect": 1.5,
+ "summary": {
+  "cellchat": {
+   "power": [
+    0.5133333333333333,
+    [
+     0.4226550159122326,
+     0.6040116507544341
+    ]
+   ],
+   "fdr": [
+    0.3895084566596195,
+    [
+     0.30745487512709707,
+     0.4715620381921419
+    ]
+   ],
+   "calls": 39.6
+  },
+  "cellphonedb": {
+   "power": [
+    0.58,
+    [
+     0.5107432910877622,
+     0.6492567089122377
+    ]
+   ],
+   "fdr": [
+    0.24339140534262485,
+    [
+     0.18364299106744658,
+     0.3031398196178031
+    ]
+   ],
+   "calls": 35.4
+  }
+ },
+ "runs": [
+  {
+   "rep": 0,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 43,
+    "planted_calls": 18,
+    "power": 0.6,
+    "fdp": 0.4418604651162791,
+    "one_sided_false_calls": 14,
+    "null_false_calls": 5
+   },
+   "n_rows": 47300,
+   "n_true_rows": 48,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1715,
+   "n_ambiguous_rows": 132
+  },
+  {
+   "rep": 0,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 30,
+    "planted_calls": 17,
+    "power": 0.5666666666666667,
+    "fdp": 0.26666666666666666,
+    "one_sided_false_calls": 6,
+    "null_false_calls": 2
+   },
+   "n_rows": 228536,
+   "n_true_rows": 44,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2111,
+   "n_ambiguous_rows": 33
+  },
+  {
+   "rep": 1,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 30,
+    "planted_calls": 12,
+    "power": 0.4,
+    "fdp": 0.3333333333333333,
+    "one_sided_false_calls": 10,
+    "null_false_calls": 0
+   },
+   "n_rows": 46585,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1946,
+   "n_ambiguous_rows": 121
+  },
+  {
+   "rep": 1,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 35,
+    "planted_calls": 19,
+    "power": 0.6333333333333333,
+    "fdp": 0.17142857142857143,
+    "one_sided_false_calls": 5,
+    "null_false_calls": 1
+   },
+   "n_rows": 223245,
+   "n_true_rows": 46,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2207,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 2,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 33,
+    "planted_calls": 16,
+    "power": 0.5333333333333333,
+    "fdp": 0.30303030303030304,
+    "one_sided_false_calls": 9,
+    "null_false_calls": 1
+   },
+   "n_rows": 47949,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1710,
+   "n_ambiguous_rows": 88
+  },
+  {
+   "rep": 2,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 30,
+    "planted_calls": 17,
+    "power": 0.5666666666666667,
+    "fdp": 0.26666666666666666,
+    "one_sided_false_calls": 6,
+    "null_false_calls": 2
+   },
+   "n_rows": 226028,
+   "n_true_rows": 43,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2279,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 3,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 48,
+    "planted_calls": 15,
+    "power": 0.5,
+    "fdp": 0.4375,
+    "one_sided_false_calls": 18,
+    "null_false_calls": 3
+   },
+   "n_rows": 43538,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 1680,
+   "n_ambiguous_rows": 143
+  },
+  {
+   "rep": 3,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 41,
+    "planted_calls": 15,
+    "power": 0.5,
+    "fdp": 0.2926829268292683,
+    "one_sided_false_calls": 6,
+    "null_false_calls": 6
+   },
+   "n_rows": 223971,
+   "n_true_rows": 52,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2140,
+   "n_ambiguous_rows": 0
+  },
+  {
+   "rep": 4,
+   "effect": 1.5,
+   "tool": "cellchat",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 44,
+    "planted_calls": 16,
+    "power": 0.5333333333333333,
+    "fdp": 0.4318181818181818,
+    "one_sided_false_calls": 12,
+    "null_false_calls": 7
+   },
+   "n_rows": 51117,
+   "n_true_rows": 48,
+   "n_planted_rows": 29,
+   "n_one_sided_rows": 1572,
+   "n_ambiguous_rows": 66
+  },
+  {
+   "rep": 4,
+   "effect": 1.5,
+   "tool": "cellphonedb",
+   "n_planted": 30,
+   "loo_t": {
+    "calls": 41,
+    "planted_calls": 19,
+    "power": 0.6333333333333333,
+    "fdp": 0.21951219512195122,
+    "one_sided_false_calls": 7,
+    "null_false_calls": 2
+   },
+   "n_rows": 224939,
+   "n_true_rows": 49,
+   "n_planted_rows": 30,
+   "n_one_sided_rows": 2201,
+   "n_ambiguous_rows": 0
+  }
+ ]
+}

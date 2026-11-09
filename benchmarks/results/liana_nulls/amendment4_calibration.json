@@ -1,0 +1,1472 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-09 14:30",
+ "amendment_4_sha256": "845e785b226d8365245141a83d015e75a3a467bcc19b446d1abb58e9170cd7f2",
+ "alpha": 0.05,
+ "results": {
+  "tabula_sapiens_mammary": {
+   "cellchat": {
+    "summary": {
+     "loo_t": {
+      "receptor": {
+       "fdr": [
+        0.19644568390544376,
+        [
+         0.14056740625892492,
+         0.2523239615519626
+        ]
+       ],
+       "calls": 827.5
+      },
+      "ligand": {
+       "fdr": [
+        0.7603804675060474,
+        [
+         0.7165374213121626,
+         0.8042235136999322
+        ]
+       ],
+       "calls": 380.2
+      },
+      "labels": {
+       "p_any_call": 1.0,
+       "calls": 94.1
+      }
+     },
+     "mdt": {
+      "receptor": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 1.0
+      },
+      "ligand": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 1.0
+      },
+      "labels": {
+       "p_any_call": 0.0,
+       "calls": 0.0
+      }
+     }
+    },
+    "reps": 10,
+    "runs": {
+     "receptor": [
+      {
+       "loo_t": {
+        "fdp": 0.2054120541205412,
+        "calls": 813
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.16990920881971466,
+        "calls": 771
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.14018691588785046,
+        "calls": 749
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.19833729216152018,
+        "calls": 842
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.22531939605110338,
+        "calls": 861
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.3356504468718967,
+        "calls": 1007
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.31717171717171716,
+        "calls": 990
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.10620689655172413,
+        "calls": 725
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.13049267643142476,
+        "calls": 751
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.13577023498694518,
+        "calls": 766
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      }
+     ],
+     "ligand": [
+      {
+       "loo_t": {
+        "fdp": 0.7572254335260116,
+        "calls": 346
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.7828282828282829,
+        "calls": 396
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.7345679012345679,
+        "calls": 324
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.8,
+        "calls": 435
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6489795918367347,
+        "calls": 245
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.8232931726907631,
+        "calls": 498
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.7278481012658228,
+        "calls": 316
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.819327731092437,
+        "calls": 476
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6838235294117647,
+        "calls": 272
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.8259109311740891,
+        "calls": 494
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 1
+       }
+      }
+     ],
+     "labels": [
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 45
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 44
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 188
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 161
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 111
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 105
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 51
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 64
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 52
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 120
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      }
+     ]
+    }
+   },
+   "cellphonedb": {
+    "summary": {
+     "loo_t": {
+      "receptor": {
+       "fdr": [
+        0.9819444444444445,
+        [
+         0.9523039611227987,
+         1.0115849277660902
+        ]
+       ],
+       "calls": 13.1
+      },
+      "ligand": {
+       "fdr": [
+        0.9918831168831168,
+        [
+         0.9795323280557703,
+         1.0042339057104634
+        ]
+       ],
+       "calls": 11.8
+      },
+      "labels": {
+       "p_any_call": 1.0,
+       "calls": 164.8
+      }
+     },
+     "mdt": {
+      "receptor": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 0.0
+      },
+      "ligand": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 0.0
+      },
+      "labels": {
+       "p_any_call": 0.0,
+       "calls": 0.0
+      }
+     }
+    },
+    "reps": 10,
+    "runs": {
+     "receptor": [
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 8
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 14
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 5
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.875,
+        "calls": 8
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 18
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 7
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 7
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 3
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 25
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9444444444444444,
+        "calls": 36
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      }
+     ],
+     "ligand": [
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 11
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 10
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 7
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9642857142857143,
+        "calls": 28
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 5
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 15
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9545454545454546,
+        "calls": 22
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 2
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 8
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 1.0,
+        "calls": 10
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      }
+     ],
+     "labels": [
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 65
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 80
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 242
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 99
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 305
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 218
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 130
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 139
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 189
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 181
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      }
+     ]
+    }
+   }
+  },
+  "tabula_sapiens_liver": {
+   "cellchat": {
+    "summary": {
+     "loo_t": {
+      "receptor": {
+       "fdr": [
+        0.554748195370145,
+        [
+         0.47902027631328137,
+         0.6304761144270086
+        ]
+       ],
+       "calls": 660.6
+      },
+      "ligand": {
+       "fdr": [
+        0.6738848907040743,
+        [
+         0.6206693664175291,
+         0.7271004149906195
+        ]
+       ],
+       "calls": 508.8
+      },
+      "labels": {
+       "p_any_call": 1.0,
+       "calls": 152.7
+      }
+     },
+     "mdt": {
+      "receptor": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 0.0
+      },
+      "ligand": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 0.0
+      },
+      "labels": {
+       "p_any_call": 0.0,
+       "calls": 0.0
+      }
+     }
+    },
+    "reps": 10,
+    "runs": {
+     "receptor": [
+      {
+       "loo_t": {
+        "fdp": 0.3747178329571106,
+        "calls": 443
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6499388004895961,
+        "calls": 817
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.5919540229885057,
+        "calls": 696
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.5924308588064047,
+        "calls": 687
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6286472148541115,
+        "calls": 754
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.5868005738880918,
+        "calls": 697
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.3879310344827586,
+        "calls": 464
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.46771037181996084,
+        "calls": 511
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6670687575392038,
+        "calls": 829
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6002824858757062,
+        "calls": 708
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      }
+     ],
+     "ligand": [
+      {
+       "loo_t": {
+        "fdp": 0.6645569620253164,
+        "calls": 474
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6506550218340611,
+        "calls": 458
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6505494505494506,
+        "calls": 455
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.7072727272727273,
+        "calls": 550
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.49206349206349204,
+        "calls": 315
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.744,
+        "calls": 625
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6514161220043573,
+        "calls": 459
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.7058823529411765,
+        "calls": 544
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.7252173913043478,
+        "calls": 575
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.7472353870458136,
+        "calls": 633
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      }
+     ],
+     "labels": [
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 192
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 135
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 113
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 75
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 91
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 191
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 187
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 81
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 250
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 212
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      }
+     ]
+    }
+   },
+   "cellphonedb": {
+    "summary": {
+     "loo_t": {
+      "receptor": {
+       "fdr": [
+        0.9904487069541116,
+        [
+         0.9867567509982308,
+         0.9941406629099924
+        ]
+       ],
+       "calls": 216.8
+      },
+      "ligand": {
+       "fdr": [
+        0.6192858872040381,
+        [
+         0.5562462032806743,
+         0.6823255711274019
+        ]
+       ],
+       "calls": 62.3
+      },
+      "labels": {
+       "p_any_call": 1.0,
+       "calls": 463.1
+      }
+     },
+     "mdt": {
+      "receptor": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 0.0
+      },
+      "ligand": {
+       "fdr": [
+        0.0,
+        [
+         0.0,
+         0.0
+        ]
+       ],
+       "calls": 0.0
+      },
+      "labels": {
+       "p_any_call": 0.0,
+       "calls": 0.0
+      }
+     }
+    },
+    "reps": 10,
+    "runs": {
+     "receptor": [
+      {
+       "loo_t": {
+        "fdp": 0.994535519125683,
+        "calls": 183
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.99581589958159,
+        "calls": 239
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.983957219251337,
+        "calls": 187
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.987987987987988,
+        "calls": 333
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9888268156424581,
+        "calls": 179
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9828326180257511,
+        "calls": 233
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9856459330143541,
+        "calls": 209
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9950248756218906,
+        "calls": 201
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9957081545064378,
+        "calls": 233
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.9941520467836257,
+        "calls": 171
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      }
+     ],
+     "ligand": [
+      {
+       "loo_t": {
+        "fdp": 0.6883116883116883,
+        "calls": 77
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6041666666666666,
+        "calls": 48
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6346153846153846,
+        "calls": 52
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6461538461538462,
+        "calls": 65
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6,
+        "calls": 45
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6346153846153846,
+        "calls": 52
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.6923076923076923,
+        "calls": 78
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.693069306930693,
+        "calls": 101
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.3902439024390244,
+        "calls": 41
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "fdp": 0.609375,
+        "calls": 64
+       },
+       "mdt": {
+        "fdp": 0.0,
+        "calls": 0
+       }
+      }
+     ],
+     "labels": [
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 647
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 524
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 209
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 348
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 200
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 544
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 876
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 79
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 233
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      },
+      {
+       "loo_t": {
+        "any_call": true,
+        "calls": 971
+       },
+       "mdt": {
+        "any_call": false,
+        "calls": 0
+       }
+      }
+     ]
+    }
+   }
+  }
+ }
+}

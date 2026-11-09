@@ -107,6 +107,8 @@ def part_donor_b2(args):
     from benchmarks.liana_nulls.extra import excluded_genes
     res = Results("donor_b2")
     for name, donor in A2.DONOR.items():
+        if getattr(args, "dataset", None) and name != args.dataset:
+            continue
         if all(f"{name}|{rep}" in res for rep in range(3)):
             continue
         adata, groupby, sp, extra = A2.load_data(name)
@@ -169,6 +171,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="python -m benchmarks.liana_final.amendment5")
     ap.add_argument("--part", choices=[*PARTS, "all"], default="all")
     ap.add_argument("--only", default=None, metavar="REGEX", help="run only the runs whose tag matches (see amendment2)")
+    ap.add_argument("--dataset", default=None, help="donor_b2: one data set only (one Kaggle session each)")
     args = ap.parse_args(argv)
     A2.SHARD = args.only
     for p in (PARTS if args.part == "all" else [args.part]):

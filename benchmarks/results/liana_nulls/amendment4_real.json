@@ -1,0 +1,172 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-09 13:36",
+ "amendment_4_sha256": "845e785b226d8365245141a83d015e75a3a467bcc19b446d1abb58e9170cd7f2",
+ "alpha": 0.05,
+ "results": {
+  "tnbc_wu2021": {
+   "cellchat": {
+    "calls": 464,
+    "calls_null_a": 12972,
+    "calls_null_b": 8837,
+    "outside_null_a": 0,
+    "jaccard_null_a": 0.035769349367869255,
+    "primary_kept_vs_dropped": {
+     "odds_ratio": 1.3548832167143,
+     "ci95": [
+      0.27708490519657164,
+      2.990060107902849
+     ],
+     "kept_calls": 424,
+     "kept_colocalised": 7,
+     "dropped_calls": 11930,
+     "dropped_colocalised": 146,
+     "frac_colocalised_kept": 0.01650943396226415,
+     "frac_colocalised_dropped": 0.012238055322715843,
+     "n_pairs": 784
+    }
+   },
+   "cellphonedb": {
+    "calls": 0,
+    "calls_null_a": 14765,
+    "calls_null_b": 9528,
+    "outside_null_a": 0,
+    "jaccard_null_a": 0.0,
+    "primary_kept_vs_dropped": {
+     "odds_ratio": 79.45584045584046,
+     "ci95": [
+      44.630163965545876,
+      201.96474820143845
+     ],
+     "kept_calls": 0,
+     "kept_colocalised": 0,
+     "dropped_calls": 14119,
+     "dropped_colocalised": 175,
+     "frac_colocalised_kept": 0.0,
+     "frac_colocalised_dropped": 0.012394645513138325,
+     "n_pairs": 811
+    }
+   }
+  },
+  "allen_brain_atlas": {
+   "cellchat": {
+    "calls": 3182,
+    "calls_null_a": 27973,
+    "calls_null_b": 13558,
+    "outside_null_a": 1,
+    "jaccard_null_a": 0.11371273325230571,
+    "primary_kept_vs_dropped": {
+     "odds_ratio": 1.324575718208217,
+     "ci95": [
+      0.900280491229538,
+      1.8997098218359534
+     ],
+     "kept_calls": 2946,
+     "kept_colocalised": 149,
+     "dropped_calls": 23511,
+     "dropped_colocalised": 909,
+     "frac_colocalised_kept": 0.05057705363204345,
+     "frac_colocalised_dropped": 0.03866275360469568,
+     "n_pairs": 506
+    }
+   },
+   "cellphonedb": {
+    "calls": 82,
+    "calls_null_a": 46928,
+    "calls_null_b": 15121,
+    "outside_null_a": 0,
+    "jaccard_null_a": 0.0017473576542788953,
+    "primary_kept_vs_dropped": {
+     "odds_ratio": 5.585620052770449,
+     "ci95": [
+      2.2183074551387594,
+      12.304979862933912
+     ],
+     "kept_calls": 75,
+     "kept_colocalised": 15,
+     "dropped_calls": 44234,
+     "dropped_colocalised": 1895,
+     "frac_colocalised_kept": 0.2,
+     "frac_colocalised_dropped": 0.04284034905276484,
+     "n_pairs": 506
+    }
+   }
+  },
+  "tabula_sapiens_mammary": {
+   "cellchat": {
+    "calls": 1628,
+    "calls_null_a": 6873,
+    "calls_null_b": 3297,
+    "outside_null_a": 2,
+    "jaccard_null_a": 0.23650909090909092
+   },
+   "cellphonedb": {
+    "calls": 0,
+    "calls_null_a": 6201,
+    "calls_null_b": 2890,
+    "outside_null_a": 0,
+    "jaccard_null_a": 0.0
+   }
+  },
+  "tabula_sapiens_liver": {
+   "cellchat": {
+    "calls": 1912,
+    "calls_null_a": 12798,
+    "calls_null_b": 7617,
+    "outside_null_a": 4,
+    "jaccard_null_a": 0.14903921262302766
+   },
+   "cellphonedb": {
+    "calls": 43,
+    "calls_null_a": 15773,
+    "calls_null_b": 7203,
+    "outside_null_a": 0,
+    "jaccard_null_a": 0.002726177645343308
+   }
+  },
+  "moffitt2018_hypothalamus": {
+   "cellchat": {
+    "calls": 170,
+    "calls_null_a": 1204,
+    "calls_null_b": 928,
+    "outside_null_a": 0,
+    "jaccard_null_a": 0.14119601328903655,
+    "primary_kept_vs_dropped": {
+     "odds_ratio": 0.8085373509102323,
+     "ci95": [
+      0.29912517929715515,
+      1.8521028227420369
+     ],
+     "kept_calls": 110,
+     "kept_colocalised": 20,
+     "dropped_calls": 821,
+     "dropped_colocalised": 177,
+     "frac_colocalised_kept": 0.18181818181818182,
+     "frac_colocalised_dropped": 0.21559074299634592,
+     "n_pairs": 56
+    }
+   },
+   "cellphonedb": {
+    "calls": 0,
+    "calls_null_a": 2600,
+    "calls_null_b": 1350,
+    "outside_null_a": 0,
+    "jaccard_null_a": 0.0,
+    "primary_kept_vs_dropped": {
+     "odds_ratio": 4.7846153846153845,
+     "ci95": [
+      2.0313291878216915,
+      16.80895644475239
+     ],
+     "kept_calls": 0,
+     "kept_colocalised": 0,
+     "dropped_calls": 2067,
+     "dropped_colocalised": 357,
+     "frac_colocalised_kept": 0.0,
+     "frac_colocalised_dropped": 0.17271407837445574,
+     "n_pairs": 56
+    }
+   }
+  }
+ }
+}
