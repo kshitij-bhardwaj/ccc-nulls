@@ -1,6 +1,8 @@
 {
+ "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-hypothalamus",
  "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
- "written": "2026-11-03 21:23",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "written": "2026-11-05 06:36",
  "dataset": "moffitt2018_hypothalamus",
  "meta": {
   "resource": "mouseconsensus",
@@ -8,8 +10,8 @@
   "seed": 1337,
   "n_cells": 29917,
   "n_types": 8,
-  "seconds_liana": 765.8,
-  "seconds_total": 773.2,
+  "seconds_liana": 1566.0,
+  "seconds_total": 1576.6,
   "rows": {
    "liana5": 10197,
    "liana6": 10197,

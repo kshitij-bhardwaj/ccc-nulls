@@ -118,3 +118,56 @@ def test_ranking_helpers():
     pos, neg = np.array([0, 1, 0, 0, 1], bool), np.array([1, 0, 1, 1, 0], bool)
     assert auroc(t, "v", pos, neg) == 1.0
     assert auroc(t, "v", neg, pos) == 0.0
+
+
+def test_one_stratum_is_liana_permutation(adata, run):
+    """A single stratum draws LIANA+'s own permutations: every p is unchanged."""
+    _, store = run
+    strata = pd.Series("all", index=adata.obs_names)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        _, s = lc.run(adata.copy(), "type", n_perms=N_PERMS, seed=SEED, strata=strata, tools_only=True)
+    for tool in lc.TOOLS:
+        m = _merge(store[tool], s[tool])
+        for c in ("p_null_a", "p_null_b"):
+            np.testing.assert_array_equal(m[f"{c}_x"], m[f"{c}_y"])
+
+
+def test_permutations_stay_within_strata(adata):
+    """Strata = the cell types themselves: no permutation moves a cell to another type, so every
+    permuted mean is the observed mean."""
+    import liana.method.sc._liana_pipe as pipe
+    a = adata.copy()
+    a.obs["@label"] = a.obs["type"]
+    obs = np.stack([np.asarray(a.X[(a.obs.type == t).to_numpy()].mean(0)).ravel() for t in a.obs.type.cat.categories])
+    with lc.stratified_permutations(a.obs["type"].astype(str)):
+        cube = pipe._get_means_perms(a, n_perms=5, seed=SEED, agg_fun=np.mean, norm_factor=None, n_jobs=1, verbose=False)
+    np.testing.assert_allclose(cube, np.broadcast_to(obs, cube.shape), rtol=1e-5)
+    from liana.method._pipe_utils._get_mean_perms import _get_means_perms
+    assert pipe._get_means_perms is _get_means_perms               # LIANA+'s own again after the block
+
+
+def test_rank_aggregate_public_call(adata):
+    a = adata.copy()
+    X0 = a.X.copy()
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        res, tools = lc.rank_aggregate(a, "type", n_perms=N_PERMS, seed=SEED, return_tools=True)
+    assert (a.X != X0).nnz == 0                                  # the user's data is untouched
+    assert a.uns["liana_res"] is res and res.specificity_rank.is_monotonic_increasing
+    cp = _merge(res, tools["CellPhoneDB"])
+    np.testing.assert_array_equal(cp.cellphone_pvals, cp.p_null_b)
+
+
+def test_rows_in_blocks_give_the_same_numbers(adata, run, monkeypatch):
+    """lazy_permutations: rows scored 7 at a time give exactly what one block gives (and LIANA+'s own
+    outputs are checked against li.mt.* above, through the same path)."""
+    monkeypatch.setattr(lc, "ROWS_AT_ONCE", 7)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        lrs, store = lc.run(adata.copy(), "type", n_perms=N_PERMS, seed=SEED)
+    for tool, d in store.items():
+        assert len(d) > 7
+        pd.testing.assert_frame_equal(d, run[1][tool][d.columns])     # other tests add p_b2 to the fixture
+    for k, t in lrs.items():
+        pd.testing.assert_frame_equal(t, run[0][k])

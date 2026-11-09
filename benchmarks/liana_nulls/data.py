@@ -13,7 +13,8 @@ from __future__ import annotations
 from ccc_nulls import datasets
 
 SPECIES = {"tnbc_wu2021": "human", "allen_brain_atlas": "mouse",
-           "tabula_sapiens_mammary": "human", "tabula_sapiens_liver": "human", "moffitt2018_hypothalamus": "mouse"}
+           "tabula_sapiens_mammary": "human", "tabula_sapiens_liver": "human", "tabula_sapiens_lung": "human",
+           "moffitt2018_hypothalamus": "mouse"}
 
 
 def clean(labels):
@@ -36,7 +37,7 @@ def database_genes(species: str = "human") -> set:
     return genes
 
 
-def load(name: str, extra_genes=()):
+def load(name: str, extra_genes=(), obs_cols=()):
     """(adata with X = ln(1 + CP10k), groupby, extras) where extras holds the dataset's truths.
     Tabula Sapiens is cut to the database genes plus ``extra_genes`` (memory)."""
     extras = {"species": SPECIES[name]}
@@ -53,7 +54,7 @@ def load(name: str, extra_genes=()):
         from .hypothalamus import build
         adata, groupby = build(), "cell_class"
     else:
-        adata = datasets.load_tabula_sapiens(name, genes=database_genes("human") | set(extra_genes))
+        adata = datasets.load_tabula_sapiens(name, genes=database_genes("human") | set(extra_genes), obs_cols=obs_cols)
         groupby = "label"
         adata.obs[groupby] = clean(adata.obs[groupby])
     return adata, groupby, extras

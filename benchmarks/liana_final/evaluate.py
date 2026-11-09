@@ -92,7 +92,7 @@ def part_calibration(args):
 
     only = side_only_genes("human")
     out = {}
-    for name in TISSUES:
+    for name in [t for t in TISSUES if t in args.datasets]:      # --dataset: one tissue per machine
         adata, groupby, sp, extra = load(name)
         runs = {"receptor": [], "ligand": []}
         for rep in range(args.cal_reps):

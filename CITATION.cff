@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use ccc-nulls, please cite it as below, and cite LIANA+ (Dimitrov et al. 2024), which it extends."
+title: "ccc-nulls: a composite null for ligand-receptor specificity inside LIANA+'s consensus"
+abstract: >-
+  Permutation-based cell-cell communication tools (CellPhoneDB, CellChat, and LIANA+'s consensus built on them)
+  call an interaction when either side is cell-type specific. ccc-nulls replaces their p-value with a composite
+  null (intersection-union test) under which both the ligand side and the receptor side must be specific,
+  computed from LIANA+'s own permutations, and benchmarks it on calibration, power and biological ground truth.
+type: software
+authors:
+  - name: "ccc-nulls contributors"
+version: 0.2.0
+date-released: "2026-11-04"
+license: BSD-3-Clause
+repository-code: "https://github.com/kshitij-bhardwaj/ccc-nulls"
+keywords:
+  - single-cell
+  - cell-cell communication
+  - ligand-receptor
+  - permutation test
+  - intersection-union test
+  - LIANA
+references:
+  - type: article
+    title: "LIANA+ provides an all-in-one framework for cell-cell communication inference"
+    authors:
+      - family-names: Dimitrov
+        given-names: Daniel
+    journal: "Nature Cell Biology"
+    volume: 26
+    start: 1613
+    end: 1622
+    year: 2024

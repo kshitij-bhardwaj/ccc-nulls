@@ -1,0 +1,165 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "allen_brain_atlas|receptor|0": {
+   "scenario": "receptor",
+   "rep": 0,
+   "rows": 293978,
+   "false_share_all": 0.9134935267264898,
+   "seconds": 1192.3,
+   "false_share_top": {
+    "liana5": 0.8581632653061224,
+    "liana6": 0.8357142857142857,
+    "swap_null_b": 0.7343537414965986,
+    "swap_b2": 0.7370748299319728,
+    "extra_null_a": 0.8465986394557823,
+    "extra_null_b": 0.7013605442176871,
+    "extra_b2": 0.7282312925170068,
+    "liana6_prop20": 0.8255102040816327,
+    "liana6_prop30": 0.8387755102040816,
+    "liana6_de": 0.3901360544217687,
+    "liana6@mean": 0.8034013605442177,
+    "swap_null_b@mean": 0.7210884353741497,
+    "extra_null_b@mean": 0.722108843537415
+   },
+   "dataset": "allen_brain_atlas",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-mouse"
+  },
+  "allen_brain_atlas|ligand|0": {
+   "scenario": "ligand",
+   "rep": 0,
+   "rows": 292309,
+   "false_share_all": 0.9300774180747086,
+   "seconds": 1182.2,
+   "false_share_top": {
+    "liana5": 0.9271545827633378,
+    "liana6": 0.9257865937072504,
+    "swap_null_b": 0.8266073871409029,
+    "swap_b2": 0.8543091655266758,
+    "extra_null_a": 0.8967168262653898,
+    "extra_null_b": 0.7934336525307798,
+    "extra_b2": 0.8484952120383037,
+    "liana6_prop20": 0.914500683994528,
+    "liana6_prop30": 0.8905608755129959,
+    "liana6_de": 0.46101231190150477,
+    "liana6@mean": 0.9240766073871409,
+    "swap_null_b@mean": 0.804719562243502,
+    "extra_null_b@mean": 0.8033515731874145
+   },
+   "dataset": "allen_brain_atlas",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-mouse"
+  },
+  "allen_brain_atlas|receptor|1": {
+   "scenario": "receptor",
+   "rep": 1,
+   "rows": 294130,
+   "false_share_all": 0.9123720803726243,
+   "seconds": 1174.2,
+   "false_share_top": {
+    "liana5": 0.8494221617946975,
+    "liana6": 0.8371855880353501,
+    "swap_null_b": 0.7236573759347382,
+    "swap_b2": 0.7301155676410604,
+    "extra_null_a": 0.8467029231815092,
+    "extra_null_b": 0.6750509857239972,
+    "extra_b2": 0.7188987083616587,
+    "liana6_prop20": 0.827668252889191,
+    "liana6_prop30": 0.8361658735554045,
+    "liana6_de": 0.3922501699524133,
+    "liana6@mean": 0.7984364377974167,
+    "swap_null_b@mean": 0.6937457511896669,
+    "extra_null_b@mean": 0.6957851801495581
+   },
+   "dataset": "allen_brain_atlas",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-mouse"
+  },
+  "allen_brain_atlas|ligand|1": {
+   "scenario": "ligand",
+   "rep": 1,
+   "rows": 292463,
+   "false_share_all": 0.9301142366726731,
+   "seconds": 1153.6,
+   "false_share_top": {
+    "liana5": 0.9251282051282051,
+    "liana6": 0.9254700854700855,
+    "swap_null_b": 0.8246153846153846,
+    "swap_b2": 0.8512820512820513,
+    "extra_null_a": 0.8964102564102564,
+    "extra_null_b": 0.8109401709401709,
+    "extra_b2": 0.8502564102564103,
+    "liana6_prop20": 0.9145299145299145,
+    "liana6_prop30": 0.8905982905982905,
+    "liana6_de": 0.4611965811965812,
+    "liana6@mean": 0.9251282051282051,
+    "swap_null_b@mean": 0.8068376068376069,
+    "extra_null_b@mean": 0.8054700854700855
+   },
+   "dataset": "allen_brain_atlas",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-mouse"
+  },
+  "allen_brain_atlas|receptor|2": {
+   "scenario": "receptor",
+   "rep": 2,
+   "rows": 294845,
+   "false_share_all": 0.9132255931082434,
+   "seconds": 1154.6,
+   "false_share_top": {
+    "liana5": 0.8497795863004408,
+    "liana6": 0.833841980332316,
+    "swap_null_b": 0.7202441505595117,
+    "swap_b2": 0.7371990505256019,
+    "extra_null_a": 0.8487622923024755,
+    "extra_null_b": 0.6934554086130892,
+    "extra_b2": 0.7256697185486606,
+    "liana6_prop20": 0.8284164123431672,
+    "liana6_prop30": 0.8372329603255341,
+    "liana6_de": 0.3906408952187182,
+    "liana6@mean": 0.8036622583926755,
+    "swap_null_b@mean": 0.7151576805696847,
+    "extra_null_b@mean": 0.7185486605629027
+   },
+   "dataset": "allen_brain_atlas",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-mouse"
+  },
+  "allen_brain_atlas|ligand|2": {
+   "scenario": "ligand",
+   "rep": 2,
+   "rows": 291419,
+   "false_share_all": 0.929863872980142,
+   "seconds": 1150.9,
+   "false_share_top": {
+    "liana5": 0.9248713550600343,
+    "liana6": 0.9252144082332762,
+    "swap_null_b": 0.823327615780446,
+    "swap_b2": 0.8531732418524871,
+    "extra_null_a": 0.8963979416809605,
+    "extra_null_b": 0.8181818181818182,
+    "extra_b2": 0.8528301886792453,
+    "liana6_prop20": 0.9159519725557461,
+    "liana6_prop30": 0.8898799313893654,
+    "liana6_de": 0.4590051457975986,
+    "liana6@mean": 0.9241852487135506,
+    "swap_null_b@mean": 0.8068610634648371,
+    "extra_null_b@mean": 0.8061749571183533
+   },
+   "dataset": "allen_brain_atlas",
+   "setting": "default",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-mouse"
+  }
+ },
+ "written": "2026-11-06 12:20",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-mouse",
+   "runs": 6,
+   "written": "2026-11-06 12:20"
+  }
+ ]
+}

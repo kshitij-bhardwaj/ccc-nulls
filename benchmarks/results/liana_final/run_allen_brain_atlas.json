@@ -1,6 +1,8 @@
 {
+ "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-run-allen",
  "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
- "written": "2026-11-03 22:06",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "written": "2026-11-05 05:45",
  "dataset": "allen_brain_atlas",
  "meta": {
   "resource": "mouseconsensus",
@@ -8,8 +10,8 @@
   "seed": 1337,
   "n_cells": 14249,
   "n_types": 23,
-  "seconds_liana": 771.5,
-  "seconds_total": 811.3,
+  "seconds_liana": 1052.1,
+  "seconds_total": 1111.7,
   "rows": {
    "liana5": 235366,
    "liana6": 235366,

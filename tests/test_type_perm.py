@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from ccc_nulls.type_perm import loo_t_pvalues, tested_groups
+from ccc_nulls import type_perm
+from ccc_nulls.type_perm import loo_t_pvalues   # tested_groups via the module: pytest would collect a bare test* name
 
 
 def test_loo_t_matches_hand_computation():
@@ -18,5 +19,5 @@ def test_loo_t_matches_hand_computation():
 
 def test_tested_groups_positions():
     res = pd.DataFrame({"k": ["a", "a", "b", "b"], "tested": [True, False, True, True]}, index=[10, 11, 12, 13])
-    got = {tuple(g.k.unique()): rows.tolist() for rows, g in tested_groups(res, ["k"])}
+    got = {tuple(g.k.unique()): rows.tolist() for rows, g in type_perm.tested_groups(res, ["k"])}
     assert got == {("a",): [0], ("b",): [2, 3]}

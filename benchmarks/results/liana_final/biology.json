@@ -1,6 +1,8 @@
 {
+ "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-biology",
  "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
- "written": "2026-11-03 23:26",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "written": "2026-11-05 17:19",
  "spatial": {
   "tnbc_wu2021": {
    "liana5": {
@@ -157,7 +159,7 @@
       "odds_ratio": 0.0,
       "odds_ratio_ci95": [
        0.0,
-       5.135135135135135
+       5.146990171990161
       ],
       "odds_ratio_nonfinite_resamples": 0,
       "auprc_diff_ref_minus_this": -0.00031047572265370006,
@@ -365,7 +367,7 @@
       "odds_ratio": 1.6557971014492754,
       "odds_ratio_ci95": [
        0.0,
-       7.278947368421052
+       7.265958059210526
       ],
       "odds_ratio_nonfinite_resamples": 0,
       "auprc_diff_ref_minus_this": -0.0077310871356310665,
@@ -615,7 +617,7 @@
        0.0,
        21.0
       ],
-      "odds_ratio_nonfinite_resamples": 22,
+      "odds_ratio_nonfinite_resamples": 25,
       "auprc_diff_ref_minus_this": -0.038582556888856534,
       "auprc_diff_ci95": [
        -0.20539982138369708,
@@ -633,9 +635,9 @@
       "odds_ratio": 0.0,
       "odds_ratio_ci95": [
        0.0,
-       10.624999999999979
+       9.5
       ],
-      "odds_ratio_nonfinite_resamples": 6,
+      "odds_ratio_nonfinite_resamples": 7,
       "auprc_diff_ref_minus_this": 0.018458863879235843,
       "auprc_diff_ci95": [
        -0.05458583355691103,
@@ -650,12 +652,12 @@
        0.0979804529083668,
        0.4979255339431638
       ],
-      "odds_ratio": 3.3333333333333335,
+      "odds_ratio": 0.0,
       "odds_ratio_ci95": [
        0.0,
        21.0
       ],
-      "odds_ratio_nonfinite_resamples": 13,
+      "odds_ratio_nonfinite_resamples": 11,
       "auprc_diff_ref_minus_this": 0.012025284232564576,
       "auprc_diff_ci95": [
        -0.13124895927766236,

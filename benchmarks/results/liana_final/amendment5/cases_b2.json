@@ -1,0 +1,66 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "written": "2026-11-09 13:38",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "amendment_5_sha256": "2bcb4baa1bdb02b0090b2cd3df34b523cdec3220aed54e38202614ddb1d89c4b",
+ "runs": {
+  "tnbc_wu2021": {
+   "kept": 20321,
+   "dropped": 1961,
+   "breadth_dropped_median": 0.9655172413793104,
+   "breadth_kept_median": 0.5862068965517241,
+   "mann_whitney_p": 0.0,
+   "dropped_by_both": 1697,
+   "dropped_b2_only": 264,
+   "dropped_null_b_only": 2229,
+   "dropped_jaccard": 0.40501193317422435
+  },
+  "allen_brain_atlas": {
+   "kept": 34004,
+   "dropped": 6895,
+   "breadth_dropped_median": 0.9565217391304348,
+   "breadth_kept_median": 0.8695652173913043,
+   "mann_whitney_p": 7.8091059917773545e-115,
+   "dropped_by_both": 5814,
+   "dropped_b2_only": 1081,
+   "dropped_null_b_only": 3629,
+   "dropped_jaccard": 0.5524515393386545
+  },
+  "tabula_sapiens_mammary": {
+   "kept": 12619,
+   "dropped": 2027,
+   "breadth_dropped_median": 0.8125,
+   "breadth_kept_median": 0.8125,
+   "mann_whitney_p": 0.8080131114909324,
+   "dropped_by_both": 1474,
+   "dropped_b2_only": 553,
+   "dropped_null_b_only": 1994,
+   "dropped_jaccard": 0.36657547873663265
+  },
+  "tabula_sapiens_liver": {
+   "kept": 29244,
+   "dropped": 2129,
+   "breadth_dropped_median": 0.9583333333333334,
+   "breadth_kept_median": 0.9583333333333334,
+   "mann_whitney_p": 1.8660622714815988e-92,
+   "dropped_by_both": 1895,
+   "dropped_b2_only": 234,
+   "dropped_null_b_only": 2499,
+   "dropped_jaccard": 0.40946413137424376
+  },
+  "moffitt2018_hypothalamus": {
+   "kept": 1124,
+   "dropped": 105,
+   "breadth_dropped_median": 1.0,
+   "breadth_kept_median": 0.875,
+   "mann_whitney_p": 1.4512878361367194e-08,
+   "dropped_by_both": 61,
+   "dropped_b2_only": 44,
+   "dropped_null_b_only": 85,
+   "dropped_jaccard": 0.32105263157894737
+  }
+ }
+}

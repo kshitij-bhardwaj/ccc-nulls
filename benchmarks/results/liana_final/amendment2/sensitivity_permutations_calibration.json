@@ -1,0 +1,108 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "moffitt2018_hypothalamus@n_perms=1000|receptor|0": {
+   "scenario": "receptor",
+   "rep": 0,
+   "rows": 11995,
+   "false_share_all": 0.8818674447686536,
+   "seconds": 1545.7,
+   "false_share_top": {
+    "liana5": 0.7583333333333333,
+    "liana6": 0.7583333333333333,
+    "swap_null_b": 0.19166666666666668,
+    "swap_b2": 0.44166666666666665,
+    "extra_null_a": 0.6166666666666667,
+    "extra_null_b": 0.20833333333333334,
+    "extra_b2": 0.44166666666666665,
+    "liana6@mean": 0.6916666666666667,
+    "swap_null_b@mean": 0.24166666666666667,
+    "extra_null_b@mean": 0.24166666666666667
+   },
+   "dataset": "moffitt2018_hypothalamus",
+   "setting": "@n_perms=1000",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-perms-hypothalamus"
+  },
+  "moffitt2018_hypothalamus@n_perms=5000|receptor|0": {
+   "scenario": "receptor",
+   "rep": 0,
+   "rows": 11995,
+   "false_share_all": 0.8818674447686536,
+   "seconds": 7483.9,
+   "false_share_top": {
+    "liana5": 0.7583333333333333,
+    "liana6": 0.7583333333333333,
+    "swap_null_b": 0.18333333333333332,
+    "swap_b2": 0.44166666666666665,
+    "extra_null_a": 0.6416666666666667,
+    "extra_null_b": 0.225,
+    "extra_b2": 0.44166666666666665,
+    "liana6@mean": 0.6916666666666667,
+    "swap_null_b@mean": 0.24166666666666667,
+    "extra_null_b@mean": 0.24166666666666667
+   },
+   "dataset": "moffitt2018_hypothalamus",
+   "setting": "@n_perms=5000",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-perms-hypothalamus"
+  },
+  "tabula_sapiens_mammary@n_perms=1000|receptor|0": {
+   "scenario": "receptor",
+   "rep": 0,
+   "rows": 130218,
+   "false_share_all": 0.9190511296441353,
+   "seconds": 1737.7,
+   "false_share_top": {
+    "liana5": 0.7912509593246354,
+    "liana6": 0.8042977743668457,
+    "swap_null_b": 0.693783576362241,
+    "swap_b2": 0.7344589409056025,
+    "extra_null_a": 0.8181120491174213,
+    "extra_null_b": 0.6730621642363775,
+    "extra_b2": 0.7567152724481965,
+    "liana6@mean": 0.7659247889485802,
+    "swap_null_b@mean": 0.6868764389869532,
+    "extra_null_b@mean": 0.6638526477359938
+   },
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@n_perms=1000",
+   "machine": "IITK lab server, 2 cores"
+  },
+  "tabula_sapiens_mammary@n_perms=5000|receptor|0": {
+   "scenario": "receptor",
+   "rep": 0,
+   "rows": 130218,
+   "false_share_all": 0.9190511296441353,
+   "seconds": 8367.3,
+   "false_share_top": {
+    "liana5": 0.7912509593246354,
+    "liana6": 0.8058326937835764,
+    "swap_null_b": 0.6945510360706063,
+    "swap_b2": 0.7344589409056025,
+    "extra_null_a": 0.8257866462010744,
+    "extra_null_b": 0.6531082118188795,
+    "extra_b2": 0.7705295471987721,
+    "liana6@mean": 0.7574827321565618,
+    "swap_null_b@mean": 0.6861089792785878,
+    "extra_null_b@mean": 0.6584804297774367
+   },
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "@n_perms=5000",
+   "machine": "IITK lab server, 2 cores"
+  }
+ },
+ "written": "2026-11-07 18:48",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-perms-hypothalamus",
+   "runs": 2,
+   "written": "2026-11-07 18:48"
+  },
+  {
+   "machine": "IITK lab server, 2 cores",
+   "runs": 2,
+   "written": "2026-11-07 22:27"
+  }
+ ]
+}

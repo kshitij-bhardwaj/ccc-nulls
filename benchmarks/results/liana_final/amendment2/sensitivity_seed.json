@@ -1,0 +1,49 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "runs": {
+  "seed1": {
+   "rows": 86001,
+   "liana6": {
+    "spearman": 0.9978771328778437,
+    "top1_jaccard": 0.9635119726339795
+   },
+   "swap_null_b": {
+    "spearman": 0.9964862967964137,
+    "top1_jaccard": 0.9348314606741573
+   },
+   "extra_null_b": {
+    "spearman": 0.9946652666508389,
+    "top1_jaccard": 0.9612756264236902
+   },
+   "seconds": 2221.5,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr"
+  },
+  "seed2": {
+   "rows": 86001,
+   "liana6": {
+    "spearman": 0.997740155109114,
+    "top1_jaccard": 0.9793103448275862
+   },
+   "swap_null_b": {
+    "spearman": 0.996007180275282,
+    "top1_jaccard": 0.9725085910652921
+   },
+   "extra_null_b": {
+    "spearman": 0.9943045000915658,
+    "top1_jaccard": 0.9635119726339795
+   },
+   "seconds": 2203.3,
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr"
+  }
+ },
+ "written": "2026-11-07 12:16",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr",
+   "runs": 2,
+   "written": "2026-11-07 12:16"
+  }
+ ]
+}

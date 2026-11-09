@@ -1,0 +1,21 @@
+source,target,ligand_complex,receptor_complex,specificity_rank__liana6,specificity_rank__swap_null_b
+fibroblast of breast,mature NK T cell,ICAM1,IL2RA,0.060898329726031764,0.0035059702124566514
+basophil,luminal epithelial cell of mammary gland,SEMA4D,PLXNB2,0.06200063930178451,0.00359920667931006
+natural killer cell,progenitor cell of mammary luminal epithelium,ACTR2,LDLR,0.06423606119832691,0.0037632331608055073
+basophil,progenitor cell of mammary luminal epithelium,SEMA4D,PLXNB2,0.06429534166136296,0.0037678451916757713
+basal cell,natural killer cell,HLA-E,KLRK1,0.06471139919077337,0.003800256173884433
+progenitor cell of mammary luminal epithelium,natural killer cell,NECTIN2,CD226,0.056856525921526985,0.004011120371427422
+"CD8-positive, alpha-beta T cell",natural killer cell,TGFB1,TGFBR3,0.053207173789448024,0.004143963187360791
+mature NK T cell,natural killer cell,TGFB1,TGFBR3,0.06076153315914419,0.004143963187360791
+luminal epithelial cell of mammary gland,natural killer cell,GNAS,ADCY9,0.07988904609082703,0.0044331704357560165
+natural killer cell,mature NK T cell,ARF6,SMAP1,0.05959638144770262,0.00464849732930131
+natural killer cell,progenitor cell of mammary luminal epithelium,CALM1,AQP1,0.06776395843170341,0.00464849732930131
+luminal epithelial cell of mammary gland,mature NK T cell,CGN,TGFBR2,0.054840684343115745,0.00477951164075642
+natural killer cell,macrophage,LRPAP1,SORT1,0.05044284732788765,0.00477951164075642
+"CD8-positive, alpha-beta T cell",natural killer cell,CALM1,KCNQ5,0.07107659989953694,0.0048954837809205756
+luminal epithelial cell of mammary gland,natural killer cell,CALM3,KCNQ5,0.12103842187277954,0.0048954837809205756
+vascular associated smooth muscle cell,natural killer cell,CALM1,KCNQ5,0.07107659989953694,0.0048954837809205756
+macrophage,natural killer cell,CALM1,KCNQ5,0.08598288213526836,0.0048954837809205756
+mast cell,natural killer cell,CALM3,KCNQ5,0.07988904609082703,0.0048954837809205756
+endothelial cell,natural killer cell,CALM1,KCNQ5,0.07107659989953694,0.0048954837809205756
+luminal epithelial cell of mammary gland,natural killer cell,MDK,ALK,0.07107659989953694,0.0048954837809205756

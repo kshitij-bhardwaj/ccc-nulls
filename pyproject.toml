@@ -4,12 +4,24 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ccc-nulls"
-version = "0.1.0"
-description = "Structure-preserving null models and FDR control for ligand-receptor cell-cell communication inference"
+version = "0.2.0"
+description = "A composite null for ligand-receptor specificity inside LIANA+'s consensus, and calibrated nulls for cell-cell communication inference"
 readme = "README.md"
 requires-python = ">=3.10"
+license = { file = "LICENSE" }
 authors = [{ name = "ccc-nulls contributors" }]
 keywords = ["single-cell", "cell-cell communication", "ligand-receptor", "permutation test", "FDR", "LIANA"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
 dependencies = [
   "numpy>=1.24",
   "scipy>=1.10",
@@ -20,7 +32,14 @@ dependencies = [
 # liana 1.8 needs anndata < 0.12 (AnnData(dtype=...)); anndata 0.11 needs zarr < 3
 liana = ["anndata>=0.10,<0.12", "zarr<3", "scanpy>=1.10,<1.12", "liana>=1.4", "pandas<3",
          "numpy<2.3", "scikit-learn>=1.3"]
-test = ["pytest>=7"]
+test = ["pytest>=7", "scikit-learn>=1.3"]
+docs = ["sphinx>=7", "myst-nb>=1", "furo", "sphinx-copybutton", "ipykernel", "matplotlib"]
+
+[project.urls]
+Homepage = "https://github.com/kshitij-bhardwaj/ccc-nulls"
+Documentation = "https://kshitij-bhardwaj.github.io/ccc-nulls/"
+Changelog = "https://github.com/kshitij-bhardwaj/ccc-nulls/blob/main/CHANGELOG.md"
+Issues = "https://github.com/kshitij-bhardwaj/ccc-nulls/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

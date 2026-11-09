@@ -1,231 +1,170 @@
 # ccc-nulls
 
-**Structure-preserving null models and false-discovery control for ligand–receptor cell–cell communication (CCC) inference.**
+[![Tests](https://github.com/kshitij-bhardwaj/ccc-nulls/actions/workflows/tests.yml/badge.svg)](https://github.com/kshitij-bhardwaj/ccc-nulls/actions/workflows/tests.yml)
+[![Docs](https://github.com/kshitij-bhardwaj/ccc-nulls/actions/workflows/docs.yml/badge.svg)](https://kshitij-bhardwaj.github.io/ccc-nulls/)
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+[![Kaggle runs](https://img.shields.io/badge/Kaggle-benchmark%20runs-20BEFF?logo=kaggle&logoColor=white)](kaggle/README.md)
 
-Ligand–receptor tools such as CellPhoneDB, CellChat and LIANA usually assess
-significance by shuffling cell-type labels uniformly. That null tests whether cell type
-affects a gene's expression *at all*, and for nearly every gene it does. As a result, abundant
-ligands get declared "significant" whether or not anything specific is going on.
+**Is the sender specific *and* the receiver specific?**
 
-`ccc-nulls` is a **tool-agnostic significance layer**. It takes any tool's ranked LR table
-plus the expression matrix it was computed from, and returns calibrated p- and q-values under two nulls:
+Permutation-based cell–cell communication tools, such as CellPhoneDB, CellChat and the
+[LIANA+](https://github.com/saezlab/liana-py) consensus built on them, test interactions under one null. They permute
+every cell's label at once. That null is rejected as soon as **either** side is specific to its cell type. A ligand
+made only by the sender, paired with a receptor every cell type expresses, is then called for every receiver.
 
-| | Null A: random | Null B: structure-preserving |
-|---|---|---|
-| What is permuted | Cell-type labels, uniformly | Gene identity, within mean-expression × detection-rate strata |
-| What is preserved | Cell-type sizes | Cell-type sizes, every gene's profile across cell types, and abundance |
-| Question answered | "Does cell type matter for these genes?" | "Is this pair extreme *for genes of its abundance*?" |
-| Used by | CellPhoneDB, CellChat (default) | This package |
-
-It composes with existing tools instead of replacing them. The LR scoring stays the tool's own.
-
----
-
-## Datasets
-
-All public; no login needed. Download into `data/` (git-ignored) with
-`python -m ccc_nulls.datasets <name>` (parallel, md5-checked) or any browser/`curl`.
-
-| Name | Role | Link | Size | Ground truth |
-|---|---|---|---|---|
-| `tnbc_wu2021` | **Evaluation** (current focus) | [dataset.h5ad](https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/tnbc_wu2021/log_cp10k/dataset.h5ad) | 1.27 GB | Cytokine activity per (ligand, target type); Open Problems ligand-target task; LIANA's benchmark atlas |
-| `allen_brain_atlas` | **Evaluation** (spatial) | [dataset.h5ad](https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/allen_brain_atlas/log_cp10k/dataset.h5ad) | 2.05 GB | Spatially adjacent cell types (deconvolved Visium); Open Problems source-target task |
-| `tabula_sapiens` | **Calibration** (no truth) | [CELLxGENE collection](https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5) | per tissue | None: used for permutation and fake-resource calibration |
-
-Details, md5 sums and loaders: [`data/README.md`](data/README.md) and `ccc_nulls/datasets.py`.
-
-## Repository layout and who works where
-
-```
-src/ccc_nulls/        shared library: nulls, statistics engine, schema, datasets, evaluation
-tools/                one workspace per tool, one owner each (see .github/CODEOWNERS)
-  cellphonedb/          adapter.py (dataset -> native inputs -> native run -> common schema), tests
-  cellchat/
-  natmi/
-  connectome/
-benchmarks/           experiment drivers (shared) and their summary results
-tests/                tests for the shared library
-docs/PLAN.md          project plan and the decisions behind it
-data/                 datasets (git-ignored, see data/README.md)
-```
-
-- Work only inside your tool folder. Changes to `src/ccc_nulls/`, `benchmarks/` or docs go
-  through a pull request reviewed by another team member.
-- Every tool exposes the same adapter contract and returns the **common schema**
-  (`ccc_nulls.schema`), so the null models and evaluation code never depend on a single tool.
-  See [`tools/README.md`](tools/README.md).
-- Branching, commit style and review rules: [`CONTRIBUTING.md`](CONTRIBUTING.md).
-
----
+`ccc-nulls` replaces their p-value with **Null B**, a composite null (intersection–union test). Under Null B the
+ligand must be specific to the sender **and** the receptor must be specific to the receiver. It is computed from
+LIANA+'s own permutations, so it needs no extra ones, and it slots into LIANA+'s consensus ranking. The output has
+LIANA+'s columns, so LIANA+'s plots and downstream tools work unchanged.
 
 ## Installation
 
 ```bash
-pip install "git+https://github.com/kshitij-bhardwaj/ccc-nulls.git"
-# with the liana-py / scanpy integration:
 pip install "ccc-nulls[liana] @ git+https://github.com/kshitij-bhardwaj/ccc-nulls.git"
 ```
 
-For development:
-
-```bash
-git clone https://github.com/kshitij-bhardwaj/ccc-nulls.git && cd ccc-nulls
-pip install -e ".[test]" && pytest
-```
-
-Requires Python ≥ 3.10, with numpy, scipy and pandas. anndata, scanpy and liana are optional.
+Python ≥ 3.10. The exact environment of the published results is in
+[`requirements/lock-liana-final.txt`](requirements/lock-liana-final.txt) (LIANA+ 1.8.0).
 
 ## Quickstart
 
 ```python
 import ccc_nulls as cn
+import scanpy as sc
 
-# candidates: DataFrame with columns ligand, receptor, source, target (anything else is kept)
-res = cn.significance_layer(
-    X, genes, labels, candidates,      # X: cells x genes, normalised (not scaled)
-    score="mean",                      # "mean" (CellPhoneDB) | "product" | callable
-    B=1000,                            # Null A permutations; Null B is exact
-    resource_genes=lr_resource_genes,  # kept out of Null B's decoy pool
-)
-cn.overlap_summary(res)                # both / A_only / B_only / none at q < 0.05
+adata = sc.datasets.pbmc68k_reduced()
+cn.rank_aggregate(adata, groupby="bulk_labels", use_raw=True)   # LIANA+'s rank_aggregate, with Null B
+adata.uns["liana_res"].head()
 ```
 
-### With liana-py
+| Argument | Default | |
+|---|---|---|
+| `null` | `"null_b"` | `"null_a"` gives LIANA+'s consensus with CellChat as a sixth method |
+| `mode` | `"swap"` | `"swap"` replaces CellPhoneDB's and CellChat's p with Null B; `"extra"` adds Null B as two more methods |
+| `strata` | `"auto"` | with several donors (`donor_id`, `patient`, `orig.ident`, … in `obs`), every permutation stays within a donor; `None`: global, as LIANA+ ([why](docs/method.md#donor-structure)) |
+| `return_tools` | `False` | also return the CellPhoneDB and CellChat tables, with `p_L`, `p_R` and Null A and Null B p-values |
 
-```python
-import liana as li, ccc_nulls as cn
+The [quickstart notebook](docs/notebooks/quickstart.ipynb) runs this end to end. On these PBMCs, 197 of the 437
+rows that LIANA+'s CellPhoneDB calls at p < 0.05 are one-sided.
 
-li.mt.cellphonedb(adata, groupby="cell_type", use_raw=True, key_added="cpdb")
-cands = cn.adapters.from_liana(adata.uns["cpdb"], method="cellphonedb")
-res = cn.significance_layer_anndata(adata, "cell_type", cands, use_raw=True)
-```
+## How it works
 
-Columns added to your table:
+For a candidate $L_s \to R_t$ with the tool's score $S$, permute the sender side only, then the receiver side only,
+using LIANA+'s permutations:
 
-| Column | Meaning |
-|---|---|
-| `score_obs` | The tool score recomputed from `X` (both nulls test this statistic) |
-| `p_rand`, `q_rand` | Null A p-value and BH q-value |
-| `z_strat`, `p_strat`, `q_strat` | Null-A-standardised score, Null B p-value, BH q-value |
-| `p_strat_min` | Smallest p Null B can reach for this row (its resolution) |
-| `flag` | `both`, `A_only`, `B_only`, `none`. **`A_only` = significant only because the uniform null ignored abundance** |
+$$p_L = \frac{1 + \#\{b : S(L_s^{\pi_b}, R_t) \ge S\}}{B+1},\qquad
+p_R = \frac{1 + \#\{b : S(L_s, R_t^{\pi_b}) \ge S\}}{B+1},\qquad p_B = \max(p_L, p_R).$$
 
-See [`examples/quickstart.py`](examples/quickstart.py) (simulation with known truth) and
-[`examples/liana_pbmc.py`](examples/liana_pbmc.py) (liana-py end to end, no download).
+$p_B$ is a valid level-α test of "either side is unspecific", with no multiplicity correction (Berger 1982). The
+magnitude scores and the rank aggregation are LIANA+'s own. Details: [Method](docs/method.md).
 
-## Method
+## Benchmark
 
-For a candidate (L, R, X, Y) with tool score `s`:
+Two pre-registered benchmarks answer two questions, in this order. Each has its own plan and amendments, every
+one hashed before its runs.
 
-**Null A.** Draw B uniform permutations π_b of the cell labels and compute
-`p_rand = (1 + #{b : s(π_b) ≥ s_obs}) / (B + 1)`.
+**1. Are each tool's own p-values valid?** ([`benchmarks/liana_nulls`](benchmarks/liana_nulls/PLAN.md);
+results: [`benchmarks/results/liana_nulls`](benchmarks/results/liana_nulls/README.md))
+- **Three columns per tool:** the tool itself (CellChat 2.1.2 in R, CellPhoneDB 5.0.1), our Python Null A on the
+  tool's own permutations, and Null B. Columns 1 and 2 agree on every row of five data sets.
+- **Calibration:** on Tabula Sapiens with one side's genes shuffled, Null A's FDR at 5% is 0.27–1.00; Null B's
+  is 0–0.03.
+- **Power:** with BH, Null B needs about 5,000 permutations (CellChat at f = 1.5: power 0.19 at 1,000, 0.97 at
+  5,000).
+- **Also compared:** B2 (decoy genes, CAMERA-corrected) and PR #9's CellPhoneDB Null B.
+- **AMENDMENT_4:** T2 (PR #11's leave-one-out t-test) through every stage: FDR on known nulls 0.20–0.99, calls in
+  every labels-shuffled replicate, power 0.51–0.58 at FDR 0.24–0.39. Not valid at tool level. B2 with ligands
+  shuffled: FDR 0.
 
-**Null B.**
-1. **Strata.** Bin genes by mean-expression decile, then by detection-rate tercile within each decile (30 strata).
-2. **Standardise.** Centre and scale the tool score by its *exact* Null-A moments. A permuted
-   cluster is a sample drawn without replacement, so `Var = σ²/n_k · (n − n_k)/(n − 1)`. This
-   puts genes of every abundance on one scale at no permutation cost.
-3. **Decoys.** For L, take background genes (not in the LR resource) from L's stratum that pass
-   the same expression filter in X as the candidate did. Do the same for R in Y.
-4. **Exact p-value.** Under H0, (L, R) is a uniform draw from (decoys_L ∪ {L}) × (decoys_R ∪ {R}).
-   `p_strat` is the candidate's upper-tail rank in that product set. The pairs that reuse L or R
-   are included, which keeps the test valid when one gene is extreme.
+**2. Does Null B improve LIANA+'s consensus ranking?** ([`benchmarks/liana_final`](benchmarks/liana_final/PLAN.md),
+then [`AMENDMENT_1.md`](benchmarks/liana_final/AMENDMENT_1.md) to
+[`AMENDMENT_4.md`](benchmarks/liana_final/AMENDMENT_4.md); results:
+[`benchmarks/results/liana_final`](benchmarks/results/liana_final/README.md))
+- **What is compared:** LIANA+'s six methods (its five plus CellChat), with the p-values of CellPhoneDB and CellChat
+  replaced by Null B ("swap") or added as two more methods ("extra"), against LIANA+ as it is.
+- **Measures:** calibration, power and biology (spatial and downstream-response truths), then a held-out
+  confirmation on Tabula Sapiens Lung, donor-aware permutations, sensitivity, a second species and comparison with
+  simple filters (AMENDMENT_2).
+- **Second candidate:** AMENDMENTS 3 and 4 add T2 (PR #11: a leave-one-out test of each cell-type pair against the
+  interaction's other pairs) to every run.
 
-**Corroboration (planned).** `cauchy_combine` (Liu & Xie, 2020) merges `p_strat` with a
-NicheNet-style target-enrichment p-value. It is valid under the dependence between the two.
+Both cover the two Open Problems communication sets that LIANA+'s authors built (TNBC and Allen brain), Tabula
+Sapiens Mammary and Liver, and the mouse hypothalamus; the second adds Tabula Sapiens Lung. Full results:
+[Benchmark](docs/benchmark.md).
 
-## Benchmarks
+The second benchmark runs on Kaggle (4 CPUs, 32 GB per session), one session per part, from one commit and the locked
+environment. Each result file records the link of the session that produced it, and
+[`kaggle/README.md`](kaggle/README.md) lists every session with its link, inputs, command and run time. The inputs
+are three Kaggle data sets: the [code](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-code) (a `git archive` of the commit), the [auxiliary files](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux)
+(ligand–receptor databases, CytoSig, PROGENy, HCOP) and the [Open Problems copies](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems). The sessions and data sets
+are private to the project team; to be added as a collaborator, ask a maintainer. The two Mammary runs with 5,000 permutations needed more memory and ran on a lab server
+(see [`RUN.md`](RUN.md)); their result files record it.
 
-`benchmarks/simulation_study.py` uses negative-binomial data with 8,000 genes, 6 cell types,
-400 LR pairs and about 9,400 tests per run. Results below are means over 5 seeds, with Null A
-at B = 10,000, from [`benchmarks/results/simulation.json`](benchmarks/results/simulation.json).
+### Results of the second benchmark
 
-| Regime | Ground truth | Null A | Null B |
-|---|---|---|---|
-| S0: fully permuted | No structure, no CCC | FPR 5.3% | FPR 4.8% |
-| S1: structured null | Cell identity shifts every gene (τ = 0.25); no CCC | **FPR 29.7%**, ~2,200 false calls/run | **FPR 5.2%**, 0 calls |
-| S2: planted, LFC 1.0 | 60 true events | FDR 97%, power 100% | FDR 6%, power 74% |
-| S2: planted, LFC 1.5 | | FDR 97%, power 100% | FDR 9%, power 90% |
-| S2: planted, LFC 0.5 | | FDR 98%, power 93% | FDR 0%, power 0% |
+False share of the top 1% on known nulls (one side's genes shuffled; lower is better) and planted-pair AUROC:
 
-Same picture with the product score (S1: 24.8% vs 5.1%). Null A's false calls concentrate in
-the most abundant ligands: 3.2× more in the top three deciles than in the bottom three.
+| | LIANA+ (liana6) | swap: Null B | 7th/8th: Null B | swap: T2 |
+|---|---|---|---|---|
+| Tabula Sapiens Mammary and Liver (4 settings) | 0.80–0.86 | 0.60–0.69 | 0.69–0.73 | 0.80–0.89 |
+| Held-out Tabula Sapiens Lung (2 settings) | 0.83–0.88 | 0.68 | 0.73–0.75 | 0.87–0.89 |
+| Allen brain, mouse (2 settings) | 0.84–0.93 | 0.73–0.83 | 0.69–0.81 | 0.87–0.94 |
+| Lung, planted pairs at f = 2: AUROC | 0.945 | 0.997 | 0.994 | 0.982 |
+| Held-out confirmation (AMENDMENT_1's rule) | | confirmed | confirmed | not confirmed |
 
-`benchmarks/binned_label_check.py` checks two common shortcuts:
-- **Permuting cell labels within expression bins is not a fix.** Each gene still sees a uniform
-  shuffle, so its null equals Null A's (log-p correlation 0.997, same 29% FPR).
-- **Fully permuted data (S0) cannot validate a null.** Both nulls look calibrated there. Use a
-  structured null.
+- **Calibration and power:** Null B ranks fewer false rows at the top in every known-null setting and in all 16
+  sensitivity runs (seeds, `expr_prop`, subsampling, label resolution, 5,000 permutations, mouse), and ranks planted
+  pairs higher (power at f = 1.25: 0.99 against 0.73).
+- **Against filters:** a detection filter does nothing; a both-sides DE filter removes more false rows than Null B
+  (18 of 18 settings) but ranks planted pairs lower (AUROC, 9 of 9).
+- **Donors:** with global permutations and no cell-type signal left, LIANA+'s CellPhoneDB p is ≤ 0.05 on 18–37% of
+  rows (CellChat 19–51%). Within-donor permutations bring Null B to ≤ 0.6%, and are now the default.
+- **Biology:** none of 19 spatial tests is significant after BH, for any variant. Null B drops rows whose limiting
+  gene is broadly expressed (all 10 data set × tool pairs).
+- **T2** is about a thousand times faster but not calibrated in the consensus; AMENDMENT_3's verdict: not supported.
+- **AMENDMENT_5** gives B2 and T2 the tests only Null B had: T2's biology with multiplicity correction (no spatial
+  test significant; AMENDMENT_2's 79 tests reproduced exactly), B2 under within-donor shuffles (0.3–4.6% of rows
+  at p ≤ 0.05) and what B2 drops (broadly expressed genes, 4 of 5 data sets).
+- **The ceiling:** four of LIANA+'s six methods use no null, so 60–83% of the top 1% stays false even with Null B.
 
-## Real-data benchmark: Open Problems / LIANA TNBC atlas
+Verdict under the plan: **Null B is valid and gives a better ranking than LIANA+ as shipped in every setting tested;
+on the available truths it is not biologically distinguishable.** Every run: 67 Kaggle sessions and two lab-server
+runs; [`RERUNS.md`](benchmarks/results/liana_final/RERUNS.md) compares them with the earlier laptop runs.
 
-`benchmarks/tnbc_openproblems.py` compares five nulls across all seven liana-py scoring methods
-on the triple-negative breast cancer atlas that LIANA's benchmark and the Open Problems
-ligand–target task use (Wu et al. 2021): 42,512 cells, 29 cell types, 10 patients, with the
-cytokine ground truth in `uns["ccc_target"]`.
+## Reproducing
 
 ```bash
-pip install -e ".[liana,test]"
-python -m ccc_nulls.datasets tnbc_wu2021                      # 1.27 GB, md5-checked
-python benchmarks/tnbc_openproblems.py --B 1000 --B5 100     # ~3.5 h on an 8 GB laptop
-python benchmarks/tnbc_e1_bootstrap.py full                   # E1 with bootstrap CIs
-python benchmarks/tnbc_summary.py full                        # tables
-python benchmarks/tnbc_patient_splits.py --splits 2 --B 300   # E3 reproducibility
+make install    # the locked environment
+make data       # ~9 GB, md5-checked
+make reproduce  # every result in benchmarks/results/liana_final/
 ```
 
-| Null | What is randomised |
-|---|---|
-| N1 | cell labels, uniformly (CellPhoneDB / CellChat / LIANA default) |
-| N2 | cell labels within each patient |
-| N3 | gene identity vs abundance-matched non-LR decoys (this package's Null B) |
-| N4 | gene identity vs any non-LR decoy (ablation) |
-| N5 | per-patient z-scores, one-sided t-test across patients |
+To rerun everything on Kaggle, see [`kaggle/README.md`](kaggle/README.md). To split the runs across machines or run over SSH, see [`RUN.md`](RUN.md). Every part resumes where it stopped. Every result file records the SHA-256 of the plan and amendments it was
+produced under. See [Reproducibility](docs/reproducibility.md).
 
-`ccc_nulls.multitool` recomputes every tool's statistic under each null and reproduces
-LIANA's own scores to within float32 rounding (r = 1.000000 for all seven tools).
-Results, including the fake-LR-resource calibration test, are in `benchmarks/results/tnbc/`.
-
-## Limitations
-
-- **Power:** Null B gives up weak effects (LFC 0.5) in exchange for error control. Report both q-values.
-- **Resolution:** Null B's smallest p is `1 / ((|decoys_L|+1)(|decoys_R|+1))`. Run it on the full
-  transcriptome. On highly-variable-gene subsets the strata are too small (watch `p_strat_min`).
-  The bundled PBMC example shows this.
-- **Assumption:** the S1 structure level τ = 0.25 is assumed. Estimating it on real atlases is ongoing.
-- **Scores:** standardisation supports the built-in `mean` and `product` scores. For custom scores
-  pass `standardize=False` through the low-level `null_b`.
-- **Adapters:** liana-py output is supported now (it covers CellPhoneDB, CellChat, NATMI,
-  Connectome, SingleCellSignalR, logFC and rank aggregate). Native adapters for CellPhoneDB,
-  CellChat, NATMI and Connectome are being built in `tools/`.
-
-## Library modules
+## Repository layout
 
 ```
-src/ccc_nulls/
-  core.py            significance_layer, overlap_summary, flag_overlap, aggregate_complexes
-  nulls.py           null_a, null_b, gene_strata, perm_moments, null_b_binned_labels (diagnostic)
-  multitool.py       statistics engine + LIANA-identical tool scores; label and decoy nulls
-  scores.py          CellPhoneDB mean, product, standardisation
-  stats.py           Benjamini-Hochberg, Cauchy combination
-  schema.py          common interaction schema + validate()
-  liana_reference.py LIANA's version of each tool, in the common schema
-  datasets.py        dataset registry, parallel download, loaders
-  evaluation/        Open Problems metrics (AUPRC, odds ratio), random baseline
-  adapters.py        from_liana, to_schema
-  io.py              AnnData helpers
-  simulate.py        simulator with known truth (S0 / S1 / S2)
+src/ccc_nulls/          the package: rank_aggregate, liana_consensus, composite, competitive (B2), datasets
+benchmarks/liana_nulls/ benchmark 1, each tool's own p-values: PLAN, amendments, code
+benchmarks/liana_final/ benchmark 2, LIANA+'s consensus: PLAN, amendments, code
+benchmarks/results/     result JSON files, results READMEs, figures
+docs/                   documentation (Sphinx) and the quickstart notebook
+tools/                  native adapters for CellPhoneDB, CellChat, NATMI, Connectome
+tests/                  tests
 ```
 
-## References
+The earlier tool-agnostic significance layer (`ccc_nulls.significance_layer`) and its simulation and TNBC results
+are documented in [Earlier work](docs/earlier_work.md).
 
-1. Dimitrov D. et al. Comparison of methods and resources for cell-cell communication inference from single-cell RNA-Seq data. *Nat Commun* 13, 3224 (2022).
-2. Dimitrov D. et al. LIANA+ provides an all-in-one framework for cell–cell communication inference. *Nat Cell Biol* 26, 1613–1622 (2024).
-3. Open Problems in Single-Cell Analysis: cell–cell communication benchmark.
-4. Jin S. et al. Inference and analysis of cell-cell communication using CellChat. *Nat Commun* 12, 1088 (2021).
-5. Efremova M. et al. CellPhoneDB. *Nat Protoc* 15, 1484–1506 (2020); Troulé K. et al. CellPhoneDB v5. *Nat Protoc* (2025).
-6. Browaeys R., Saelens W., Saeys Y. NicheNet. *Nat Methods* 17, 159–162 (2020).
-7. Liu Y., Xie J. Cauchy combination test. *JASA* 115, 393–402 (2020).
+## Citation
 
-## Project
+If you use ccc-nulls, cite it with [`CITATION.cff`](CITATION.cff), and cite LIANA+, which it extends:
 
-Developed for CS690A (Computational Genomics), Project 6.
+> Dimitrov D. et al. LIANA+ provides an all-in-one framework for cell–cell communication inference.
+> *Nat Cell Biol* 26, 1613–1622 (2024).
+
+## License
+
+[BSD-3-Clause](LICENSE), as LIANA+'s.
