@@ -16,6 +16,9 @@ tool folders is changed. ``Tool.run(adata, groupby, workdir)`` returns one row p
 and ``meta`` with the fidelity check (column 1 vs column 2) and timings. Null A and Null B use the
 tool's own permutation sequence: CellChat's (R's ``set.seed(1); sample.int``), CellPhoneDB's
 (``np.random.seed(0)`` then one ``shuffle`` per iteration).
+
+NATMI (AMENDMENT_5.md) has no p-value and no permutation sequence: column 1 is its score, the fidelity
+check compares scores, and Null A and Null B share ``default_rng(seed)``'s sequence.
 """
 from __future__ import annotations
 
@@ -260,4 +263,74 @@ class CellPhoneDB:
                     n_family=int(df.family.sum()), n_lr=int(len(ids)), n_types=K,
                     family_rule="CellPhoneDB's gate: both partners in > 10% of their type's cells, and score > 0",
                     score_max_abs_diff=float(diff.max()))
+        return df, meta
+
+
+class NATMI:
+    """AMENDMENT_5: NATMI's edge specificity (``tools/natmi/adapter.py``). Column 1 is native NATMI's score
+    (it has no p-value); column 2 is the same score in Python and Null A on it; Null B as for the others."""
+    name = "natmi"
+    liana_method = "natmi"
+    liana_resource = "connectomedb2020"
+    native_rule = "none (NATMI has no p-value); stand-in: Null A p < 0.05 and score > 0 (AMENDMENT_5)"
+    human_genes_only = True     # mouse data renamed to human orthologs first, as for CellPhoneDB (lrc2p is human)
+    native_seed = 0
+
+    @staticmethod
+    def tool_rule(p, df) -> np.ndarray:
+        """The stand-in for a call rule NATMI does not have: CellChat's form on any p-value column."""
+        return (np.asarray(p, float) < 0.05) & (df.score.to_numpy(float) > 0)
+
+    def __init__(self, B: int = 1000, run_native: bool = True, species: str = "human", seed: int | None = None,
+                 core_num: int = 1):
+        self.B, self.do_native, self.species, self.core_num = B, run_native, species, core_num
+        self.seed = self.native_seed if seed is None else seed
+        if species != "human":
+            self.liana_resource = f"{species}consensus"     # LIANA+'s run on the data as loaded (mouse genes)
+
+    @property
+    def extra_excluded_genes(self) -> set:
+        """lrc2p's genes: kept out of B2's decoys, as every other database's genes are."""
+        from tools.natmi import adapter
+        return adapter.database_genes()
+
+    def run(self, adata, groupby: str, workdir: Path, log=print) -> tuple[pd.DataFrame, dict]:
+        from tools.natmi import adapter
+
+        meta = {}
+        workdir = Path(workdir)
+        if self.species != "human":
+            from .data import to_human
+            adata, meta["orthologs"] = to_human(adata, self.species)
+
+        # column 2 and both nulls: NATMI's score in Python, Null A and Null B on one permutation sequence
+        df, m = adapter.run(adata, groupby, B=self.B, seed=self.seed)
+        meta.update(seconds_null_a=m["seconds_null_a"], seconds_null_b=m["seconds_null_b"], n_pairs=m["n_pairs"])
+
+        # column 1: NATMI itself; its score must equal column 2's on every positive row
+        df["score_native"] = np.nan
+        if self.do_native:
+            t0 = time.time()
+            inputs = adapter.prepare_inputs(adata, groupby, workdir / "inputs")
+            native = adapter.run_native(inputs, workdir, core_num=self.core_num, log=log)
+            meta["seconds_native"] = _secs(t0)
+            meta["native_commit"] = native["commit"]
+            nat = adapter.native_to_schema(native)
+            meta["fidelity"] = adapter.fidelity(df, nat)
+            if meta["fidelity"]["identical"]:
+                key = ["ligand", "receptor", "source", "target"]
+                s = df[key].merge(nat[key + ["score"]], on=key, how="left").score.to_numpy(float)
+                df["score_native"] = np.where(np.isnan(s), 0.0, s)
+            else:
+                log(f"    NATMI fidelity FAILED: {meta['fidelity']}")
+        df["p_native"] = np.nan                          # NATMI has none
+        df["p_port_native"] = df.p_null_a.to_numpy()     # the stand-in rule's p (see tool_rule)
+        df["call_native"] = False
+        df["call_port_native"] = self.tool_rule(df.p_null_a, df)
+        df["limiting_partner"] = np.where(df.limiting_side_null_b.to_numpy() == "L", "ligand", "receptor")
+        df["ligand_complex"], df["receptor_complex"] = complex_key(df.ligand_complex), complex_key(df.receptor_complex)
+        meta.update(B=self.B, seed=self.seed, rng="numpy default_rng(seed).permutation(codes), one per iteration",
+                    species=self.species, n_rows=len(df), n_family=int(df.family.sum()), n_lr=m["n_pairs"],
+                    n_types=m["n_types"], score=m["score"],
+                    family_rule="composite.testable: some labelling (observed, Null A or either Null B side) gives a positive score")
         return df, meta

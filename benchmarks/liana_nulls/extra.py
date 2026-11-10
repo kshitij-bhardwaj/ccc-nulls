@@ -84,9 +84,11 @@ def add_extra(adata, groupby: str, tool, df: pd.DataFrame, workdir: Path, specie
 
     meta = {}
     a = adata
-    if tool.name == "cellphonedb" and species != "human":
+    # tools whose rows name human genes on mouse data (CellPhoneDB; NATMI, AMENDMENT_5) read renamed data
+    if getattr(tool, "human_genes_only", tool.name == "cellphonedb") and species != "human":
         a, _ = to_human(adata, species)
-    b2 = b2_columns(a, groupby, df)
+    excluded = excluded_genes() | set(getattr(tool, "extra_excluded_genes", ()))
+    b2 = b2_columns(a, groupby, df, excluded=excluded)
     for c in b2.columns:
         df[c] = b2[c].to_numpy()
     meta["b2"] = dict(gated_rows=int(df.gate_b2.sum()), gated_in_family=int((df.gate_b2 & df.family).sum()), family=int(df.family.sum()),
