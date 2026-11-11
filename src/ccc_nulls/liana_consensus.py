@@ -22,6 +22,14 @@ LIANA+ run then gives every variant (:func:`variants`), each aggregated by LIANA
     swap_<n>      liana6 with CellPhoneDB's and CellChat's p replaced by null <n>'s
     extra_<n>     liana6 plus two methods, CellPhoneDB·<n> and CellChat·<n> (the tool's magnitude,
                   null <n>'s p), as the 7th and 8th
+    swap3_<n>     with ``run(..., connectome=True)``: as swap_<n>, and Connectome's specificity (LIANA+'s
+                  ``scaled_weight``, which is not a p-value) replaced by null <n>'s p on Connectome's
+                  score; swap3_null_a gives Connectome a p from all labels permuted together
+
+Connectome (idea from PR #13): LIANA+ ranks it by ``expr_prod`` and ``scaled_weight`` and runs no
+permutations for it. :func:`capture_connectome` lets LIANA+ permute for it as for CellPhoneDB (same seed,
+same means), returns LIANA+'s own two scores unchanged, and stores the nulls' p on ``expr_prod``. So
+liana5, liana6 and every swap_/extra_ variant are the same with or without it.
 
 A LIANA+ detail inherited here: for a complex, ``perm_stats`` follows the one subunit that is lowest
 under the observed labels, as LIANA+'s own permutation test does.
@@ -40,6 +48,7 @@ import pandas as pd
 KEY = ["source", "target", "ligand_complex", "receptor_complex"]
 NULLS = ("null_a", "null_b", "b2")
 TOOLS = {"CellPhoneDB": ("lr_means", "cellphone_pvals"), "CellChat": ("lr_probs", "cellchat_pvals")}
+CONNECTOME = ("expr_prod", "connectome_p")      # Connectome's magnitude, and the column our p goes to
 CHUNK = 20_000
 ROWS_AT_ONCE = 100_000      # rows scored at once: their permutation statistics are 2 x B x rows float64
 
@@ -56,8 +65,14 @@ def _cellchat(L, R):
     return p / (cellchat._kh + p)
 
 
+def _connectome(L, R):
+    """Connectome's magnitude as LIANA+ computes it (``expr_prod``)."""
+    return L * R
+
+
 SCORES = {"CellPhoneDB": (_cpdb, ("ligand_means", "receptor_means")),
-          "CellChat": (_cellchat, ("ligand_trimean", "receptor_trimean"))}
+          "CellChat": (_cellchat, ("ligand_trimean", "receptor_trimean")),
+          "Connectome": (_connectome, ("ligand_means", "receptor_means"))}
 
 
 def side_p(score, L, R, perm_stats, chunk: int = CHUNK) -> dict:
@@ -106,6 +121,39 @@ def capture(method, store: dict):
                       magnitude=method.magnitude, magnitude_ascending=method.magnitude_ascending,
                       specificity=method.specificity, specificity_ascending=method.specificity_ascending,
                       permute=method.permute, reference=method.reference)
+    return Method(_method=meta)
+
+
+def capture_connectome(store: dict):
+    """LIANA+'s Connectome with permutations: its output (``expr_prod``, ``scaled_weight``) is LIANA+'s own,
+    unchanged; ``store['Connectome']`` gets its rows, a joint-permutation p (LIANA+'s formula,
+    #{s_b >= s} / B, on ``expr_prod``) and Null B on the same permutations."""
+    from liana.method._pipe_utils._get_mean_perms import _calculate_pvals
+    from liana.method.sc._Method import Method, MethodMeta
+
+    method = __import__("liana").mt.connectome
+    score, (lcol, rcol) = SCORES["Connectome"]
+
+    def fun(x, perm_stats):
+        mag, spec = method.fun(x)
+        lazy = isinstance(perm_stats, _PermStats)
+        blocks = [slice(a, a + ROWS_AT_ONCE) for a in range(0, len(x), ROWS_AT_ONCE)] if lazy else [slice(None)]
+        pa, nbs = [], []
+        for z in blocks:
+            xz, ps = x.iloc[z], np.asarray(perm_stats.rows(z) if lazy else perm_stats)
+            pa.append(_calculate_pvals(np.asarray(mag)[z], ps, np.prod))
+            nbs.append(side_p(score, xz[lcol].to_numpy(), xz[rcol].to_numpy(), ps))
+        nb = {k: np.concatenate([o[k] for o in nbs]) for k in nbs[0]}
+        store["Connectome"] = pd.DataFrame({**{k: x[k].to_numpy() for k in KEY + ["ligand", "receptor"]},
+                                            "magnitude": np.asarray(mag), "p_null_a": np.concatenate(pa),
+                                            "p_L_null_b": nb["p_L"], "p_R_null_b": nb["p_R"], "p_null_b": nb["p"],
+                                            "score_check": nb["score"]})
+        return mag, spec
+
+    meta = MethodMeta(method_name=method.method_name, complex_cols=method.complex_cols, add_cols=method.add_cols,
+                      fun=fun, magnitude=method.magnitude, magnitude_ascending=method.magnitude_ascending,
+                      specificity=method.specificity, specificity_ascending=method.specificity_ascending,
+                      permute=True, reference=method.reference)
     return Method(_method=meta)
 
 
@@ -205,17 +253,19 @@ def stratified_permutations(strata: pd.Series):
 
 def run(adata, groupby: str, *, resource_name: str = "consensus", n_perms: int = 1000, seed: int = 1337,
         expr_prop: float = 0.1, strata: pd.Series | None = None, tools_only: bool = False, use_raw: bool = False,
-        **kw) -> tuple[dict, dict]:
-    """One LIANA+ run of the six methods with CellPhoneDB and CellChat captured (``tools_only``: just
-    those two). Returns ({method name: its table, keys + magnitude + specificity}, {tool: captured rows})."""
+        connectome: bool = False, **kw) -> tuple[dict, dict]:
+    """One LIANA+ run of the six methods with CellPhoneDB and CellChat captured, and Connectome too if
+    ``connectome`` (``tools_only``: just the captured ones). Returns ({method name: its table, keys +
+    magnitude + specificity}, {tool: captured rows})."""
     import liana as li
     from liana.method.sc._rank_aggregate import AggregateClass, _rank_aggregate_meta
 
     store = {}
-    methods = [capture(li.mt.cellphonedb, store), li.mt.connectome, li.mt.logfc, li.mt.natmi,
-               li.mt.singlecellsignalr, capture(li.mt.cellchat, store)]   # CellChat last: it rescales X in place
+    methods = [capture(li.mt.cellphonedb, store), capture_connectome(store) if connectome else li.mt.connectome,
+               li.mt.logfc, li.mt.natmi, li.mt.singlecellsignalr,
+               capture(li.mt.cellchat, store)]   # CellChat last: it rescales X in place
     if tools_only:
-        methods = [methods[0], methods[-1]]
+        methods = [methods[0]] + ([methods[1]] if connectome else []) + [methods[-1]]
     agg = AggregateClass(_rank_aggregate_meta, methods=methods)
     kw = dict(groupby=groupby, resource_name=resource_name, n_perms=n_perms, seed=seed, expr_prop=expr_prop,
               consensus_opts=False, inplace=False, use_raw=use_raw, **kw)
@@ -283,6 +333,15 @@ def variants(lrs: dict, store: dict, nulls=NULLS, aggregate_method: str = "rra")
             extra[name] = ours(tool, n).rename(columns={mag: f"{mag}__{n}", spec: f"{spec}__{n}"})
             metas.append(_meta(name, f"{mag}__{n}", f"{spec}__{n}"))
         out[f"extra_{n}"] = agg(extra, metas)
+    if "Connectome" in store:
+        metas3 = [_meta("Connectome", *CONNECTOME) if m.method_name == "Connectome" else m for m in six.values()]
+        for n in nulls:
+            swapped = dict(base)
+            for tool in TOOLS if n != "null_a" else ():
+                swapped[tool] = ours(tool, n)
+            d = store["Connectome"][KEY + ["magnitude", f"p_{n}"]].drop_duplicates(KEY)
+            swapped["Connectome"] = d.rename(columns={"magnitude": CONNECTOME[0], f"p_{n}": CONNECTOME[1]})
+            out[f"swap3_{n}"] = agg(swapped, metas3)
     return out
 
 

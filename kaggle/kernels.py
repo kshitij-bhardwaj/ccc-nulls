@@ -23,6 +23,7 @@ BUILD, OUTPUTS = HERE / "build", HERE / "outputs"
 MAX_ACTIVE = 5                     # Kaggle's limit on concurrent batch CPU sessions
 LF, A2, A3, A4 = ("python -m benchmarks.liana_final", "python -m benchmarks.liana_final.amendment2",
                   "python -m benchmarks.liana_final.amendment3", "python -m benchmarks.liana_final.amendment4")
+A6 = "python -m benchmarks.liana_final.amendment6"
 RUNS = {"tnbc": "tnbc_wu2021", "allen": "allen_brain_atlas", "mammary": "tabula_sapiens_mammary",
         "liver": "tabula_sapiens_liver", "hypothalamus": "moffitt2018_hypothalamus"}
 LUNG = "tabula_sapiens_lung"
@@ -85,8 +86,18 @@ SESSIONS["a4-sensitivity-perms-mammary"] = S(f"{A4} --part sensitivity --only '^
 SESSIONS["a4-mouse"] = S(f"{A4} --part mouse", ["data"])
 SESSIONS["a4-cases"] = S(f"{A4} --part cases", ["data"] + [f"run-{k}" for k in RUNS] + [f"a3-real-{k}" for k in RUNS])
 SESSIONS["a4-timing"] = S(f"{A4} --part timing", ["data", "run-mammary", "run-hypothalamus"])
+# AMENDMENT_6.md: Connectome's p-value replaced too (biology and the report run locally, from the tables)
+SESSIONS |= {f"a6-real-{k}": S(f"{A6} --part real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
+SESSIONS |= {f"a6-calibration-{k}": S(f"{A6} --part calibration --only '^{RUNS[k]}\\|'", ["data"]) for k in ("mammary", "liver")}
+SESSIONS["a6-power"] = S(f"{A6} --part power", ["data"])
+SESSIONS["a6-hard-power"] = S(f"{A6} --part hard_power", ["data"])
+for scen in ("receptor", "ligand"):
+    for rep in range(3):
+        SESSIONS[f"a6-lung-{scen}-{rep}"] = S(f"{A6} --part lung --only '^{LUNG}\\|{scen}\\|{rep}$'", ["data"])
+SESSIONS["a6-lung-power"] = S(f"{A6} --part lung --only '^{LUNG}\\|f2\\|'", ["data"])
+SESSIONS["a6-mouse"] = S(f"{A6} --part mouse", ["data"])
 # everything merged; reports and figures
-SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report",
+SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report", f"{A6} --part report",
                         "python -m benchmarks.liana_final.figures"],
                        [k for k in SESSIONS if k != "data"])
 
