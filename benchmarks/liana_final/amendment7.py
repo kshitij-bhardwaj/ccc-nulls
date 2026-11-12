@@ -53,7 +53,9 @@ def stability(a: pd.DataFrame, b: pd.DataFrame) -> dict:
     m = a.merge(b, on=lc.KEY, suffixes=("", "_2"))
     out = {"rows": int(len(m))}
     k = max(1, int(np.ceil(0.01 * len(m))))
-    for v in SHOWN:
+    # A2.5's stability runs (seeds, 5,000 permutations) skip B2 (b2=False), so swap_b2 and swap3_b2 are not in b
+    out["skipped"] = [v for v in SHOWN if f"specificity_rank__{v}_2" not in m]
+    for v in (v for v in SHOWN if v not in out["skipped"]):
         x, y = m[f"specificity_rank__{v}"].to_numpy(), m[f"specificity_rank__{v}_2"].to_numpy()
         tx, ty = set(np.argsort(x, kind="stable")[:k]), set(np.argsort(y, kind="stable")[:k])
         out[v] = dict(spearman=float(spearmanr(x, y).statistic), top1_jaccard=len(tx & ty) / len(tx | ty))
