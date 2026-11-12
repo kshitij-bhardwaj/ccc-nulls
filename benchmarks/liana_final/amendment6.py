@@ -122,8 +122,14 @@ def part_biology(args):
         tbl, tr = table6(name), A2.spatial_truth(name)
         for v in variants:
             tests[(v, f"{name} spatial")] = A2.boot_or(A2.spatial_K(tbl, tr, v))
+    from benchmarks.liana_nulls import downstream
+    from benchmarks.liana_nulls.data import SPECIES
     for name in A2.DATASETS:
-        calls = table6(name)[lc.KEY + [f"call__{v}" for v in variants + [P.BASELINE]]]
+        # the downstream rows carry human symbols (evaluate.py: downstream.human_rows); so must the calls joined onto
+        # them, or every mouse row is missed (AMENDMENT_5's with_t2 missed them: its mouse T2 downstream tests are empty)
+        cc = [f"call__{v}" for v in variants + [P.BASELINE]]
+        calls = downstream.human_rows(table6(name)[lc.KEY + cc], SPECIES[name]) \
+            .dropna(subset=["ligand_complex", "receptor_complex"]).groupby(lc.KEY, as_index=False)[cc].max()
         for res in ("cytosig", "progeny"):
             r = pd.read_pickle(A2.rows_dir() / f"downstream_{name}_{res}.pkl")
             r = r.drop(columns=[c for c in calls if c not in lc.KEY and c in r]).merge(calls, on=lc.KEY, how="left") \

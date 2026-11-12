@@ -10,6 +10,7 @@ from .pipeline import BASELINE, OUT
 from .report3 import mci, table
 from .report4 import crit1, crit2, word
 
+P5 = OUT / "amendment5"
 EARLIER = {"calibration": OUT / "amendment3/calibration.json", "confirm_calibration": OUT / "amendment4/confirm_calibration.json",
            "mouse_calibration": OUT / "amendment4/mouse_calibration.json", "power": OUT / "amendment3/power.json",
            "hard_power": OUT / "amendment3/hard_power.json", "confirm_power": OUT / "amendment4/confirm_power.json"}
@@ -105,6 +106,14 @@ def write():
         L += table(["Variant", "TNBC", "Allen brain", "hypothalamus"], rows)
         sig = [k for k, r in t.items() if r.get("q_all") is not None and r["q_all"] < 0.05]
         L += [f"Tests with q (all) < 0.05: {', '.join(sig) if sig else 'none'}.", ""]
+        a5 = J(P5 / "biology.json")
+        if a5:
+            both = [k for k in t if k in a5["tests"] and a5["tests"][k].get("odds_ratio") is not None]
+            same = sum(all(t[k].get(f) == a5["tests"][k].get(f) for f in ("odds_ratio", "p")) for k in both)
+            L += [f"Check: {same} of {len(both)} tests that AMENDMENT_5 also ran are identical (odds ratio and p). The calls are "
+                  "joined to the downstream rows in human symbols, as `evaluate.py` built them; AMENDMENT_5 joined T2's calls "
+                  "in mouse symbols, so its `swap_t2` and `extra_t2` downstream tests on Allen brain and the hypothalamus are "
+                  "empty. Here `swap_t2` has them.", ""]
 
     L += ["## Checks: liana6 and the earlier variants reproduce AMENDMENTS 3 and 4", ""]
     L += table(["File", "runs identical"], [[p, check(p) or "pending"] for p in EARLIER])
