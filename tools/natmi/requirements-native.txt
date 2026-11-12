@@ -1,0 +1,14 @@
+# Native NATMI (asrhou/NATMI, ExtractEdges.py) runs in its own environment, as CellChat runs in R.
+# These are the versions NATMI's README says it was tested with (Python 3.7.6). Modern pandas cannot
+# run it: ExtractEdges.py calls ExcelWriter.save() (removed in pandas 2) and re-reads its own .xlsx
+# files with read_excel (xlrd >= 2 dropped .xlsx).
+#
+#   python3.7 -m venv .venv-natmi
+#   .venv-natmi/bin/pip install -r tools/natmi/requirements-native.txt
+#   git clone https://github.com/asrhou/NATMI.git data/natmi/NATMI
+#   git -C data/natmi/NATMI checkout f35f677cb2e4c8a176a6c5501a9483c9e28661a1
+#   export NATMI_PYTHON=$PWD/.venv-natmi/bin/python NATMI_DIR=$PWD/data/natmi/NATMI
+numpy==1.18.5
+pandas==1.0.3
+XlsxWriter==1.2.8
+xlrd==1.2.0
