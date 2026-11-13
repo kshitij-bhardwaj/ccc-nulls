@@ -29,7 +29,7 @@ LIANA+ run then gives every variant (:func:`variants`), each aggregated by LIANA
 Connectome (idea from PR #13): LIANA+ ranks it by ``expr_prod`` and ``scaled_weight`` and runs no
 permutations for it. :func:`capture_connectome` lets LIANA+ permute for it as for CellPhoneDB (same seed,
 same means), returns LIANA+'s own two scores unchanged, and stores the nulls' p on ``expr_prod``. So
-liana5, liana6 and every swap_/extra_ variant are the same with or without it.
+liana5, liana6 and every ``swap_<n>`` and ``extra_<n>`` variant are the same with or without it.
 
 A LIANA+ detail inherited here: for a complex, ``perm_stats`` follows the one subunit that is lowest
 under the observed labels, as LIANA+'s own permutation test does.
