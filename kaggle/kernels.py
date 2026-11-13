@@ -23,6 +23,8 @@ BUILD, OUTPUTS = HERE / "build", HERE / "outputs"
 MAX_ACTIVE = 5                     # Kaggle's limit on concurrent batch CPU sessions
 LF, A2, A3, A4 = ("python -m benchmarks.liana_final", "python -m benchmarks.liana_final.amendment2",
                   "python -m benchmarks.liana_final.amendment3", "python -m benchmarks.liana_final.amendment4")
+A6 = "python -m benchmarks.liana_final.amendment6"
+A7 = "python -m benchmarks.liana_final.amendment7"
 RUNS = {"tnbc": "tnbc_wu2021", "allen": "allen_brain_atlas", "mammary": "tabula_sapiens_mammary",
         "liver": "tabula_sapiens_liver", "hypothalamus": "moffitt2018_hypothalamus"}
 LUNG = "tabula_sapiens_lung"
@@ -85,8 +87,33 @@ SESSIONS["a4-sensitivity-perms-mammary"] = S(f"{A4} --part sensitivity --only '^
 SESSIONS["a4-mouse"] = S(f"{A4} --part mouse", ["data"])
 SESSIONS["a4-cases"] = S(f"{A4} --part cases", ["data"] + [f"run-{k}" for k in RUNS] + [f"a3-real-{k}" for k in RUNS])
 SESSIONS["a4-timing"] = S(f"{A4} --part timing", ["data", "run-mammary", "run-hypothalamus"])
+# AMENDMENT_6.md: Connectome's p-value replaced too (biology and the report run locally, from the tables)
+SESSIONS |= {f"a6-real-{k}": S(f"{A6} --part real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
+SESSIONS |= {f"a6-calibration-{k}": S(f"{A6} --part calibration --only '^{RUNS[k]}\\|'", ["data"]) for k in ("mammary", "liver")}
+SESSIONS["a6-power"] = S(f"{A6} --part power", ["data"])
+SESSIONS["a6-hard-power"] = S(f"{A6} --part hard_power", ["data"])
+for scen in ("receptor", "ligand"):
+    for rep in range(3):
+        SESSIONS[f"a6-lung-{scen}-{rep}"] = S(f"{A6} --part lung --only '^{LUNG}\\|{scen}\\|{rep}$'", ["data"])
+SESSIONS["a6-lung-power"] = S(f"{A6} --part lung --only '^{LUNG}\\|f2\\|'", ["data"])
+SESSIONS["a6-mouse"] = S(f"{A6} --part mouse", ["data"])
+# AMENDMENT_7.md: Connectome through donors, sensitivity and Benchmark 1's tool-level tests (cases run locally)
+for scheme in ("global", "donor"):
+    for rep in range(3):
+        SESSIONS[f"a7-donor-lung-{scheme}-{rep}"] = S(f"{A7} --part donor --only '^{LUNG}\\|{scheme}\\|{rep}$'", ["data"])
+SESSIONS |= {f"a7-donor-{k}": S(f"{A7} --part donor --only '^{RUNS[k]}\\|'", ["data"]) for k in ("tnbc", "mammary", "liver")}
+SESSIONS["a7-sensitivity-seed-expr"] = S(f"{A7} --part sensitivity --only '^seed|@expr_prop='", ["data", "a6-real-mammary"])
+SESSIONS["a7-sensitivity-cells-labels"] = S(f"{A7} --part sensitivity --only '@(cells|labels)='", ["data", "a6-real-mammary"])
+SESSIONS["a7-sensitivity-perms-hypothalamus"] = S(f"{A7} --part sensitivity --only '^real$|^{RUNS['hypothalamus']}@n_perms'",
+                                                  ["data", "a6-real-mammary", "a6-real-hypothalamus"])
+SESSIONS["a7-sensitivity-perms-mammary"] = S(f"{A7} --part sensitivity --only '^real@|^{RUNS['mammary']}@n_perms'",
+                                             ["data", "a6-real-mammary"])
+SESSIONS["a7-tool-labels"] = S(f"{A7} --part tool_labels", ["data"])
+SESSIONS["a7-tool-power-1000"] = S(f"{A7} --part tool_power --only '\\|B1000\\|'", ["data"])
+SESSIONS |= {f"a7-tool-power-5000-{rep}": S(f"{A7} --part tool_power --only '\\|B5000\\|f1.5\\|{rep}$'", ["data"]) for rep in range(5)}
+SESSIONS |= {f"a7-tool-real-{k}": S(f"{A7} --part tool_real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
 # everything merged; reports and figures
-SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report",
+SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report", f"{A6} --part report",
                         "python -m benchmarks.liana_final.figures"],
                        [k for k in SESSIONS if k != "data"])
 

@@ -1,0 +1,625 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "amendment_5_sha256": "2bcb4baa1bdb02b0090b2cd3df34b523cdec3220aed54e38202614ddb1d89c4b",
+ "amendment_6_sha256": "047ec2c9db318d13a83e87d1b0548192b6799d859932050a8432de30db64d23a",
+ "amendment_7_sha256": "2216f2f06884411fa031dfa1e5d56abad91060ee25a675c6778833cdcf5f918c",
+ "runs": {
+  "tnbc_wu2021": {
+   "CellPhoneDB": {
+    "rows": 154213,
+    "calls_null_a": 106730,
+    "calls_null_a_plus1": 106646,
+    "calls_null_b": 61810,
+    "calls_b2": 357,
+    "calls_t2": 11,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 0.7974168386834413,
+      "ci95": [
+       0.5966140363415806,
+       1.1095125798835839
+      ],
+      "p": 0.17,
+      "se_log": 0.1560394263549367,
+      "detectable": [
+       0.6460293170533098,
+       1.5479173678390217
+      ],
+      "kept_calls": 58745,
+      "dropped_calls": 43120,
+      "q_all": 0.21857142857142858
+     },
+     "b2": {
+      "odds_ratio": 0.4080503391033959,
+      "ci95": [
+       0.09000534307214346,
+       1.1197593912997257
+      ],
+      "p": 0.077,
+      "se_log": 0.6611150292985883,
+      "detectable": [
+       0.15706083226304476,
+       6.366959767061495
+      ],
+      "kept_calls": 318,
+      "dropped_calls": 101547,
+      "q_all": 0.17325
+     },
+     "t2": {
+      "odds_ratio": 4.304495225834138,
+      "ci95": [
+       1.9297751394417226,
+       18.07114112678279
+      ],
+      "p": 0.0005,
+      "se_log": 0.5761087680045628,
+      "detectable": [
+       0.19926801518600543,
+       5.018366841595509
+      ],
+      "kept_calls": 7,
+      "dropped_calls": 101858,
+      "q_all": 0.0045000000000000005
+     }
+    }
+   },
+   "Connectome": {
+    "rows": 154213,
+    "calls_null_a": 113459,
+    "calls_null_a_plus1": 113375,
+    "calls_null_b": 61810,
+    "calls_b2": 357,
+    "calls_t2": 1886,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 0.8144791514974501,
+      "ci95": [
+       0.6617342793963583,
+       1.0410878897161664
+      ],
+      "p": 0.103,
+      "se_log": 0.11397055984706463,
+      "detectable": [
+       0.7267900973363081,
+       1.375913078156965
+      ],
+      "kept_calls": 58745,
+      "dropped_calls": 49656,
+      "q_all": 0.18539999999999998
+     },
+     "b2": {
+      "odds_ratio": 0.4105691527319717,
+      "ci95": [
+       0.09110214276889304,
+       1.10981357114224
+      ],
+      "p": 0.073,
+      "se_log": 0.6551964663468648,
+      "detectable": [
+       0.15968532711709219,
+       6.262316131692749
+      ],
+      "kept_calls": 317,
+      "dropped_calls": 108084,
+      "q_all": 0.17325
+     },
+     "t2": {
+      "odds_ratio": 0.9748257350258497,
+      "ci95": [
+       0.23159138658272935,
+       2.0204717102245078
+      ],
+      "p": 0.892,
+      "se_log": 0.5530425315646016,
+      "detectable": [
+       0.21256252717268204,
+       4.704498075465661
+      ],
+      "kept_calls": 1753,
+      "dropped_calls": 106648,
+      "q_all": 0.892
+     }
+    }
+   },
+   "CellChat": {
+    "rows": 154213,
+    "calls_null_a": 40856,
+    "calls_null_a_plus1": 40817,
+    "calls_null_b": 25448,
+    "calls_b2": 357,
+    "calls_t2": 3296,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 0.759460774618483,
+      "ci95": [
+       0.588690142595723,
+       1.013344143122399
+      ],
+      "p": 0.058,
+      "se_log": 0.13594068500956355,
+      "detectable": [
+       0.683428034513768,
+       1.463211851868881
+      ],
+      "kept_calls": 24192,
+      "dropped_calls": 14840,
+      "q_all": 0.17325
+     },
+     "b2": {
+      "odds_ratio": 0.40669376607026647,
+      "ci95": [
+       0.08953782631638854,
+       1.2327877310465842
+      ],
+      "p": 0.131,
+      "se_log": 0.7034703864449713,
+      "detectable": [
+       0.13949631664526266,
+       7.168648062177779
+      ],
+      "kept_calls": 316,
+      "dropped_calls": 38716,
+      "q_all": 0.1965
+     },
+     "t2": {
+      "odds_ratio": 1.1187546690799104,
+      "ci95": [
+       0.3323445336239763,
+       1.9274452396562711
+      ],
+      "p": 0.851,
+      "se_log": 0.4440103339072271,
+      "detectable": [
+       0.28845132206716506,
+       3.4667894493725107
+      ],
+      "kept_calls": 3062,
+      "dropped_calls": 35970,
+      "q_all": 0.892
+     }
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-tnbc"
+  },
+  "allen_brain_atlas": {
+   "CellPhoneDB": {
+    "rows": 235366,
+    "calls_null_a": 106793,
+    "calls_null_a_plus1": 106524,
+    "calls_null_b": 35654,
+    "calls_b2": 12,
+    "calls_t2": 906,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 1.3871246692519381,
+      "ci95": [
+       0.9752050232187144,
+       1.8990664280512741
+      ],
+      "p": 0.064,
+      "se_log": 0.16883073843518592,
+      "detectable": [
+       0.623300790063675,
+       1.604361836117426
+      ],
+      "kept_calls": 33637,
+      "dropped_calls": 67908,
+      "q_all": 0.1755
+     },
+     "b2": {
+      "odds_ratio": 1.9217975657138326,
+      "ci95": [
+       0.626457015955446,
+       7.974778330003914
+      ],
+      "p": 0.352,
+      "se_log": 0.6830327790392227,
+      "detectable": [
+       0.1477118619878372,
+       6.7699370012839015
+      ],
+      "kept_calls": 12,
+      "dropped_calls": 101533,
+      "q_all": 0.383
+     },
+     "t2": {
+      "odds_ratio": 2.361633523375538,
+      "ci95": [
+       1.3159068801085239,
+       3.7178425167244837
+      ],
+      "p": 0.006,
+      "se_log": 0.26512350834392917,
+      "detectable": [
+       0.47599600227734024,
+       2.100857980352002
+      ],
+      "kept_calls": 854,
+      "dropped_calls": 100691,
+      "q_all": 0.049499999999999995
+     }
+    }
+   },
+   "Connectome": {
+    "rows": 235366,
+    "calls_null_a": 100902,
+    "calls_null_a_plus1": 100645,
+    "calls_null_b": 35654,
+    "calls_b2": 12,
+    "calls_t2": 4538,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 1.346253943315528,
+      "ci95": [
+       0.9700825336611534,
+       1.7963077300545371
+      ],
+      "p": 0.078,
+      "se_log": 0.15510007850556903,
+      "detectable": [
+       0.647730723068276,
+       1.5438514252698061
+      ],
+      "kept_calls": 33637,
+      "dropped_calls": 62370,
+      "q_all": 0.1755
+     },
+     "b2": {
+      "odds_ratio": 1.8763628166243136,
+      "ci95": [
+       0.6032776409766164,
+       7.864209630645041
+      ],
+      "p": 0.383,
+      "se_log": 0.6904066868127318,
+      "detectable": [
+       0.14469333270593962,
+       6.911168478179301
+      ],
+      "kept_calls": 12,
+      "dropped_calls": 95995,
+      "q_all": 0.383
+     },
+     "t2": {
+      "odds_ratio": 2.0517180549641805,
+      "ci95": [
+       1.2024805610416747,
+       2.984832920248771
+      ],
+      "p": 0.011,
+      "se_log": 0.23458816677118335,
+      "detectable": [
+       0.5184836075462862,
+       1.928701284757065
+      ],
+      "kept_calls": 4234,
+      "dropped_calls": 91773,
+      "q_all": 0.049499999999999995
+     }
+    }
+   },
+   "CellChat": {
+    "rows": 235366,
+    "calls_null_a": 69719,
+    "calls_null_a_plus1": 69570,
+    "calls_null_b": 30557,
+    "calls_b2": 12,
+    "calls_t2": 4916,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 1.1814586021687081,
+      "ci95": [
+       0.96499302692494,
+       1.4405921879676271
+      ],
+      "p": 0.119,
+      "se_log": 0.10059128875909655,
+      "detectable": [
+       0.7545334946951388,
+       1.3253222117118066
+      ],
+      "kept_calls": 28848,
+      "dropped_calls": 37222,
+      "q_all": 0.1785
+     },
+     "b2": {
+      "odds_ratio": 2.2205892644691723,
+      "ci95": [
+       0.7239512895170462,
+       8.644231390165624
+      ],
+      "p": 0.216,
+      "se_log": 0.6700395062175,
+      "detectable": [
+       0.15318474269344415,
+       6.528065278676067
+      ],
+      "kept_calls": 12,
+      "dropped_calls": 66058,
+      "q_all": 0.2777142857142857
+     },
+     "t2": {
+      "odds_ratio": 1.545022643242609,
+      "ci95": [
+       0.8953771374729516,
+       2.4033711295137357
+      ],
+      "p": 0.118,
+      "se_log": 0.24951842537985847,
+      "detectable": [
+       0.4972553555030585,
+       2.011039175210752
+      ],
+      "kept_calls": 4628,
+      "dropped_calls": 61442,
+      "q_all": 0.1785
+     }
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-allen"
+  },
+  "tabula_sapiens_mammary": {
+   "CellPhoneDB": {
+    "rows": 86001,
+    "calls_null_a": 35054,
+    "calls_null_a_plus1": 34956,
+    "calls_null_b": 14983,
+    "calls_b2": 158,
+    "calls_t2": 3
+   },
+   "Connectome": {
+    "rows": 86001,
+    "calls_null_a": 35980,
+    "calls_null_a_plus1": 35903,
+    "calls_null_b": 14983,
+    "calls_b2": 158,
+    "calls_t2": 1618
+   },
+   "CellChat": {
+    "rows": 86001,
+    "calls_null_a": 20213,
+    "calls_null_a_plus1": 20166,
+    "calls_null_b": 9186,
+    "calls_b2": 158,
+    "calls_t2": 2108
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-mammary"
+  },
+  "tabula_sapiens_liver": {
+   "CellPhoneDB": {
+    "rows": 196381,
+    "calls_null_a": 88904,
+    "calls_null_a_plus1": 88704,
+    "calls_null_b": 39270,
+    "calls_b2": 9,
+    "calls_t2": 296
+   },
+   "Connectome": {
+    "rows": 196381,
+    "calls_null_a": 90109,
+    "calls_null_a_plus1": 89897,
+    "calls_null_b": 39270,
+    "calls_b2": 9,
+    "calls_t2": 3255
+   },
+   "CellChat": {
+    "rows": 196381,
+    "calls_null_a": 53122,
+    "calls_null_a_plus1": 52995,
+    "calls_null_b": 25979,
+    "calls_b2": 9,
+    "calls_t2": 4311
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-liver"
+  },
+  "moffitt2018_hypothalamus": {
+   "CellPhoneDB": {
+    "rows": 10197,
+    "calls_null_a": 6565,
+    "calls_null_a_plus1": 6562,
+    "calls_null_b": 4232,
+    "calls_b2": 10,
+    "calls_t2": 5,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 0.8886814151631692,
+      "ci95": [
+       0.6521243321381551,
+       1.212986121209461
+      ],
+      "p": 0.469,
+      "se_log": 0.15758642827407787,
+      "detectable": [
+       0.6432370249118187,
+       1.5546368776534434
+      ],
+      "kept_calls": 3570,
+      "dropped_calls": 2016,
+      "q_all": 0.6698571428571428
+     },
+     "b2": {
+      "odds_ratio": 3.0852428964252976,
+      "ci95": [
+       0.3853001434263771,
+       19.73597455441695
+      ],
+      "p": 0.321,
+      "se_log": 0.9865508514997354,
+      "detectable": [
+       0.06314368821948893,
+       15.836895629599221
+      ],
+      "kept_calls": 7,
+      "dropped_calls": 5579,
+      "q_all": 0.6698571428571428
+     },
+     "t2": {
+      "odds_ratio": 2.0539798719121682,
+      "ci95": [
+       0.4105439578126316,
+       20.292684596755112
+      ],
+      "p": 0.415,
+      "se_log": 1.01727963058354,
+      "detectable": [
+       0.05793793279602488,
+       17.259849493087366
+      ],
+      "kept_calls": 3,
+      "dropped_calls": 5583,
+      "q_all": 0.6698571428571428
+     }
+    }
+   },
+   "Connectome": {
+    "rows": 10197,
+    "calls_null_a": 6925,
+    "calls_null_a_plus1": 6923,
+    "calls_null_b": 4232,
+    "calls_b2": 10,
+    "calls_t2": 104,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 0.8379931257374442,
+      "ci95": [
+       0.6168373317256854,
+       1.1531867995800658
+      ],
+      "p": 0.256,
+      "se_log": 0.1587886569417768,
+      "detectable": [
+       0.6410753748936014,
+       1.5598789770484771
+      ],
+      "kept_calls": 3570,
+      "dropped_calls": 2320,
+      "q_all": 0.6698571428571428
+     },
+     "b2": {
+      "odds_ratio": 2.9987255734919285,
+      "ci95": [
+       0.3822883302255262,
+       19.182147403114033
+      ],
+      "p": 0.333,
+      "se_log": 0.9849147461559032,
+      "detectable": [
+       0.06343361904479015,
+       15.764511233292634
+      ],
+      "kept_calls": 7,
+      "dropped_calls": 5883,
+      "q_all": 0.6698571428571428
+     },
+     "t2": {
+      "odds_ratio": 1.2717569786535303,
+      "ci95": [
+       0.544051300496208,
+       2.415973975600696
+      ],
+      "p": 0.521,
+      "se_log": 0.379293460760313,
+      "detectable": [
+       0.34575609158378845,
+       2.892212239614775
+      ],
+      "kept_calls": 83,
+      "dropped_calls": 5807,
+      "q_all": 0.6698571428571428
+     }
+    }
+   },
+   "CellChat": {
+    "rows": 10197,
+    "calls_null_a": 2645,
+    "calls_null_a_plus1": 2643,
+    "calls_null_b": 1838,
+    "calls_b2": 10,
+    "calls_t2": 146,
+    "spatial": {
+     "null_b": {
+      "odds_ratio": 1.0411360654472486,
+      "ci95": [
+       0.7459232839039895,
+       1.4782846010148416
+      ],
+      "p": 0.805,
+      "se_log": 0.17055020652609282,
+      "detectable": [
+       0.6203071140940171,
+       1.612104677310592
+      ],
+      "kept_calls": 1519,
+      "dropped_calls": 694,
+      "q_all": 0.9040000000000001
+     },
+     "b2": {
+      "odds_ratio": 3.3051470588235294,
+      "ci95": [
+       0.40819238084080606,
+       20.250422760178623
+      ],
+      "p": 0.29,
+      "se_log": 0.9884434416006566,
+      "detectable": [
+       0.06280995892440958,
+       15.921042094669707
+      ],
+      "kept_calls": 7,
+      "dropped_calls": 2206,
+      "q_all": 0.6698571428571428
+     },
+     "t2": {
+      "odds_ratio": 1.0276212875348685,
+      "ci95": [
+       0.572467819229912,
+       1.772004592402646
+      ],
+      "p": 0.904,
+      "se_log": 0.2769163224580416,
+      "detectable": [
+       0.46053533110145217,
+       2.17138606414479
+      ],
+      "kept_calls": 116,
+      "dropped_calls": 2097,
+      "q_all": 0.9040000000000001
+     }
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-hypothalamus"
+  }
+ },
+ "written": "2026-11-12 19:22",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-tnbc",
+   "runs": 1,
+   "written": "2026-11-12 19:22"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-allen",
+   "runs": 1,
+   "written": "2026-11-12 18:45"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-mammary",
+   "runs": 1,
+   "written": "2026-11-12 19:27"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-liver",
+   "runs": 1,
+   "written": "2026-11-12 19:24"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a7-tool-real-hypothalamus",
+   "runs": 1,
+   "written": "2026-11-12 20:03"
+  }
+ ]
+}
