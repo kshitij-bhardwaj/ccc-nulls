@@ -204,7 +204,11 @@ def status(k: str) -> str:
 def dispatch(only=None):
     """Push sessions whose inputs are complete; a session already complete is not pushed again."""
     todo = [k for k in SESSIONS if only is None or k in only]
-    state = {k: status(k) for k in SESSIONS}
+    watched = list(dict.fromkeys(todo + [n for k in todo for n in SESSIONS[k]["needs"]]))   # not all of SESSIONS
+    state = {k: status(k) for k in watched}
+    for _ in range(3):                                   # a status call can time out; ask again before giving up
+        for k in [k for k in watched if state[k] == "unknown"]:
+            state[k] = status(k)
     if "unknown" in state.values():
         raise SystemExit("Kaggle could not be reached; try again")
     state |= {k: "new" for k in todo if state[k] in ("error", "cancel")}       # a failed session runs again
@@ -220,7 +224,7 @@ def dispatch(only=None):
                 elif state[k] in ("error", "cancel"):
                     print(time.strftime("%H:%M"), "FAILED", k, flush=True)
                     return 1
-        active = sum(state[k] in ("running", "queued") for k in SESSIONS)
+        active = sum(state[k] in ("running", "queued") for k in watched)
         ready = [k for k in todo if state[k] == "new" and all(state[n] == "complete" for n in SESSIONS[k]["needs"])]
         for k in ready[:max(0, MAX_ACTIVE - active)]:
             r = kaggle("kernels", "push", "-p", str(BUILD / slug(k)), check=False)
