@@ -84,7 +84,7 @@ a single commit with the decision rule fixed before any result was seen.
 permutations; Connectome~\cite{raredon2022} and NATMI~\cite{hou2020} instead rank by a specificity score (a z-score of
 ligand $\times$ receptor expression, and each side's share of its gene's expression across cell types) and report no
 p-value. LIANA and LIANA+~\cite{dimitrov2022,dimitrov2024} re-implement these methods on a shared resource and
-aggregate their ranks with robust rank aggregation~\cite{kolde2012}; LIANA's benchmark, now part of Open
+aggregate their ranks (Section~3.3); LIANA's benchmark, now part of Open
 Problems~\cite{openproblems}, found that methods disagree widely but did not ask whether any p-value tests the
 two-sided claim. \textbf{Testing.} Permutation p-values should be computed as $(1+\#)/(B+1)$~\cite{phipson2010}. A
 claim that needs two conditions is an intersection--union problem: the maximum of the two p-values is a valid test
@@ -149,10 +149,18 @@ drops.
 
 \textbf{Benchmark 2 (consensus)} asks whether the ranking improves. The baseline is LIANA+~1.8.0's five methods plus
 CellChat with their own p-values (\JLP). Each test then replaces the p-values of CellChat and CellPhoneDB, then also
-Connectome's and NATMI's specificities (the test is applied to their scores with the same permutations). We score the
-share of the consensus' top~1\% that is false on known nulls, and the power and AUROC of planted pairs against rows
-that are specific on one side only. The decision rule, fixed in advance, accepts a test if it is better calibrated
-than the baseline, no worse in power, and both again on held-out Lung.
+Connectome's and NATMI's specificities (the test is applied to their scores with the same permutations); LIANA+'s
+aggregation and other scores are unchanged.
+
+\textbf{How LIANA+ reports, and how we score it.} LIANA+ returns each method's scores and two consensus columns,
+\texttt{magnitude\_rank} and \texttt{specificity\_rank}: for each row, the smallest beta tail probability of its sorted,
+scaled ranks, times the number of methods (robust rank aggregation~\cite{kolde2012}). Built from ranks relative to all
+rows, they are not p-values. LIANA+'s own benchmark keeps consensus rows with a magnitude rank below 0.05~\cite{dimitrov2024}; our
+plan did the same with \texttt{specificity\_rank}, but with shuffled labels and 33 planted rows this called about 17\%
+of all rows for every variant (FDR near~1). So we score the ranking itself, as LIANA compares methods on their top
+1{,}000 or top 1\% of interactions~\cite{dimitrov2022}: the false share of the top~1\% on known nulls, and the power in
+the top~1\% and AUROC (no cutoff) of planted pairs against rows specific on one side only. The rule, fixed in advance,
+accepts a test that is better calibrated than the baseline, no worse in power, and both again on held-out Lung.
 
 \textbf{Pre-registration and runs.} Two plans and thirteen amendments were each hashed (SHA-256) before their runs, and
 every result file records the hashes. Benchmark~2 ran on Kaggle (143 sessions) and a lab server from one commit and a
@@ -194,7 +202,7 @@ CellChat and 91--100\% for CellPhoneDB, Connectome and NATMI (Fig.~\ref{fig:b1}a
 makes calls when \emph{all} labels are shuffled, on every tool. On real data \BPT{} keeps about half of \JLP's calls
 (34{,}237 of 61{,}820 for CellChat, 36{,}092 of 86{,}267 for CellPhoneDB): the other half had only one specific side.
 
-\begin{figure}[H]
+\begin{figure}[!tb]
 \centering
 \includegraphics[width=\textwidth]{fig1_tool_level.pdf}
 \caption{\textbf{Benchmark 1: each tool's own p-values.} (a) FDR at BH 5\% on known nulls (one side's genes
@@ -226,7 +234,7 @@ p-values lowers it to 61--78\% in all four data sets; giving Connectome and NATM
 45\%) and in mouse (88\% $\to$ 44\%). \MDT{} helps less and, in human tissue, barely changes when Connectome and NATMI are added;
 \LOO{} makes the ranking worse at every step.
 
-\begin{figure}[H]
+\begin{figure}[!tb]
 \centering
 \includegraphics[width=\textwidth]{fig2_consensus.pdf}
 \caption{\textbf{Benchmark 2: LIANA+'s consensus.} The x axis counts the tools whose p-value the test replaces:
@@ -247,9 +255,9 @@ Under the pre-registered rule, \BPT{} is confirmed on held-out Lung with two, th
 
 \subsection{Donors, settings and biology}
 
-\begin{figure}[H]
+\begin{figure}[!tb]
 \centering
-\includegraphics[width=0.9\textwidth]{fig3_robustness.pdf}
+\includegraphics[width=0.84\textwidth]{fig3_robustness.pdf}
 \caption{\textbf{Validity and robustness inside LIANA+.} (a) False rows with $p\le0.05$ when one side is shuffled
 (Mammary and Liver, 12 runs; mean, 95\% CI); dashed line, the nominal 5\%. (b) Labels shuffled within donor, so there
 is no cell-type signal: rows with $p\le0.05$, mean over four data sets (Lung, TNBC, Mammary, Liver), whiskers the
@@ -278,7 +286,7 @@ tools. With the available truths only odds ratios beyond 1.6--3 would have been 
 broadly expressed limiting gene in all ten data set $\times$ tool pairs, which is exactly the one-sided pattern the test
 is designed to remove.
 
-\begin{table}[H]
+\begin{table}[!tb]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
 \caption{Summary: every test through the same tests (\JLP{} = LIANA+ as shipped in Benchmark 2).}
 \label{tab:summary}
@@ -310,21 +318,18 @@ sensitive, more so the more of its methods use it (Table~\ref{tab:summary}). We 
 within-donor permutations for any claim \st{} via $(L,R)$, with $B\ge5{,}000$ when Benjamini--Hochberg is applied.
 
 \textbf{Limitations.} (i) Our biological truths are coarse: spatial proximity sees the pair, rarely the sender's
-specificity, so we can show that \BPT{} removes false rows but not that the rows it keeps are more biological.
-(ii) Two of LIANA+'s six methods (log2FC and SingleCellSignalR) still use no null. (iii) A filter requiring
-differential expression on both sides removes even more false rows than \BPT, although \BPT{} ranks planted pairs
-higher. (iv) \BPT{} needs about five times more permutations than \JLP{} to have power under BH.
+specificity, so we show that \BPT{} removes false rows, not that the rows it keeps are more biological.
+(ii) Two of LIANA+'s six methods (log2FC and SingleCellSignalR) still use no null. (iii) A both-sides
+differential-expression filter removes more false rows than \BPT, though \BPT{} ranks planted pairs higher.
 
 % =====================================================================
 \section{Data availability}
 
-Tabula Sapiens (Mammary, Liver, Lung) is public on CELLxGENE~\cite{tabula2022}, and the hypothalamus single-cell
-(GEO GSE113576) and MERFISH data come from Moffitt et al.~\cite{moffitt2018}. The TNBC atlas~\cite{wu2021} and the
-Allen brain data set came from the Open Problems bucket~\cite{openproblems}, which closed in November 2026; our
-copies, taken before it closed, are available from the team on request. The \texttt{code/} folder of the submission
-holds the download scripts, the code, both plans, all thirteen amendments and every result file (each records the
-commit, the plan hashes and the session or machine that produced it); its \texttt{README.md} gives the command for
-every figure.
+Tabula Sapiens (Mammary, Liver, Lung) is on CELLxGENE~\cite{tabula2022}; the hypothalamus single-cell (GEO
+GSE113576) and MERFISH data are from Moffitt et al.~\cite{moffitt2018}. The TNBC atlas~\cite{wu2021} and Allen brain
+came from the Open Problems bucket~\cite{openproblems}, closed in November 2026; our earlier copies are available from
+the team on request. The submission's \texttt{code/} folder holds the code, download scripts, plans, amendments and
+every result file; its \texttt{README.md} gives each figure's command.
 
 \bibliographystyle{unsrtnat}
 {\footnotesize\setlength{\bibsep}{1.5pt}\bibliography{refs}}
