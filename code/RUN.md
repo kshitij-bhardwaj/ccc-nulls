@@ -3,35 +3,10 @@
 Short guide for running `benchmarks/liana_final` on your own machine or over SSH. Every part resumes where it
 stopped, so a killed run loses at most the run in progress.
 
-## 1. Set up (Python 3.12, about 5 minutes)
+Set up the environment and get the data first: sections 1 and 2 of [`README.md`](README.md). On a server, put
+`export CCC_NULLS_DATA=$PWD/data PYTHONPATH=$PWD/src:$PWD` in `~/.bashrc`.
 
-```bash
-git clone -b benchmarks/publication https://github.com/kshitij-bhardwaj/ccc-nulls.git && cd ccc-nulls
-uv venv --python 3.12 .venv && source .venv/bin/activate        # or: python3.12 -m venv .venv
-uv pip install -r requirements/lock-liana-final.txt && uv pip install --no-deps -e .   # plain pip works too
-export CCC_NULLS_DATA=$PWD/data PYTHONPATH=$PWD                    # put both in ~/.bashrc on a server
-```
-
-## 2. Get the data (about 10 GB)
-
-```bash
-python -m ccc_nulls.datasets tnbc_wu2021 allen_brain_atlas tabula_sapiens_mammary tabula_sapiens_liver tabula_sapiens_lung
-```
-
-Open Problems disabled its S3 bucket (`s3://openproblems-data`, `AllAccessDisabled` on 2026-11-05), so TNBC and
-Allen brain no longer download. Copies taken before that are the Kaggle dataset [`kshitijbhardwaj1729/ccc-nulls-openproblems`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems)
-(private: ask to be added as a collaborator); put the two files in `data/` and the command above checks them against the original md5.
-
-The auxiliary inputs (CellChat and CellPhoneDB databases, CytoSig and PROGENy, HCOP, the processed
-hypothalamus) are one archive, `ccc-nulls-aux.tgz` (200 MB). It is the Kaggle dataset [`kshitijbhardwaj1729/ccc-nulls-aux`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux),
-which is private: ask to be added as a collaborator, or copy it from a teammate. Then:
-
-```bash
-tar xzf ccc-nulls-aux.tgz -C data
-(cd data && md5sum -c ../benchmarks/liana_final/aux_files.md5)   # macOS: brew install coreutils
-```
-
-## 3. Run
+## Run
 
 Everything, on one machine with at least 32 GB of RAM (about 1.5 days on 8 cores):
 
@@ -60,7 +35,7 @@ between machines when a later step runs elsewhere.
 
 No machine with 32 GB? Every step also runs on Kaggle: [`kaggle/README.md`](kaggle/README.md).
 
-## 4. Collect
+## Collect
 
 Send your `benchmarks/results/liana_final/` folder (JSON files) to whoever assembles the results. They run:
 

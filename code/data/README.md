@@ -6,6 +6,7 @@ Everything in this folder except this file is git-ignored. Download with:
 python -m ccc_nulls.datasets tnbc_wu2021          # evaluation, cytokine truth (1.27 GB)
 python -m ccc_nulls.datasets allen_brain_atlas    # evaluation, spatial truth (2.05 GB)
 python -m ccc_nulls.datasets tabula_sapiens_mammary tabula_sapiens_liver   # calibration (1.33 + 0.83 GB)
+python -m ccc_nulls.datasets tabula_sapiens_lung  # held-out confirmation (3.20 GB)
 ```
 
 **Open Problems disabled its S3 bucket** (`s3://openproblems-data`, `AllAccessDisabled`, checked 2026-11-05): the two
@@ -23,6 +24,7 @@ under the filename shown.
 | `tabula_sapiens` | `tabula_sapiens_<tissue>.h5ad` | – | https://cellxgene.cziscience.com/collections/e5f58829-1a66-40b5-a624-9046778e74f5 (one file per tissue) |
 | `tabula_sapiens_mammary` | `tabula_sapiens_mammary.h5ad` | `6261c8dd5785c52fb8a18d0974602597` | https://datasets.cellxgene.cziscience.com/33b25f68-a9d6-4643-9283-653e937ae608.h5ad |
 | `tabula_sapiens_liver` | `tabula_sapiens_liver.h5ad` | `ccb220e15f2070c3c22c226fe89d5878` | https://datasets.cellxgene.cziscience.com/a4b3a49e-062b-4e3f-8915-02f40607651f.h5ad |
+| `tabula_sapiens_lung` | `tabula_sapiens_lung.h5ad` | `2efb556c5950390d8d42ca7828c3f3f3` | https://datasets.cellxgene.cziscience.com/fddf43a3-b7c8-49e9-ac0a-5e24b390849f.h5ad |
 
 Tabula Sapiens files hold raw counts in `raw/X`, gene symbols in `raw/var/feature_name` and labels in
 `obs/cell_type`; `load_tabula_sapiens()` normalises the counts to ln(1 + CP10k), as in the Open Problems files.

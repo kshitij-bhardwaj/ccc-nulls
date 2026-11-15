@@ -1,5 +1,7 @@
-# Environment that produced benchmarks/results/liana_final (Python 3.12.11, Darwin arm64).
-# Recreate: uv venv && uv pip install -r requirements/lock-liana-final.txt && uv pip install -e . --no-deps
+# Environment that produced every result in benchmarks/results (frozen with Python 3.12.11 on Darwin arm64; the
+# Kaggle sessions install the same pins with Python 3.12 on Linux).
+# The plan documents call this file requirements/lock-liana-final.txt, its path before the submission layout.
+# Install: python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/pip install --no-deps -e .
 anndata==0.11.4
 annotated-types==0.8.0
 array-api-compat==1.15.0

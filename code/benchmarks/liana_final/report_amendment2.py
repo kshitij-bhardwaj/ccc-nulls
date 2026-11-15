@@ -284,7 +284,7 @@ def write():
     L += ["## Deviations from AMENDMENT_2", "",
           "- **Machines.** AMENDMENT_2 was written for one 8 GB laptop. Every result here was produced on Kaggle (4 cores, "
           "32 GB) or, where noted, a lab server, from one commit in the same locked environment "
-          "(`requirements/lock-liana-final.txt`), with the same code, seeds and settings. Each run records its machine; "
+          "(`requirements.txt`), with the same code, seeds and settings. Each run records its machine; "
           "`kaggle/README.md` lists the sessions and `RERUNS.md` compares them with earlier laptop runs."]
     if lung:
         L += ["- **Lung (A2.1, A2.3): all cells, not a subsample.** A full-Lung run was killed by the operating system for "

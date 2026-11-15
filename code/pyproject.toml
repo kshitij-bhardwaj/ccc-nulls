@@ -42,5 +42,5 @@ Issues = "https://github.com/kshitij-bhardwaj/ccc-nulls/issues"
 where = ["src"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "tools"]
+testpaths = ["tests", "tools", "benchmarks"]
 pythonpath = ["."]

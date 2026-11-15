@@ -1,6 +1,6 @@
 """The whole benchmark as Kaggle sessions (CPU, 32 GB): build, push in dependency order, collect.
 
-    python kaggle/kernels.py code       # git archive of HEAD -> dataset ccc-nulls-code (new version)
+    python kaggle/kernels.py code       # git archive of HEAD (this folder only) -> dataset ccc-nulls-code (new version)
     python kaggle/kernels.py build      # kaggle/build/<slug>/ : run.py + kernel-metadata.json per session
     python kaggle/kernels.py dispatch   # push each session once its inputs are done (at most 5 at once)
     python kaggle/kernels.py collect    # download outputs, merge into benchmarks/results/liana_final
@@ -166,9 +166,10 @@ def code():
     sha = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
     if subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT, capture_output=True, text=True).stdout:
         raise SystemExit("commit first: the sessions run a committed version of the code")
+    # run in ROOT (code/): from a subdirectory, git archive packs only that folder, with paths relative to it
     subprocess.run(f"git archive HEAD --prefix=ccc-nulls/ -o {d}/code.tar && mkdir -p {d}/x && tar xf {d}/code.tar -C {d}/x "
                    f"&& echo {sha} > {d}/x/ccc-nulls/COMMIT && tar czf {d}/ccc-nulls-code.tgz -C {d}/x/ccc-nulls . "
-                   f"&& rm -rf {d}/x {d}/code.tar", shell=True, check=True)
+                   f"&& rm -rf {d}/x {d}/code.tar", shell=True, check=True, cwd=ROOT)
     (d / "dataset-metadata.json").write_text(json.dumps({"title": "ccc-nulls-code", "id": f"{OWNER}/ccc-nulls-code",
                                                          "licenses": [{"name": "other"}]}))
     print(kaggle("datasets", "version", "-p", str(d), "-m", f"code at {sha}", check=False))
@@ -266,7 +267,7 @@ def readme():
     url = lambda k: f"https://www.kaggle.com/code/{OWNER}/{slug(k)}"
     L = ["# The benchmark on Kaggle", "",
          "Every result in `benchmarks/results/liana_final/` was produced by one of the Kaggle sessions below (CPU, 4 cores, "
-         "32 GB), from one commit of this repository, in the locked environment (`requirements/lock-liana-final.txt`). "
+         "32 GB), from one commit of this repository, in the locked environment (`requirements.txt`). "
          "Each result file, and each run inside AMENDMENT_2's files, records the link of the session that produced it "
          "(`machine`). To rerun: `python kaggle/kernels.py code && python kaggle/kernels.py build && "
          "python kaggle/kernels.py dispatch && python kaggle/kernels.py collect`. To run elsewhere: [`RUN.md`](../RUN.md).", "",

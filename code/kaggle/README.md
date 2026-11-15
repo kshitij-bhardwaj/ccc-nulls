@@ -1,6 +1,6 @@
 # The benchmark on Kaggle
 
-Every result in `benchmarks/results/liana_final/` was produced by one of the Kaggle sessions below (CPU, 4 cores, 32 GB), from one commit of this repository, in the locked environment (`requirements/lock-liana-final.txt`). Each result file, and each run inside AMENDMENT_2's files, records the link of the session that produced it (`machine`). To rerun: `python kaggle/kernels.py code && python kaggle/kernels.py build && python kaggle/kernels.py dispatch && python kaggle/kernels.py collect`. To run elsewhere: [`RUN.md`](../RUN.md).
+Every result in `benchmarks/results/liana_final/` was produced by one of the Kaggle sessions below (CPU, 4 cores, 32 GB), from one commit of this repository, in the locked environment (`requirements.txt`). Each result file, and each run inside AMENDMENT_2's files, records the link of the session that produced it (`machine`). To rerun: `python kaggle/kernels.py code && python kaggle/kernels.py build && python kaggle/kernels.py dispatch && python kaggle/kernels.py collect`. To run elsewhere: [`RUN.md`](../RUN.md).
 
 Inputs:
 

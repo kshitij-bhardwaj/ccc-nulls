@@ -20,7 +20,7 @@ Parts:
                moffitt2018_hypothalamus), downstream-response truths on every dataset.
   report       results/liana_nulls/README tables from the JSON files.
 
-Needs: Python with liana 1.8, cellphonedb 5.0.1 (benchmarks/liana_nulls/requirements.txt), R with
+Needs: Python with liana 1.8, cellphonedb 5.0.1 (requirements.txt), R with
 CellChat 2.1.2 for column 1, the CellPhoneDB v5.0.0 database in data/, and the datasets of the README.
 Results: benchmarks/results/liana_nulls/*.json (tracked); row tables: data/liana_nulls/ (not tracked).
 """

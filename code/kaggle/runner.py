@@ -42,7 +42,7 @@ shutil.rmtree(f"{CODE}/benchmarks/results/liana_final", ignore_errors=True)   # 
 commit = open(f"{CODE}/COMMIT").read().strip() if os.path.exists(f"{CODE}/COMMIT") else "unknown"
 sh("pip install -q uv")
 sh(f"uv venv {os.path.dirname(os.path.dirname(PY))} --python 3.12 --python-preference only-managed -q")
-sh(f"uv pip install -q --python {PY} -r {CODE}/requirements/lock-liana-final.txt")
+sh(f"uv pip install -q --python {PY} -r {CODE}/requirements.txt")
 sh(f"uv pip install -q --python {PY} --no-deps -e {CODE}")
 env = dict(os.environ, CCC_NULLS_DATA=DATA, PYTHONPATH=f"{CODE}:{CODE}/src", PYTHONUNBUFFERED="1",
            PATH=f"{os.path.dirname(PY)}:{os.environ['PATH']}")
