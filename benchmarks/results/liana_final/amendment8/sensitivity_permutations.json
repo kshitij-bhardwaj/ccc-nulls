@@ -1,0 +1,119 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "amendment_5_sha256": "2bcb4baa1bdb02b0090b2cd3df34b523cdec3220aed54e38202614ddb1d89c4b",
+ "amendment_6_sha256": "047ec2c9db318d13a83e87d1b0548192b6799d859932050a8432de30db64d23a",
+ "amendment_7_sha256": "2216f2f06884411fa031dfa1e5d56abad91060ee25a675c6778833cdcf5f918c",
+ "amendment_8_sha256": "20e9d36542655e94d8e2bcfdf3b06a2b378eaf7bd683af079e5282eb248a4fcc",
+ "runs": {
+  "real@tabula_sapiens_mammary": {
+   "rows": 86001,
+   "skipped": [
+    "swap_b2",
+    "swap3_b2",
+    "swap4_b2"
+   ],
+   "liana6": {
+    "spearman": 0.9970791139595696,
+    "top1_jaccard": 0.7553516819571865
+   },
+   "swap_null_b": {
+    "spearman": 0.9963338489619205,
+    "top1_jaccard": 0.7341389728096677
+   },
+   "swap_t2": {
+    "spearman": 0.9999999999999999,
+    "top1_jaccard": 1.0
+   },
+   "swap3_null_a": {
+    "spearman": 0.9963047542266209,
+    "top1_jaccard": 0.8145416227608009
+   },
+   "swap3_null_b": {
+    "spearman": 0.9953420844030036,
+    "top1_jaccard": 0.7918834547346514
+   },
+   "swap3_t2": {
+    "spearman": 0.9999999999999999,
+    "top1_jaccard": 1.0
+   },
+   "swap4_null_a": {
+    "spearman": 0.9929946096861086,
+    "top1_jaccard": 0.8050314465408805
+   },
+   "swap4_null_b": {
+    "spearman": 0.9930561904586357,
+    "top1_jaccard": 0.8536060279870828
+   },
+   "swap4_t2": {
+    "spearman": 1.0,
+    "top1_jaccard": 1.0
+   },
+   "seconds": 8041.3,
+   "dataset": "tabula_sapiens_mammary",
+   "machine": "IITK lab server (1 CPU, taskset): a8-sensitivity-perms-mammary, commit be09388"
+  },
+  "real": {
+   "rows": 10197,
+   "skipped": [
+    "swap_b2",
+    "swap3_b2",
+    "swap4_b2"
+   ],
+   "liana6": {
+    "spearman": 0.9991247380463616,
+    "top1_jaccard": 1.0
+   },
+   "swap_null_b": {
+    "spearman": 0.996905768808881,
+    "top1_jaccard": 1.0
+   },
+   "swap_t2": {
+    "spearman": 0.9999999999999999,
+    "top1_jaccard": 1.0
+   },
+   "swap3_null_a": {
+    "spearman": 0.9982287901157929,
+    "top1_jaccard": 0.8888888888888888
+   },
+   "swap3_null_b": {
+    "spearman": 0.9961183032130876,
+    "top1_jaccard": 0.9428571428571428
+   },
+   "swap3_t2": {
+    "spearman": 1.0,
+    "top1_jaccard": 1.0
+   },
+   "swap4_null_a": {
+    "spearman": 0.9945306896953889,
+    "top1_jaccard": 0.9615384615384616
+   },
+   "swap4_null_b": {
+    "spearman": 0.9946949103498169,
+    "top1_jaccard": 0.8888888888888888
+   },
+   "swap4_t2": {
+    "spearman": 0.9999999999999999,
+    "top1_jaccard": 1.0
+   },
+   "seconds": 5907.4,
+   "machine": "IITK lab server (1 CPU, taskset): a8-sensitivity-perms-hypothalamus, commit be09388"
+  }
+ },
+ "written": "2026-11-15 02:50",
+ "merged_from": [
+  {
+   "machine": "IITK lab server (1 CPU, taskset): a8-sensitivity-perms-mammary, commit be09388",
+   "runs": 1,
+   "written": "2026-11-15 02:50"
+  },
+  {
+   "machine": "IITK lab server (1 CPU, taskset): a8-sensitivity-perms-hypothalamus, commit be09388",
+   "runs": 1,
+   "written": "2026-11-15 02:14"
+  }
+ ]
+}

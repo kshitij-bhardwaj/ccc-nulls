@@ -25,6 +25,7 @@ LF, A2, A3, A4 = ("python -m benchmarks.liana_final", "python -m benchmarks.lian
                   "python -m benchmarks.liana_final.amendment3", "python -m benchmarks.liana_final.amendment4")
 A6 = "python -m benchmarks.liana_final.amendment6"
 A7 = "python -m benchmarks.liana_final.amendment7"
+A8 = "python -m benchmarks.liana_final.amendment8"
 RUNS = {"tnbc": "tnbc_wu2021", "allen": "allen_brain_atlas", "mammary": "tabula_sapiens_mammary",
         "liver": "tabula_sapiens_liver", "hypothalamus": "moffitt2018_hypothalamus"}
 LUNG = "tabula_sapiens_lung"
@@ -112,6 +113,31 @@ SESSIONS["a7-tool-labels"] = S(f"{A7} --part tool_labels", ["data"])
 SESSIONS["a7-tool-power-1000"] = S(f"{A7} --part tool_power --only '\\|B1000\\|'", ["data"])
 SESSIONS |= {f"a7-tool-power-5000-{rep}": S(f"{A7} --part tool_power --only '\\|B5000\\|f1.5\\|{rep}$'", ["data"]) for rep in range(5)}
 SESSIONS |= {f"a7-tool-real-{k}": S(f"{A7} --part tool_real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
+# AMENDMENT_8.md: NATMI's p-value replaced too, through every part of AMENDMENTS 6 and 7 (biology, cases and the
+# report run locally, from the tables)
+SESSIONS |= {f"a8-real-{k}": S(f"{A8} --part real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
+SESSIONS |= {f"a8-calibration-{k}": S(f"{A8} --part calibration --only '^{RUNS[k]}\\|'", ["data"]) for k in ("mammary", "liver")}
+SESSIONS["a8-power"] = S(f"{A8} --part power", ["data"])
+SESSIONS["a8-hard-power"] = S(f"{A8} --part hard_power", ["data"])
+for scen in ("receptor", "ligand"):
+    for rep in range(3):
+        SESSIONS[f"a8-lung-{scen}-{rep}"] = S(f"{A8} --part lung --only '^{LUNG}\\|{scen}\\|{rep}$'", ["data"])
+SESSIONS["a8-lung-power"] = S(f"{A8} --part lung --only '^{LUNG}\\|f2\\|'", ["data"])
+SESSIONS["a8-mouse"] = S(f"{A8} --part mouse", ["data"])
+for scheme in ("global", "donor"):
+    for rep in range(3):
+        SESSIONS[f"a8-donor-lung-{scheme}-{rep}"] = S(f"{A8} --part donor --only '^{LUNG}\\|{scheme}\\|{rep}$'", ["data"])
+SESSIONS |= {f"a8-donor-{k}": S(f"{A8} --part donor --only '^{RUNS[k]}\\|'", ["data"]) for k in ("tnbc", "mammary", "liver")}
+SESSIONS["a8-sensitivity-seed-expr"] = S(f"{A8} --part sensitivity --only '^seed|@expr_prop='", ["data", "a8-real-mammary"])
+SESSIONS["a8-sensitivity-cells-labels"] = S(f"{A8} --part sensitivity --only '@(cells|labels)='", ["data", "a8-real-mammary"])
+SESSIONS["a8-sensitivity-perms-hypothalamus"] = S(f"{A8} --part sensitivity --only '^real$|^{RUNS['hypothalamus']}@n_perms'",
+                                                  ["data", "a8-real-mammary", "a8-real-hypothalamus"])
+SESSIONS["a8-sensitivity-perms-mammary"] = S(f"{A8} --part sensitivity --only '^real@|^{RUNS['mammary']}@n_perms'",
+                                             ["data", "a8-real-mammary"])
+SESSIONS["a8-tool-labels"] = S(f"{A8} --part tool_labels", ["data"])
+SESSIONS["a8-tool-power-1000"] = S(f"{A8} --part tool_power --only '\\|B1000\\|'", ["data"])
+SESSIONS |= {f"a8-tool-power-5000-{rep}": S(f"{A8} --part tool_power --only '\\|B5000\\|f1.5\\|{rep}$'", ["data"]) for rep in range(5)}
+SESSIONS |= {f"a8-tool-real-{k}": S(f"{A8} --part tool_real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
 # everything merged; reports and figures
 SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report", f"{A6} --part report",
                         "python -m benchmarks.liana_final.figures"],
@@ -178,7 +204,11 @@ def status(k: str) -> str:
 def dispatch(only=None):
     """Push sessions whose inputs are complete; a session already complete is not pushed again."""
     todo = [k for k in SESSIONS if only is None or k in only]
-    state = {k: status(k) for k in SESSIONS}
+    watched = list(dict.fromkeys(todo + [n for k in todo for n in SESSIONS[k]["needs"]]))   # not all of SESSIONS
+    state = {k: status(k) for k in watched}
+    for _ in range(3):                                   # a status call can time out; ask again before giving up
+        for k in [k for k in watched if state[k] == "unknown"]:
+            state[k] = status(k)
     if "unknown" in state.values():
         raise SystemExit("Kaggle could not be reached; try again")
     state |= {k: "new" for k in todo if state[k] in ("error", "cancel")}       # a failed session runs again
@@ -194,7 +224,7 @@ def dispatch(only=None):
                 elif state[k] in ("error", "cancel"):
                     print(time.strftime("%H:%M"), "FAILED", k, flush=True)
                     return 1
-        active = sum(state[k] in ("running", "queued") for k in SESSIONS)
+        active = sum(state[k] in ("running", "queued") for k in watched)
         ready = [k for k in todo if state[k] == "new" and all(state[n] == "complete" for n in SESSIONS[k]["needs"])]
         for k in ready[:max(0, MAX_ACTIVE - active)]:
             r = kaggle("kernels", "push", "-p", str(BUILD / slug(k)), check=False)

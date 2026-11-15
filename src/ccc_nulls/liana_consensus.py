@@ -25,11 +25,20 @@ LIANA+ run then gives every variant (:func:`variants`), each aggregated by LIANA
     swap3_<n>     with ``run(..., connectome=True)``: as swap_<n>, and Connectome's specificity (LIANA+'s
                   ``scaled_weight``, which is not a p-value) replaced by null <n>'s p on Connectome's
                   score; swap3_null_a gives Connectome a p from all labels permuted together
+    swap4_<n>     with ``run(..., connectome=True, natmi=True)``: as swap3_<n>, and NATMI's specificity
+                  (``spec_weight``, not a p-value) replaced by null <n>'s p on ``spec_weight`` itself
 
 Connectome (idea from PR #13): LIANA+ ranks it by ``expr_prod`` and ``scaled_weight`` and runs no
 permutations for it. :func:`capture_connectome` lets LIANA+ permute for it as for CellPhoneDB (same seed,
 same means), returns LIANA+'s own two scores unchanged, and stores the nulls' p on ``expr_prod``. So
 liana5, liana6 and every ``swap_<n>`` and ``extra_<n>`` variant are the same with or without it.
+
+NATMI: LIANA+ ranks it by ``expr_prod`` (Connectome's L x R) and ``spec_weight`` = (L_s / sum_k L_k) x
+(R_t / sum_k R_k), and runs no permutations for it. :func:`capture_natmi` does for NATMI what
+:func:`capture_connectome` does, but tests ``spec_weight`` (NATMI's own score; a test of ``expr_prod`` would repeat
+Connectome's): under a permutation both the type's mean and the sum over types change. Null B permutes one side's
+share L / sum L (or R / sum R) with the other as observed. In the captured rows, ``magnitude`` is the tested score
+(``spec_weight``) and ``expr_prod`` LIANA+'s magnitude.
 
 A LIANA+ detail inherited here: for a complex, ``perm_stats`` follows the one subunit that is lowest
 under the observed labels, as LIANA+'s own permutation test does.
@@ -49,6 +58,7 @@ KEY = ["source", "target", "ligand_complex", "receptor_complex"]
 NULLS = ("null_a", "null_b", "b2")
 TOOLS = {"CellPhoneDB": ("lr_means", "cellphone_pvals"), "CellChat": ("lr_probs", "cellchat_pvals")}
 CONNECTOME = ("expr_prod", "connectome_p")      # Connectome's magnitude, and the column our p goes to
+NATMI = ("expr_prod", "natmi_p")                # NATMI's magnitude, and the column our p goes to
 CHUNK = 20_000
 ROWS_AT_ONCE = 100_000      # rows scored at once: their permutation statistics are 2 x B x rows float64
 
@@ -157,6 +167,55 @@ def capture_connectome(store: dict):
     return Method(_method=meta)
 
 
+def _share(num, den):
+    """num / den, 0 where den is 0 (a gene expressed nowhere has no share)."""
+    num, den = np.asarray(num, float), np.asarray(den, float)
+    return np.divide(num, den, out=np.zeros(np.broadcast_shapes(num.shape, den.shape)), where=den != 0)
+
+
+def capture_natmi(store: dict):
+    """LIANA+'s NATMI with permutations: its output (``expr_prod``, ``spec_weight``) is LIANA+'s own, unchanged;
+    ``store['NATMI']`` gets its rows and, on ``spec_weight``, a joint-permutation p (LIANA+'s formula, #{s_b >= s} / B)
+    and Null B (p_L: the sender side's share L / sum L permuted, the receiver's as observed; p_R the other way round;
+    (1 + k) / (B + 1)), from the same permutations as CellPhoneDB."""
+    from liana.method.sc._Method import Method, MethodMeta
+
+    method = __import__("liana").mt.natmi
+
+    def fun(x, perm_stats):
+        mag, spec = method.fun(x)
+        if not isinstance(perm_stats, _PermStats):
+            raise TypeError("capture_natmi needs lazy_permutations(): the permuted sums need the whole cube")
+        cube = perm_stats.cube
+        tot = cube.sum(axis=1)                                  # (B, genes): each gene's sum of means over types
+        (cL, gL), (cR, gR) = perm_stats.sides
+        Ls = _share(x["ligand_means"].to_numpy(), x["ligand_means_sums"].to_numpy())
+        Rs = _share(x["receptor_means"].to_numpy(), x["receptor_means_sums"].to_numpy())
+        s = Ls * Rs
+        B = cube.shape[0]
+        kA, kL, kR = (np.zeros(len(s), np.int64) for _ in range(3))
+        for a in range(0, len(s), CHUNK):
+            z = slice(a, a + CHUNK)
+            Lp = _share(cube[:, cL[z], gL[z]], tot[:, gL[z]])
+            Rp = _share(cube[:, cR[z], gR[z]], tot[:, gR[z]])
+            kA[z] = (Lp * Rp >= s[None, z]).sum(0)
+            kL[z] = (Lp * Rs[None, z] >= s[None, z]).sum(0)
+            kR[z] = (Ls[None, z] * Rp >= s[None, z]).sum(0)
+        pval = lambda k: np.where(s == 0, 1.0, (1 + k) / (B + 1))
+        pL, pR = pval(kL), pval(kR)
+        store["NATMI"] = pd.DataFrame({**{k: x[k].to_numpy() for k in KEY + ["ligand", "receptor"]},
+                                       "magnitude": s, "expr_prod": np.asarray(mag), "p_null_a": kA / B,
+                                       "p_L_null_b": pL, "p_R_null_b": pR, "p_null_b": np.maximum(pL, pR),
+                                       "score_check": np.asarray(spec, float)})
+        return mag, spec
+
+    meta = MethodMeta(method_name=method.method_name, complex_cols=method.complex_cols, add_cols=method.add_cols,
+                      fun=fun, magnitude=method.magnitude, magnitude_ascending=method.magnitude_ascending,
+                      specificity=method.specificity, specificity_ascending=method.specificity_ascending,
+                      permute=True, reference=method.reference)
+    return Method(_method=meta)
+
+
 class _PermStats:
     """LIANA+'s ``perm_stats`` (2, B, rows) before it is built: ``rows(z)`` builds rows ``z`` only."""
 
@@ -251,30 +310,56 @@ def stratified_permutations(strata: pd.Series):
         pipe._get_means_perms = original
 
 
+@contextmanager
+def shared_permutations():
+    """Within this block, LIANA+'s mean permutations are built once and handed to every method that asks for them
+    with the same data, seed and B (CellPhoneDB, and Connectome and NATMI when captured): LIANA+ would build the same
+    cube for each. CellChat's (trimean, rescaled X) are built as before."""
+    import liana.method.sc._liana_pipe as pipe
+
+    inner, cache = pipe._get_means_perms, {}
+
+    def perms(adata, n_perms, seed, agg_fun, norm_factor, n_jobs, verbose):
+        if agg_fun is not np.mean or norm_factor is not None:
+            return inner(adata, n_perms, seed, agg_fun, norm_factor, n_jobs, verbose)
+        key = (id(adata), adata.shape, n_perms, seed)
+        if key not in cache:
+            cache[key] = inner(adata, n_perms, seed, agg_fun, norm_factor, n_jobs, verbose)
+        return cache[key]
+
+    pipe._get_means_perms = perms
+    try:
+        yield
+    finally:
+        pipe._get_means_perms = inner
+
+
 def run(adata, groupby: str, *, resource_name: str = "consensus", n_perms: int = 1000, seed: int = 1337,
         expr_prop: float = 0.1, strata: pd.Series | None = None, tools_only: bool = False, use_raw: bool = False,
-        connectome: bool = False, **kw) -> tuple[dict, dict]:
-    """One LIANA+ run of the six methods with CellPhoneDB and CellChat captured, and Connectome too if
-    ``connectome`` (``tools_only``: just the captured ones). Returns ({method name: its table, keys +
+        connectome: bool = False, natmi: bool = False, **kw) -> tuple[dict, dict]:
+    """One LIANA+ run of the six methods with CellPhoneDB and CellChat captured, and Connectome and NATMI too if
+    ``connectome``, ``natmi`` (``tools_only``: just the captured ones). Returns ({method name: its table, keys +
     magnitude + specificity}, {tool: captured rows})."""
     import liana as li
     from liana.method.sc._rank_aggregate import AggregateClass, _rank_aggregate_meta
 
     store = {}
     methods = [capture(li.mt.cellphonedb, store), capture_connectome(store) if connectome else li.mt.connectome,
-               li.mt.logfc, li.mt.natmi, li.mt.singlecellsignalr,
+               li.mt.logfc, capture_natmi(store) if natmi else li.mt.natmi, li.mt.singlecellsignalr,
                capture(li.mt.cellchat, store)]   # CellChat last: it rescales X in place
     if tools_only:
-        methods = [methods[0]] + ([methods[1]] if connectome else []) + [methods[-1]]
+        methods = [methods[0]] + ([methods[1]] if connectome else []) + ([methods[3]] if natmi else []) + [methods[-1]]
     agg = AggregateClass(_rank_aggregate_meta, methods=methods)
     kw = dict(groupby=groupby, resource_name=resource_name, n_perms=n_perms, seed=seed, expr_prop=expr_prop,
               consensus_opts=False, inplace=False, use_raw=use_raw, **kw)
-    if strata is None:
-        with lazy_permutations():
-            lrs = agg(adata, **kw)
-    else:
-        with stratified_permutations(strata), lazy_permutations():
-            lrs = agg(adata, **kw)
+    from contextlib import ExitStack
+    with ExitStack() as stack:
+        if strata is not None:
+            stack.enter_context(stratified_permutations(strata))
+        if connectome or natmi:      # earlier runs (neither) keep their code path
+            stack.enter_context(shared_permutations())
+        stack.enter_context(lazy_permutations())
+        lrs = agg(adata, **kw)
     return lrs, store
 
 
@@ -342,6 +427,11 @@ def variants(lrs: dict, store: dict, nulls=NULLS, aggregate_method: str = "rra")
             d = store["Connectome"][KEY + ["magnitude", f"p_{n}"]].drop_duplicates(KEY)
             swapped["Connectome"] = d.rename(columns={"magnitude": CONNECTOME[0], f"p_{n}": CONNECTOME[1]})
             out[f"swap3_{n}"] = agg(swapped, metas3)
+            if "NATMI" in store:
+                metas4 = [_meta("NATMI", *NATMI) if m.method_name == "NATMI" else m for m in metas3]
+                d = store["NATMI"][KEY + ["expr_prod", f"p_{n}"]].drop_duplicates(KEY)
+                swapped["NATMI"] = d.rename(columns={f"p_{n}": NATMI[1]})
+                out[f"swap4_{n}"] = agg(swapped, metas4)
     return out
 
 
