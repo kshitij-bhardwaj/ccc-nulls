@@ -21,7 +21,7 @@ agree everywhere except in `biology.json`, at these entries (bootstrap over (s, 
 (commit 36ca216; Lung needed more than 30 GB otherwise). That changes the order of floating-point sums, so a few
 p-values at the 0.05 cut move across it, and with them a few calls. The hypothalamus odds ratios rest on a handful
 of calls (up to a quarter of resamples had none finite), so one call moves the estimate from 3.33 to 0.
-No conclusion in `docs/benchmark.md` depends on these entries.
+No conclusion in the results READMEs depends on these entries.
 
 ## Runs on the IITK lab server
 

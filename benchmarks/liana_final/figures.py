@@ -2,8 +2,7 @@
 
     python -m benchmarks.liana_final.figures
 
-Writes PDF (for the paper) to benchmarks/results/liana_final/figures/ and PNG (for the docs) to
-docs/_static/figures/. Colours: liana6 orange, swap Null B green, 7th/8th Null B blue, the DE filter grey; each
+Writes PDF to benchmarks/results/liana_final/figures/. Colours: liana6 orange, swap Null B green, 7th/8th Null B blue, the DE filter grey; each
 also has its own marker, so no comparison rests on colour alone.
 """
 from __future__ import annotations
@@ -22,7 +21,6 @@ from .pipeline import OUT
 from .report2 import DS, cal_summary, power_summary
 
 FIG = OUT / "figures"
-DOCS = OUT.parents[2] / "docs" / "_static" / "figures"
 INK, MUTE, GRID = "#23373B", "#5E6E72", "#D5DCDD"
 STYLE = {"liana6": ("liana6 (baseline)", "#EB811B", "o"), "swap_null_b": ("swap: Null B", "#0B7A2B", "s"),
          "extra_null_b": ("7th/8th: Null B", "#3B6FB6", "D"), "liana6_de": ("filter: both sides DE", "#5E6E72", "^")}
@@ -38,10 +36,8 @@ def J(path):
 
 
 def save(fig, name):
-    for d in (FIG, DOCS):
-        d.mkdir(parents=True, exist_ok=True)
+    FIG.mkdir(parents=True, exist_ok=True)
     fig.savefig(FIG / f"{name}.pdf", bbox_inches="tight")
-    fig.savefig(DOCS / f"{name}.png", dpi=200, bbox_inches="tight")
     plt.close(fig)
     print("wrote", FIG / f"{name}.pdf")
 

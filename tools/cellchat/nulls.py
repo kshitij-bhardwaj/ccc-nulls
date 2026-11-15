@@ -26,9 +26,6 @@ loop-by-loop port it is checked against (``match_null_a.py``, ``test_adapter.py`
     ``adapter.side_score``). p = max(p_L, p_R) (intersection-union test). BH over
     ``adapter.testable`` rows.
 
-    B1 (``null_b_empirical``): Efron's empirical null on Null A's z-values. Kept for the record;
-    it is not identifiable for CellChat (README, "B1 ... a negative result").
-
 Every floating-point step follows R's order of operations (R's two-pass mean, sequential
 products, R's quantile interpolation) so that ties between permuted and
 observed probabilities resolve the same way. tools/cellchat/README.md records the check.
@@ -317,7 +314,7 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
         stats::quantile, and p counts prob_b >= prob (ties count against the interaction).
     keep_top
         If > 0, also keep the ``keep_top`` largest permuted probabilities of every interaction with
-        prob > 0, for tail p-values below 1/B (Null B, ``tail_pvalues.py``). Outputs are unchanged.
+        prob > 0 (``perm_top_null_a``). Outputs are unchanged.
 
     Returns
     -------
@@ -387,7 +384,7 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     out["n_exceed_null_a"] = k
     out["p_null_a_cellchat"] = np.where(zero, 1.0, k / B)
     out["p_null_a"] = np.where(zero, 1.0, (1 + k) / (B + 1))
-    # permutation moments of prob, for a standardized statistic (Null B, empirical null)
+    # permutation moments of prob, for the standardized statistic z_null_a
     mean = s1 / B
     sd = np.sqrt(np.maximum(s2 - B * mean * mean, 0) / max(B - 1, 1))
     m_, sd_ = mean[i, s, t], sd[i, s, t]
@@ -414,85 +411,4 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
         out["perm_top_null_a"] = rows
     out.attrs["null_a"] = dict(version=version, B=int(B), seed=int(seed), keep_top=int(keep_top), rng=rng if permutations is None or rng == "cellchat" else "given",
                                data_max=data_max, n_lr=len(score.names), groups=[str(x) for x in levels])
-    return out
-
-
-# ------------------------------------------------------------------ B1 (empirical null): a negative result, README
-MIN_FAMILY = 5000          # below this the empirical-null fit is unreliable (known-answer test, README)
-
-
-def null_b_empirical(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int = 1000, seed: int = 0,
-           rng: str = "numpy", version: str = "2.1.2", null_a_result: pd.DataFrame | None = None,
-           pvalue: str = "gpd", method: str = "mle", pct0: float = 0.25, family: str | None = None,
-           fit_rows: str = "nondegenerate", pvalues: tuple | None = None) -> pd.DataFrame:
-    """Null B (B1): Efron's empirical null on each interaction's Null-A z-value.
-
-    z = Phi^-1(1 - p) from Null A's permutation p (``tail_pvalues.py``), so z ~ N(0, 1) wherever Null
-    A's hypothesis holds. Null A tests every z against that theoretical N(0, 1). Null B estimates the
-    null from the bulk of the z's instead, N(delta0, sigma0^2) (``empirical_null.py``): a call means
-    "stronger than typical interactions", where Null A's call means "not explained by random labels".
-    With ``method="theoretical"`` this function is Null A with Benjamini-Hochberg on the same rows.
-
-    Parameters
-    ----------
-    null_a_result
-        Output of ``null_a(..., keep_top=tail_pvalues.N_EXC)``; computed here if absent. Both nulls
-        then use the same interactions, the same observed scores and the same permutations.
-    pvalue
-        "gpd" (default; option 1, Generalized Pareto tail), "pearson3" (option 2, moment-matched
-        tail), "permutation" (no tail model: resolution 1 / (B + 1)), or "naive" (ablation: the
-        standardized score (prob - perm mean) / perm sd used directly as z).
-    method, pct0
-        Null fit: "mle" (default), "cm" (central matching) or "theoretical" (N(0, 1)), on the
-        central [pct0, 1 - pct0] quantile interval.
-    family
-        Column whose values define separate families, each with its own null (Efron 2008), e.g.
-        "source" or "target". Families under ``MIN_FAMILY`` fitted rows use the pooled null.
-    fit_rows
-        "nondegenerate" (default): rows whose B + 1 values (observed and permuted) are not all equal.
-        The event is the same whichever of the B + 1 labellings is the observed one, so restricting
-        to it keeps p uniform under the null. "scored": rows with prob > 0, CellChat's reported set,
-        chosen with the observed labels (ablation).
-    pvalues
-        ``tail_pvalues.permutation_p(null_a_result, pvalue, seed)``, if already computed (reused across fits).
-
-    Returns
-    -------
-    ``interactions`` plus ``z_null_b``, ``p_null_b`` (upper tail under the fitted null), ``q_null_b``
-    (tail-area Fdr: call if <= alpha), ``lfdr_null_b``, ``pvalue_how_null_b``; fits in ``attrs["null_b"]``.
-    """
-    from scipy import stats as sstats
-
-    from tools.cellchat.empirical_null import empirical_null
-    from tools.cellchat.tail_pvalues import N_EXC, permutation_p
-
-    res = null_a_result if null_a_result is not None else null_a(
-        adata, interactions, groupby, B=B, seed=seed, rng=rng, version=version, keep_top=N_EXC)
-    B_ = res.attrs["null_a"]["B"]
-    if pvalue == "naive":
-        z, how = res["z_null_a"].to_numpy(dtype=float), np.full(len(res), "naive", dtype=object)
-        use = np.isfinite(z)
-    else:
-        p_perm, how = pvalues if pvalues is not None else permutation_p(res, pvalue, seed)
-        z = sstats.norm.isf(p_perm)
-        use = res["n_tie_null_a"].to_numpy() < B_
-    if fit_rows == "scored":
-        use = use & (res["score_null_a"].to_numpy() > 0)
-    out = res.copy()
-    p, q, lfdr = np.ones(len(z)), np.ones(len(z)), np.ones(len(z))
-    groups = {"all": use} if family is None else {g: use & (res[family].to_numpy() == g) for g in res[family].unique()}
-    pooled = empirical_null(np.where(use, z, np.nan), method, pct0)
-    fits = {}
-    for g, rows in groups.items():
-        own = family is not None and rows.sum() >= MIN_FAMILY
-        r = empirical_null(np.where(rows, z, np.nan), method, pct0) if own else pooled
-        p[rows], q[rows], lfdr[rows] = r["p"][rows], r["q"][rows], r["lfdr"][rows]
-        fits[str(g)] = dict(r["fit"].to_dict(), n_rows=int(rows.sum()), own_fit=bool(own or family is None))
-    out["z_null_b"] = np.where(use, z, np.nan)
-    out["p_null_b"], out["q_null_b"], out["lfdr_null_b"] = p, q, lfdr
-    out["pvalue_how_null_b"] = how
-    out.attrs["null_b"] = dict(pvalue=pvalue, method=method, pct0=pct0, family=family, fit_rows=fit_rows,
-                               fits=fits, n_fit=int(use.sum()),
-                               how={h: int(((how == h) & use).sum()) for h in np.unique(how)},
-                               null_a=res.attrs.get("null_a"))
     return out

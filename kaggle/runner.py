@@ -93,8 +93,6 @@ finally:
                 dst = f"{OUT}/rows/{os.path.relpath(f, f'{DATA}/liana_final')}"
                 os.makedirs(os.path.dirname(dst), exist_ok=True)
                 shutil.copy(f, dst)
-        if os.path.isdir(f"{CODE}/docs/_static/figures"):
-            shutil.copytree(f"{CODE}/docs/_static/figures", f"{OUT}/figures", dirs_exist_ok=True)
     owner = os.environ.get("KAGGLE_USERNAME", "kshitijbhardwaj1729")
     json.dump({"slug": SLUG, "machine": f"https://www.kaggle.com/code/{owner}/{SLUG}", "code_commit": commit,
                "commands": COMMANDS, "status": status, "seconds": round(time.time() - T0),

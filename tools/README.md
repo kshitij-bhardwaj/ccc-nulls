@@ -1,18 +1,17 @@
 # Tool workspaces
 
-One folder per tool. **Each folder has a single owner, who is the only person who edits it**
-(see `.github/CODEOWNERS`). Shared code lives in `src/ccc_nulls/` and changes there go
-through a reviewed pull request.
+One folder per tool: the tool's native run, its conversion to the common schema, and the checks that
+our Python Null A reproduces the tool's own test. Shared code (the nulls themselves) lives in
+`src/ccc_nulls/`. Benchmark 1 (`benchmarks/liana_nulls`) calls these adapters.
 
 | Folder | Tool | LIANA method | Statistic (Open Problems ranks by) | Native null (Null A)? | Native implementation |
 |---|---|---|---|---|---|
 | `cellphonedb/` | CellPhoneDB v5 | `cellphonedb` | `lr_means` | **Yes**: permutes cluster labels (1,000 by default) | Python package `cellphonedb` |
-| `cellchat/` | CellChat | `cellchat` | `lr_probs` (native: `prob`) | **Yes**: permutes cell labels (100 by default) | CellChat 2.1.2 ported to Python (`cellchat/cellchat_py.py`), no R |
+| `cellchat/` | CellChat | `cellchat` | `lr_probs` (native: `prob`) | **Yes**: permutes cell labels (100 by default) | CellChat 2.1.2 in R (`cellchat/native_r.py`), and ported to Python (`cellchat/cellchat_py.py`) |
 | `natmi/` | NATMI | `natmi` | `spec_weight` (edge specificity) | No permutation p-value | Python scripts (`asrhou/NATMI`) |
-| `connectome/` | Connectome | `connectome` | `scaled_weight` (`weight_sc`) | No permutation null on the edge score | R package `Connectome` (Seurat) |
 
-The native-null column comes from each tool's paper and docs. Every owner should confirm it
-against the version they install.
+The native-null column comes from each tool's paper and docs, checked against the installed versions.
+Connectome is run only through LIANA+'s own implementation (`benchmarks/liana_final`, AMENDMENTS 6 and 7, which include its tool-level tests), so it has no folder here.
 
 ## The contract: every `adapter.py` exposes the same five things
 
@@ -70,12 +69,12 @@ methods go in `ccc_nulls.composite` with `@composite.register("<name>")` and the
    score correlation, and explain any difference. LIANA re-implements these tools, so some
    difference is expected.
 3. Tools with a native null (CellPhoneDB, CellChat): the native p-values are compared with
-   our Null A (`ccc_nulls.multitool.label_null`). This is plan step 3.
+   our Null A on the tool's own statistic (Benchmark 1, T0 fidelity).
 4. `pytest tools/<tool>` passes.
 
 ## Running the pipeline
 
-The settings below are frozen: they were chosen on Tabula Sapiens and then applied once to TNBC.
+The settings below are frozen: they were chosen on Tabula Sapiens before any other data set was run.
 CellChat is the worked example; the exact numbers are in `cellchat/README.md`, not repeated here.
 
 ### Environment
@@ -83,8 +82,9 @@ CellChat is the worked example; the exact numbers are in `cellchat/README.md`, n
 - Run from the repository root with the repository's environment, as modules:
   `.venv/bin/python -m tools.cellchat.<script>`, `.venv/bin/python -m pytest`. The scripts import
   `tools.<tool>` and `ccc_nulls`, so running a file by its path from another folder fails.
-- No R. CellChat is the Python port in `cellchat/cellchat_py.py`; `pip install rdata` once, to read
-  CellChatDB from the R package's data file.
+- CellChat's Null A is the Python port in `cellchat/cellchat_py.py` (`rdata`, in `requirements.txt`, reads
+  CellChatDB from the R package's data file). R with CellChat 2.1.2 is needed only for the native column
+  (`cellchat/native_r.py`); see the R section of `code/README.md`.
 - Data go to `data/` (or `$CCC_NULLS_DATA`):
 
 ```bash
@@ -121,7 +121,6 @@ CellChat is the worked example; the exact numbers are in `cellchat/README.md`, n
 .venv/bin/python -m tools.cellchat.null_b_calibration --tissue mammary --scenario receptor --reps 20
 .venv/bin/python -m tools.cellchat.null_b_calibration --tissue mammary --scenario ligand --reps 20  # also labels, real; --tissue liver
 .venv/bin/python -m tools.cellchat.null_b_calibration --summarise
-.venv/bin/python -m tools.cellchat.null_b_checklist --part pcal
 ```
 
 - **Scenarios:**
@@ -137,12 +136,6 @@ CellChat is the worked example; the exact numbers are in `cellchat/README.md`, n
 - **FDR:** the mean over replicates of V / R, where V is calls on known-null rows and R is all calls.
   It is a lower bound, since calls on the other rows can be false too. On `labels` every call is
   false, so the measure there is P(any call).
-
-### TNBC is held out
-
-Freeze every setting on Tabula Sapiens first, then run TNBC once:
-`.venv/bin/python -m tools.cellchat.null_b_tnbc`. Do not change a setting after seeing TNBC results.
-A change means calibrating again on Tabula Sapiens and a new, documented TNBC run.
 
 ### Pitfalls
 
@@ -161,11 +154,9 @@ A change means calibrating again on Tabula Sapiens and a new, documented TNBC ru
 - **Permutations are 0-based in `composite`** (a cells × B matrix of cell indices). CellChat's
   R-style permutations (`cellchat_py.r_permutations`, `nulls.null_a(permutations=...)`) are 1-based;
   `adapter.null_b` converts them. Do not pass one to the other unconverted.
-- **Do not use B1** (`nulls.null_b_empirical`, Efron's empirical null). It is not identifiable here,
-  because most rows depend on cell type; it is kept as a negative result (`cellchat/README.md`).
 
 ## Datasets
 
-See the root `README.md` and `data/README.md`. Load the evaluation data with
+See `code/README.md` and `data/README.md`. Load the evaluation data with
 `ccc_nulls.datasets.load_openproblems("tnbc_wu2021")`, and the calibration tissues with
 `ccc_nulls.datasets.load_tabula_sapiens("tabula_sapiens_mammary")` (or `_liver`).

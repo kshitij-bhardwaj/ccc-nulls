@@ -1,8 +1,5 @@
 # CellPhoneDB (v5)
 
-Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shared goes in
-`src/ccc_nulls/` through a reviewed pull request.
-
 | | |
 |---|---|
 | LIANA method | `cellphonedb` |
@@ -106,17 +103,3 @@ computes them instead.
 pytest tools/cellphonedb                                 # no database needed
 CPDB_DB=/path/to/cellphonedb.zip pytest tools/cellphonedb  # + native CellPhoneDB runs
 ```
-
-## Tiny local input for adapter development
-
-Generate a deterministic CellPhoneDB text-format input without downloading a
-dataset:
-
-```bash
-python tools/cellphonedb/make_sample_data.py
-```
-
-It writes `data/cellphonedb_sample/counts.tsv` (human HGNC symbols by cells,
-normalized expression) and `data/cellphonedb_sample/meta.tsv` (`Cell`,
-`cell_type`).  The files contain 12 genes and 24 cells across Fibroblast,
-Myeloid, T-cell and B-cell groups.  They are git-ignored generated artifacts.

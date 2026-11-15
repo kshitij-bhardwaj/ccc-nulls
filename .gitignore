@@ -10,10 +10,5 @@ dist/
 *.h5ad
 data/*
 !data/README.md
-benchmarks/results/tnbc/rows_*.csv.gz
-benchmarks/results/tnbc/liana_*.pkl
-benchmarks/results/tnbc/*.log
-benchmarks/results/tnbc/results_quick.json
-docs/_build/
 kaggle/build/
 kaggle/outputs/

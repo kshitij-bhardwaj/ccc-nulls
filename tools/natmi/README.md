@@ -1,8 +1,5 @@
 # NATMI
 
-Owner: see `.github/CODEOWNERS`. Only the owner edits this folder; anything shared goes in
-`src/ccc_nulls/` through a reviewed pull request.
-
 | | |
 |---|---|
 | LIANA method | `natmi` (resource `connectomedb2020`) |

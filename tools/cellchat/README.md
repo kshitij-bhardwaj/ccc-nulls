@@ -1,11 +1,8 @@
 # CellChat
 
-One owner, assigned within the team. Only the owner edits this folder; anything shared goes in
-`src/ccc_nulls/` through a reviewed pull request.
-
 | | |
 |---|---|
-| Tool | CellChat **2.1.2**, the latest release (`jinworks/CellChat`, tag `v2.1.2`, April 2025), **ported to Python**: no R needed |
+| Tool | CellChat **2.1.2**, the latest release (`jinworks/CellChat`, tag `v2.1.2`, April 2025), **ported to Python**; R is needed only for the native column of Benchmark 1 (`native_r.py`) |
 | Also available | `2.2.0.9001` (GitHub main, `75253cd`) and `1.0.0` (the 2021 paper, `sqjin/CellChat`, tag `v1.0.0`) |
 | Statistic tested by the nulls | `prob`, CellChat's communication probability (LIANA's re-implementation calls it `lr_probs`) |
 | Native null (Null A) | Yes: `computeCommunProb` permutes the cell labels, `nboot = 100`, `seed.use = 1` |
@@ -17,14 +14,12 @@ One owner, assigned within the team. Only the owner edits this folder; anything 
 |---|---|
 | `cellchat_py.py` | CellChat ported line by line from R: CellChatDB, `subsetDB`, `subsetData`, `identifyOverExpressedGenes` (presto's Wilcoxon test), `identifyOverExpressedInteractions`, `computeCommunProb` (2.1.2, 2.2.0.9001, 1.0.0), and R's random-number generator (`set.seed`, `sample.int`) |
 | `adapter.py` | dataset → CellChat inputs (`prepare_inputs`) → CellChat run (`run_native`, the port) → common schema (`native_to_schema`); Null B through the shared engine: `side_score` (CellChat's score split into sender and receiver sides), `null_b`, `testable` |
-| `nulls.py` | CellChat's score (`TriMean`, `CellChatScore`); `null_a`: CellChat's permutation test, vectorised; `null_b_empirical`: B1, kept for the negative result |
+| `nulls.py` | CellChat's score (`TriMean`, `CellChatScore`); `null_a`: CellChat's permutation test, vectorised |
 | `match_null_a.py` | TNBC: port vs Null A for every version, independent permutations, version differences, ground-truth metrics with bootstrap CIs |
 | `calibrate_null_a.py` | Tabula Sapiens (Mammary, Liver): full-permutation calibration |
 | `null_b_calibration.py` | Tabula Sapiens: Null B vs Null A on known-null data (labels, receptor-side and ligand-side gene shuffles) and on the real labels |
-| `null_b_tnbc.py` | TNBC, held out: Null B vs Null A against the cytokine truth, disagreements, patient-half reproducibility |
-| `null_b_checklist.py` | the remaining checklist points: type-I error and p-value calibration, BY, fake gene pairs, calls by expression |
-| `tail_pvalues.py`, `empirical_null.py` | B1: randomized permutation p, GPD and Pearson III tail p-values, Efron's empirical null |
-| `b1_calibration.py`, `b1_tail_accuracy.py`, `b1_diagnosis.py` | B1: calibration, tail accuracy against 100,000 shuffles, why the empirical null is not identifiable |
+| `native_r.py`, `run_cellchat.R` | native CellChat 2.1.2 in R (column 1 of Benchmark 1): writes the inputs, runs `Rscript run_cellchat.R`, reads the result back |
+| `test_adapter.py`, `test_null_b.py` | tests (port against CellChat's own arithmetic, Null B on known-null data) |
 | `results/` | the JSON outputs of the scripts |
 
 ## Versions
@@ -189,62 +184,7 @@ What this shows:
    shuffled data set (mean over 20 shuffles) with no signal at all; with `(1 + #) / (B + 1)` it calls none.
 
 Full permutation separates a valid test from an invalid one here only because CellChat's
-selection is label-dependent; for abundance confounding, the fake-L-R-resource test is still
-needed (docs/PLAN.md).
-
-## B1, Efron's empirical null: a negative result
-
-B1 was the first Null B: keep Null A's statistic, but estimate the null distribution from the bulk of
-the interactions' z-values (Efron 2004; 2007; 2010) instead of taking N(0, 1). It cannot be used with
-CellChat. The evidence, all on Tabula Sapiens (TNBC was never touched):
-
-**1. The z-value has to come from the permutation p.** The standardized score (prob − permutation
-mean) / permutation sd is not N(0, 1) under the null: prob is 0 in most permutations, so a rare
-non-zero value looks extreme. On fully shuffled Mammary (`b1_calibration.py`, 2 shuffles, B = 1,000,
-`results/b1_calibration_mammary_smoke.json`), testing it against N(0, 1) gives 271 and 72 false
-calls at q ≤ 0.05, and the empirical null on it 1,534 and 824. The probit of the permutation p,
-z = Φ⁻¹(1 − p) with ties broken at random (`tail_pvalues.randomized_p`, exactly U(0, 1) under the
-null), gives 0 and 0 under both nulls.
-
-**2. Tail p-values below 1/B: two methods, GPD chosen.** `tail_pvalues.py`, known-answer tests in
-`test_b1_empirical.py`, rule fixed before the results: calibration first, then tail accuracy, ties
-to GPD.
-
-| | Generalized Pareto tail (Knijnenburg et al. 2009), shape ξ ≥ 0 | Pearson type III, three permutation moments (Mielke & Berry 2007) |
-|---|---|---|
-| synthetic tail, gamma (Pearson III's own family), p = 10⁻⁴, 10⁻⁵ | 2–4× too large (conservative) | exact |
-| synthetic tail, lognormal | within ~3× | 24× too small at 10⁻⁵ |
-| shuffled Mammary, false calls (2 shuffles) | 0, 0 | 10, 0 |
-| vs 100,000 permutations, real Mammary labels, p_ref in [10⁻⁴, 10⁻³) (22 rows) | median 2.3× too large; 14% more than 2× too small | median exact; **41%** more than 2× too small |
-| same, p_ref in [10⁻³, 10⁻²) (45 rows) | 1.3× too large; 9% | exact; 20% |
-
-`b1_tail_accuracy.py` → `results/b1_tail_accuracy_mammary.json` (40 random L-R pairs, B = 1,000
-estimates vs B = 100,000, Knijnenburg et al.'s design; 600 further tail rows lie below 10⁻⁴, beyond
-the reference). Holding ξ ≥ 0 is our one change to Knijnenburg et al.: with a few hundred exceedances
-the shape MLE is biased below 0 for exponential-type tails, and ξ < 0 implies an upper endpoint
-past which p = 0 (median 20× too small at p = 10⁻⁴ without it).
-
-**3. The empirical null is not identifiable for CellChat.** `b1_diagnosis.py` →
-`results/b1_diagnosis_<tissue>.json`. Efron's estimate needs the central z's to be null; he calls it
-reliable when about 90% or more of the tests are null (2010, ch. 6). Here:
-
-| | Mammary | Liver |
-|---|---|---|
-| testable rows with prob > 0, observed / under random labels | **14.5% / 35.0%** | **23.2% / 33.5%** |
-| reported rows Null A calls (BH, 0.05) | 7,095 of 8,952 (79%) | 13,314 of 15,839 (84%) |
-| reported rows whose p is below what 1,000 permutations resolve (< 30 non-zero permutations, no tail fit) | 4,790 | 8,098 |
-| calls at q ≤ 0.05, empirical null on all testable rows, over 6 standard settings (MLE / central matching × central 80%, 50%, 33%) | **1,477 to 7,096** | **2,101 to 13,938** |
-| same, reported rows only, each compared with its own non-zero permutations | **22 to 932**; central matching fails (log-density not concave) | **325 to 2,150** |
-
-Cell types differ in almost every gene, so most (pair, sender, receiver) rows are non-null, mostly in
-the direction of absence (fewer non-zero rows than random labels give). There is no null bulk: the
-reported rows' z-values run from −3.9 to +30 with median 2.4 (Mammary). The fitted "null" then
-depends on the tuning setting, not the data, and the calls vary 40-fold between settings on the same
-data set. B1 was therefore not frozen and not run on TNBC.
-
-What B1 leaves behind: the probit-p construction, the tail p-values, and the lesson that Null A's
-hypothesis is false almost everywhere, so a useful Null B must change the hypothesis tested, not
-re-estimate the null of the same one. That is the Null B below.
+selection is label-dependent; abundance confounding needs one-sided known-null data (below).
 
 ## Null B: a composite null for "s signals to t" (`adapter.null_b`)
 
@@ -374,66 +314,6 @@ testable rows needs thousands of rows at that floor. Null B needs both sides at 
 At α = 0.05 the calls barely change between B = 1,000 and 5,000, so the frozen B = 1,000 results
 stand. For α = 0.01, use B ≥ 5,000.
 
-### Held-out test: TNBC (`null_b_tnbc.py`, run once with the frozen settings)
-
-Open Problems `tnbc_wu2021`: 42,512 cells, 29 groups, 1,757,690 rows, 14,872 reported. B = 1,000,
-seed 0, α = 0.05. `results/null_b_tnbc_wu2021.json`.
-
-| | Null A (BH, testable) | Null B | Null B, δ = 0.01 |
-|---|---|---|---|
-| calls | 12,970 | 8,819 (68%) | 2,418 |
-| Open Problems AUPRC (95% CI) | 0.350 (0.258–0.447) | 0.349 (0.254–0.459) | 0.303 (0.148–0.494) |
-| Null B − this, AUPRC (95% CI) | −0.000 (−0.032 to 0.032) | | +0.046 (−0.101 to 0.189) |
-| odds ratio | 3.45 | 3.45 | 2.20 |
-| Jaccard of calls, patient halves (5 + 5 patients) | 0.38 (10,962 / 11,155 calls) | 0.30 (7,164 / 6,910) | 0.33 |
-
-CellChat's unadjusted p < 0.05, and Null A over reported rows, give the same AUPRC (0.350) and
-Jaccard (0.38) as Null A. Random scores give AUPRC 0.214. δ = 0.05 makes no calls, so its metrics
-are not interpretable.
-
-Calls of Null A only (4,151) against calls of both (8,819), on rows whose (ligand, target cell type)
-the cytokine truth covers:
-
-| | rows covered | truth-positive | precision (Clopper–Pearson 95%) |
-|---|---|---|---|
-| called by both | 153 | 57 | 0.37 (0.30–0.45) |
-| Null A only | 32 | 15 | 0.47 (0.29–0.65) |
-
-What TNBC shows:
-- **No gain against the cytokine truth.** Null B removes a third of Null A's calls, and the AUPRC
-  difference is 0.000 (CI ±0.03). This truth is "a ligand changes the target cell type's
-  transcription", scored per (ligand, target) after aggregating over senders and receptors. It cannot
-  tell whether the sender side was specific to s, which is half of what Null B tests. The rows Null B
-  drops are not less often truth-positive (0.47 vs 0.37; overlapping CIs, 32 rows).
-- **Lower reproducibility across patients** (Jaccard 0.30 vs 0.38). Part of this is the smaller call
-  set: more of the calls sit near the threshold. Part is the max-p construction, since a call needs
-  both sides significant in both halves. Null B's calls are not more stable than Null A's.
-- Null B again made no call that Null A did not make.
-
-**Conclusion.** Null B does what it was designed for. On data where "s signals to t" is known to be
-false and one partner is still cell-type specific, it controls FDR (≤ 0.031), while Null A has 27–75%
-false discoveries. On TNBC this stricter claim gives no measurable gain against the available truth,
-and the call set is less reproducible across patients. Null B is the right test when the claim is a
-specific sender-to-receiver edge. It does not improve recovery of ligand-to-target responses, and the
-TNBC truth cannot judge the edge claim.
-
-### Null B against the remaining checklist points (`null_b_checklist.py`)
-
-Frozen settings, nothing tuned. `results/null_b_checklist_{pcal,fake}.json`, plus the B = 500 runs.
-
-| Point | Result |
-|---|---|
-| Level 1, type-I error and p-value calibration (Mammary, receptor-shuffle replicate 1, 14,134 known-null testable rows) | P(p ≤ 0.05): **Null A 14.1%, Null B 1.9%** (≤ 0.01: 13.1% vs 0.8%). Fully shuffled labels: 5.5% vs 0.4%. Null B's p is conservative, as a maximum of two p-values must be |
-| J15, dependence-robust FDR (Benjamini–Yekutieli) | **0 calls for both nulls** at B = 1,000, even on real signal: BY divides α by about 12 here, below the p-value floor 1/1,001. Not decisive; it needs B ≥ 5,000 |
-| G12 / T, B = 500 (Mammary) | real labels: 3,268 Null B calls at α = 0.05 (3,290 at B = 1,000); receptor shuffle: **0 Null B calls** in 3 replicates (resolution limit). B ≥ 1,000 is needed |
-| E2, fake gene pairs (TNBC; each candidate pair's subunits replaced by stratum-matched non-CellChatDB genes, scored in every sender-receiver, one BH family with the real rows) | Null A calls 10,602 fake and 12,939 real rows; **Null B 5,753 fake and 8,723 real**. Fake pairs are **40% of Null B's calls vs 45% of Null A's** |
-| E4 / L, calls by expression (TNBC, real rows) | calls rise with ligand and receptor expression for both nulls; top ligand-expression decile: 4.4% of rows called by Null A, 2.8% by Null B. **69% of the Null-A-only calls (2,905 of 4,216) are in the top ligand decile** |
-
-What this adds:
-- **Fake pairs are a negative result for Null B.** It halves the fake-pair calls but barely changes their share. A random gene pair whose two genes are each cell-type specific passes both halves of Null B, because Null B tests specificity, not whether the two genes interact. Separating real from fake pairs needs evidence of the interaction itself, such as receiver-side downstream targets (Level 3, the shared NicheNet step).
-- Null A's surplus calls sit at high expression, so Null B partly reduces the abundance bias the project set out to test.
-- The fake pairs skip CellChat's over-expression filter (it runs on CellChatDB genes only). The comparison is Null A vs Null B on the same rows, not CellChat vs the earlier tools.
-
 ### What Null B does not answer
 
 - **The receptor is not just "present" in t; it is specific to t.** A receptor expressed equally in
@@ -453,8 +333,7 @@ What this adds:
 - [x] complexes keep CellChat's names in `ligand` / `receptor`; genes are in `ligand_complex` / `receptor_complex`
 - [x] `nulls.null_a`: reproduce CellChat's own permutation test; compare with `p_native`
 - [x] calibration: 20 shuffles, two tissues, CIs; ground truth with bootstrap CIs
-- [x] `adapter.null_b`: composite null (engine in `ccc_nulls.composite`, CellChat supplies `side_score`), calibrated on known-null data (20 replicates × 2 scenarios × 2 tissues), frozen (δ = 0, testable family), then run once on TNBC
-- [x] B1 (empirical null) written up as a negative result
+- [x] `adapter.null_b`: composite null (engine in `ccc_nulls.composite`, CellChat supplies `side_score`), calibrated on known-null data (20 replicates × 2 scenarios × 2 tissues), frozen (δ = 0, testable family)
 
 ## Run the tests and the checks
 
@@ -465,8 +344,4 @@ python -m tools.cellchat.calibrate_null_a --download --tissue all
 python -m tools.cellchat.calibrate_null_a --tissue all
 python -m tools.cellchat.null_b_calibration --tissue mammary --scenario receptor --reps 20   # also: ligand, labels, real; liver
 python -m tools.cellchat.null_b_calibration --summarise
-python -m tools.cellchat.null_b_tnbc
-python -m tools.cellchat.null_b_checklist --part pcal   # and --part fake
-python -m tools.cellchat.b1_diagnosis --tissue all
-python -m tools.cellchat.b1_tail_accuracy
 ```

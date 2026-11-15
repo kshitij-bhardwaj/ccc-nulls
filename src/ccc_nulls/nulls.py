@@ -174,7 +174,7 @@ def null_b_binned_labels(X, labels, n_types, li, ri, si, ti, score="mean", B=100
     This is the literal reading of "permute labels within expression bins". Each gene
     still sees a uniform label permutation, so every candidate's marginal null equals
     Null A's, and the abundance bias is not removed. Kept to document that result
-    (see benchmarks/binned_label_check.py).
+    (``tests/test_ccc_nulls.py::test_binned_labels_diagnostic_equals_null_a``).
     """
     rng = np.random.default_rng(rng)
     f = get_score(score)
