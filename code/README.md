@@ -175,8 +175,21 @@ see [`RUN.md`](RUN.md); `--only REGEX` keeps only the runs whose tag matches.
 
 ## 4. Paper figures
 
-**Placeholder.** The figure script `code/figures/make_figures.py` will be added here, with the command that
-regenerates every figure of the report from the committed result files.
+The report's three figures come from the committed result files; nothing is recomputed (a few seconds):
+
+```bash
+cd code
+python figures/make_figures.py            # all three; or name some: python figures/make_figures.py fig2
+```
+
+| Output (`figures/output/`) | Report | What it shows |
+|---|---|---|
+| `fig1_tool_level.pdf` | Fig. 1 | Benchmark 1: FDR on known nulls and power vs FDR, all four tools |
+| `fig2_consensus.pdf` | Fig. 2 (main figure) | Benchmark 2: LIANA+'s top 1% and planted-pair power as each test replaces 2, 3, 4 tools' p-values |
+| `fig3_robustness.pdf` | Fig. 3 | p-values inside LIANA+, donor shuffles, sensitivity runs, spatial truth |
+
+`figures/final_results.json` holds the PLAN's Benchmark-1 numbers that the figures read, copied from
+`benchmarks/results/liana_nulls/README.md` and `benchmarks/results/liana_final/README.md` (its `source` field).
 
 ## 5. Folder structure
 
@@ -186,6 +199,7 @@ code/
 ├── requirements.txt        the locked Python environment of the results
 ├── pyproject.toml          the ccc_nulls package (pip install -e .) and pytest settings
 ├── Makefile                install, install-r, test, data, benchmark1, benchmark2, reports
+├── figures/                make_figures.py: the report's figures from the committed results
 ├── RUN.md                  splitting Benchmark 2 across machines, and merging the results
 ├── LICENSE                 BSD-3-Clause, as LIANA+
 ├── src/ccc_nulls/          the package

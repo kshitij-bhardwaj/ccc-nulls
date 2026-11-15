@@ -1,0 +1,41 @@
+{
+  "source": "ccc-nulls, branch benchmarks/liana-final, commit b74aa63: benchmarks/results/liana_nulls/README.md and benchmarks/results/liana_final/README.md",
+  "fidelity_rows": {
+    "cellchat": [1757690, 988701, 508160, 1251072, 117888],
+    "cellphonedb": [2044471, 1242621, 727552, 1653120, 156544]
+  },
+  "datasets": ["TNBC", "Allen brain", "TS mammary", "TS liver", "Hypothalamus"],
+  "calibration_receptor_fdr": {
+    "cats": ["CellChat\nmammary", "CellChat\nliver", "CellPhoneDB\nmammary", "CellPhoneDB\nliver"],
+    "null_a": [0.271, 0.643, 1.000, 0.993],
+    "null_b": [0.012, 0.031, 0.000, 0.000],
+    "null_b2": [0.000, 0.000, 0.000, 0.000]
+  },
+  "calibration_ligand_fdr": { "null_a": [0.717, 0.746, 0.970, 0.955], "null_b": [0.000, 0.029, 0.000, 0.000] },
+  "power_f15": {
+    "cats": ["CellChat", "CellPhoneDB"],
+    "null_a": { "power": [0.99, 1.00], "fdr": [0.84, 0.94] },
+    "null_b_B1000": { "power": [0.19, 0.00], "fdr": [0.00, 0.00] },
+    "null_b_B5000": { "power": [0.97, 0.20], "fdr": [0.02, 0.00] },
+    "null_b2": { "power": [0.49, 0.47], "fdr": [0.00, 0.00] }
+  },
+  "real_calls": {
+    "cellchat": { "null_a": [12972, 27973, 6873, 12798, 1204], "null_b": [8837, 13558, 3297, 7617, 928], "null_b2": [204, 10, 66, 3, 5] },
+    "cellphonedb": { "null_a": [14765, 46928, 6201, 15773, 2600], "null_b": [9528, 15121, 2890, 7203, 1350], "null_b2": [13, 1, 17, 3, 0] }
+  },
+  "spatial_or_null_b": [
+    { "label": "TNBC · CellChat", "or": 1.05, "ci": [0.65, 1.53] },
+    { "label": "TNBC · CellPhoneDB", "or": 0.80, "ci": [0.59, 1.32] },
+    { "label": "Allen brain · CellChat", "or": 1.16, "ci": [0.88, 1.57] },
+    { "label": "Allen brain · CellPhoneDB", "or": 1.10, "ci": [0.78, 1.48] },
+    { "label": "Hypothalamus · CellChat", "or": 1.89, "ci": [1.18, 3.34] },
+    { "label": "Hypothalamus · CellPhoneDB", "or": 0.64, "ci": [0.35, 1.60] }
+  ],
+  "consensus": {
+    "variants": ["LIANA+ (5 methods)", "LIANA+ + CellChat (baseline)", "Null A added as a method", "Null B2 added as a method",
+                 "Null B2 replaces the p-value", "Null B added as a method", "Null B replaces the p-value"],
+    "false_top1": [[0.797, 0.811, 0.881, 0.803], [0.799, 0.857, 0.827, 0.850], [0.821, 0.886, 0.850, 0.916], [0.767, 0.814, 0.726, 0.794],
+                   [0.733, 0.779, 0.692, 0.712], [0.696, 0.726, 0.690, 0.693], [0.694, 0.677, 0.602, 0.628]],
+    "precision_at_k_f2": [0.46, 0.25, 0.08, 0.43, 0.64, 0.54, 0.78]
+  }
+}
