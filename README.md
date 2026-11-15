@@ -19,7 +19,7 @@ CS690_Project6/
                   the command for each result, folder structure
 ```
 
-To reproduce: follow [`code/README.md`](code/README.md). In short, from `code/`:
+To reproduce: follow [`code/README.md`](code/README.md); its section 5 names the code behind every table and figure. In short, from `code/`:
 
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate
@@ -27,21 +27,6 @@ pip install -r requirements.txt && pip install --no-deps -e .
 export PYTHONPATH=$PWD/src:$PWD
 python -m pytest -q          # tests, no data needed
 make reports                 # every results table from the committed result files (seconds)
+python figures/make_figures.py   # the report's three figures (Fig. 2 is the main one) from the same files
 make data                    # the data sets (about 9 GB), then: make benchmark1, make benchmark2
 ```
-
-## Building the zip
-
-The zip is this branch (`submission`), archived:
-
-```bash
-git archive --format=zip --prefix=CS690_Project6/ -o CS690_Project6.zip submission
-```
-
-Only committed files go in, so commit everything first.
-
-## Adding your files
-
-Commit into `slides/`, `report/` or `code/` on the `submission` branch, then build the zip again. Keep one final
-version of each file (no `_v2` or `final_final` copies); put slide sources next to the PDF in `slides/`, and the
-report as `report/report.pdf`.

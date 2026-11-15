@@ -154,7 +154,7 @@ share of the consensus' top~1\% that is false on known nulls, and the power and 
 that are specific on one side only. The decision rule, fixed in advance, accepts a test if it is better calibrated
 than the baseline, no worse in power, and both again on held-out Lung.
 
-\textbf{Pre-registration and runs.} Two plans and twelve amendments were each hashed (SHA-256) before their runs, and
+\textbf{Pre-registration and runs.} Two plans and thirteen amendments were each hashed (SHA-256) before their runs, and
 every result file records the hashes. Benchmark~2 ran on Kaggle (143 sessions) and a lab server from one commit and a
 locked environment, with $B=1{,}000$ permutations unless stated.
 
@@ -318,12 +318,13 @@ higher. (iv) \BPT{} needs about five times more permutations than \JLP{} to have
 % =====================================================================
 \section{Data availability}
 
-All data sets are public. Tabula Sapiens (Mammary, Liver, Lung) is available from CELLxGENE~\cite{tabula2022}; the
-TNBC atlas~\cite{wu2021} and the Allen brain data set from the Open Problems public bucket~\cite{openproblems}; the
-hypothalamus single-cell (GEO GSE113576) and MERFISH data from Moffitt et al.~\cite{moffitt2018}. Download scripts,
-code, both plans, all twelve amendments and every result file are at
-\url{https://github.com/kshitij-bhardwaj/ccc-nulls}; each result records the commit, the plan hashes and the session or
-machine that produced it. The \texttt{code/README.md} of the submission gives the command for every figure.
+Tabula Sapiens (Mammary, Liver, Lung) is public on CELLxGENE~\cite{tabula2022}, and the hypothalamus single-cell
+(GEO GSE113576) and MERFISH data come from Moffitt et al.~\cite{moffitt2018}. The TNBC atlas~\cite{wu2021} and the
+Allen brain data set came from the Open Problems bucket~\cite{openproblems}, which closed in November 2026; our
+copies, taken before it closed, are available from the team on request. The \texttt{code/} folder of the submission
+holds the download scripts, the code, both plans, all thirteen amendments and every result file (each records the
+commit, the plan hashes and the session or machine that produced it); its \texttt{README.md} gives the command for
+every figure.
 
 \bibliographystyle{unsrtnat}
 {\footnotesize\setlength{\bibsep}{1.5pt}\bibliography{refs}}
