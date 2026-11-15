@@ -40,7 +40,7 @@ def significance_layer(
         Gene names (length n_genes) and cell-type label per cell (length n_cells).
     candidates
         Table in the common schema, with columns ``ligand, receptor, source, target``
-        plus anything else (kept as-is). Use :mod:`ccc_nulls.adapters` to convert tool
+        plus anything else (kept as-is). Use :mod:`ccc_nulls.liana_reference` to convert tool
         output.
     score
         ``"mean"`` (CellPhoneDB), ``"product"`` (SingleCellSignalR-like), or a callable

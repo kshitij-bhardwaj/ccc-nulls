@@ -43,7 +43,6 @@ Send your `benchmarks/results/liana_final/` folder (JSON files) to whoever assem
 python -m benchmarks.liana_final.merge_results <your results folder> --machine "<who, which machine>"
 python -m benchmarks.liana_final --part report
 python -m benchmarks.liana_final.amendment2 --part report
-python -m benchmarks.liana_final.figures
 ```
 
 The merge stops if a file was produced under a different plan or amendment (the SHA-256 is in every file), or if

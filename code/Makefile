@@ -1,7 +1,7 @@
 PY ?= python
 export PYTHONPATH := $(CURDIR)/src:$(CURDIR)
 
-.PHONY: install install-r test data benchmark1 benchmark2 reports
+.PHONY: install install-r test data benchmark1 benchmark2 reports figures
 
 install:            ## the locked Python environment that produced the published results
 	$(PY) -m pip install -r requirements.txt && $(PY) -m pip install --no-deps -e .
@@ -20,6 +20,7 @@ benchmark1: data    ## Benchmark 1, each tool's own p-values (also needs R and t
 	$(PY) -m benchmarks.liana_nulls --part core --dataset moffitt2018_hypothalamus
 	$(PY) -m benchmarks.liana_nulls --part calibration power biology amendment extend power_a3 b2_validity ablation report
 	$(PY) -m benchmarks.liana_nulls.amendment4 --part all
+	$(PY) -m benchmarks.liana_nulls.amendment5 --part all
 
 benchmark2: data    ## Benchmark 2, LIANA+'s consensus (days on one 32 GB machine; see kaggle/README.md)
 	$(PY) -m benchmarks.liana_final --part all
@@ -31,7 +32,7 @@ benchmark2: data    ## Benchmark 2, LIANA+'s consensus (days on one 32 GB machin
 	$(PY) -m benchmarks.liana_final.amendment7 --part all
 	$(PY) -m benchmarks.liana_final.amendment8 --part all
 
-reports:            ## every results README and benchmark figure from the committed JSON files (no data, seconds)
+reports:            ## every results README (the tables) from the committed JSON files (no data, seconds)
 	$(PY) -m benchmarks.liana_nulls --part report
 	$(PY) -m benchmarks.liana_final --part report
 	$(PY) -m benchmarks.liana_final.amendment2 --part report
@@ -40,4 +41,6 @@ reports:            ## every results README and benchmark figure from the commit
 	$(PY) -m benchmarks.liana_final.amendment6 --part report
 	$(PY) -m benchmarks.liana_final.report_amendment7
 	$(PY) -m benchmarks.liana_final.amendment8 --part report
-	$(PY) -m benchmarks.liana_final.figures
+
+figures:            ## the report's three figures from the committed JSON files (no data, seconds)
+	$(PY) figures/make_figures.py

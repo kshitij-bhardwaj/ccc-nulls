@@ -114,17 +114,6 @@ def test_aggregate_complexes_uses_max_p():
     assert len(agg) == 1 and agg.p_rand.iloc[0] == 0.2 and agg.p_strat.iloc[0] == 0.03
 
 
-def test_liana_adapter_schema():
-    liana_res = pd.DataFrame({
-        "ligand": ["A", "A"], "ligand_complex": ["A", "A"], "receptor": ["B", "C"], "receptor_complex": ["B_C", "B_C"],
-        "source": ["x", "x"], "target": ["y", "y"], "lr_means": [1.0, 2.0], "cellphone_pvals": [0.0, 0.1],
-    })
-    out = cn.adapters.from_liana(liana_res, method="cellphonedb")
-    assert list(out.columns) == ["ligand", "receptor", "source", "target", "score", "ligand_complex", "receptor_complex"]
-    with pytest.raises(KeyError):
-        cn.adapters.from_liana(liana_res, score="nope")
-
-
 def test_binned_labels_diagnostic_equals_null_a(s1):
     sim, cands = s1
     sub = cands.iloc[:400]

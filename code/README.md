@@ -113,8 +113,7 @@ stopped. Every result file records the SHA-256 of the plan and amendment it was 
 make reports
 ```
 
-This regenerates every results README (the tables quoted in the report) and the Benchmark 2 summary figures in
-`benchmarks/results/liana_final/figures/`. The commands it runs:
+This regenerates every results README (the tables quoted in the report). The commands it runs:
 
 | Output | Command |
 |---|---|
@@ -122,7 +121,6 @@ This regenerates every results README (the tables quoted in the report) and the 
 | `benchmarks/results/liana_final/README.md` (Benchmark 2, PLAN + AMENDMENT_1) | `python -m benchmarks.liana_final --part report` |
 | `benchmarks/results/liana_final/amendment<N>/README.md`, N = 2, 3, 4, 6, 8 | `python -m benchmarks.liana_final.amendment<N> --part report` |
 | `benchmarks/results/liana_final/amendment7/README.md` | `python -m benchmarks.liana_final.report_amendment7` |
-| `benchmarks/results/liana_final/figures/*.pdf` | `python -m benchmarks.liana_final.figures` |
 
 AMENDMENT_5 of Benchmark 2 has no README of its own: the AMENDMENT_6 and AMENDMENT_7 reports read its JSON files.
 
@@ -141,7 +139,7 @@ python -m benchmarks.liana_nulls.amendment4 --part all                          
 python -m benchmarks.liana_nulls.amendment5 --part all                            # NATMI (native NATMI for column 1)
 ```
 
-(`make benchmark1` runs the first four.) The calibration stage reads each tool's calibration runs, or runs them
+(`make benchmark1` runs all five.) The calibration stage reads each tool's calibration runs, or runs them
 when their files are missing: `python -m tools.cellchat.null_b_calibration --tissue mammary` (and `liver`;
 results in `tools/cellchat/results/`) and
 `python -m benchmarks.null_b_cellphonedb --db data/cellphonedb_v5.0.0/cellphonedb.zip --part calibration --tissue mammary`
@@ -179,7 +177,7 @@ The report's three figures come from the committed result files; nothing is reco
 
 ```bash
 cd code
-python figures/make_figures.py            # all three; or name some: python figures/make_figures.py fig2
+python figures/make_figures.py            # all three (or make figures); or name some: python figures/make_figures.py fig2
 ```
 
 | Output (`figures/output/`) | Report | What it shows |
@@ -191,27 +189,53 @@ python figures/make_figures.py            # all three; or name some: python figu
 `figures/final_results.json` holds the PLAN's Benchmark-1 numbers that the figures read, copied from
 `benchmarks/results/liana_nulls/README.md` and `benchmarks/results/liana_final/README.md` (its `source` field).
 
-## 5. Folder structure
+## 5. Which code produced each result in the report
+
+Every number in the report is read from a committed result file; this table names the code that wrote it. Each part runs as `python -m <module> --part <part>`.
+Benchmark 2 (`benchmarks/liana_final/amendment<N>.py`) runs all four tools' tests inside LIANA+ 1.8.0:
+`ccc_nulls.liana_consensus` captures each method's permutations as LIANA+ runs and computes our tests on them.
+Connectome and NATMI have no permutation p-value of their own, so they are run only this way
+(`capture_connectome`, `capture_natmi`); AMENDMENT_6 and 7 added Connectome, AMENDMENT_8 added NATMI and
+recomputes every earlier variant in the same runs.
+
+| Report | Code that produced it | Result files |
+|---|---|---|
+| Table 2 (native vs. our Python JLP vs. BPT, CellChat and CellPhoneDB) | `benchmarks.liana_nulls --part core` (`tools/cellchat`, `tools/cellphonedb`, R for native CellChat) | `results/liana_nulls/core_*.json`, `extend_*.json`; summary in `figures/final_results.json` |
+| Fig. 1a, 1b, CellChat and CellPhoneDB | `benchmarks.liana_nulls --part calibration power` (JLP, BPT); `benchmarks.liana_nulls.amendment4` (MDT, LOO-t) | `results/liana_nulls/calibration.json`, `power.json`, `amendment4_*.json` |
+| Fig. 1a, 1b, Connectome | `benchmarks.liana_final.amendment6` (part `calibration`), `amendment7` (part `tool_power`) | `results/liana_final/amendment6/calibration.json`, `amendment7/tool_power.json` |
+| Fig. 1a, 1b, NATMI | `benchmarks.liana_final.amendment8`, parts `calibration`, `tool_power` | `results/liana_final/amendment8/calibration.json`, `tool_power.json` |
+| Fig. 2 (main figure: LIANA+'s top 1%, power, AUROC as 2, 3, 4 tools' p-values are replaced) | `benchmarks.liana_final.amendment8`, parts `calibration`, `lung`, `mouse`, `hard_power` | `results/liana_final/amendment8/*.json` |
+| Fig. 3a (p-values inside LIANA+) | `benchmarks.liana_final.amendment8` (part `calibration`) | `amendment8/calibration.json` |
+| Fig. 3b (donor shuffles) | `benchmarks.liana_final.amendment2`, `amendment4`, `amendment7`, `amendment8` (part `donor`); `amendment5` (part `donor_b2`) | `amendment{2,4,7,8}/donor_null.json`, `amendment5/donor_b2.json` |
+| Fig. 3c (sensitivity runs) | `benchmarks.liana_final.amendment4` (parts `sensitivity`, `mouse`), `amendment7`, `amendment8` (part `sensitivity`) | `amendment{4,7,8}/sensitivity_*.json`, `amendment4/mouse_calibration.json` |
+| Fig. 3d (spatial truth) | `benchmarks.liana_final.amendment8` (part `biology`) (truths: `benchmarks.liana_nulls.spatial`) | `amendment8/biology.json`, `results/liana_nulls/truth_*_spatial.*` |
+| Table 3 (summary) | all of the above; the held-out Lung rule is `amendment8`'s part `lung` (`confirm_*.json`) | as above |
+
+The figures themselves are drawn by `figures/make_figures.py` (section 4); `make reports` rebuilds the tables of
+every results README from the same files.
+
+## 6. Folder structure
 
 ```
 code/
 ├── README.md               this file
 ├── requirements.txt        the locked Python environment of the results
 ├── pyproject.toml          the ccc_nulls package (pip install -e .) and pytest settings
-├── Makefile                install, install-r, test, data, benchmark1, benchmark2, reports
+├── Makefile                install, install-r, test, data, benchmark1, benchmark2, reports, figures
 ├── figures/                make_figures.py: the report's figures from the committed results
 ├── RUN.md                  splitting Benchmark 2 across machines, and merging the results
 ├── LICENSE                 BSD-3-Clause, as LIANA+
 ├── src/ccc_nulls/          the package
-│   ├── liana_consensus.py    rank_aggregate: LIANA+'s consensus with Null B (or B2, T2) inside; within-donor by default
+│   ├── liana_consensus.py    rank_aggregate: LIANA+'s consensus with Null B (or B2, T2) inside; within-donor by default;
+│   │                         capture_connectome / capture_natmi run Connectome and NATMI inside LIANA+
 │   ├── composite.py          Null B: one-sided permutations, p = max(p_L, p_R)
 │   ├── competitive.py        B2: matched decoy genes, CAMERA-corrected
 │   ├── type_perm.py, nullb_type_restd.py                  T2: the leave-one-out t-test
 │   ├── nulls.py, core.py, scores.py, stats.py, _matrix.py   Null A and the shared permutation and BH code
-│   ├── liana_reference.py, schema.py, adapters.py, io.py    LIANA+'s tool outputs in one common schema
+│   ├── liana_reference.py, schema.py   LIANA+'s tool outputs in one common schema (Benchmark 1)
 │   ├── datasets.py           data set registry, downloader with md5 check, loaders
 │   ├── evaluation/           Open Problems' evaluation metrics
-│   └── simulate.py           synthetic data with planted interactions (used by the tests)
+│   └── simulate.py           synthetic data with planted interactions (the tests' simulations)
 ├── benchmarks/
 │   ├── liana_nulls/          Benchmark 1: PLAN.md, AMENDMENT_1-5.md and their code
 │   ├── liana_final/          Benchmark 2: PLAN.md, AMENDMENT_1-8.md and their code (amendment<N>.py runs
@@ -222,7 +246,8 @@ code/
 │   ├── cellchat/             CellChat 2.1.2 ported to Python; native R run (run_cellchat.R, native_r.py);
 │   │                         R install script and sessionInfo; port checks and calibration (results/)
 │   ├── cellphonedb/          CellPhoneDB 5.0.1 adapter, Null A and Null B on CellPhoneDB's statistic
-│   └── natmi/                NATMI adapter (its native environment: requirements-native.txt)
+│   └── natmi/                NATMI adapter for Benchmark 1's native column (environment: requirements-native.txt)
+│                             Connectome has no folder: it runs only inside LIANA+ (src/ccc_nulls/liana_consensus.py)
 ├── kaggle/                 the Kaggle sessions that produced Benchmark 2 (kernels.py, runner.py, watch.py, README.md)
 ├── tests/                  tests of the package and the benchmark code
 └── data/                   downloaded data (git-ignored); data/README.md lists every file and its md5

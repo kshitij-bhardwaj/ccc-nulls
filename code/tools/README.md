@@ -3,6 +3,8 @@
 One folder per tool: the tool's native run, its conversion to the common schema, and the checks that
 our Python Null A reproduces the tool's own test. Shared code (the nulls themselves) lives in
 `src/ccc_nulls/`. Benchmark 1 (`benchmarks/liana_nulls`) calls these adapters.
+Connectome has no folder here: it has no native p-value, so it runs only inside LIANA+ (Benchmark 2 and
+AMENDMENT_7's tool-level tests, through `ccc_nulls.liana_consensus.capture_connectome`).
 
 | Folder | Tool | LIANA method | Statistic (Open Problems ranks by) | Native null (Null A)? | Native implementation |
 |---|---|---|---|---|---|

@@ -138,9 +138,8 @@ SESSIONS["a8-tool-labels"] = S(f"{A8} --part tool_labels", ["data"])
 SESSIONS["a8-tool-power-1000"] = S(f"{A8} --part tool_power --only '\\|B1000\\|'", ["data"])
 SESSIONS |= {f"a8-tool-power-5000-{rep}": S(f"{A8} --part tool_power --only '\\|B5000\\|f1.5\\|{rep}$'", ["data"]) for rep in range(5)}
 SESSIONS |= {f"a8-tool-real-{k}": S(f"{A8} --part tool_real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
-# everything merged; reports and figures
-SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report", f"{A6} --part report",
-                        "python -m benchmarks.liana_final.figures"],
+# everything merged; the reports
+SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report", f"{A6} --part report"],
                        [k for k in SESSIONS if k != "data"])
 
 
