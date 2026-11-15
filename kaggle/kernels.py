@@ -26,6 +26,7 @@ LF, A2, A3, A4 = ("python -m benchmarks.liana_final", "python -m benchmarks.lian
 A6 = "python -m benchmarks.liana_final.amendment6"
 A7 = "python -m benchmarks.liana_final.amendment7"
 A8 = "python -m benchmarks.liana_final.amendment8"
+A9 = "python -m benchmarks.liana_final.amendment9"
 RUNS = {"tnbc": "tnbc_wu2021", "allen": "allen_brain_atlas", "mammary": "tabula_sapiens_mammary",
         "liver": "tabula_sapiens_liver", "hypothalamus": "moffitt2018_hypothalamus"}
 LUNG = "tabula_sapiens_lung"
@@ -138,6 +139,15 @@ SESSIONS["a8-tool-labels"] = S(f"{A8} --part tool_labels", ["data"])
 SESSIONS["a8-tool-power-1000"] = S(f"{A8} --part tool_power --only '\\|B1000\\|'", ["data"])
 SESSIONS |= {f"a8-tool-power-5000-{rep}": S(f"{A8} --part tool_power --only '\\|B5000\\|f1.5\\|{rep}$'", ["data"]) for rep in range(5)}
 SESSIONS |= {f"a8-tool-real-{k}": S(f"{A8} --part tool_real --only '^{v}$'", ["data"]) for k, v in RUNS.items()}
+# AMENDMENT_9.md: AMENDMENT_8's calibration and hard-power runs, scored at every cutoff (one session per tissue and side,
+# Lung per replicate)
+SESSIONS |= {f"a9-calibration-{k}-{scen}": S(f"{A9} --part calibration --only '^{RUNS[k]}\\|{scen}\\|'", ["data"])
+             for k in ("mammary", "liver") for scen in ("receptor", "ligand")}
+for scen in ("receptor", "ligand"):
+    for rep in range(3):
+        SESSIONS[f"a9-lung-{scen}-{rep}"] = S(f"{A9} --part lung --only '^{LUNG}\\|{scen}\\|{rep}$'", ["data"])
+SESSIONS["a9-mouse"] = S(f"{A9} --part mouse", ["data"])
+SESSIONS["a9-hard-power"] = S(f"{A9} --part hard_power", ["data"])
 # everything merged; reports and figures
 SESSIONS["report"] = S([f"{LF} --part report", f"{A2} --part report", f"{A3} --part report", f"{A4} --part report", f"{A6} --part report",
                         "python -m benchmarks.liana_final.figures"],
