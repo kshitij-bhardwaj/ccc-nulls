@@ -1,0 +1,603 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "amendment_5_sha256": "2bcb4baa1bdb02b0090b2cd3df34b523cdec3220aed54e38202614ddb1d89c4b",
+ "amendment_6_sha256": "047ec2c9db318d13a83e87d1b0548192b6799d859932050a8432de30db64d23a",
+ "amendment_7_sha256": "2216f2f06884411fa031dfa1e5d56abad91060ee25a675c6778833cdcf5f918c",
+ "amendment_8_sha256": "20e9d36542655e94d8e2bcfdf3b06a2b378eaf7bd683af079e5282eb248a4fcc",
+ "runs": {
+  "tabula_sapiens_mammary|labels|0": {
+   "dataset": "tabula_sapiens_mammary",
+   "rep": 0,
+   "CellPhoneDB": {
+    "rows": 197907,
+    "null_a": {
+     "any_call": true,
+     "calls": 192
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 575
+    }
+   },
+   "Connectome": {
+    "rows": 197907,
+    "null_a": {
+     "any_call": true,
+     "calls": 201
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 1790
+    }
+   },
+   "NATMI": {
+    "rows": 197907,
+    "null_a": {
+     "any_call": true,
+     "calls": 313
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 1768
+    }
+   },
+   "CellChat": {
+    "rows": 197907,
+    "null_a": {
+     "any_call": true,
+     "calls": 49
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 2263
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels"
+  },
+  "tabula_sapiens_mammary|labels|1": {
+   "dataset": "tabula_sapiens_mammary",
+   "rep": 1,
+   "CellPhoneDB": {
+    "rows": 207472,
+    "null_a": {
+     "any_call": true,
+     "calls": 129
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 670
+    }
+   },
+   "Connectome": {
+    "rows": 207472,
+    "null_a": {
+     "any_call": true,
+     "calls": 133
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 2184
+    }
+   },
+   "NATMI": {
+    "rows": 207472,
+    "null_a": {
+     "any_call": true,
+     "calls": 148
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 2140
+    }
+   },
+   "CellChat": {
+    "rows": 207472,
+    "null_a": {
+     "any_call": true,
+     "calls": 83
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3255
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels"
+  },
+  "tabula_sapiens_mammary|labels|2": {
+   "dataset": "tabula_sapiens_mammary",
+   "rep": 2,
+   "CellPhoneDB": {
+    "rows": 210512,
+    "null_a": {
+     "any_call": true,
+     "calls": 172
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 1031
+    }
+   },
+   "Connectome": {
+    "rows": 210512,
+    "null_a": {
+     "any_call": true,
+     "calls": 205
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3073
+    }
+   },
+   "NATMI": {
+    "rows": 210512,
+    "null_a": {
+     "any_call": true,
+     "calls": 119
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3069
+    }
+   },
+   "CellChat": {
+    "rows": 210512,
+    "null_a": {
+     "any_call": true,
+     "calls": 61
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 4350
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels"
+  },
+  "tabula_sapiens_liver|labels|0": {
+   "dataset": "tabula_sapiens_liver",
+   "rep": 0,
+   "CellPhoneDB": {
+    "rows": 356817,
+    "null_a": {
+     "any_call": true,
+     "calls": 434
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3527
+    }
+   },
+   "Connectome": {
+    "rows": 356817,
+    "null_a": {
+     "any_call": true,
+     "calls": 424
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 4570
+    }
+   },
+   "NATMI": {
+    "rows": 356817,
+    "null_a": {
+     "any_call": true,
+     "calls": 203
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 4544
+    }
+   },
+   "CellChat": {
+    "rows": 356817,
+    "null_a": {
+     "any_call": true,
+     "calls": 314
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 5438
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels"
+  },
+  "tabula_sapiens_liver|labels|1": {
+   "dataset": "tabula_sapiens_liver",
+   "rep": 1,
+   "CellPhoneDB": {
+    "rows": 352659,
+    "null_a": {
+     "any_call": true,
+     "calls": 294
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3040
+    }
+   },
+   "Connectome": {
+    "rows": 352659,
+    "null_a": {
+     "any_call": true,
+     "calls": 407
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3143
+    }
+   },
+   "NATMI": {
+    "rows": 352659,
+    "null_a": {
+     "any_call": true,
+     "calls": 613
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3138
+    }
+   },
+   "CellChat": {
+    "rows": 352659,
+    "null_a": {
+     "any_call": true,
+     "calls": 162
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3736
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels"
+  },
+  "tabula_sapiens_liver|labels|2": {
+   "dataset": "tabula_sapiens_liver",
+   "rep": 2,
+   "CellPhoneDB": {
+    "rows": 348571,
+    "null_a": {
+     "any_call": true,
+     "calls": 450
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 1849
+    }
+   },
+   "Connectome": {
+    "rows": 348571,
+    "null_a": {
+     "any_call": true,
+     "calls": 543
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3105
+    }
+   },
+   "NATMI": {
+    "rows": 348571,
+    "null_a": {
+     "any_call": true,
+     "calls": 907
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 3102
+    }
+   },
+   "CellChat": {
+    "rows": 348571,
+    "null_a": {
+     "any_call": true,
+     "calls": 191
+    },
+    "null_a_plus1": {
+     "any_call": false,
+     "calls": 0
+    },
+    "null_b": {
+     "any_call": false,
+     "calls": 0
+    },
+    "b2": {
+     "any_call": false,
+     "calls": 0
+    },
+    "t2": {
+     "any_call": true,
+     "calls": 4173
+    }
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels"
+  }
+ },
+ "written": "2026-11-15 07:27",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels",
+   "runs": 6,
+   "written": "2026-11-15 07:27"
+  }
+ ]
+}

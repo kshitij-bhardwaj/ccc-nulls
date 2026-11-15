@@ -1,0 +1,1781 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "amendment_5_sha256": "2bcb4baa1bdb02b0090b2cd3df34b523cdec3220aed54e38202614ddb1d89c4b",
+ "amendment_6_sha256": "047ec2c9db318d13a83e87d1b0548192b6799d859932050a8432de30db64d23a",
+ "amendment_7_sha256": "2216f2f06884411fa031dfa1e5d56abad91060ee25a675c6778833cdcf5f918c",
+ "amendment_8_sha256": "20e9d36542655e94d8e2bcfdf3b06a2b378eaf7bd683af079e5282eb248a4fcc",
+ "runs": {
+  "tabula_sapiens_mammary|f2|f1.5|0": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 42,
+   "n_one_sided_rows": 3032,
+   "rows": 103397,
+   "liana5": {
+    "precision_at_k": 0.35714285714285715,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9500989445910291
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.07142857142857142,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9547603342128408
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.5952380952380952,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9965039577836412
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.38095238095238093,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9552440633245383
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.07142857142857142,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9532706684256816
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.40476190476190477,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9944700967458223
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.2857142857142857,
+    "single": {
+     "power_top": 0.8,
+     "auroc": 0.9230211081794195
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.07142857142857142,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9547603342128408
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.09523809523809523,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9619283201407212
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.9047619047619048,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9955310026385225
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.5476190476190477,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9834542656112577
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.7142857142857143,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.998603781882146
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.7142857142857143,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.998603781882146
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.47619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9843557607739666
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.23809523809523808,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9493898416886544
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.047619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9427330694810906
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.7380952380952381,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9990655233069481
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.5,
+    "single": {
+     "power_top": 0.6333333333333333,
+     "auroc": 0.8952176781002639
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.6190476190476191,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9507145998240984
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.047619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9005606860158312
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.7619047619047619,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9995932277924362
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.5952380952380952,
+    "single": {
+     "power_top": 0.6333333333333333,
+     "auroc": 0.8079815303430079
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.5476190476190477,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9327176781002638
+    }
+   },
+   "effect": 1.5,
+   "rep": 0,
+   "seconds": 601.7,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f2.0|0": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 42,
+   "n_one_sided_rows": 3032,
+   "rows": 103397,
+   "liana5": {
+    "precision_at_k": 0.5238095238095238,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.95551890941073
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.21428571428571427,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9518304749340369
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.7619047619047619,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9984168865435357
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.5952380952380952,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9688104661389622
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.047619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9371701846965699
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.5238095238095238,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9941127968337731
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.42857142857142855,
+    "single": {
+     "power_top": 0.8333333333333334,
+     "auroc": 0.9354166666666667
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.21428571428571427,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9518304749340369
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.21428571428571427,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.960806948109059
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 1.0,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 1.0
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.6190476190476191,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9906882145998241
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.8095238095238095,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9993953386103782
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.8095238095238095,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9993953386103782
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.6666666666666666,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9859498680738786
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.35714285714285715,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9456629287598944
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.047619047619047616,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9231530343007915
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.8809523809523809,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9999120492524186
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.7619047619047619,
+    "single": {
+     "power_top": 0.7,
+     "auroc": 0.9239226033421284
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.8571428571428571,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9611477572559367
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.023809523809523808,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8563654353562006
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.8809523809523809,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9998460861917327
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.7380952380952381,
+    "single": {
+     "power_top": 0.7,
+     "auroc": 0.8517480211081794
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.8095238095238095,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9427550571679859
+    }
+   },
+   "effect": 2.0,
+   "rep": 0,
+   "seconds": 604.6,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f1.5|1": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 53,
+   "n_one_sided_rows": 3360,
+   "rows": 103105,
+   "liana5": {
+    "precision_at_k": 0.4339622641509434,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9147569444444444
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9477529761904762
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.8113207547169812,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9962003968253968
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.5660377358490566,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9716269841269841
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.07547169811320754,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9317261904761904
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.41509433962264153,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9913888888888889
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9484027777777778
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9477529761904762
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9558333333333333
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.8679245283018868,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9928769841269841
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.6037735849056604,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9823263888888889
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.8113207547169812,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.998204365079365
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.8113207547169812,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.998204365079365
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.6981132075471698,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9693700396825397
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.3584905660377358,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9409027777777778
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.05660377358490566,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9209871031746032
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.9056603773584906,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9992956349206349
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.660377358490566,
+    "single": {
+     "power_top": 0.7666666666666667,
+     "auroc": 0.9152033730158731
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.7169811320754716,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9286309523809524
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.05660377358490566,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9098214285714286
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.9433962264150944,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.999811507936508
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.660377358490566,
+    "single": {
+     "power_top": 0.6666666666666666,
+     "auroc": 0.8249404761904762
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.6792452830188679,
+    "single": {
+     "power_top": 0.8666666666666667,
+     "auroc": 0.899375
+    }
+   },
+   "effect": 1.5,
+   "rep": 1,
+   "seconds": 598.5,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f2.0|1": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 53,
+   "n_one_sided_rows": 3360,
+   "rows": 103105,
+   "liana5": {
+    "precision_at_k": 0.5660377358490566,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9255406746031746
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.22641509433962265,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9420486111111112
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.8301886792452831,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9976488095238095
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.6226415094339622,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9778968253968254
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.05660377358490566,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9260962301587301
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.4528301886792453,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9923214285714286
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.2830188679245283,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9482787698412698
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.22641509433962265,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9420486111111112
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.24528301886792453,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9507886904761905
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 1.0,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 1.0
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.7358490566037735,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9876587301587302
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.8490566037735849,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9989781746031746
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.8490566037735849,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9989781746031746
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.7358490566037735,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9635763888888889
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.39622641509433965,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9392609126984127
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.018867924528301886,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9092063492063492
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.9433962264150944,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9997321428571428
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.6981132075471698,
+    "single": {
+     "power_top": 0.8,
+     "auroc": 0.931984126984127
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.8113207547169812,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9337301587301587
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.03773584905660377,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.888095238095238
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.9433962264150944,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9999206349206349
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.7169811320754716,
+    "single": {
+     "power_top": 0.7,
+     "auroc": 0.8571527777777778
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.8490566037735849,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9051587301587302
+    }
+   },
+   "effect": 2.0,
+   "rep": 1,
+   "seconds": 599.6,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f1.5|2": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 56,
+   "n_one_sided_rows": 3748,
+   "rows": 101336,
+   "liana5": {
+    "precision_at_k": 0.39285714285714285,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9460734614016364
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.17857142857142858,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9504580220562078
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.6071428571428571,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.996789398790466
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.4642857142857143,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9703397367484881
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.10714285714285714,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9470695482034863
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.5535714285714286,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9955131625755959
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.42857142857142855,
+    "single": {
+     "power_top": 0.8333333333333334,
+     "auroc": 0.9493151903237282
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.17857142857142858,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9504580220562078
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.19642857142857142,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9460823550337958
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.8571428571428571,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9894254713625045
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.5535714285714286,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9818436499466382
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.6964285714285714,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9982568480967627
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.6964285714285714,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9982568480967627
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.42857142857142855,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9843827819281394
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.375,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9563678406261117
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.10714285714285714,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9445526503023834
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.6964285714285714,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9979678050515831
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.5892857142857143,
+    "single": {
+     "power_top": 0.7666666666666667,
+     "auroc": 0.9258048737104233
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.5,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9536997509782995
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.07142857142857142,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9147545357524013
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.875,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9994130202774814
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.7142857142857143,
+    "single": {
+     "power_top": 0.7333333333333333,
+     "auroc": 0.8579064389896834
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.6607142857142857,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9333600142298114
+    }
+   },
+   "effect": 1.5,
+   "rep": 2,
+   "seconds": 565.4,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f2.0|2": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 56,
+   "n_one_sided_rows": 3748,
+   "rows": 101336,
+   "liana5": {
+    "precision_at_k": 0.42857142857142855,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9492707221629313
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.25,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9531883671291356
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.7321428571428571,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9983991462113126
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.6071428571428571,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9870997865528282
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.08928571428571429,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.937001956599075
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.6071428571428571,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.996220206332266
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.5535714285714286,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9729455709711846
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.25,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9531883671291356
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.26785714285714285,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9626600853788687
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.9821428571428571,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9979766986837424
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.6785714285714286,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9888829598007827
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.7678571428571429,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9990795090715048
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.7678571428571429,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9990795090715048
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.6071428571428571,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9943703308431163
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.4107142857142857,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9680184987548915
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.08928571428571429,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.92982924226254
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.875,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.999501956599075
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.8035714285714286,
+    "single": {
+     "power_top": 0.8666666666666667,
+     "auroc": 0.9582221629313412
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.75,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9772500889363216
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.05357142857142857,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8863393810032018
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.9107142857142857,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9998754891497688
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.7857142857142857,
+    "single": {
+     "power_top": 0.8,
+     "auroc": 0.9074172892209178
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.8571428571428571,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.946789398790466
+    }
+   },
+   "effect": 2.0,
+   "rep": 2,
+   "seconds": 571.3,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f1.5|3": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 41,
+   "n_one_sided_rows": 3347,
+   "rows": 102598,
+   "liana5": {
+    "precision_at_k": 0.43902439024390244,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9343840254954686
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.0975609756097561,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9440991933074395
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.7804878048780488,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9969325764366099
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.6097560975609756,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9788965242505726
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.024390243902439025,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9390498954287422
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.4146341463414634,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9924609102679016
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.24390243902439024,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.950099591674136
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.0975609756097561,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9443680908276069
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.0975609756097561,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9566377850811673
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.9512195121951219,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9913554426849915
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.43902439024390244,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9818992132257743
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.8536585365853658,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9985758390598546
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.8536585365853658,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9985758390598546
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.7317073170731707,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9830843541479932
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.21951219512195122,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9465192709889453
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.024390243902439025,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9338611692062544
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.8780487804878049,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9990638382631212
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.6829268292682927,
+    "single": {
+     "power_top": 0.8333333333333334,
+     "auroc": 0.944766457524151
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.7804878048780488,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.957095906782193
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.024390243902439025,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8881087541081566
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.9512195121951219,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9999701224977592
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.6585365853658537,
+    "single": {
+     "power_top": 0.7333333333333333,
+     "auroc": 0.874056368887561
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.6341463414634146,
+    "single": {
+     "power_top": 0.8666666666666667,
+     "auroc": 0.9085449656408724
+    }
+   },
+   "effect": 1.5,
+   "rep": 3,
+   "seconds": 577.0,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f2.0|3": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 41,
+   "n_one_sided_rows": 3347,
+   "rows": 102598,
+   "liana5": {
+    "precision_at_k": 0.5609756097560976,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9358032068519072
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.34146341463414637,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9541878298974206
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.8536585365853658,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9982969823722737
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.6829268292682927,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9882282641171198
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.024390243902439025,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9312817448461309
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.6341463414634146,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9965491484911861
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.43902439024390244,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9591823523553431
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.34146341463414637,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9541878298974206
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.34146341463414637,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9639478139627528
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.975609756097561,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.997709391494871
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.6341463414634146,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9897022208943332
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.8536585365853658,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9992829399462205
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.8536585365853658,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9992829399462205
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.8536585365853658,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9868290010955084
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.3170731707317073,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9513992630216114
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.024390243902439025,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9218703316402749
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.9512195121951219,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9998207349865551
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.6829268292682927,
+    "single": {
+     "power_top": 0.8333333333333334,
+     "auroc": 0.9514191813564385
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.9024390243902439,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.970182252763669
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.024390243902439025,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8592769644457723
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.975609756097561,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 1.0
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.7073170731707317,
+    "single": {
+     "power_top": 0.7333333333333333,
+     "auroc": 0.8819340703117219
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.8048780487804879,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9246588985160841
+    }
+   },
+   "effect": 2.0,
+   "rep": 3,
+   "seconds": 578.7,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f1.5|4": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 68,
+   "n_one_sided_rows": 3766,
+   "rows": 101284,
+   "liana5": {
+    "precision_at_k": 0.1323529411764706,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.8956231191361302
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.2647058823529412,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9379137900513366
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.7058823529411765,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9954947778367853
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.6323529411764706,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9689060010621349
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.2647058823529412,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9257479199858382
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.5294117647058824,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.991706496725084
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.5294117647058824,
+    "single": {
+     "power_top": 0.9,
+     "auroc": 0.9505399185696584
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.2647058823529412,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9389405204460967
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.2647058823529412,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.9203797132235794
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.7352941176470589,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9761904761904762
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.45588235294117646,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9589883165161975
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.7794117647058824,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9863161621525934
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.7794117647058824,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9806071871127633
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.7794117647058824,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9909010444326429
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.5441176470588235,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9802929722074704
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.2647058823529412,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9207204815011506
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.7941176470588235,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.998123561692335
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.6764705882352942,
+    "single": {
+     "power_top": 0.7666666666666667,
+     "auroc": 0.9345901929545052
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.8235294117647058,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9905912550893964
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.22058823529411764,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.8959638874137016
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.8970588235294118,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9996282527881041
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.6911764705882353,
+    "single": {
+     "power_top": 0.7333333333333333,
+     "auroc": 0.878553726323243
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.8382352941176471,
+    "single": {
+     "power_top": 0.9666666666666667,
+     "auroc": 0.9880775358470526
+    }
+   },
+   "effect": 1.5,
+   "rep": 4,
+   "seconds": 575.6,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  },
+  "tabula_sapiens_mammary|f2|f2.0|4": {
+   "planted_rows_present": {
+    "single": 30
+   },
+   "n_true_rows": 68,
+   "n_one_sided_rows": 3766,
+   "rows": 101284,
+   "liana5": {
+    "precision_at_k": 0.22058823529411764,
+    "single": {
+     "power_top": 0.8333333333333334,
+     "auroc": 0.88266507346433
+    }
+   },
+   "liana6": {
+    "precision_at_k": 0.20588235294117646,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8987431403788281
+    }
+   },
+   "swap_null_b": {
+    "precision_at_k": 0.7352941176470589,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9967604885820499
+    }
+   },
+   "swap_b2": {
+    "precision_at_k": 0.7058823529411765,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9825234554788458
+    }
+   },
+   "extra_null_a": {
+    "precision_at_k": 0.20588235294117646,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8931226765799256
+    }
+   },
+   "extra_null_b": {
+    "precision_at_k": 0.47058823529411764,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9906178084616747
+    }
+   },
+   "extra_b2": {
+    "precision_at_k": 0.4411764705882353,
+    "single": {
+     "power_top": 0.8666666666666667,
+     "auroc": 0.9513011152416357
+    }
+   },
+   "liana6_prop20": {
+    "precision_at_k": 0.22058823529411764,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8997344662772172
+    }
+   },
+   "liana6_prop30": {
+    "precision_at_k": 0.2647058823529412,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9159851301115242
+    }
+   },
+   "liana6_de": {
+    "precision_at_k": 0.9411764705882353,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9963843158081076
+    }
+   },
+   "liana6@mean": {
+    "precision_at_k": 0.45588235294117646,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9778589130819614
+    }
+   },
+   "swap_null_b@mean": {
+    "precision_at_k": 0.7941176470588235,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9981678173127987
+    }
+   },
+   "extra_null_b@mean": {
+    "precision_at_k": 0.7941176470588235,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9981678173127987
+    }
+   },
+   "swap_t2": {
+    "precision_at_k": 0.8235294117647058,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9931669322003894
+    }
+   },
+   "extra_t2": {
+    "precision_at_k": 0.4117647058823529,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9729686670207116
+    }
+   },
+   "swap3_null_a": {
+    "precision_at_k": 0.19117647058823528,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.8886086032926181
+    }
+   },
+   "swap3_null_b": {
+    "precision_at_k": 0.8529411764705882,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9990440785979819
+    }
+   },
+   "swap3_b2": {
+    "precision_at_k": 0.7794117647058824,
+    "single": {
+     "power_top": 0.8,
+     "auroc": 0.9637723490883342
+    }
+   },
+   "swap3_t2": {
+    "precision_at_k": 0.8970588235294118,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9941759603469641
+    }
+   },
+   "swap4_null_a": {
+    "precision_at_k": 0.17647058823529413,
+    "single": {
+     "power_top": 0.9333333333333333,
+     "auroc": 0.8617896972915561
+    }
+   },
+   "swap4_null_b": {
+    "precision_at_k": 0.9411764705882353,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9999026376349797
+    }
+   },
+   "swap4_b2": {
+    "precision_at_k": 0.75,
+    "single": {
+     "power_top": 0.8,
+     "auroc": 0.9209948663480262
+    }
+   },
+   "swap4_t2": {
+    "precision_at_k": 0.9411764705882353,
+    "single": {
+     "power_top": 1.0,
+     "auroc": 0.9924942467693397
+    }
+   },
+   "effect": 2.0,
+   "rep": 4,
+   "seconds": 559.3,
+   "dataset": "tabula_sapiens_mammary",
+   "setting": "default",
+   "design": "f2",
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power"
+  }
+ },
+ "written": "2026-11-14 20:29",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-power",
+   "runs": 10,
+   "written": "2026-11-14 20:29"
+  }
+ ]
+}

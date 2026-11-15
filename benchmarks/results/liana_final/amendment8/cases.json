@@ -1,0 +1,174 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "written": "2026-11-15 09:45",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "amendment_5_sha256": "2bcb4baa1bdb02b0090b2cd3df34b523cdec3220aed54e38202614ddb1d89c4b",
+ "amendment_6_sha256": "047ec2c9db318d13a83e87d1b0548192b6799d859932050a8432de30db64d23a",
+ "amendment_7_sha256": "2216f2f06884411fa031dfa1e5d56abad91060ee25a675c6778833cdcf5f918c",
+ "amendment_8_sha256": "20e9d36542655e94d8e2bcfdf3b06a2b378eaf7bd683af079e5282eb248a4fcc",
+ "runs": {
+  "tnbc_wu2021": {
+   "swap4_null_b": {
+    "kept": 16764,
+    "dropped": 5518,
+    "breadth_dropped_median": 0.896551724137931,
+    "breadth_kept_median": 0.5862068965517241,
+    "mann_whitney_p": 4.9572562275360184e-201,
+    "dropped_by_both": 4869,
+    "dropped_swap4_only": 649,
+    "dropped_swap3_only": 1
+   },
+   "swap4_b2": {
+    "kept": 19455,
+    "dropped": 2827,
+    "breadth_dropped_median": 0.896551724137931,
+    "breadth_kept_median": 0.5862068965517241,
+    "mann_whitney_p": 3.355506982020043e-75,
+    "dropped_by_both": 2674,
+    "dropped_swap4_only": 153,
+    "dropped_swap3_only": 0
+   },
+   "swap4_t2": {
+    "kept": 18880,
+    "dropped": 3402,
+    "breadth_dropped_median": 0.41379310344827586,
+    "breadth_kept_median": 0.7241379310344828,
+    "mann_whitney_p": 1.0,
+    "dropped_by_both": 3158,
+    "dropped_swap4_only": 244,
+    "dropped_swap3_only": 6
+   }
+  },
+  "allen_brain_atlas": {
+   "swap4_null_b": {
+    "kept": 26447,
+    "dropped": 14452,
+    "breadth_dropped_median": 0.9565217391304348,
+    "breadth_kept_median": 0.8695652173913043,
+    "mann_whitney_p": 1.5613471835025815e-121,
+    "dropped_by_both": 12401,
+    "dropped_swap4_only": 2051,
+    "dropped_swap3_only": 18
+   },
+   "swap4_b2": {
+    "kept": 31507,
+    "dropped": 9392,
+    "breadth_dropped_median": 0.9130434782608695,
+    "breadth_kept_median": 0.9130434782608695,
+    "mann_whitney_p": 1.5618297713999642e-06,
+    "dropped_by_both": 9019,
+    "dropped_swap4_only": 373,
+    "dropped_swap3_only": 3
+   },
+   "swap4_t2": {
+    "kept": 33475,
+    "dropped": 7424,
+    "breadth_dropped_median": 0.782608695652174,
+    "breadth_kept_median": 0.9130434782608695,
+    "mann_whitney_p": 1.0,
+    "dropped_by_both": 6897,
+    "dropped_swap4_only": 527,
+    "dropped_swap3_only": 9
+   }
+  },
+  "tabula_sapiens_mammary": {
+   "swap4_null_b": {
+    "kept": 9858,
+    "dropped": 4788,
+    "breadth_dropped_median": 0.875,
+    "breadth_kept_median": 0.8125,
+    "mann_whitney_p": 8.052534653842798e-08,
+    "dropped_by_both": 3999,
+    "dropped_swap4_only": 789,
+    "dropped_swap3_only": 51
+   },
+   "swap4_b2": {
+    "kept": 11896,
+    "dropped": 2750,
+    "breadth_dropped_median": 0.75,
+    "breadth_kept_median": 0.8125,
+    "mann_whitney_p": 1.0,
+    "dropped_by_both": 2629,
+    "dropped_swap4_only": 121,
+    "dropped_swap3_only": 58
+   },
+   "swap4_t2": {
+    "kept": 11808,
+    "dropped": 2838,
+    "breadth_dropped_median": 0.5625,
+    "breadth_kept_median": 0.875,
+    "mann_whitney_p": 1.0,
+    "dropped_by_both": 2714,
+    "dropped_swap4_only": 124,
+    "dropped_swap3_only": 146
+   }
+  },
+  "tabula_sapiens_liver": {
+   "swap4_null_b": {
+    "kept": 23735,
+    "dropped": 7638,
+    "breadth_dropped_median": 0.9583333333333334,
+    "breadth_kept_median": 0.9166666666666666,
+    "mann_whitney_p": 7.879192303525097e-81,
+    "dropped_by_both": 5549,
+    "dropped_swap4_only": 2089,
+    "dropped_swap3_only": 6
+   },
+   "swap4_b2": {
+    "kept": 27548,
+    "dropped": 3825,
+    "breadth_dropped_median": 0.9166666666666666,
+    "breadth_kept_median": 0.9583333333333334,
+    "mann_whitney_p": 1.0,
+    "dropped_by_both": 3533,
+    "dropped_swap4_only": 292,
+    "dropped_swap3_only": 0
+   },
+   "swap4_t2": {
+    "kept": 26639,
+    "dropped": 4734,
+    "breadth_dropped_median": 0.7083333333333334,
+    "breadth_kept_median": 0.9583333333333334,
+    "mann_whitney_p": 1.0,
+    "dropped_by_both": 4368,
+    "dropped_swap4_only": 366,
+    "dropped_swap3_only": 26
+   }
+  },
+  "moffitt2018_hypothalamus": {
+   "swap4_null_b": {
+    "kept": 792,
+    "dropped": 437,
+    "breadth_dropped_median": 1.0,
+    "breadth_kept_median": 0.875,
+    "mann_whitney_p": 0.11977084949001604,
+    "dropped_by_both": 291,
+    "dropped_swap4_only": 146,
+    "dropped_swap3_only": 0
+   },
+   "swap4_b2": {
+    "kept": 1031,
+    "dropped": 198,
+    "breadth_dropped_median": 0.8125,
+    "breadth_kept_median": 1.0,
+    "mann_whitney_p": 0.9995313460523572,
+    "dropped_by_both": 185,
+    "dropped_swap4_only": 13,
+    "dropped_swap3_only": 0
+   },
+   "swap4_t2": {
+    "kept": 864,
+    "dropped": 365,
+    "breadth_dropped_median": 0.375,
+    "breadth_kept_median": 1.0,
+    "mann_whitney_p": 1.0,
+    "dropped_by_both": 324,
+    "dropped_swap4_only": 41,
+    "dropped_swap3_only": 0
+   }
+  }
+ }
+}

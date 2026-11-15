@@ -1,0 +1,1996 @@
+{
+ "plan_sha256": "b600baf70d17313a4260f2bf9a3bd144bd8f7c21036895be4ca16a786341aab7",
+ "amendment_1_sha256": "13396316c60a5f92992e9bcf2af08526b08ff8072aef825dbe1237b1979f166f",
+ "amendment_2_sha256": "05b25d39a336f77481622aaf82ca85529efc684c88f25f9fe061207098388908",
+ "amendment_3_sha256": "826b86828a98431c860d2ecd8a15f40b245e519a598a397f3dbdaff04c1012ac",
+ "amendment_4_sha256": "c13ea759b7da344700879d636498def50cb7e3d7f3efdc1d0055772dea2d3522",
+ "amendment_5_sha256": "2bcb4baa1bdb02b0090b2cd3df34b523cdec3220aed54e38202614ddb1d89c4b",
+ "amendment_6_sha256": "047ec2c9db318d13a83e87d1b0548192b6799d859932050a8432de30db64d23a",
+ "amendment_7_sha256": "2216f2f06884411fa031dfa1e5d56abad91060ee25a675c6778833cdcf5f918c",
+ "amendment_8_sha256": "20e9d36542655e94d8e2bcfdf3b06a2b378eaf7bd683af079e5282eb248a4fcc",
+ "runs": {
+  "tabula_sapiens_mammary|B1000|f1.5|0": {
+   "rep": 0,
+   "effect": 1.5,
+   "n_perms": 1000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3036,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9861660079051383,
+     "one_sided_false_calls": 2849,
+     "null_false_calls": 145
+    },
+    "null_a_plus1": {
+     "calls": 2866,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9853454291695743,
+     "one_sided_false_calls": 2769,
+     "null_false_calls": 55
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 46,
+     "planted_calls": 23,
+     "power": 0.7666666666666667,
+     "fdp": 0.2391304347826087,
+     "one_sided_false_calls": 10,
+     "null_false_calls": 1
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 2881,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9854217285664699,
+     "one_sided_false_calls": 2675,
+     "null_false_calls": 164
+    },
+    "null_a_plus1": {
+     "calls": 2734,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9846378931967813,
+     "one_sided_false_calls": 2624,
+     "null_false_calls": 68
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 391,
+     "planted_calls": 27,
+     "power": 0.9,
+     "fdp": 0.9002557544757033,
+     "one_sided_false_calls": 266,
+     "null_false_calls": 86
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 2856,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9852941176470589,
+     "one_sided_false_calls": 2665,
+     "null_false_calls": 149
+    },
+    "null_a_plus1": {
+     "calls": 2718,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9845474613686535,
+     "one_sided_false_calls": 2606,
+     "null_false_calls": 70
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 388,
+     "planted_calls": 27,
+     "power": 0.9,
+     "fdp": 0.8994845360824743,
+     "one_sided_false_calls": 264,
+     "null_false_calls": 85
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1602,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9737827715355806,
+     "one_sided_false_calls": 1531,
+     "null_false_calls": 29
+    },
+    "null_a_plus1": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 372,
+     "planted_calls": 28,
+     "power": 0.9333333333333333,
+     "fdp": 0.8924731182795699,
+     "one_sided_false_calls": 212,
+     "null_false_calls": 120
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-1000"
+  },
+  "tabula_sapiens_mammary|B1000|f1.5|1": {
+   "rep": 1,
+   "effect": 1.5,
+   "n_perms": 1000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3379,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9843148860609647,
+     "one_sided_false_calls": 3175,
+     "null_false_calls": 151
+    },
+    "null_a_plus1": {
+     "calls": 3236,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9836217552533992,
+     "one_sided_false_calls": 3106,
+     "null_false_calls": 77
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 46,
+     "planted_calls": 22,
+     "power": 0.7333333333333333,
+     "fdp": 0.1956521739130435,
+     "one_sided_false_calls": 8,
+     "null_false_calls": 1
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 2943,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9819911654774041,
+     "one_sided_false_calls": 2706,
+     "null_false_calls": 184
+    },
+    "null_a_plus1": {
+     "calls": 2781,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9809421071556994,
+     "one_sided_false_calls": 2635,
+     "null_false_calls": 93
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 329,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.8601823708206687,
+     "one_sided_false_calls": 230,
+     "null_false_calls": 53
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 2836,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.981311706629055,
+     "one_sided_false_calls": 2652,
+     "null_false_calls": 131
+    },
+    "null_a_plus1": {
+     "calls": 2692,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9803120356612184,
+     "one_sided_false_calls": 2577,
+     "null_false_calls": 62
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 327,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.8593272171253823,
+     "one_sided_false_calls": 230,
+     "null_false_calls": 51
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1404,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9622507122507122,
+     "one_sided_false_calls": 1315,
+     "null_false_calls": 36
+    },
+    "null_a_plus1": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 322,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.860248447204969,
+     "one_sided_false_calls": 188,
+     "null_false_calls": 89
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-1000"
+  },
+  "tabula_sapiens_mammary|B1000|f1.5|2": {
+   "rep": 2,
+   "effect": 1.5,
+   "n_perms": 1000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3810,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9853018372703412,
+     "one_sided_false_calls": 3505,
+     "null_false_calls": 249
+    },
+    "null_a_plus1": {
+     "calls": 3499,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9839954272649328,
+     "one_sided_false_calls": 3341,
+     "null_false_calls": 102
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 55,
+     "planted_calls": 23,
+     "power": 0.7666666666666667,
+     "fdp": 0.18181818181818182,
+     "one_sided_false_calls": 10,
+     "null_false_calls": 0
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 3085,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9818476499189627,
+     "one_sided_false_calls": 2839,
+     "null_false_calls": 190
+    },
+    "null_a_plus1": {
+     "calls": 2881,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9805623047552933,
+     "one_sided_false_calls": 2724,
+     "null_false_calls": 101
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 400,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8725,
+     "one_sided_false_calls": 265,
+     "null_false_calls": 84
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 3005,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9813643926788685,
+     "one_sided_false_calls": 2824,
+     "null_false_calls": 125
+    },
+    "null_a_plus1": {
+     "calls": 2824,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9801699716713881,
+     "one_sided_false_calls": 2691,
+     "null_false_calls": 77
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 392,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8698979591836735,
+     "one_sided_false_calls": 258,
+     "null_false_calls": 83
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1688,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.966824644549763,
+     "one_sided_false_calls": 1573,
+     "null_false_calls": 59
+    },
+    "null_a_plus1": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 264,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8106060606060606,
+     "one_sided_false_calls": 144,
+     "null_false_calls": 70
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-1000"
+  },
+  "tabula_sapiens_mammary|B1000|f1.5|3": {
+   "rep": 3,
+   "effect": 1.5,
+   "n_perms": 1000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3392,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9879127358490566,
+     "one_sided_false_calls": 3159,
+     "null_false_calls": 192
+    },
+    "null_a_plus1": {
+     "calls": 3238,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9873378628783199,
+     "one_sided_false_calls": 3098,
+     "null_false_calls": 99
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 33,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.15151515151515152,
+     "one_sided_false_calls": 5,
+     "null_false_calls": 0
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 3045,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9865353037766831,
+     "one_sided_false_calls": 2764,
+     "null_false_calls": 240
+    },
+    "null_a_plus1": {
+     "calls": 2875,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9857391304347826,
+     "one_sided_false_calls": 2698,
+     "null_false_calls": 136
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 456,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.9210526315789473,
+     "one_sided_false_calls": 305,
+     "null_false_calls": 115
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 3044,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9865308804204993,
+     "one_sided_false_calls": 2840,
+     "null_false_calls": 163
+    },
+    "null_a_plus1": {
+     "calls": 2887,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9857984066505022,
+     "one_sided_false_calls": 2763,
+     "null_false_calls": 83
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 456,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.9210526315789473,
+     "one_sided_false_calls": 305,
+     "null_false_calls": 115
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1649,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9751364463311097,
+     "one_sided_false_calls": 1583,
+     "null_false_calls": 25
+    },
+    "null_a_plus1": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 310,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.8870967741935484,
+     "one_sided_false_calls": 193,
+     "null_false_calls": 82
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-1000"
+  },
+  "tabula_sapiens_mammary|B1000|f1.5|4": {
+   "rep": 4,
+   "effect": 1.5,
+   "n_perms": 1000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3701,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9816265874088085,
+     "one_sided_false_calls": 3448,
+     "null_false_calls": 185
+    },
+    "null_a_plus1": {
+     "calls": 3446,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9802669762042948,
+     "one_sided_false_calls": 3295,
+     "null_false_calls": 83
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 69,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.14492753623188406,
+     "one_sided_false_calls": 10,
+     "null_false_calls": 0
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 3119,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9781981404296248,
+     "one_sided_false_calls": 2853,
+     "null_false_calls": 198
+    },
+    "null_a_plus1": {
+     "calls": 2864,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9762569832402235,
+     "one_sided_false_calls": 2704,
+     "null_false_calls": 92
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 363,
+     "planted_calls": 28,
+     "power": 0.9333333333333333,
+     "fdp": 0.8209366391184573,
+     "one_sided_false_calls": 215,
+     "null_false_calls": 83
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 3204,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.978776529338327,
+     "one_sided_false_calls": 2885,
+     "null_false_calls": 251
+    },
+    "null_a_plus1": {
+     "calls": 2941,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.976878612716763,
+     "one_sided_false_calls": 2741,
+     "null_false_calls": 132
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 363,
+     "planted_calls": 28,
+     "power": 0.9333333333333333,
+     "fdp": 0.8209366391184573,
+     "one_sided_false_calls": 213,
+     "null_false_calls": 85
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1620,
+     "planted_calls": 29,
+     "power": 0.9666666666666667,
+     "fdp": 0.9586419753086419,
+     "one_sided_false_calls": 1521,
+     "null_false_calls": 32
+    },
+    "null_a_plus1": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 399,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8421052631578947,
+     "one_sided_false_calls": 183,
+     "null_false_calls": 153
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-1000"
+  },
+  "tabula_sapiens_mammary|B5000|f1.5|0": {
+   "rep": 0,
+   "effect": 1.5,
+   "n_perms": 5000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3035,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.986161449752883,
+     "one_sided_false_calls": 2857,
+     "null_false_calls": 136
+    },
+    "null_a_plus1": {
+     "calls": 3016,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9860742705570292,
+     "one_sided_false_calls": 2851,
+     "null_false_calls": 123
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 46,
+     "planted_calls": 23,
+     "power": 0.7666666666666667,
+     "fdp": 0.2391304347826087,
+     "one_sided_false_calls": 10,
+     "null_false_calls": 1
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 2874,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9853862212943633,
+     "one_sided_false_calls": 2679,
+     "null_false_calls": 153
+    },
+    "null_a_plus1": {
+     "calls": 2854,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9852838121934128,
+     "one_sided_false_calls": 2672,
+     "null_false_calls": 140
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 391,
+     "planted_calls": 27,
+     "power": 0.9,
+     "fdp": 0.9002557544757033,
+     "one_sided_false_calls": 266,
+     "null_false_calls": 86
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 2867,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9853505406348099,
+     "one_sided_false_calls": 2677,
+     "null_false_calls": 148
+    },
+    "null_a_plus1": {
+     "calls": 2846,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9852424455375967,
+     "one_sided_false_calls": 2669,
+     "null_false_calls": 135
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 388,
+     "planted_calls": 27,
+     "power": 0.9,
+     "fdp": 0.8994845360824743,
+     "one_sided_false_calls": 264,
+     "null_false_calls": 85
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1625,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9741538461538461,
+     "one_sided_false_calls": 1559,
+     "null_false_calls": 24
+    },
+    "null_a_plus1": {
+     "calls": 1610,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9739130434782609,
+     "one_sided_false_calls": 1549,
+     "null_false_calls": 19
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 28,
+     "planted_calls": 17,
+     "power": 0.5666666666666667,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 372,
+     "planted_calls": 28,
+     "power": 0.9333333333333333,
+     "fdp": 0.8924731182795699,
+     "one_sided_false_calls": 212,
+     "null_false_calls": 120
+    },
+    "n_rows": 102554,
+    "n_true_rows": 42,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3032,
+    "n_ambiguous_rows": 843
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-0"
+  },
+  "tabula_sapiens_mammary|B5000|f1.5|1": {
+   "rep": 1,
+   "effect": 1.5,
+   "n_perms": 5000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3350,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9841791044776119,
+     "one_sided_false_calls": 3171,
+     "null_false_calls": 126
+    },
+    "null_a_plus1": {
+     "calls": 3328,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9840745192307693,
+     "one_sided_false_calls": 3162,
+     "null_false_calls": 113
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 46,
+     "planted_calls": 22,
+     "power": 0.7333333333333333,
+     "fdp": 0.1956521739130435,
+     "one_sided_false_calls": 8,
+     "null_false_calls": 1
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 2905,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9817555938037866,
+     "one_sided_false_calls": 2708,
+     "null_false_calls": 144
+    },
+    "null_a_plus1": {
+     "calls": 2879,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9815908301493574,
+     "one_sided_false_calls": 2704,
+     "null_false_calls": 122
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 329,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.8601823708206687,
+     "one_sided_false_calls": 230,
+     "null_false_calls": 53
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 2807,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.98111863199145,
+     "one_sided_false_calls": 2657,
+     "null_false_calls": 97
+    },
+    "null_a_plus1": {
+     "calls": 2782,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9809489575844716,
+     "one_sided_false_calls": 2647,
+     "null_false_calls": 82
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 327,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.8593272171253823,
+     "one_sided_false_calls": 230,
+     "null_false_calls": 51
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1398,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9620886981402003,
+     "one_sided_false_calls": 1318,
+     "null_false_calls": 27
+    },
+    "null_a_plus1": {
+     "calls": 1392,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9619252873563219,
+     "one_sided_false_calls": 1315,
+     "null_false_calls": 24
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 34,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 322,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.860248447204969,
+     "one_sided_false_calls": 188,
+     "null_false_calls": 89
+    },
+    "n_rows": 101666,
+    "n_true_rows": 53,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3360,
+    "n_ambiguous_rows": 1439
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-1"
+  },
+  "tabula_sapiens_mammary|B5000|f1.5|2": {
+   "rep": 2,
+   "effect": 1.5,
+   "n_perms": 5000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3718,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9849381387842926,
+     "one_sided_false_calls": 3485,
+     "null_false_calls": 177
+    },
+    "null_a_plus1": {
+     "calls": 3695,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9848443843031123,
+     "one_sided_false_calls": 3478,
+     "null_false_calls": 161
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 55,
+     "planted_calls": 23,
+     "power": 0.7666666666666667,
+     "fdp": 0.18181818181818182,
+     "one_sided_false_calls": 10,
+     "null_false_calls": 0
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 3109,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9819877774203924,
+     "one_sided_false_calls": 2879,
+     "null_false_calls": 174
+    },
+    "null_a_plus1": {
+     "calls": 3085,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9818476499189627,
+     "one_sided_false_calls": 2866,
+     "null_false_calls": 163
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 400,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8725,
+     "one_sided_false_calls": 265,
+     "null_false_calls": 84
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 3017,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9814385150812065,
+     "one_sided_false_calls": 2834,
+     "null_false_calls": 127
+    },
+    "null_a_plus1": {
+     "calls": 2997,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9813146479813146,
+     "one_sided_false_calls": 2825,
+     "null_false_calls": 116
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 392,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8698979591836735,
+     "one_sided_false_calls": 258,
+     "null_false_calls": 83
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1759,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9681637293916998,
+     "one_sided_false_calls": 1633,
+     "null_false_calls": 70
+    },
+    "null_a_plus1": {
+     "calls": 1731,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9676487579433853,
+     "one_sided_false_calls": 1617,
+     "null_false_calls": 58
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 37,
+     "planted_calls": 18,
+     "power": 0.6,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 264,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8106060606060606,
+     "one_sided_false_calls": 144,
+     "null_false_calls": 70
+    },
+    "n_rows": 99933,
+    "n_true_rows": 56,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3748,
+    "n_ambiguous_rows": 1403
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-2"
+  },
+  "tabula_sapiens_mammary|B5000|f1.5|3": {
+   "rep": 3,
+   "effect": 1.5,
+   "n_perms": 5000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3363,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9878085043116265,
+     "one_sided_false_calls": 3161,
+     "null_false_calls": 161
+    },
+    "null_a_plus1": {
+     "calls": 3338,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9877171959257041,
+     "one_sided_false_calls": 3154,
+     "null_false_calls": 143
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 33,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.15151515151515152,
+     "one_sided_false_calls": 5,
+     "null_false_calls": 0
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 2982,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9862508383635145,
+     "one_sided_false_calls": 2757,
+     "null_false_calls": 184
+    },
+    "null_a_plus1": {
+     "calls": 2958,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9861392832995267,
+     "one_sided_false_calls": 2746,
+     "null_false_calls": 171
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 456,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.9210526315789473,
+     "one_sided_false_calls": 305,
+     "null_false_calls": 115
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 2983,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9862554475360376,
+     "one_sided_false_calls": 2824,
+     "null_false_calls": 118
+    },
+    "null_a_plus1": {
+     "calls": 2955,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9861252115059221,
+     "one_sided_false_calls": 2813,
+     "null_false_calls": 101
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 456,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.9210526315789473,
+     "one_sided_false_calls": 305,
+     "null_false_calls": 115
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1653,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9751966122202057,
+     "one_sided_false_calls": 1586,
+     "null_false_calls": 26
+    },
+    "null_a_plus1": {
+     "calls": 1643,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9750456482045039,
+     "one_sided_false_calls": 1579,
+     "null_false_calls": 23
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 26,
+     "planted_calls": 20,
+     "power": 0.6666666666666666,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 310,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.8870967741935484,
+     "one_sided_false_calls": 193,
+     "null_false_calls": 82
+    },
+    "n_rows": 101213,
+    "n_true_rows": 41,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3347,
+    "n_ambiguous_rows": 1385
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-3"
+  },
+  "tabula_sapiens_mammary|B5000|f1.5|4": {
+   "rep": 4,
+   "effect": 1.5,
+   "n_perms": 5000,
+   "n_planted": 30,
+   "CellPhoneDB": {
+    "null_a": {
+     "calls": 3673,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9814865232779744,
+     "one_sided_false_calls": 3416,
+     "null_false_calls": 189
+    },
+    "null_a_plus1": {
+     "calls": 3622,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.981225842076201,
+     "one_sided_false_calls": 3393,
+     "null_false_calls": 161
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 69,
+     "planted_calls": 25,
+     "power": 0.8333333333333334,
+     "fdp": 0.14492753623188406,
+     "one_sided_false_calls": 10,
+     "null_false_calls": 0
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "Connectome": {
+    "null_a": {
+     "calls": 3006,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9773785761809713,
+     "one_sided_false_calls": 2803,
+     "null_false_calls": 135
+    },
+    "null_a_plus1": {
+     "calls": 2967,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9770812268284462,
+     "one_sided_false_calls": 2777,
+     "null_false_calls": 122
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 363,
+     "planted_calls": 28,
+     "power": 0.9333333333333333,
+     "fdp": 0.8209366391184573,
+     "one_sided_false_calls": 215,
+     "null_false_calls": 83
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "NATMI": {
+    "null_a": {
+     "calls": 3101,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9780715898097387,
+     "one_sided_false_calls": 2841,
+     "null_false_calls": 192
+    },
+    "null_a_plus1": {
+     "calls": 3064,
+     "planted_calls": 30,
+     "power": 1.0,
+     "fdp": 0.9778067885117493,
+     "one_sided_false_calls": 2828,
+     "null_false_calls": 168
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 363,
+     "planted_calls": 28,
+     "power": 0.9333333333333333,
+     "fdp": 0.8209366391184573,
+     "one_sided_false_calls": 213,
+     "null_false_calls": 85
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "CellChat": {
+    "null_a": {
+     "calls": 1617,
+     "planted_calls": 29,
+     "power": 0.9666666666666667,
+     "fdp": 0.95856524427953,
+     "one_sided_false_calls": 1522,
+     "null_false_calls": 28
+    },
+    "null_a_plus1": {
+     "calls": 1594,
+     "planted_calls": 29,
+     "power": 0.9666666666666667,
+     "fdp": 0.9579673776662484,
+     "one_sided_false_calls": 1511,
+     "null_false_calls": 16
+    },
+    "null_b": {
+     "calls": 0,
+     "planted_calls": 0,
+     "power": 0.0,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "b2": {
+     "calls": 47,
+     "planted_calls": 19,
+     "power": 0.6333333333333333,
+     "fdp": 0.0,
+     "one_sided_false_calls": 0,
+     "null_false_calls": 0
+    },
+    "t2": {
+     "calls": 399,
+     "planted_calls": 26,
+     "power": 0.8666666666666667,
+     "fdp": 0.8421052631578947,
+     "one_sided_false_calls": 183,
+     "null_false_calls": 153
+    },
+    "n_rows": 99945,
+    "n_true_rows": 68,
+    "n_planted_rows": 30,
+    "n_one_sided_rows": 3766,
+    "n_ambiguous_rows": 1339
+   },
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-4"
+  }
+ },
+ "written": "2026-11-15 05:26",
+ "merged_from": [
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-1000",
+   "runs": 5,
+   "written": "2026-11-15 05:26"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-0",
+   "runs": 1,
+   "written": "2026-11-15 05:28"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-1",
+   "runs": 1,
+   "written": "2026-11-15 05:33"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-2",
+   "runs": 1,
+   "written": "2026-11-15 06:29"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-3",
+   "runs": 1,
+   "written": "2026-11-15 06:13"
+  },
+  {
+   "machine": "https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-4",
+   "runs": 1,
+   "written": "2026-11-15 06:38"
+  }
+ ]
+}

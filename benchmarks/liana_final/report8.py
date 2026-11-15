@@ -239,7 +239,7 @@ def tool_level(L):
 def checks(L):
     L += ["## Checks", "",
           "liana6, swap_<n> and swap3_<n> against AMENDMENT_6 (same seeds); CellPhoneDB's, CellChat's and Connectome's "
-          "numbers against AMENDMENT_7; NATMI's LOO-t against Connectome's (equal by construction, AMENDMENT_8).", ""]
+          "numbers against AMENDMENT_7; NATMI's LOO-t against Connectome's (AMENDMENT_8 expected them equal; see below).", ""]
     fs = lambda r, v: r["false_share_top"].get(v)
     pw = lambda r, v: (r[v]["single"]["power_top"], r[v]["single"]["auroc"]) if v in r else None
     st = lambda r, v: (r[v]["spearman"], r[v]["top1_jaccard"]) if v in r else None
@@ -264,19 +264,31 @@ def checks(L):
             rows.append([f"{part}: CellPhoneDB, CellChat, Connectome (vs amendment7)", f"{n} of {len(both)} runs identical"])
     dn, tr = f8("donor_null"), f8("tool_real")
     if dn:
+        gap = max(abs(r["NATMI"][f"t2_le_{a}"] - r["Connectome"][f"t2_le_{a}"]) for r in dn["runs"].values() for a in (0.01, 0.05))
         n = sum(all(r["NATMI"][f"t2_le_{a}"] == r["Connectome"][f"t2_le_{a}"] for a in (0.01, 0.05)) for r in dn["runs"].values())
-        rows.append(["donor_null: NATMI's LOO-t = Connectome's", f"{n} of {len(dn['runs'])} runs"])
+        rows.append(["donor_null: NATMI's LOO-t vs Connectome's", f"identical in {n} of {len(dn['runs'])} runs; share of rows with p ≤ "
+                     f"0.01 or 0.05 differs by at most {100 * gap:.4f} percentage points"])
     if tr:
-        n = sum(r["NATMI"]["calls_t2"] == r["Connectome"]["calls_t2"] for r in tr["runs"].values())
-        rows.append(["tool_real: NATMI's LOO-t calls = Connectome's", f"{n} of {len(tr['runs'])} data sets"])
+        d = [abs(r["NATMI"]["calls_t2"] - r["Connectome"]["calls_t2"]) for r in tr["runs"].values()]
+        rows.append(["tool_real: NATMI's LOO-t calls vs Connectome's", f"identical in {sum(x == 0 for x in d)} of {len(d)} data sets; "
+                     f"at most {max(d):,} calls apart"])
     L += table(["Check", "Result"], rows)
+    L += ["AMENDMENT_8 stated that NATMI's LOO-t equals Connectome's, since within an interaction the sums over types are "
+          "constant. That holds for single-gene interactions only (there the two p-values agree to rounding: LIANA+'s "
+          "scores are float32). For a complex, LIANA+ uses the subunit that is lowest in each (s, t), so the sums, and "
+          "with them NATMI's LOO-t, change across the interaction's rows. On the 600-cell toy data set the two p-values "
+          "differ by at most 6e-8 on single-gene rows and by up to 0.22 on 32 of 80 complex rows.", ""]
 
 
 def write():
     L = ["# AMENDMENT_8 results: NATMI's specificity replaced too, through every test", "",
          "Plan: [`AMENDMENT_8.md`](../../../liana_final/AMENDMENT_8.md). `swap_<n>`: CellPhoneDB's and CellChat's p replaced "
          "by null n's; `swap3_<n>`: Connectome's too; `swap4_<n>`: NATMI's too. Names as in the paper: JLP = Null A, "
-         "BPT = Null B, MDT = B2, LOO-t = T2. Intervals: 95% t-intervals over replicates.", ""]
+         "BPT = Null B, MDT = B2, LOO-t = T2. Intervals: 95% t-intervals over replicates.", "",
+         "Where it ran: 31 of the 42 sessions in `kaggle/kernels.py` on Kaggle; the other 11 (`a8-sensitivity-*`, "
+         "`a8-donor-mammary`, `a8-donor-tnbc`, `a8-tool-real-*`) on a lab server, from the same commit (be09388) and "
+         "lock file, one CPU each; every run records its machine. Biology and case studies ran locally from the real-data "
+         "tables. The tool-level spatial q-values are recomputed here over every data set (each session wrote q over its own).", ""]
     consensus(L)
     donor(L)
     sensitivity(L)
