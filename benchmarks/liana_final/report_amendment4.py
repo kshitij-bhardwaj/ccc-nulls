@@ -7,7 +7,7 @@ import numpy as np
 
 from .amendment4 import NULL_B, OUT4, SHOWN, T2
 from .pipeline import BASELINE, OUT
-from .report3 import SHORT, f3, mci, table
+from .report_amendment3 import SHORT, f3, mci, table
 
 SHORT = {**SHORT, "tabula_sapiens_lung": "Lung"}
 OUT2 = OUT / "amendment2"

@@ -215,7 +215,7 @@ def status(lines):
             ("A1 hypothalamus: core", "Amendment 1", ["core_moffitt2018_hypothalamus"]),
             ("A1 hypothalamus: spatial truth", "Amendment 1", ["amendment_1"]),
             ("A2 downstream truths (CytoSig, PROGENy)", "Amendment 1", ["amendment_1"])]
-    from .report3 import STATUS_ROWS
+    from .report_amendment3 import STATUS_ROWS
     rows += STATUS_ROWS
     lines += ["## Status", "", "| Component | Plan | Result files | Status |", "|---|---|---|---|"]
     for name, plan, files in rows:
@@ -253,7 +253,7 @@ def write():
     if verdict.get("t2_vacuous_at"):
         lines += [f"Note: the T2 part of criterion (1) holds only vacuously at {', '.join(verdict['t2_vacuous_at'])} "
                   "(Amendment 2).", ""]
-    from .report3 import amendment3
+    from .report_amendment3 import amendment3
     amendment3(lines)
     status(lines)
     (OUT / "README.md").write_text("\n".join(lines))

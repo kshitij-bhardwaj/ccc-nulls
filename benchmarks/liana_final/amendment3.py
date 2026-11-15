@@ -187,7 +187,7 @@ def decision() -> dict:
 
 
 def part_report(args):
-    from .report3 import write
+    from .report_amendment3 import write
     write()
 
 

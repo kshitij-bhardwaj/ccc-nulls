@@ -7,8 +7,8 @@ import numpy as np
 
 from .amendment6 import NULLS4, OUT6, SHOWN, SWAP2, SWAP3
 from .pipeline import BASELINE, OUT
-from .report3 import mci, table
-from .report4 import crit1, crit2, word
+from .report_amendment3 import mci, table
+from .report_amendment4 import crit1, crit2, word
 
 P5 = OUT / "amendment5"
 EARLIER = {"calibration": OUT / "amendment3/calibration.json", "confirm_calibration": OUT / "amendment4/confirm_calibration.json",

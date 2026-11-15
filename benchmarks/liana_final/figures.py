@@ -18,7 +18,7 @@ import numpy as np
 from benchmarks.liana_nulls.stages import mean_ci
 
 from .pipeline import OUT
-from .report2 import DS, cal_summary, power_summary
+from .report_amendment2 import DS, cal_summary, power_summary
 
 FIG = OUT / "figures"
 INK, MUTE, GRID = "#23373B", "#5E6E72", "#D5DCDD"

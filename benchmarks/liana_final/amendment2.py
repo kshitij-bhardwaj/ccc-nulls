@@ -698,7 +698,7 @@ def main(argv=None):
     for p in (PARTS if args.part == "all" else [args.part] if args.part != "report" else []):
         PARTS[p](args)
     if args.part in ("report", "all"):
-        from .report2 import write
+        from .report_amendment2 import write
         write()
 
 

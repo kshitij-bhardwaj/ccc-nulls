@@ -1,6 +1,6 @@
 """benchmarks/results/liana_final/amendment7/README.md from the AMENDMENT_7 result files.
 
-    python -m benchmarks.liana_final.report7
+    python -m benchmarks.liana_final.report_amendment7
 """
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from .amendment2 import bh
 from .amendment6 import SHOWN
 from .amendment7 import OUT7, TOOL_NULLS
 from .pipeline import BASELINE, OUT
-from .report3 import mci, table
+from .report_amendment3 import mci, table
 
 OUT2, OUT4, OUT5 = OUT / "amendment2", OUT / "amendment4", OUT / "amendment5"
 TOOLS = ("CellPhoneDB", "CellChat", "Connectome")
