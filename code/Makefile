@@ -31,6 +31,7 @@ benchmark2: data    ## Benchmark 2, LIANA+'s consensus (days on one 32 GB machin
 	$(PY) -m benchmarks.liana_final.amendment6 --part all
 	$(PY) -m benchmarks.liana_final.amendment7 --part all
 	$(PY) -m benchmarks.liana_final.amendment8 --part all
+	$(PY) -m benchmarks.liana_final.amendment9 --part all
 
 reports:            ## every results README (the tables) from the committed JSON files (no data, seconds)
 	$(PY) -m benchmarks.liana_nulls --part report
@@ -41,6 +42,7 @@ reports:            ## every results README (the tables) from the committed JSON
 	$(PY) -m benchmarks.liana_final.amendment6 --part report
 	$(PY) -m benchmarks.liana_final.report_amendment7
 	$(PY) -m benchmarks.liana_final.amendment8 --part report
+	$(PY) -m benchmarks.liana_final.amendment9 --part report
 
 figures:            ## the report's three figures from the committed JSON files (no data, seconds)
 	$(PY) figures/make_figures.py

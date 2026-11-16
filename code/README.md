@@ -148,9 +148,9 @@ are `python -m tools.cellchat.match_null_a` and `python -m tools.cellchat.calibr
 
 ### Benchmark 2: does Null B improve LIANA+'s consensus? (`benchmarks/liana_final`)
 
-Plan: [`benchmarks/liana_final/PLAN.md`](benchmarks/liana_final/PLAN.md), then `AMENDMENT_1.md` … `AMENDMENT_8.md`:
+Plan: [`benchmarks/liana_final/PLAN.md`](benchmarks/liana_final/PLAN.md), then `AMENDMENT_1.md` … `AMENDMENT_9.md`:
 held-out Lung, donors, sensitivity, mouse and filters (2), T2 (3, 4), the same tests for every null (5), Connectome's
-p replaced too (6, 7), NATMI's too (8). Results: `benchmarks/results/liana_final/` and its `amendment<N>/` folders.
+p replaced too (6, 7), NATMI's too (8), the top-1% cutoff checked at 0.5–10% (9). Results: `benchmarks/results/liana_final/` and its `amendment<N>/` folders.
 
 ```bash
 python -m benchmarks.liana_final --part all              # PLAN + AMENDMENT_1: run, calibration, power, biology
@@ -161,6 +161,7 @@ python -m benchmarks.liana_final.amendment5 --part all
 python -m benchmarks.liana_final.amendment6 --part all
 python -m benchmarks.liana_final.amendment7 --part all
 python -m benchmarks.liana_final.amendment8 --part all
+python -m benchmarks.liana_final.amendment9 --part all
 ```
 
 (`make benchmark2`.) This is days of computing on one machine with 32 GB of RAM. The published results ran as
@@ -209,6 +210,7 @@ recomputes every earlier variant in the same runs.
 | Fig. 3b (donor shuffles) | `benchmarks.liana_final.amendment2`, `amendment4`, `amendment7`, `amendment8` (part `donor`); `amendment5` (part `donor_b2`) | `amendment{2,4,7,8}/donor_null.json`, `amendment5/donor_b2.json` |
 | Fig. 3c (sensitivity runs) | `benchmarks.liana_final.amendment4` (parts `sensitivity`, `mouse`), `amendment7`, `amendment8` (part `sensitivity`) | `amendment{4,7,8}/sensitivity_*.json`, `amendment4/mouse_calibration.json` |
 | Fig. 3d (spatial truth) | `benchmarks.liana_final.amendment8` (part `biology`) (truths: `benchmarks.liana_nulls.spatial`) | `amendment8/biology.json`, `results/liana_nulls/truth_*_spatial.*` |
+| Sec. 4.4, the top-1% cutoff checked at 0.5–10% | `benchmarks.liana_final.amendment9`, parts `calibration`, `lung`, `mouse`, `hard_power`; report `report9.py` | `amendment9/*.json`, `amendment9/README.md` |
 | Table 3 (summary) | all of the above; the held-out Lung rule is `amendment8`'s part `lung` (`confirm_*.json`) | as above |
 
 The figures themselves are drawn by `figures/make_figures.py` (section 4); `make reports` rebuilds the tables of
@@ -238,7 +240,7 @@ code/
 │   └── simulate.py           synthetic data with planted interactions (the tests' simulations)
 ├── benchmarks/
 │   ├── liana_nulls/          Benchmark 1: PLAN.md, AMENDMENT_1-5.md and their code
-│   ├── liana_final/          Benchmark 2: PLAN.md, AMENDMENT_1-8.md and their code (amendment<N>.py runs
+│   ├── liana_final/          Benchmark 2: PLAN.md, AMENDMENT_1-9.md and their code (amendment<N>.py runs
 │   │                         AMENDMENT_<N>.md, report_amendment<N>.py writes its README), aux_files.md5
 │   ├── null_b_cellphonedb.py CellPhoneDB's own Null B (Benchmark 1's "#9's Null B" column, AMENDMENT_3)
 │   └── results/              every result: JSON files, results READMEs (the tables), figures

@@ -24,7 +24,8 @@ from .amendment2 import OUT2
 from .pipeline import OUT
 
 SHAS = ("plan_sha256", "amendment_1_sha256", "amendment_2_sha256", "amendment_3_sha256", "amendment_4_sha256",
-        "amendment_5_sha256", "amendment_6_sha256", "amendment_7_sha256", "amendment_8_sha256")
+        "amendment_5_sha256", "amendment_6_sha256", "amendment_7_sha256", "amendment_8_sha256",
+        "amendment_9_sha256")
 
 
 def _strip(d: dict, drop=("written", "machine", "merged_from")) -> dict:
@@ -106,7 +107,7 @@ def merge(src: Path, machine: str) -> None:
     for sub, dst_dir in (("", OUT), ("amendment2", OUT2), ("amendment3", OUT / "amendment3"), ("amendment4", OUT / "amendment4"),
                          ("amendment5", OUT / "amendment5"),
                          ("amendment6", OUT / "amendment6"), ("amendment7", OUT / "amendment7"),
-                         ("amendment8", OUT / "amendment8")):
+                         ("amendment8", OUT / "amendment8"), ("amendment9", OUT / "amendment9")):
         dst_dir.mkdir(parents=True, exist_ok=True)
         for f in sorted((src / sub).glob("*.json")):
             dst = dst_dir / f.name
