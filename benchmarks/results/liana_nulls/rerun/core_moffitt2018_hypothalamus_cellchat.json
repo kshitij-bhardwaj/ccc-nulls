@@ -1,0 +1,69 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "amendment_1_sha256": "85e3e8f7811807cbbad56f12390904acfab684ea272987e29b1ec80bbf2a7146",
+ "written": "2026-11-13 03:13",
+ "dataset": "moffitt2018_hypothalamus",
+ "groupby": "cell_class",
+ "B": 1000,
+ "rerun": "this machine; CellChat column 1 (R) not rerun",
+ "n_cells": 26604,
+ "n_types": 8,
+ "cellchat": {
+  "tool": "cellchat",
+  "native_rule": "p < 0.05 and prob > 0 (subsetCommunication, thresh = 0.05)",
+  "rows": 119808,
+  "family": 4805,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 1188,
+   "2_our_null_a_bh": 1179,
+   "3_null_b_bh": 875
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 192,
+   "receptor": 112
+  },
+  "fidelity": null,
+  "meta": {
+   "seconds_prepare": 7.4,
+   "seconds_port_native": 8.2,
+   "seconds_null_a": 55.8,
+   "seconds_null_b": 59.6,
+   "B": 1000,
+   "seed": 1,
+   "rng": "cellchat (R's generator)",
+   "species": "mouse",
+   "n_rows": 119808,
+   "n_family": 4805,
+   "n_lr": 1872,
+   "n_types": 8,
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives prob > 0",
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 5047,
+     "gated_in_family": 2935,
+     "family": 4805,
+     "calls": {
+      "p_b2": 8,
+      "p_b2_uncorrected": 8,
+      "p_b2_unmatched": 7,
+      "p_b2_joint": 246
+     },
+     "vs_null_b": {
+      "calls_a": 8,
+      "calls_b": 875,
+      "same_call": 0.9927634214743589,
+      "jaccard": 0.009142857142857144
+     },
+     "vs_null_a": {
+      "calls_a": 8,
+      "calls_b": 1179,
+      "same_call": 0.9902260283119658,
+      "jaccard": 0.006785411365564037
+     }
+    }
+   }
+  }
+ }
+}

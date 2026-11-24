@@ -1,0 +1,85 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 01:39",
+ "amendment_5_sha256": "46bcd94bda5fb299ff969f56b9c0b669a6245d714defc7317337bea9ab52429c",
+ "addendum": "addendum to AMENDMENT_5, not pre-registered: AMENDMENT_5's code with B = 5,000 for Null A and Null B (p-value floor 1/5001); native NATMI not rerun",
+ "dataset": "tabula_sapiens_mammary",
+ "groupby": "label",
+ "B": 5000,
+ "native_run": false,
+ "n_cells": 30934,
+ "n_types": 16,
+ "natmi": {
+  "tool": "natmi",
+  "native_rule": "none (NATMI has no p-value); stand-in: Null A p < 0.05 and score > 0 (AMENDMENT_5)",
+  "rows": 583424,
+  "family": 561543,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 55619,
+   "2_our_null_a_bh": 40457,
+   "3_null_b_bh": 10369,
+   "b2_bh": 4,
+   "loo_t_bh": 12341
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 15070,
+   "receptor": 15018
+  },
+  "fidelity": null,
+  "meta": {
+   "seconds_null_a": 294.1,
+   "seconds_null_b": 321.0,
+   "n_pairs": 2279,
+   "B": 5000,
+   "seed": 0,
+   "rng": "numpy default_rng(seed).permutation(codes), one per iteration",
+   "species": "human",
+   "n_rows": 583424,
+   "n_family": 561543,
+   "n_lr": 2279,
+   "n_types": 16,
+   "score": "spec_weight",
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives a positive score",
+   "seconds_liana_builtin": 4.0,
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 46230,
+     "gated_in_family": 46230,
+     "family": 561543,
+     "calls": {
+      "p_b2": 4,
+      "p_b2_uncorrected": 5,
+      "p_b2_unmatched": 11,
+      "p_b2_joint": 2581
+     },
+     "vs_null_b": {
+      "calls_a": 4,
+      "calls_b": 10369,
+      "same_call": 0.9822341898859148,
+      "jaccard": 0.00038576526183817147
+     },
+     "vs_null_a": {
+      "calls_a": 4,
+      "calls_b": 40457,
+      "same_call": 0.9306627769855199,
+      "jaccard": 9.887040561583903e-05
+     }
+    }
+   }
+  },
+  "liana_builtin": {
+   "rows_matched": 46716,
+   "calls_p_lt_0.05": 0,
+   "jaccard_with_native_rule": 0.0,
+   "spearman_score": 0.9999999999804028
+  },
+  "outside_null_a": {
+   "null_b": 0,
+   "b2": 0,
+   "loo_t": 1485
+  },
+  "fidelity_passed": null
+ }
+}

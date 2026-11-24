@@ -212,12 +212,15 @@ class CellPhoneDB:
 
         s_obs = pair_score(data.codes)
         tested = cpdb_null.pair_gate(fracs, data.i1, data.i2, self.threshold) & (s_obs > 0)
-        k_gt = np.zeros(s_obs.shape, np.int32)
-        k_ge = np.zeros(s_obs.shape, np.int32)
-        for b in range(self.B):
-            s = pair_score(data.codes[perms[:, b]])
-            k_gt += s > s_obs
-            k_ge += s >= s_obs
+        def counts(lo, hi):                             # permutations lo..hi-1, on $CCC_NULLS_WORKERS processes
+            gt, ge = np.zeros(s_obs.shape, np.int32), np.zeros(s_obs.shape, np.int32)
+            for b in range(lo, hi):
+                s = pair_score(data.codes[perms[:, b]])
+                gt += s > s_obs
+                ge += s >= s_obs
+            return gt, ge
+
+        k_gt, k_ge = composite.map_permutations(counts, self.B, composite.n_workers())
         p_port_native = np.where(tested, k_gt / self.B, 1.0)          # CellPhoneDB's #{s_b > s} / B
         p_null_a = np.where(tested, (1 + k_ge) / (self.B + 1), np.nan)  # repository convention, as cpdb_null.null_a
         meta["seconds_null_a"] = _secs(t0)

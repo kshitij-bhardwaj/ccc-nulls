@@ -1,0 +1,102 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 03:43",
+ "dataset": "allen_brain_atlas",
+ "groupby": "label",
+ "B": 1000,
+ "rerun": "this machine; CellChat column 1 (R) not rerun",
+ "n_cells": 14249,
+ "n_types": 23,
+ "cellphonedb": {
+  "tool": "cellphonedb",
+  "native_rule": "p <= 0.05 (significant_means, pvalue = 0.05)",
+  "rows": 833704,
+  "family": 135279,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 49613,
+   "2_our_null_a_bh": 46928,
+   "3_null_b_bh": 15121
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 17587,
+   "receptor": 14220
+  },
+  "fidelity": null,
+  "meta": {
+   "orthologs": {
+    "source": "HCOP, min_evidence = 3, one-to-one",
+    "genes_in": 34617,
+    "genes_mapped": 14458
+   },
+   "seconds_prepare": 2.7,
+   "seconds_native": 2.6,
+   "seconds_null_a": 114.6,
+   "seconds_null_b": 121.1,
+   "B": 1000,
+   "seed": 0,
+   "rng": "cellphonedb (np.random.seed, shuffle)",
+   "species": "mouse",
+   "n_rows": 833704,
+   "n_family": 135279,
+   "n_lr": 2349,
+   "n_types": 23,
+   "family_rule": "CellPhoneDB's gate: both partners in > 10% of their type's cells, and score > 0",
+   "score_max_abs_diff": 0.000500023365020752,
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 37140,
+     "gated_in_family": 37140,
+     "family": 135279,
+     "calls": {
+      "p_b2": 1,
+      "p_b2_uncorrected": 1,
+      "p_b2_unmatched": 1,
+      "p_b2_joint": 399
+     },
+     "vs_null_b": {
+      "calls_a": 1,
+      "calls_b": 15121,
+      "same_call": 0.9818640668630593,
+      "jaccard": 6.613319224918987e-05
+     },
+     "vs_null_a": {
+      "calls_a": 1,
+      "calls_b": 46928,
+      "same_call": 0.9437126366192318,
+      "jaccard": 2.130923968632799e-05
+     }
+    },
+    "pr9": {
+     "n_rows": 833704,
+     "n_tested": 135279,
+     "n_testable": 787025,
+     "n_interactions": 1576,
+     "n_types": 23,
+     "seconds_null_a": 45.9,
+     "seconds_null_b": 63.5,
+     "score_max_abs_diff": 0.000500380065202366,
+     "n_over_adapter_tolerance": 0,
+     "rows_matched": 833704,
+     "rows": 833704,
+     "B": 1000,
+     "seed": 0,
+     "calls": {
+      "null_b_pr9": 15237,
+      "null_b_pr9_testable": 0,
+      "null_b_pr9_by": 0
+     },
+     "vs_null_b": {
+      "calls_a": 15237,
+      "calls_b": 15121,
+      "same_call": 0.9994362507556639,
+      "jaccard": 0.9695082392630077
+     },
+     "p_identical_in_family": 0.7228394651054487,
+     "spearman_p_in_family": 0.9815167604036905
+    }
+   }
+  }
+ }
+}

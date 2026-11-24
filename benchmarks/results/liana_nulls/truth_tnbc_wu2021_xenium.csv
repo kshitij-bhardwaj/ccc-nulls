@@ -1,0 +1,459 @@
+source,target,source_class,target_class,z_mean,n_sections,colocalised
+Cancer.Basal.SC,Myoepithelial,Tumour,Myoepithelial,-31.773265831367695,2,False
+Cancer.Basal.SC,CAFs.MSC.iCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.Basal.SC,CAFs.myCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.Basal.SC,PVL.Differentiated,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Basal.SC,PVL.Immature,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Basal.SC,Cycling.PVL,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Basal.SC,Endothelial.ACKR1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Basal.SC,Endothelial.CXCL12,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Basal.SC,Endothelial.Lymphatic.LYVE1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Basal.SC,Endothelial.RGS5,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Basal.SC,Macrophage,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Basal.SC,Monocyte,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Basal.SC,Cycling.Myeloid,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Basal.SC,DCs,Tumour,Dendritic,-56.42740332419403,2,False
+Cancer.Basal.SC,T.cells.CD4,Tumour,CD4 T,-197.72153483719165,2,False
+Cancer.Basal.SC,T.cells.CD8,Tumour,CD8 T,-146.44387145790665,2,False
+Cancer.Basal.SC,B.cells.Memory,Tumour,B,-147.90639148034967,2,False
+Cancer.Basal.SC,B.cells.Naive,Tumour,B,-147.90639148034967,2,False
+Cancer.Her2.SC,Myoepithelial,Tumour,Myoepithelial,-31.773265831367695,2,False
+Cancer.Her2.SC,CAFs.MSC.iCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.Her2.SC,CAFs.myCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.Her2.SC,PVL.Differentiated,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Her2.SC,PVL.Immature,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Her2.SC,Cycling.PVL,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Her2.SC,Endothelial.ACKR1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Her2.SC,Endothelial.CXCL12,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Her2.SC,Endothelial.Lymphatic.LYVE1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Her2.SC,Endothelial.RGS5,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Her2.SC,Macrophage,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Her2.SC,Monocyte,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Her2.SC,Cycling.Myeloid,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Her2.SC,DCs,Tumour,Dendritic,-56.42740332419403,2,False
+Cancer.Her2.SC,T.cells.CD4,Tumour,CD4 T,-197.72153483719165,2,False
+Cancer.Her2.SC,T.cells.CD8,Tumour,CD8 T,-146.44387145790665,2,False
+Cancer.Her2.SC,B.cells.Memory,Tumour,B,-147.90639148034967,2,False
+Cancer.Her2.SC,B.cells.Naive,Tumour,B,-147.90639148034967,2,False
+Cancer.LumA.SC,Myoepithelial,Tumour,Myoepithelial,-31.773265831367695,2,False
+Cancer.LumA.SC,CAFs.MSC.iCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.LumA.SC,CAFs.myCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.LumA.SC,PVL.Differentiated,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.LumA.SC,PVL.Immature,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.LumA.SC,Cycling.PVL,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.LumA.SC,Endothelial.ACKR1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumA.SC,Endothelial.CXCL12,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumA.SC,Endothelial.Lymphatic.LYVE1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumA.SC,Endothelial.RGS5,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumA.SC,Macrophage,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.LumA.SC,Monocyte,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.LumA.SC,Cycling.Myeloid,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.LumA.SC,DCs,Tumour,Dendritic,-56.42740332419403,2,False
+Cancer.LumA.SC,T.cells.CD4,Tumour,CD4 T,-197.72153483719165,2,False
+Cancer.LumA.SC,T.cells.CD8,Tumour,CD8 T,-146.44387145790665,2,False
+Cancer.LumA.SC,B.cells.Memory,Tumour,B,-147.90639148034967,2,False
+Cancer.LumA.SC,B.cells.Naive,Tumour,B,-147.90639148034967,2,False
+Cancer.LumB.SC,Myoepithelial,Tumour,Myoepithelial,-31.773265831367695,2,False
+Cancer.LumB.SC,CAFs.MSC.iCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.LumB.SC,CAFs.myCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.LumB.SC,PVL.Differentiated,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.LumB.SC,PVL.Immature,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.LumB.SC,Cycling.PVL,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.LumB.SC,Endothelial.ACKR1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumB.SC,Endothelial.CXCL12,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumB.SC,Endothelial.Lymphatic.LYVE1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumB.SC,Endothelial.RGS5,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.LumB.SC,Macrophage,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.LumB.SC,Monocyte,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.LumB.SC,Cycling.Myeloid,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.LumB.SC,DCs,Tumour,Dendritic,-56.42740332419403,2,False
+Cancer.LumB.SC,T.cells.CD4,Tumour,CD4 T,-197.72153483719165,2,False
+Cancer.LumB.SC,T.cells.CD8,Tumour,CD8 T,-146.44387145790665,2,False
+Cancer.LumB.SC,B.cells.Memory,Tumour,B,-147.90639148034967,2,False
+Cancer.LumB.SC,B.cells.Naive,Tumour,B,-147.90639148034967,2,False
+Cancer.Cycling,Myoepithelial,Tumour,Myoepithelial,-31.773265831367695,2,False
+Cancer.Cycling,CAFs.MSC.iCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.Cycling,CAFs.myCAF.like,Tumour,Fibroblast,-425.70777793867603,2,False
+Cancer.Cycling,PVL.Differentiated,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Cycling,PVL.Immature,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Cycling,Cycling.PVL,Tumour,Perivascular,-53.83885381981203,2,False
+Cancer.Cycling,Endothelial.ACKR1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Cycling,Endothelial.CXCL12,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Cycling,Endothelial.Lymphatic.LYVE1,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Cycling,Endothelial.RGS5,Tumour,Endothelial,-148.63338799585688,2,False
+Cancer.Cycling,Macrophage,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Cycling,Monocyte,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Cycling,Cycling.Myeloid,Tumour,Myeloid,-155.68581702321774,2,False
+Cancer.Cycling,DCs,Tumour,Dendritic,-56.42740332419403,2,False
+Cancer.Cycling,T.cells.CD4,Tumour,CD4 T,-197.72153483719165,2,False
+Cancer.Cycling,T.cells.CD8,Tumour,CD8 T,-146.44387145790665,2,False
+Cancer.Cycling,B.cells.Memory,Tumour,B,-147.90639148034967,2,False
+Cancer.Cycling,B.cells.Naive,Tumour,B,-147.90639148034967,2,False
+Myoepithelial,Cancer.Basal.SC,Myoepithelial,Tumour,-31.773265831367695,2,False
+Myoepithelial,Cancer.Her2.SC,Myoepithelial,Tumour,-31.773265831367695,2,False
+Myoepithelial,Cancer.LumA.SC,Myoepithelial,Tumour,-31.773265831367695,2,False
+Myoepithelial,Cancer.LumB.SC,Myoepithelial,Tumour,-31.773265831367695,2,False
+Myoepithelial,Cancer.Cycling,Myoepithelial,Tumour,-31.773265831367695,2,False
+Myoepithelial,CAFs.MSC.iCAF.like,Myoepithelial,Fibroblast,-113.62792500222059,2,False
+Myoepithelial,CAFs.myCAF.like,Myoepithelial,Fibroblast,-113.62792500222059,2,False
+Myoepithelial,PVL.Differentiated,Myoepithelial,Perivascular,-16.021952489350877,2,False
+Myoepithelial,PVL.Immature,Myoepithelial,Perivascular,-16.021952489350877,2,False
+Myoepithelial,Cycling.PVL,Myoepithelial,Perivascular,-16.021952489350877,2,False
+Myoepithelial,Endothelial.ACKR1,Myoepithelial,Endothelial,-38.09824438495321,2,False
+Myoepithelial,Endothelial.CXCL12,Myoepithelial,Endothelial,-38.09824438495321,2,False
+Myoepithelial,Endothelial.Lymphatic.LYVE1,Myoepithelial,Endothelial,-38.09824438495321,2,False
+Myoepithelial,Endothelial.RGS5,Myoepithelial,Endothelial,-38.09824438495321,2,False
+Myoepithelial,Macrophage,Myoepithelial,Myeloid,-42.33546705709418,2,False
+Myoepithelial,Monocyte,Myoepithelial,Myeloid,-42.33546705709418,2,False
+Myoepithelial,Cycling.Myeloid,Myoepithelial,Myeloid,-42.33546705709418,2,False
+Myoepithelial,DCs,Myoepithelial,Dendritic,-21.76060815519089,2,False
+Myoepithelial,T.cells.CD4,Myoepithelial,CD4 T,-70.37306518837384,2,False
+Myoepithelial,T.cells.CD8,Myoepithelial,CD8 T,-43.54403061141555,2,False
+Myoepithelial,B.cells.Memory,Myoepithelial,B,-54.13118371081382,2,False
+Myoepithelial,B.cells.Naive,Myoepithelial,B,-54.13118371081382,2,False
+CAFs.MSC.iCAF.like,Cancer.Basal.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.MSC.iCAF.like,Cancer.Her2.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.MSC.iCAF.like,Cancer.LumA.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.MSC.iCAF.like,Cancer.LumB.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.MSC.iCAF.like,Cancer.Cycling,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.MSC.iCAF.like,Myoepithelial,Fibroblast,Myoepithelial,-113.62792500222059,2,False
+CAFs.MSC.iCAF.like,PVL.Differentiated,Fibroblast,Perivascular,-1.7359305353998493,2,False
+CAFs.MSC.iCAF.like,PVL.Immature,Fibroblast,Perivascular,-1.7359305353998493,2,False
+CAFs.MSC.iCAF.like,Cycling.PVL,Fibroblast,Perivascular,-1.7359305353998493,2,False
+CAFs.MSC.iCAF.like,Endothelial.ACKR1,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.MSC.iCAF.like,Endothelial.CXCL12,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.MSC.iCAF.like,Endothelial.Lymphatic.LYVE1,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.MSC.iCAF.like,Endothelial.RGS5,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.MSC.iCAF.like,Macrophage,Fibroblast,Myeloid,11.61568085600421,2,True
+CAFs.MSC.iCAF.like,Monocyte,Fibroblast,Myeloid,11.61568085600421,2,True
+CAFs.MSC.iCAF.like,Cycling.Myeloid,Fibroblast,Myeloid,11.61568085600421,2,True
+CAFs.MSC.iCAF.like,DCs,Fibroblast,Dendritic,-7.043430134459253,2,False
+CAFs.MSC.iCAF.like,T.cells.CD4,Fibroblast,CD4 T,-70.44401946219952,2,False
+CAFs.MSC.iCAF.like,T.cells.CD8,Fibroblast,CD8 T,-26.338383878778043,2,False
+CAFs.MSC.iCAF.like,B.cells.Memory,Fibroblast,B,29.021139517974,2,True
+CAFs.MSC.iCAF.like,B.cells.Naive,Fibroblast,B,29.021139517974,2,True
+CAFs.myCAF.like,Cancer.Basal.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.myCAF.like,Cancer.Her2.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.myCAF.like,Cancer.LumA.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.myCAF.like,Cancer.LumB.SC,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.myCAF.like,Cancer.Cycling,Fibroblast,Tumour,-425.70777793867603,2,False
+CAFs.myCAF.like,Myoepithelial,Fibroblast,Myoepithelial,-113.62792500222059,2,False
+CAFs.myCAF.like,PVL.Differentiated,Fibroblast,Perivascular,-1.7359305353998493,2,False
+CAFs.myCAF.like,PVL.Immature,Fibroblast,Perivascular,-1.7359305353998493,2,False
+CAFs.myCAF.like,Cycling.PVL,Fibroblast,Perivascular,-1.7359305353998493,2,False
+CAFs.myCAF.like,Endothelial.ACKR1,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.myCAF.like,Endothelial.CXCL12,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.myCAF.like,Endothelial.Lymphatic.LYVE1,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.myCAF.like,Endothelial.RGS5,Fibroblast,Endothelial,36.04695335679908,2,True
+CAFs.myCAF.like,Macrophage,Fibroblast,Myeloid,11.61568085600421,2,True
+CAFs.myCAF.like,Monocyte,Fibroblast,Myeloid,11.61568085600421,2,True
+CAFs.myCAF.like,Cycling.Myeloid,Fibroblast,Myeloid,11.61568085600421,2,True
+CAFs.myCAF.like,DCs,Fibroblast,Dendritic,-7.043430134459253,2,False
+CAFs.myCAF.like,T.cells.CD4,Fibroblast,CD4 T,-70.44401946219952,2,False
+CAFs.myCAF.like,T.cells.CD8,Fibroblast,CD8 T,-26.338383878778043,2,False
+CAFs.myCAF.like,B.cells.Memory,Fibroblast,B,29.021139517974,2,True
+CAFs.myCAF.like,B.cells.Naive,Fibroblast,B,29.021139517974,2,True
+PVL.Differentiated,Cancer.Basal.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Differentiated,Cancer.Her2.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Differentiated,Cancer.LumA.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Differentiated,Cancer.LumB.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Differentiated,Cancer.Cycling,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Differentiated,Myoepithelial,Perivascular,Myoepithelial,-16.021952489350877,2,False
+PVL.Differentiated,CAFs.MSC.iCAF.like,Perivascular,Fibroblast,-1.7359305353998493,2,False
+PVL.Differentiated,CAFs.myCAF.like,Perivascular,Fibroblast,-1.7359305353998493,2,False
+PVL.Differentiated,Endothelial.ACKR1,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Differentiated,Endothelial.CXCL12,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Differentiated,Endothelial.Lymphatic.LYVE1,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Differentiated,Endothelial.RGS5,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Differentiated,Macrophage,Perivascular,Myeloid,2.1679861498002464,2,True
+PVL.Differentiated,Monocyte,Perivascular,Myeloid,2.1679861498002464,2,True
+PVL.Differentiated,Cycling.Myeloid,Perivascular,Myeloid,2.1679861498002464,2,True
+PVL.Differentiated,DCs,Perivascular,Dendritic,-0.10698075429485365,2,False
+PVL.Differentiated,T.cells.CD4,Perivascular,CD4 T,8.391803062348593,2,True
+PVL.Differentiated,T.cells.CD8,Perivascular,CD8 T,2.0017510052260357,2,True
+PVL.Differentiated,B.cells.Memory,Perivascular,B,-1.6752265953120111,2,False
+PVL.Differentiated,B.cells.Naive,Perivascular,B,-1.6752265953120111,2,False
+PVL.Immature,Cancer.Basal.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Immature,Cancer.Her2.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Immature,Cancer.LumA.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Immature,Cancer.LumB.SC,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Immature,Cancer.Cycling,Perivascular,Tumour,-53.83885381981203,2,False
+PVL.Immature,Myoepithelial,Perivascular,Myoepithelial,-16.021952489350877,2,False
+PVL.Immature,CAFs.MSC.iCAF.like,Perivascular,Fibroblast,-1.7359305353998493,2,False
+PVL.Immature,CAFs.myCAF.like,Perivascular,Fibroblast,-1.7359305353998493,2,False
+PVL.Immature,Endothelial.ACKR1,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Immature,Endothelial.CXCL12,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Immature,Endothelial.Lymphatic.LYVE1,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Immature,Endothelial.RGS5,Perivascular,Endothelial,100.09272874008508,2,True
+PVL.Immature,Macrophage,Perivascular,Myeloid,2.1679861498002464,2,True
+PVL.Immature,Monocyte,Perivascular,Myeloid,2.1679861498002464,2,True
+PVL.Immature,Cycling.Myeloid,Perivascular,Myeloid,2.1679861498002464,2,True
+PVL.Immature,DCs,Perivascular,Dendritic,-0.10698075429485365,2,False
+PVL.Immature,T.cells.CD4,Perivascular,CD4 T,8.391803062348593,2,True
+PVL.Immature,T.cells.CD8,Perivascular,CD8 T,2.0017510052260357,2,True
+PVL.Immature,B.cells.Memory,Perivascular,B,-1.6752265953120111,2,False
+PVL.Immature,B.cells.Naive,Perivascular,B,-1.6752265953120111,2,False
+Cycling.PVL,Cancer.Basal.SC,Perivascular,Tumour,-53.83885381981203,2,False
+Cycling.PVL,Cancer.Her2.SC,Perivascular,Tumour,-53.83885381981203,2,False
+Cycling.PVL,Cancer.LumA.SC,Perivascular,Tumour,-53.83885381981203,2,False
+Cycling.PVL,Cancer.LumB.SC,Perivascular,Tumour,-53.83885381981203,2,False
+Cycling.PVL,Cancer.Cycling,Perivascular,Tumour,-53.83885381981203,2,False
+Cycling.PVL,Myoepithelial,Perivascular,Myoepithelial,-16.021952489350877,2,False
+Cycling.PVL,CAFs.MSC.iCAF.like,Perivascular,Fibroblast,-1.7359305353998493,2,False
+Cycling.PVL,CAFs.myCAF.like,Perivascular,Fibroblast,-1.7359305353998493,2,False
+Cycling.PVL,Endothelial.ACKR1,Perivascular,Endothelial,100.09272874008508,2,True
+Cycling.PVL,Endothelial.CXCL12,Perivascular,Endothelial,100.09272874008508,2,True
+Cycling.PVL,Endothelial.Lymphatic.LYVE1,Perivascular,Endothelial,100.09272874008508,2,True
+Cycling.PVL,Endothelial.RGS5,Perivascular,Endothelial,100.09272874008508,2,True
+Cycling.PVL,Macrophage,Perivascular,Myeloid,2.1679861498002464,2,True
+Cycling.PVL,Monocyte,Perivascular,Myeloid,2.1679861498002464,2,True
+Cycling.PVL,Cycling.Myeloid,Perivascular,Myeloid,2.1679861498002464,2,True
+Cycling.PVL,DCs,Perivascular,Dendritic,-0.10698075429485365,2,False
+Cycling.PVL,T.cells.CD4,Perivascular,CD4 T,8.391803062348593,2,True
+Cycling.PVL,T.cells.CD8,Perivascular,CD8 T,2.0017510052260357,2,True
+Cycling.PVL,B.cells.Memory,Perivascular,B,-1.6752265953120111,2,False
+Cycling.PVL,B.cells.Naive,Perivascular,B,-1.6752265953120111,2,False
+Endothelial.ACKR1,Cancer.Basal.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.ACKR1,Cancer.Her2.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.ACKR1,Cancer.LumA.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.ACKR1,Cancer.LumB.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.ACKR1,Cancer.Cycling,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.ACKR1,Myoepithelial,Endothelial,Myoepithelial,-38.09824438495321,2,False
+Endothelial.ACKR1,CAFs.MSC.iCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.ACKR1,CAFs.myCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.ACKR1,PVL.Differentiated,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.ACKR1,PVL.Immature,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.ACKR1,Cycling.PVL,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.ACKR1,Macrophage,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.ACKR1,Monocyte,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.ACKR1,Cycling.Myeloid,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.ACKR1,DCs,Endothelial,Dendritic,-6.795835774823787,2,False
+Endothelial.ACKR1,T.cells.CD4,Endothelial,CD4 T,1.5037453725680014,2,False
+Endothelial.ACKR1,T.cells.CD8,Endothelial,CD8 T,0.12382911875292413,2,False
+Endothelial.ACKR1,B.cells.Memory,Endothelial,B,-5.5165697684282895,2,False
+Endothelial.ACKR1,B.cells.Naive,Endothelial,B,-5.5165697684282895,2,False
+Endothelial.CXCL12,Cancer.Basal.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.CXCL12,Cancer.Her2.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.CXCL12,Cancer.LumA.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.CXCL12,Cancer.LumB.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.CXCL12,Cancer.Cycling,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.CXCL12,Myoepithelial,Endothelial,Myoepithelial,-38.09824438495321,2,False
+Endothelial.CXCL12,CAFs.MSC.iCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.CXCL12,CAFs.myCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.CXCL12,PVL.Differentiated,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.CXCL12,PVL.Immature,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.CXCL12,Cycling.PVL,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.CXCL12,Macrophage,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.CXCL12,Monocyte,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.CXCL12,Cycling.Myeloid,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.CXCL12,DCs,Endothelial,Dendritic,-6.795835774823787,2,False
+Endothelial.CXCL12,T.cells.CD4,Endothelial,CD4 T,1.5037453725680014,2,False
+Endothelial.CXCL12,T.cells.CD8,Endothelial,CD8 T,0.12382911875292413,2,False
+Endothelial.CXCL12,B.cells.Memory,Endothelial,B,-5.5165697684282895,2,False
+Endothelial.CXCL12,B.cells.Naive,Endothelial,B,-5.5165697684282895,2,False
+Endothelial.Lymphatic.LYVE1,Cancer.Basal.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.Lymphatic.LYVE1,Cancer.Her2.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.Lymphatic.LYVE1,Cancer.LumA.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.Lymphatic.LYVE1,Cancer.LumB.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.Lymphatic.LYVE1,Cancer.Cycling,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.Lymphatic.LYVE1,Myoepithelial,Endothelial,Myoepithelial,-38.09824438495321,2,False
+Endothelial.Lymphatic.LYVE1,CAFs.MSC.iCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.Lymphatic.LYVE1,CAFs.myCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.Lymphatic.LYVE1,PVL.Differentiated,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.Lymphatic.LYVE1,PVL.Immature,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.Lymphatic.LYVE1,Cycling.PVL,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.Lymphatic.LYVE1,Macrophage,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.Lymphatic.LYVE1,Monocyte,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.Lymphatic.LYVE1,Cycling.Myeloid,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.Lymphatic.LYVE1,DCs,Endothelial,Dendritic,-6.795835774823787,2,False
+Endothelial.Lymphatic.LYVE1,T.cells.CD4,Endothelial,CD4 T,1.5037453725680014,2,False
+Endothelial.Lymphatic.LYVE1,T.cells.CD8,Endothelial,CD8 T,0.12382911875292413,2,False
+Endothelial.Lymphatic.LYVE1,B.cells.Memory,Endothelial,B,-5.5165697684282895,2,False
+Endothelial.Lymphatic.LYVE1,B.cells.Naive,Endothelial,B,-5.5165697684282895,2,False
+Endothelial.RGS5,Cancer.Basal.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.RGS5,Cancer.Her2.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.RGS5,Cancer.LumA.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.RGS5,Cancer.LumB.SC,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.RGS5,Cancer.Cycling,Endothelial,Tumour,-148.63338799585688,2,False
+Endothelial.RGS5,Myoepithelial,Endothelial,Myoepithelial,-38.09824438495321,2,False
+Endothelial.RGS5,CAFs.MSC.iCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.RGS5,CAFs.myCAF.like,Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial.RGS5,PVL.Differentiated,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.RGS5,PVL.Immature,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.RGS5,Cycling.PVL,Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial.RGS5,Macrophage,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.RGS5,Monocyte,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.RGS5,Cycling.Myeloid,Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial.RGS5,DCs,Endothelial,Dendritic,-6.795835774823787,2,False
+Endothelial.RGS5,T.cells.CD4,Endothelial,CD4 T,1.5037453725680014,2,False
+Endothelial.RGS5,T.cells.CD8,Endothelial,CD8 T,0.12382911875292413,2,False
+Endothelial.RGS5,B.cells.Memory,Endothelial,B,-5.5165697684282895,2,False
+Endothelial.RGS5,B.cells.Naive,Endothelial,B,-5.5165697684282895,2,False
+Macrophage,Cancer.Basal.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Macrophage,Cancer.Her2.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Macrophage,Cancer.LumA.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Macrophage,Cancer.LumB.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Macrophage,Cancer.Cycling,Myeloid,Tumour,-155.68581702321774,2,False
+Macrophage,Myoepithelial,Myeloid,Myoepithelial,-42.33546705709418,2,False
+Macrophage,CAFs.MSC.iCAF.like,Myeloid,Fibroblast,11.61568085600421,2,True
+Macrophage,CAFs.myCAF.like,Myeloid,Fibroblast,11.61568085600421,2,True
+Macrophage,PVL.Differentiated,Myeloid,Perivascular,2.1679861498002464,2,True
+Macrophage,PVL.Immature,Myeloid,Perivascular,2.1679861498002464,2,True
+Macrophage,Cycling.PVL,Myeloid,Perivascular,2.1679861498002464,2,True
+Macrophage,Endothelial.ACKR1,Myeloid,Endothelial,13.176312397027168,2,True
+Macrophage,Endothelial.CXCL12,Myeloid,Endothelial,13.176312397027168,2,True
+Macrophage,Endothelial.Lymphatic.LYVE1,Myeloid,Endothelial,13.176312397027168,2,True
+Macrophage,Endothelial.RGS5,Myeloid,Endothelial,13.176312397027168,2,True
+Macrophage,DCs,Myeloid,Dendritic,15.541399493016652,2,True
+Macrophage,T.cells.CD4,Myeloid,CD4 T,49.329973201553315,2,True
+Macrophage,T.cells.CD8,Myeloid,CD8 T,59.5867240493617,2,True
+Macrophage,B.cells.Memory,Myeloid,B,40.75870176881156,2,True
+Macrophage,B.cells.Naive,Myeloid,B,40.75870176881156,2,True
+Monocyte,Cancer.Basal.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Monocyte,Cancer.Her2.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Monocyte,Cancer.LumA.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Monocyte,Cancer.LumB.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Monocyte,Cancer.Cycling,Myeloid,Tumour,-155.68581702321774,2,False
+Monocyte,Myoepithelial,Myeloid,Myoepithelial,-42.33546705709418,2,False
+Monocyte,CAFs.MSC.iCAF.like,Myeloid,Fibroblast,11.61568085600421,2,True
+Monocyte,CAFs.myCAF.like,Myeloid,Fibroblast,11.61568085600421,2,True
+Monocyte,PVL.Differentiated,Myeloid,Perivascular,2.1679861498002464,2,True
+Monocyte,PVL.Immature,Myeloid,Perivascular,2.1679861498002464,2,True
+Monocyte,Cycling.PVL,Myeloid,Perivascular,2.1679861498002464,2,True
+Monocyte,Endothelial.ACKR1,Myeloid,Endothelial,13.176312397027168,2,True
+Monocyte,Endothelial.CXCL12,Myeloid,Endothelial,13.176312397027168,2,True
+Monocyte,Endothelial.Lymphatic.LYVE1,Myeloid,Endothelial,13.176312397027168,2,True
+Monocyte,Endothelial.RGS5,Myeloid,Endothelial,13.176312397027168,2,True
+Monocyte,DCs,Myeloid,Dendritic,15.541399493016652,2,True
+Monocyte,T.cells.CD4,Myeloid,CD4 T,49.329973201553315,2,True
+Monocyte,T.cells.CD8,Myeloid,CD8 T,59.5867240493617,2,True
+Monocyte,B.cells.Memory,Myeloid,B,40.75870176881156,2,True
+Monocyte,B.cells.Naive,Myeloid,B,40.75870176881156,2,True
+Cycling.Myeloid,Cancer.Basal.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Cycling.Myeloid,Cancer.Her2.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Cycling.Myeloid,Cancer.LumA.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Cycling.Myeloid,Cancer.LumB.SC,Myeloid,Tumour,-155.68581702321774,2,False
+Cycling.Myeloid,Cancer.Cycling,Myeloid,Tumour,-155.68581702321774,2,False
+Cycling.Myeloid,Myoepithelial,Myeloid,Myoepithelial,-42.33546705709418,2,False
+Cycling.Myeloid,CAFs.MSC.iCAF.like,Myeloid,Fibroblast,11.61568085600421,2,True
+Cycling.Myeloid,CAFs.myCAF.like,Myeloid,Fibroblast,11.61568085600421,2,True
+Cycling.Myeloid,PVL.Differentiated,Myeloid,Perivascular,2.1679861498002464,2,True
+Cycling.Myeloid,PVL.Immature,Myeloid,Perivascular,2.1679861498002464,2,True
+Cycling.Myeloid,Cycling.PVL,Myeloid,Perivascular,2.1679861498002464,2,True
+Cycling.Myeloid,Endothelial.ACKR1,Myeloid,Endothelial,13.176312397027168,2,True
+Cycling.Myeloid,Endothelial.CXCL12,Myeloid,Endothelial,13.176312397027168,2,True
+Cycling.Myeloid,Endothelial.Lymphatic.LYVE1,Myeloid,Endothelial,13.176312397027168,2,True
+Cycling.Myeloid,Endothelial.RGS5,Myeloid,Endothelial,13.176312397027168,2,True
+Cycling.Myeloid,DCs,Myeloid,Dendritic,15.541399493016652,2,True
+Cycling.Myeloid,T.cells.CD4,Myeloid,CD4 T,49.329973201553315,2,True
+Cycling.Myeloid,T.cells.CD8,Myeloid,CD8 T,59.5867240493617,2,True
+Cycling.Myeloid,B.cells.Memory,Myeloid,B,40.75870176881156,2,True
+Cycling.Myeloid,B.cells.Naive,Myeloid,B,40.75870176881156,2,True
+DCs,Cancer.Basal.SC,Dendritic,Tumour,-56.42740332419403,2,False
+DCs,Cancer.Her2.SC,Dendritic,Tumour,-56.42740332419403,2,False
+DCs,Cancer.LumA.SC,Dendritic,Tumour,-56.42740332419403,2,False
+DCs,Cancer.LumB.SC,Dendritic,Tumour,-56.42740332419403,2,False
+DCs,Cancer.Cycling,Dendritic,Tumour,-56.42740332419403,2,False
+DCs,Myoepithelial,Dendritic,Myoepithelial,-21.76060815519089,2,False
+DCs,CAFs.MSC.iCAF.like,Dendritic,Fibroblast,-7.043430134459253,2,False
+DCs,CAFs.myCAF.like,Dendritic,Fibroblast,-7.043430134459253,2,False
+DCs,PVL.Differentiated,Dendritic,Perivascular,-0.10698075429485365,2,False
+DCs,PVL.Immature,Dendritic,Perivascular,-0.10698075429485365,2,False
+DCs,Cycling.PVL,Dendritic,Perivascular,-0.10698075429485365,2,False
+DCs,Endothelial.ACKR1,Dendritic,Endothelial,-6.795835774823787,2,False
+DCs,Endothelial.CXCL12,Dendritic,Endothelial,-6.795835774823787,2,False
+DCs,Endothelial.Lymphatic.LYVE1,Dendritic,Endothelial,-6.795835774823787,2,False
+DCs,Endothelial.RGS5,Dendritic,Endothelial,-6.795835774823787,2,False
+DCs,Macrophage,Dendritic,Myeloid,15.541399493016652,2,True
+DCs,Monocyte,Dendritic,Myeloid,15.541399493016652,2,True
+DCs,Cycling.Myeloid,Dendritic,Myeloid,15.541399493016652,2,True
+DCs,T.cells.CD4,Dendritic,CD4 T,76.06735775352928,2,True
+DCs,T.cells.CD8,Dendritic,CD8 T,36.366587455198186,2,True
+DCs,B.cells.Memory,Dendritic,B,29.234209831501715,2,True
+DCs,B.cells.Naive,Dendritic,B,29.234209831501715,2,True
+T.cells.CD4,Cancer.Basal.SC,CD4 T,Tumour,-197.72153483719165,2,False
+T.cells.CD4,Cancer.Her2.SC,CD4 T,Tumour,-197.72153483719165,2,False
+T.cells.CD4,Cancer.LumA.SC,CD4 T,Tumour,-197.72153483719165,2,False
+T.cells.CD4,Cancer.LumB.SC,CD4 T,Tumour,-197.72153483719165,2,False
+T.cells.CD4,Cancer.Cycling,CD4 T,Tumour,-197.72153483719165,2,False
+T.cells.CD4,Myoepithelial,CD4 T,Myoepithelial,-70.37306518837384,2,False
+T.cells.CD4,CAFs.MSC.iCAF.like,CD4 T,Fibroblast,-70.44401946219952,2,False
+T.cells.CD4,CAFs.myCAF.like,CD4 T,Fibroblast,-70.44401946219952,2,False
+T.cells.CD4,PVL.Differentiated,CD4 T,Perivascular,8.391803062348593,2,True
+T.cells.CD4,PVL.Immature,CD4 T,Perivascular,8.391803062348593,2,True
+T.cells.CD4,Cycling.PVL,CD4 T,Perivascular,8.391803062348593,2,True
+T.cells.CD4,Endothelial.ACKR1,CD4 T,Endothelial,1.5037453725680014,2,False
+T.cells.CD4,Endothelial.CXCL12,CD4 T,Endothelial,1.5037453725680014,2,False
+T.cells.CD4,Endothelial.Lymphatic.LYVE1,CD4 T,Endothelial,1.5037453725680014,2,False
+T.cells.CD4,Endothelial.RGS5,CD4 T,Endothelial,1.5037453725680014,2,False
+T.cells.CD4,Macrophage,CD4 T,Myeloid,49.329973201553315,2,True
+T.cells.CD4,Monocyte,CD4 T,Myeloid,49.329973201553315,2,True
+T.cells.CD4,Cycling.Myeloid,CD4 T,Myeloid,49.329973201553315,2,True
+T.cells.CD4,DCs,CD4 T,Dendritic,76.06735775352928,2,True
+T.cells.CD4,T.cells.CD8,CD4 T,CD8 T,158.92091298346105,2,True
+T.cells.CD4,B.cells.Memory,CD4 T,B,98.27791175393047,2,True
+T.cells.CD4,B.cells.Naive,CD4 T,B,98.27791175393047,2,True
+T.cells.CD8,Cancer.Basal.SC,CD8 T,Tumour,-146.44387145790665,2,False
+T.cells.CD8,Cancer.Her2.SC,CD8 T,Tumour,-146.44387145790665,2,False
+T.cells.CD8,Cancer.LumA.SC,CD8 T,Tumour,-146.44387145790665,2,False
+T.cells.CD8,Cancer.LumB.SC,CD8 T,Tumour,-146.44387145790665,2,False
+T.cells.CD8,Cancer.Cycling,CD8 T,Tumour,-146.44387145790665,2,False
+T.cells.CD8,Myoepithelial,CD8 T,Myoepithelial,-43.54403061141555,2,False
+T.cells.CD8,CAFs.MSC.iCAF.like,CD8 T,Fibroblast,-26.338383878778043,2,False
+T.cells.CD8,CAFs.myCAF.like,CD8 T,Fibroblast,-26.338383878778043,2,False
+T.cells.CD8,PVL.Differentiated,CD8 T,Perivascular,2.0017510052260357,2,True
+T.cells.CD8,PVL.Immature,CD8 T,Perivascular,2.0017510052260357,2,True
+T.cells.CD8,Cycling.PVL,CD8 T,Perivascular,2.0017510052260357,2,True
+T.cells.CD8,Endothelial.ACKR1,CD8 T,Endothelial,0.12382911875292413,2,False
+T.cells.CD8,Endothelial.CXCL12,CD8 T,Endothelial,0.12382911875292413,2,False
+T.cells.CD8,Endothelial.Lymphatic.LYVE1,CD8 T,Endothelial,0.12382911875292413,2,False
+T.cells.CD8,Endothelial.RGS5,CD8 T,Endothelial,0.12382911875292413,2,False
+T.cells.CD8,Macrophage,CD8 T,Myeloid,59.5867240493617,2,True
+T.cells.CD8,Monocyte,CD8 T,Myeloid,59.5867240493617,2,True
+T.cells.CD8,Cycling.Myeloid,CD8 T,Myeloid,59.5867240493617,2,True
+T.cells.CD8,DCs,CD8 T,Dendritic,36.366587455198186,2,True
+T.cells.CD8,T.cells.CD4,CD8 T,CD4 T,158.92091298346105,2,True
+T.cells.CD8,B.cells.Memory,CD8 T,B,60.39453500569415,2,True
+T.cells.CD8,B.cells.Naive,CD8 T,B,60.39453500569415,2,True
+B.cells.Memory,Cancer.Basal.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Memory,Cancer.Her2.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Memory,Cancer.LumA.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Memory,Cancer.LumB.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Memory,Cancer.Cycling,B,Tumour,-147.90639148034967,2,False
+B.cells.Memory,Myoepithelial,B,Myoepithelial,-54.13118371081382,2,False
+B.cells.Memory,CAFs.MSC.iCAF.like,B,Fibroblast,29.021139517974,2,True
+B.cells.Memory,CAFs.myCAF.like,B,Fibroblast,29.021139517974,2,True
+B.cells.Memory,PVL.Differentiated,B,Perivascular,-1.6752265953120111,2,False
+B.cells.Memory,PVL.Immature,B,Perivascular,-1.6752265953120111,2,False
+B.cells.Memory,Cycling.PVL,B,Perivascular,-1.6752265953120111,2,False
+B.cells.Memory,Endothelial.ACKR1,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Memory,Endothelial.CXCL12,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Memory,Endothelial.Lymphatic.LYVE1,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Memory,Endothelial.RGS5,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Memory,Macrophage,B,Myeloid,40.75870176881156,2,True
+B.cells.Memory,Monocyte,B,Myeloid,40.75870176881156,2,True
+B.cells.Memory,Cycling.Myeloid,B,Myeloid,40.75870176881156,2,True
+B.cells.Memory,DCs,B,Dendritic,29.234209831501715,2,True
+B.cells.Memory,T.cells.CD4,B,CD4 T,98.27791175393047,2,True
+B.cells.Memory,T.cells.CD8,B,CD8 T,60.39453500569415,2,True
+B.cells.Naive,Cancer.Basal.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Naive,Cancer.Her2.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Naive,Cancer.LumA.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Naive,Cancer.LumB.SC,B,Tumour,-147.90639148034967,2,False
+B.cells.Naive,Cancer.Cycling,B,Tumour,-147.90639148034967,2,False
+B.cells.Naive,Myoepithelial,B,Myoepithelial,-54.13118371081382,2,False
+B.cells.Naive,CAFs.MSC.iCAF.like,B,Fibroblast,29.021139517974,2,True
+B.cells.Naive,CAFs.myCAF.like,B,Fibroblast,29.021139517974,2,True
+B.cells.Naive,PVL.Differentiated,B,Perivascular,-1.6752265953120111,2,False
+B.cells.Naive,PVL.Immature,B,Perivascular,-1.6752265953120111,2,False
+B.cells.Naive,Cycling.PVL,B,Perivascular,-1.6752265953120111,2,False
+B.cells.Naive,Endothelial.ACKR1,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Naive,Endothelial.CXCL12,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Naive,Endothelial.Lymphatic.LYVE1,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Naive,Endothelial.RGS5,B,Endothelial,-5.5165697684282895,2,False
+B.cells.Naive,Macrophage,B,Myeloid,40.75870176881156,2,True
+B.cells.Naive,Monocyte,B,Myeloid,40.75870176881156,2,True
+B.cells.Naive,Cycling.Myeloid,B,Myeloid,40.75870176881156,2,True
+B.cells.Naive,DCs,B,Dendritic,29.234209831501715,2,True
+B.cells.Naive,T.cells.CD4,B,CD4 T,98.27791175393047,2,True
+B.cells.Naive,T.cells.CD8,B,CD8 T,60.39453500569415,2,True

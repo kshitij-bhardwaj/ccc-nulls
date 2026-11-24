@@ -60,8 +60,12 @@ def b2_excluded() -> set:
 
 
 def make_tool(species: str, B: int, native: bool = True, seed: int | None = None):
+    """``$NATMI_CORES`` (default 1): native NATMI's ``--coreNum``. Its edges are built per L-R pair in a
+    process pool, so the cores change the run time, not the scores."""
+    import os
+
     from .tools import NATMI
-    return NATMI(B=B, run_native=native, species=species, seed=seed)
+    return NATMI(B=B, run_native=native, species=species, seed=seed, core_num=int(os.environ.get("NATMI_CORES", "1")))
 
 
 def with_loo_t(df: pd.DataFrame) -> pd.DataFrame:
@@ -89,7 +93,7 @@ def part_core(args):
 
     for name in args.dataset or CORE_DATASETS + AMENDMENT_DATASETS:
         f = rows_dir() / f"{name}_{TOOL}.pkl"
-        if f.exists() and (OUT / f"amendment5_core_{name}.json").exists() and not args.force:
+        if f.exists() and load5(f"core_{name}") and not args.force:
             log(f"core {name}: done")
             continue
         log("core:", name)

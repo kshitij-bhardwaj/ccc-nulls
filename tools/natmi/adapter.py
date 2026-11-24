@@ -165,21 +165,29 @@ def grid(h: dict) -> pd.DataFrame:
 
 
 # ------------------------------------------------------------------ the nulls
-def null_a(h: dict, *, B: int = 1000, seed: int = 0) -> dict:
+def null_a(h: dict, *, B: int = 1000, seed: int = 0, workers: int | None = None) -> dict:
     """Null A on NATMI's score: every label permuted, p = (1 + #{s_b >= s}) / (B + 1), 1 where s = 0.
     The permutations are ``default_rng(seed).permutation(codes)``, one per iteration: Null B's sequence
     for the same ``B`` and ``seed`` (``composite.composite``)."""
     side, codes, K = h["side"], np.asarray(h["codes"]), len(h["levels"])
     obs = side.summarize(codes, K)
     s_obs = np.asarray(side.score(obs, obs))
-    k = np.zeros(s_obs.shape, np.int64)
-    npos = np.zeros(s_obs.shape, np.int64)
-    gen = np.random.default_rng(seed)
-    for _ in range(B):
-        m = side.summarize(gen.permutation(codes), K)
-        s = np.asarray(side.score(m, m))
-        k += s >= s_obs
-        npos += s > 0
+
+    def counts(lo, hi):                     # permutations lo..hi-1 of the serial sequence
+        k = np.zeros(s_obs.shape, np.int64)
+        npos = np.zeros(s_obs.shape, np.int64)
+        gen = np.random.default_rng(seed)
+        for b in range(hi):
+            c = gen.permutation(codes)
+            if b < lo:
+                continue
+            m = side.summarize(c, K)
+            s = np.asarray(side.score(m, m))
+            k += s >= s_obs
+            npos += s > 0
+        return k, npos
+
+    k, npos = composite.map_permutations(counts, int(B), composite.n_workers(workers))
     p = np.where(s_obs == 0, 1.0, (1 + k) / (B + 1))
     return dict(score=s_obs, p=p, n_exceed=k, n_pos=npos, B=int(B), seed=int(seed))
 
@@ -234,7 +242,9 @@ def prepare_inputs(adata, groupby: str, out_dir: Path, *, pairs: pd.DataFrame | 
       NATMI reads no other gene, and its means and specificities are per gene, so nothing changes.
     - ``ann.csv``: cell, cluster. Cells are renamed ``c0, c1, ...`` so no barcode needs quoting.
 
-    Values keep their precision: ``%.9g`` for float32 data (exact round trip), ``%.17g`` otherwise.
+    Values are written with ``%.17g``: the exact float64 value of every entry, float32 data included.
+    NATMI parses the file as float64, so ``%.9g`` (enough to recover a float32) would hand it values up to
+    ~5e-9 (relative) away from the ones the Python side scores, above ``FIDELITY_RTOL``.
     """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -242,7 +252,7 @@ def prepare_inputs(adata, groupby: str, out_dir: Path, *, pairs: pd.DataFrame | 
     var = pd.Index(adata.var_names.astype(str))
     genes = sorted(database_genes(pairs) & set(var))
     X = as_matrix(adata.X)
-    fmt = "%.9g" if getattr(adata.X, "dtype", np.float64) == np.float32 else "%.17g"
+    fmt = "%.17g"
     cells = [f"c{i}" for i in range(adata.n_obs)]
     em, ann = out_dir / "em.csv", out_dir / "ann.csv"
     with open(em, "w", newline="") as f:

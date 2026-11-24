@@ -86,7 +86,8 @@ def summary(df: pd.DataFrame, tool, meta: dict) -> dict:
         "meta": {k: v for k, v in meta.items() if k != "fidelity"},
     }
     if "p_liana" in df:
-        m = df.p_liana.notna().to_numpy()
+        # matched = LIANA+ scored the row; its p is NaN for tools without one (NATMI, AMENDMENT_5)
+        m = (df.score_liana if "score_liana" in df else df.p_liana).notna().to_numpy()
         out["liana_builtin"] = {
             "rows_matched": int(m.sum()),
             "calls_p_lt_0.05": int(df.call_liana.fillna(False).sum()),

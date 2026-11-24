@@ -1,0 +1,101 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 03:16",
+ "amendment_5_sha256": "46bcd94bda5fb299ff969f56b9c0b669a6245d714defc7317337bea9ab52429c",
+ "dataset": "allen_brain_atlas",
+ "groupby": "label",
+ "B": 1000,
+ "native_run": true,
+ "n_cells": 14249,
+ "n_types": 23,
+ "natmi": {
+  "tool": "natmi",
+  "native_rule": "none (NATMI has no p-value); stand-in: Null A p < 0.05 and score > 0 (AMENDMENT_5)",
+  "rows": 846929,
+  "family": 846445,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 80576,
+   "2_our_null_a_bh": 59331,
+   "3_null_b_bh": 21777,
+   "b2_bh": 1,
+   "loo_t_bh": 13905
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 19127,
+   "receptor": 18427
+  },
+  "fidelity": {
+   "native_rows": 533189,
+   "port_positive_rows": 533189,
+   "only_native": 0,
+   "only_port": 0,
+   "rows_compared": 533189,
+   "max_rel_diff_score": 9.940355802596044e-13,
+   "max_rel_diff_expr_prod": 9.954446032388003e-13,
+   "rtol": 1e-09,
+   "identical": true
+  },
+  "meta": {
+   "orthologs": {
+    "source": "HCOP, min_evidence = 3, one-to-one",
+    "genes_in": 34617,
+    "genes_mapped": 14458
+   },
+   "seconds_null_a": 10.9,
+   "seconds_null_b": 11.1,
+   "n_pairs": 1601,
+   "seconds_native": 449.1,
+   "native_commit": "f35f677cb2e4c8a176a6c5501a9483c9e28661a1",
+   "B": 1000,
+   "seed": 0,
+   "rng": "numpy default_rng(seed).permutation(codes), one per iteration",
+   "species": "mouse",
+   "n_rows": 846929,
+   "n_family": 846445,
+   "n_lr": 1601,
+   "n_types": 23,
+   "score": "spec_weight",
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives a positive score",
+   "seconds_liana_builtin": 17.5,
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 137065,
+     "gated_in_family": 137065,
+     "family": 846445,
+     "calls": {
+      "p_b2": 1,
+      "p_b2_uncorrected": 1,
+      "p_b2_unmatched": 11,
+      "p_b2_joint": 1855
+     },
+     "vs_null_b": {
+      "calls_a": 1,
+      "calls_b": 21777,
+      "same_call": 0.9742882815442617,
+      "jaccard": 4.592000734720118e-05
+     },
+     "vs_null_a": {
+      "calls_a": 1,
+      "calls_b": 59331,
+      "same_call": 0.9299469022787034,
+      "jaccard": 1.6854595405437293e-05
+     }
+    }
+   }
+  },
+  "liana_builtin": {
+   "rows_matched": 0,
+   "calls_p_lt_0.05": 0,
+   "jaccard_with_native_rule": NaN,
+   "spearman_score": null
+  },
+  "outside_null_a": {
+   "null_b": 0,
+   "b2": 0,
+   "loo_t": 780
+  },
+  "fidelity_passed": true
+ }
+}
