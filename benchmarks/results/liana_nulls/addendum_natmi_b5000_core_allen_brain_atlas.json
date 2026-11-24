@@ -1,0 +1,90 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 02:15",
+ "amendment_5_sha256": "46bcd94bda5fb299ff969f56b9c0b669a6245d714defc7317337bea9ab52429c",
+ "addendum": "addendum to AMENDMENT_5, not pre-registered: AMENDMENT_5's code with B = 5,000 for Null A and Null B (p-value floor 1/5001); native NATMI not rerun",
+ "dataset": "allen_brain_atlas",
+ "groupby": "label",
+ "B": 5000,
+ "native_run": false,
+ "n_cells": 14249,
+ "n_types": 23,
+ "natmi": {
+  "tool": "natmi",
+  "native_rule": "none (NATMI has no p-value); stand-in: Null A p < 0.05 and score > 0 (AMENDMENT_5)",
+  "rows": 846929,
+  "family": 846866,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 80703,
+   "2_our_null_a_bh": 60319,
+   "3_null_b_bh": 22897,
+   "b2_bh": 1,
+   "loo_t_bh": 13904
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 19077,
+   "receptor": 18345
+  },
+  "fidelity": null,
+  "meta": {
+   "orthologs": {
+    "source": "HCOP, min_evidence = 3, one-to-one",
+    "genes_in": 34617,
+    "genes_mapped": 14458
+   },
+   "seconds_null_a": 219.4,
+   "seconds_null_b": 262.9,
+   "n_pairs": 1601,
+   "B": 5000,
+   "seed": 0,
+   "rng": "numpy default_rng(seed).permutation(codes), one per iteration",
+   "species": "mouse",
+   "n_rows": 846929,
+   "n_family": 846866,
+   "n_lr": 1601,
+   "n_types": 23,
+   "score": "spec_weight",
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives a positive score",
+   "seconds_liana_builtin": 17.1,
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 137065,
+     "gated_in_family": 137065,
+     "family": 846866,
+     "calls": {
+      "p_b2": 1,
+      "p_b2_uncorrected": 1,
+      "p_b2_unmatched": 11,
+      "p_b2_joint": 1855
+     },
+     "vs_null_b": {
+      "calls_a": 1,
+      "calls_b": 22897,
+      "same_call": 0.9729658566420561,
+      "jaccard": 4.367384373498712e-05
+     },
+     "vs_null_a": {
+      "calls_a": 1,
+      "calls_b": 60319,
+      "same_call": 0.928780334597115,
+      "jaccard": 1.6578524179777515e-05
+     }
+    }
+   }
+  },
+  "liana_builtin": {
+   "rows_matched": 0,
+   "calls_p_lt_0.05": 0,
+   "jaccard_with_native_rule": NaN,
+   "spearman_score": null
+  },
+  "outside_null_a": {
+   "null_b": 0,
+   "b2": 0,
+   "loo_t": 660
+  },
+  "fidelity_passed": null
+ }
+}

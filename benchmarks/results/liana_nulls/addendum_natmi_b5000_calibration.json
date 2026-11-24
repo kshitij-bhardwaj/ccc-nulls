@@ -1,0 +1,2244 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 06:05",
+ "amendment_5_sha256": "46bcd94bda5fb299ff969f56b9c0b669a6245d714defc7317337bea9ab52429c",
+ "addendum": "addendum to AMENDMENT_5, not pre-registered: AMENDMENT_5's code with B = 5,000 for Null A and Null B (p-value floor 1/5001); native NATMI not rerun",
+ "alpha": 0.05,
+ "B": 5000,
+ "reps": {
+  "receptor": 20,
+  "ligand": 20,
+  "labels": 10
+ },
+ "seeds": {
+  "labels": 1000,
+  "receptor": 2000,
+  "ligand": 3000
+ },
+ "results": {
+  "tabula_sapiens_mammary": {
+   "runs": {
+    "receptor": [
+     {
+      "null_a": {
+       "fdp": 0.8394169348254167,
+       "calls": 41642
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8794366197183099,
+       "calls": 14200
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 133.6
+     },
+     {
+      "null_a": {
+       "fdp": 0.8369233771619545,
+       "calls": 40993
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8801733780760627,
+       "calls": 14304
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 145.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.8367122349661295,
+       "calls": 40891
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8760926573426573,
+       "calls": 13728
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 141.8
+     },
+     {
+      "null_a": {
+       "fdp": 0.8397021736519755,
+       "calls": 41635
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8831168831168831,
+       "calls": 14707
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 143.8
+     },
+     {
+      "null_a": {
+       "fdp": 0.833916083916084,
+       "calls": 40040
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8766318537859008,
+       "calls": 13788
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 134.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.8391556271487991,
+       "calls": 41593
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8839153296481057,
+       "calls": 14834
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 145.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.8427971301803078,
+       "calls": 42372
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8847439497258992,
+       "calls": 14958
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 145.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.8383962879721598,
+       "calls": 41379
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8768440844663002,
+       "calls": 13828
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 137.4
+     },
+     {
+      "null_a": {
+       "fdp": 0.8391133787393805,
+       "calls": 41551
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8812175717744725,
+       "calls": 14455
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 150.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.8394330391404451,
+       "calls": 41696
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8830055128292384,
+       "calls": 14693
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 143.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.8365829194901778,
+       "calls": 40877
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8799411269974768,
+       "calls": 14268
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 159.4
+     },
+     {
+      "null_a": {
+       "fdp": 0.8363734696887752,
+       "calls": 40678
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8792372881355932,
+       "calls": 14160
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 173.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.8371373590237011,
+       "calls": 41053
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8796458933464484,
+       "calls": 14233
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 146.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.8382149865542554,
+       "calls": 41277
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.882001647446458,
+       "calls": 14568
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 174.1
+     },
+     {
+      "null_a": {
+       "fdp": 0.8356717373110816,
+       "calls": 40626
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.879595136008997,
+       "calls": 14227
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 168.8
+     },
+     {
+      "null_a": {
+       "fdp": 0.8379356405585914,
+       "calls": 41175
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8802570909598993,
+       "calls": 14314
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 153.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.8380339606211601,
+       "calls": 41342
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.880332332611883,
+       "calls": 14323
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 151.8
+     },
+     {
+      "null_a": {
+       "fdp": 0.8394366197183099,
+       "calls": 41535
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8834990866653136,
+       "calls": 14781
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 186.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.8389130434782609,
+       "calls": 41400
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8836486486486487,
+       "calls": 14800
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 169.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.8345738235948666,
+       "calls": 40441
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.878394753724428,
+       "calls": 14029
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "seconds": 141.1
+     }
+    ],
+    "ligand": [
+     {
+      "null_a": {
+       "fdp": 0.9026712837002226,
+       "calls": 40430
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9105760297305667,
+       "calls": 12916
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 139.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.9009481796977994,
+       "calls": 39444
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9102005908878869,
+       "calls": 12862
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 151.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.9034057401218794,
+       "calls": 40696
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9136150932184506,
+       "calls": 13463
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 143.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.9041560024375381,
+       "calls": 41025
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9120795687495254,
+       "calls": 13171
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 162.6
+     },
+     {
+      "null_a": {
+       "fdp": 0.9037826735457368,
+       "calls": 40897
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9099836333878887,
+       "calls": 12831
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 162.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.9032504685804479,
+       "calls": 40548
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9124197810494526,
+       "calls": 13245
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 172.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.9054370102471369,
+       "calls": 41475
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9106037151702786,
+       "calls": 12920
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 136.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.8998412617133493,
+       "calls": 39058
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9098923388984241,
+       "calls": 12818
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 133.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.9029543154725177,
+       "calls": 40517
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9114678899082569,
+       "calls": 13080
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 189.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.901882458680781,
+       "calls": 40054
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9114069313747992,
+       "calls": 13071
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 155.2
+     },
+     {
+      "null_a": {
+       "fdp": 0.9031701849890386,
+       "calls": 40597
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9112235510579577,
+       "calls": 13044
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 144.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.9020777463094313,
+       "calls": 39899
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9115152441354015,
+       "calls": 13087
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 162.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.9012079925038621,
+       "calls": 39487
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.911102573953131,
+       "calls": 13015
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 164.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.9022144376329289,
+       "calls": 39965
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9107004793567341,
+       "calls": 12934
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 114.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.9029181389142843,
+       "calls": 40471
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9117781502361725,
+       "calls": 13126
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 127.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.9036674696425938,
+       "calls": 40682
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9111948331539289,
+       "calls": 13006
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 140.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.9027620221948212,
+       "calls": 40550
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.912668018322445,
+       "calls": 13317
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 126.6
+     },
+     {
+      "null_a": {
+       "fdp": 0.9040673486368753,
+       "calls": 40862
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9115287646115059,
+       "calls": 13089
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 112.4
+     },
+     {
+      "null_a": {
+       "fdp": 0.9025288854357252,
+       "calls": 39899
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9101027397260274,
+       "calls": 12848
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 126.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.904010342977021,
+       "calls": 40994
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9119927040583675,
+       "calls": 13158
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 1
+      },
+      "seconds": 143.7
+     }
+    ],
+    "labels": [
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 9662
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 134.2
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 10570
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 113.2
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 10781
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 108.4
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 10368
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 105.3
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 10058
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 105.5
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 11427
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 105.9
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 10729
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 105.3
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 9981
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 108.1
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 11714
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 109.3
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 10995
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 106.6
+     }
+    ]
+   },
+   "n_ligand_only_genes": 731,
+   "n_receptor_only_genes": 593,
+   "summary": {
+    "null_a": {
+     "receptor": {
+      "fdr": [
+       0.8379219913870916,
+       [
+        0.8369762596479812,
+        0.838867723126202
+       ]
+      ],
+      "calls": 41209.8,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.9028476981716995,
+       [
+        0.9022518509795887,
+        0.9034435453638103
+       ]
+      ],
+      "calls": 40377.5,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 0,
+       "n": 10,
+       "p": 0.0,
+       "ci95": [
+        0.0,
+        0.3084971078187607
+       ]
+      },
+      "calls": 0.0,
+      "reps": 10
+     }
+    },
+    "null_b": {
+     "receptor": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 0.0,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 0.0,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 0,
+       "n": 10,
+       "p": 0.0,
+       "ci95": [
+        0.0,
+        0.3084971078187607
+       ]
+      },
+      "calls": 0.0,
+      "reps": 10
+     }
+    },
+    "b2": {
+     "receptor": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 0.0,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 1.0,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 0,
+       "n": 10,
+       "p": 0.0,
+       "ci95": [
+        0.0,
+        0.3084971078187607
+       ]
+      },
+      "calls": 0.0,
+      "reps": 10
+     }
+    },
+    "loo_t": {
+     "receptor": {
+      "fdr": [
+       0.8805865422514488,
+       [
+        0.8794040374325175,
+        0.8817690470703802
+       ]
+      ],
+      "calls": 14359.9,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.9113026315493601,
+       [
+        0.9108506554648943,
+        0.9117546076338259
+       ]
+      ],
+      "calls": 13050.05,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 10,
+       "n": 10,
+       "p": 1.0,
+       "ci95": [
+        0.6915028921812392,
+        1.0
+       ]
+      },
+      "calls": 10628.5,
+      "reps": 10
+     }
+    }
+   }
+  },
+  "tabula_sapiens_liver": {
+   "runs": {
+    "receptor": [
+     {
+      "null_a": {
+       "fdp": 0.8321215707824322,
+       "calls": 94628
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8954561881920031,
+       "calls": 30437
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 120.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.8351633497618899,
+       "calls": 96174
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8971550085381963,
+       "calls": 31037
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 120.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.8330088914610406,
+       "calls": 95035
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8973905778006298,
+       "calls": 31118
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 122.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.8361929962376483,
+       "calls": 96748
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8990614764424288,
+       "calls": 31752
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 119.6
+     },
+     {
+      "null_a": {
+       "fdp": 0.8334119472134,
+       "calls": 95403
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8972419785666013,
+       "calls": 31073
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 120.2
+     },
+     {
+      "null_a": {
+       "fdp": 0.8323551145360498,
+       "calls": 94730
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8970422217204786,
+       "calls": 31003
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 122.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.8338858272245286,
+       "calls": 95627
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8959979108180454,
+       "calls": 30634
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 121.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.8317658908975243,
+       "calls": 94315
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8963430504945341,
+       "calls": 30736
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 119.6
+     },
+     {
+      "null_a": {
+       "fdp": 0.8336130927402434,
+       "calls": 95320
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8962721797167508,
+       "calls": 30715
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 120.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.8323931038118838,
+       "calls": 94835
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8973773863855499,
+       "calls": 31114
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 120.1
+     },
+     {
+      "null_a": {
+       "fdp": 0.8341073109507374,
+       "calls": 95610
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8967750291413029,
+       "calls": 30884
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 120.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.8337146737710912,
+       "calls": 95715
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8968105065666041,
+       "calls": 30914
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 123.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.8343262678205611,
+       "calls": 95676
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8955248382966149,
+       "calls": 30457
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 124.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.832275171401105,
+       "calls": 94661
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8955948437038738,
+       "calls": 30487
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 121.1
+     },
+     {
+      "null_a": {
+       "fdp": 0.8345028203230078,
+       "calls": 95911
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8984794133519571,
+       "calls": 31501
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 122.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.8363896730059959,
+       "calls": 97066
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8998846021894396,
+       "calls": 32063
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 118.1
+     },
+     {
+      "null_a": {
+       "fdp": 0.8314339678699518,
+       "calls": 94242
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8961707674759655,
+       "calls": 30685
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 121.4
+     },
+     {
+      "null_a": {
+       "fdp": 0.8332266090005354,
+       "calls": 95261
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8965237430620923,
+       "calls": 30809
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 119.1
+     },
+     {
+      "null_a": {
+       "fdp": 0.8322249125070047,
+       "calls": 94579
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8969281953551471,
+       "calls": 30959
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 118.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.833029418274957,
+       "calls": 94873
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.8980015323713446,
+       "calls": 31324
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 2
+      },
+      "seconds": 125.6
+     }
+    ],
+    "ligand": [
+     {
+      "null_a": {
+       "fdp": 0.9089939463822427,
+       "calls": 104070
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9155034504391468,
+       "calls": 25504
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 118.4
+     },
+     {
+      "null_a": {
+       "fdp": 0.9073368950283853,
+       "calls": 101637
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9143221996089229,
+       "calls": 25059
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 118.2
+     },
+     {
+      "null_a": {
+       "fdp": 0.910656039935332,
+       "calls": 105771
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9185678789247798,
+       "calls": 26562
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 119.6
+     },
+     {
+      "null_a": {
+       "fdp": 0.9095921356165826,
+       "calls": 104471
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9174868390936141,
+       "calls": 26214
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 118.8
+     },
+     {
+      "null_a": {
+       "fdp": 0.9095515750699024,
+       "calls": 104789
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9173547400611621,
+       "calls": 26160
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 120.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.9100378247894927,
+       "calls": 105222
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.918167372881356,
+       "calls": 26432
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 119.6
+     },
+     {
+      "null_a": {
+       "fdp": 0.9066530417873725,
+       "calls": 100796
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9154348167950935,
+       "calls": 25436
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 121.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.908430768037539,
+       "calls": 103146
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9153349602456112,
+       "calls": 25406
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 122.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.9109736899161961,
+       "calls": 106081
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9174994278739798,
+       "calls": 26218
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 119.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.9083921431959651,
+       "calls": 103299
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9169835964811187,
+       "calls": 26031
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 120.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.9102117852366817,
+       "calls": 105437
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.917897134181059,
+       "calls": 26345
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 121.4
+     },
+     {
+      "null_a": {
+       "fdp": 0.9100019986865774,
+       "calls": 105069
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9170855235391168,
+       "calls": 26063
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 123.0
+     },
+     {
+      "null_a": {
+       "fdp": 0.909839274970634,
+       "calls": 104713
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9161197623393267,
+       "calls": 25751
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 119.4
+     },
+     {
+      "null_a": {
+       "fdp": 0.9109446721698559,
+       "calls": 105878
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9180681818181818,
+       "calls": 26400
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 123.7
+     },
+     {
+      "null_a": {
+       "fdp": 0.9088874741979667,
+       "calls": 103674
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9170632483880872,
+       "calls": 26056
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 118.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.9093249565309279,
+       "calls": 104097
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9162920477445358,
+       "calls": 25804
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 122.5
+     },
+     {
+      "null_a": {
+       "fdp": 0.9098045940873277,
+       "calls": 104961
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9187242026266417,
+       "calls": 26650
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 125.9
+     },
+     {
+      "null_a": {
+       "fdp": 0.909647764845288,
+       "calls": 104646
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9161816065192084,
+       "calls": 25770
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 125.3
+     },
+     {
+      "null_a": {
+       "fdp": 0.9104243656365485,
+       "calls": 105263
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9176094160667352,
+       "calls": 26253
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 123.8
+     },
+     {
+      "null_a": {
+       "fdp": 0.9113100387407379,
+       "calls": 106348
+      },
+      "null_b": {
+       "fdp": 0.0,
+       "calls": 0
+      },
+      "loo_t": {
+       "fdp": 0.9192460982605133,
+       "calls": 26847
+      },
+      "b2": {
+       "fdp": 0.0,
+       "calls": 3
+      },
+      "seconds": 124.8
+     }
+    ],
+    "labels": [
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 24271
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 119.6
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 23412
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 124.0
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 25947
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 120.7
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 22232
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 124.2
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 20404
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 125.1
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 22863
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 126.1
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 24260
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 120.7
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 23308
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 118.1
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 22155
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 118.5
+     },
+     {
+      "null_a": {
+       "any_call": false,
+       "calls": 0
+      },
+      "null_b": {
+       "any_call": false,
+       "calls": 0
+      },
+      "loo_t": {
+       "any_call": true,
+       "calls": 23404
+      },
+      "b2": {
+       "any_call": false,
+       "calls": 0
+      },
+      "seconds": 120.6
+     }
+    ]
+   },
+   "n_ligand_only_genes": 731,
+   "n_receptor_only_genes": 593,
+   "summary": {
+    "null_a": {
+     "receptor": {
+      "fdr": [
+       0.8334571304795795,
+       [
+        0.8328130884305702,
+        0.8341011725285887
+       ]
+      ],
+      "calls": 95320.45,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.9095507492430777,
+       [
+        0.9089951173686129,
+        0.9101063811175424
+       ]
+      ],
+      "calls": 104468.4,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 0,
+       "n": 10,
+       "p": 0.0,
+       "ci95": [
+        0.0,
+        0.3084971078187607
+       ]
+      },
+      "calls": 0.0,
+      "reps": 10
+     }
+    },
+    "null_b": {
+     "receptor": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 0.0,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 0.0,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 0,
+       "n": 10,
+       "p": 0.0,
+       "ci95": [
+        0.0,
+        0.3084971078187607
+       ]
+      },
+      "calls": 0.0,
+      "reps": 10
+     }
+    },
+    "b2": {
+     "receptor": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 2.0,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.0,
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "calls": 3.0,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 0,
+       "n": 10,
+       "p": 0.0,
+       "ci95": [
+        0.0,
+        0.3084971078187607
+       ]
+      },
+      "calls": 0.0,
+      "reps": 10
+     }
+    },
+    "loo_t": {
+     "receptor": {
+      "fdr": [
+       0.8970015725094781,
+       [
+        0.8964578189759806,
+        0.8975453260429755
+       ]
+      ],
+      "calls": 30985.1,
+      "reps": 20
+     },
+     "ligand": {
+      "fdr": [
+       0.9170471251944095,
+       [
+        0.9164462974841635,
+        0.9176479529046554
+       ]
+      ],
+      "calls": 26048.05,
+      "reps": 20
+     },
+     "labels": {
+      "p_any_call": {
+       "k": 10,
+       "n": 10,
+       "p": 1.0,
+       "ci95": [
+        0.6915028921812392,
+        1.0
+       ]
+      },
+      "calls": 23225.6,
+      "reps": 10
+     }
+    }
+   }
+  }
+ }
+}

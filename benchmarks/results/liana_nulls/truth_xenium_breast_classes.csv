@@ -1,0 +1,91 @@
+source_class,target_class,z_mean,n_sections,colocalised
+B,CD4 T,98.27791175393047,2,True
+B,CD8 T,60.39453500569415,2,True
+B,Dendritic,29.234209831501715,2,True
+B,Endothelial,-5.5165697684282895,2,False
+B,Fibroblast,29.021139517974,2,True
+B,Myeloid,40.75870176881156,2,True
+B,Myoepithelial,-54.13118371081382,2,False
+B,Perivascular,-1.6752265953120111,2,False
+B,Tumour,-147.90639148034967,2,False
+CD4 T,B,98.27791175393047,2,True
+CD4 T,CD8 T,158.92091298346105,2,True
+CD4 T,Dendritic,76.06735775352928,2,True
+CD4 T,Endothelial,1.5037453725680014,2,False
+CD4 T,Fibroblast,-70.44401946219952,2,False
+CD4 T,Myeloid,49.329973201553315,2,True
+CD4 T,Myoepithelial,-70.37306518837384,2,False
+CD4 T,Perivascular,8.391803062348593,2,True
+CD4 T,Tumour,-197.72153483719165,2,False
+CD8 T,B,60.39453500569415,2,True
+CD8 T,CD4 T,158.92091298346105,2,True
+CD8 T,Dendritic,36.366587455198186,2,True
+CD8 T,Endothelial,0.12382911875292413,2,False
+CD8 T,Fibroblast,-26.338383878778043,2,False
+CD8 T,Myeloid,59.5867240493617,2,True
+CD8 T,Myoepithelial,-43.54403061141555,2,False
+CD8 T,Perivascular,2.0017510052260357,2,True
+CD8 T,Tumour,-146.44387145790665,2,False
+Dendritic,B,29.234209831501715,2,True
+Dendritic,CD4 T,76.06735775352928,2,True
+Dendritic,CD8 T,36.366587455198186,2,True
+Dendritic,Endothelial,-6.795835774823787,2,False
+Dendritic,Fibroblast,-7.043430134459253,2,False
+Dendritic,Myeloid,15.541399493016652,2,True
+Dendritic,Myoepithelial,-21.76060815519089,2,False
+Dendritic,Perivascular,-0.10698075429485365,2,False
+Dendritic,Tumour,-56.42740332419403,2,False
+Endothelial,B,-5.5165697684282895,2,False
+Endothelial,CD4 T,1.5037453725680014,2,False
+Endothelial,CD8 T,0.12382911875292413,2,False
+Endothelial,Dendritic,-6.795835774823787,2,False
+Endothelial,Fibroblast,36.04695335679908,2,True
+Endothelial,Myeloid,13.176312397027168,2,True
+Endothelial,Myoepithelial,-38.09824438495321,2,False
+Endothelial,Perivascular,100.09272874008508,2,True
+Endothelial,Tumour,-148.63338799585688,2,False
+Fibroblast,B,29.021139517974,2,True
+Fibroblast,CD4 T,-70.44401946219952,2,False
+Fibroblast,CD8 T,-26.338383878778043,2,False
+Fibroblast,Dendritic,-7.043430134459253,2,False
+Fibroblast,Endothelial,36.04695335679908,2,True
+Fibroblast,Myeloid,11.61568085600421,2,True
+Fibroblast,Myoepithelial,-113.62792500222059,2,False
+Fibroblast,Perivascular,-1.7359305353998493,2,False
+Fibroblast,Tumour,-425.70777793867603,2,False
+Myeloid,B,40.75870176881156,2,True
+Myeloid,CD4 T,49.329973201553315,2,True
+Myeloid,CD8 T,59.5867240493617,2,True
+Myeloid,Dendritic,15.541399493016652,2,True
+Myeloid,Endothelial,13.176312397027168,2,True
+Myeloid,Fibroblast,11.61568085600421,2,True
+Myeloid,Myoepithelial,-42.33546705709418,2,False
+Myeloid,Perivascular,2.1679861498002464,2,True
+Myeloid,Tumour,-155.68581702321774,2,False
+Myoepithelial,B,-54.13118371081382,2,False
+Myoepithelial,CD4 T,-70.37306518837384,2,False
+Myoepithelial,CD8 T,-43.54403061141555,2,False
+Myoepithelial,Dendritic,-21.76060815519089,2,False
+Myoepithelial,Endothelial,-38.09824438495321,2,False
+Myoepithelial,Fibroblast,-113.62792500222059,2,False
+Myoepithelial,Myeloid,-42.33546705709418,2,False
+Myoepithelial,Perivascular,-16.021952489350877,2,False
+Myoepithelial,Tumour,-31.773265831367695,2,False
+Perivascular,B,-1.6752265953120111,2,False
+Perivascular,CD4 T,8.391803062348593,2,True
+Perivascular,CD8 T,2.0017510052260357,2,True
+Perivascular,Dendritic,-0.10698075429485365,2,False
+Perivascular,Endothelial,100.09272874008508,2,True
+Perivascular,Fibroblast,-1.7359305353998493,2,False
+Perivascular,Myeloid,2.1679861498002464,2,True
+Perivascular,Myoepithelial,-16.021952489350877,2,False
+Perivascular,Tumour,-53.83885381981203,2,False
+Tumour,B,-147.90639148034967,2,False
+Tumour,CD4 T,-197.72153483719165,2,False
+Tumour,CD8 T,-146.44387145790665,2,False
+Tumour,Dendritic,-56.42740332419403,2,False
+Tumour,Endothelial,-148.63338799585688,2,False
+Tumour,Fibroblast,-425.70777793867603,2,False
+Tumour,Myeloid,-155.68581702321774,2,False
+Tumour,Myoepithelial,-31.773265831367695,2,False
+Tumour,Perivascular,-53.83885381981203,2,False

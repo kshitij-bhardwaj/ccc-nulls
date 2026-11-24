@@ -1,0 +1,68 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 03:05",
+ "dataset": "allen_brain_atlas",
+ "groupby": "label",
+ "B": 1000,
+ "rerun": "this machine; CellChat column 1 (R) not rerun",
+ "n_cells": 14249,
+ "n_types": 23,
+ "cellchat": {
+  "tool": "cellchat",
+  "native_rule": "p < 0.05 and prob > 0 (subsetCommunication, thresh = 0.05)",
+  "rows": 988701,
+  "family": 162047,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 29458,
+   "2_our_null_a_bh": 27973,
+   "3_null_b_bh": 13558
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "receptor": 7793,
+   "ligand": 6622
+  },
+  "fidelity": null,
+  "meta": {
+   "seconds_prepare": 8.8,
+   "seconds_port_native": 10.9,
+   "seconds_null_a": 52.2,
+   "seconds_null_b": 60.4,
+   "B": 1000,
+   "seed": 1,
+   "rng": "cellchat (R's generator)",
+   "species": "mouse",
+   "n_rows": 988701,
+   "n_family": 162047,
+   "n_lr": 1869,
+   "n_types": 23,
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives prob > 0",
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 103832,
+     "gated_in_family": 80322,
+     "family": 162047,
+     "calls": {
+      "p_b2": 10,
+      "p_b2_uncorrected": 10,
+      "p_b2_unmatched": 4,
+      "p_b2_joint": 1609
+     },
+     "vs_null_b": {
+      "calls_a": 10,
+      "calls_b": 13558,
+      "same_call": 0.9862971717435302,
+      "jaccard": 0.000737571913261543
+     },
+     "vs_null_a": {
+      "calls_a": 10,
+      "calls_b": 27973,
+      "same_call": 0.9717174353014714,
+      "jaccard": 0.0003574875773066886
+     }
+    }
+   }
+  }
+ }
+}
