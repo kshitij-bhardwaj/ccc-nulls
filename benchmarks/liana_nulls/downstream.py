@@ -153,6 +153,12 @@ def truth_rows(rows: pd.DataFrame, profiles: pd.DataFrame, resource: str) -> pd.
         gene2cyt = {g: c for c, gs in CYTOKINE_GENES.items() for g in gs if c in weights.columns}
         cyt = r.ligand_complex.map(lambda cx: next((gene2cyt[g] for g in str(cx).split("_") if g in gene2cyt), None))
         r = r.assign(footprint=cyt, sign=1)[cyt.notna()]
+    elif resource == "nichenet":                       # addition, not pre-registered: benchmarks/liana_nulls/nichenet.py
+        from . import nichenet
+        weights = nichenet.weights()
+        lig = set(weights.columns)
+        fp = r.ligand_complex.map(lambda cx: nichenet.ligand_of(cx, lig))
+        r = r.assign(footprint=fp, sign=1)[fp.notna()]
     else:
         weights = progeny()
         m = lr_pathways(r[["ligand_complex", "receptor_complex"]], weights)
