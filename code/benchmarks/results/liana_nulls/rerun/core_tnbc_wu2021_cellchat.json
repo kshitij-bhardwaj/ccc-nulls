@@ -1,0 +1,68 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 03:02",
+ "dataset": "tnbc_wu2021",
+ "groupby": "label",
+ "B": 1000,
+ "rerun": "this machine; CellChat column 1 (R) not rerun",
+ "n_cells": 42512,
+ "n_types": 29,
+ "cellchat": {
+  "tool": "cellchat",
+  "native_rule": "p < 0.05 and prob > 0 (subsetCommunication, thresh = 0.05)",
+  "rows": 1757690,
+  "family": 27942,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 13024,
+   "2_our_null_a_bh": 12972,
+   "3_null_b_bh": 8837
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "receptor": 2570,
+   "ligand": 1565
+  },
+  "fidelity": null,
+  "meta": {
+   "seconds_prepare": 10.8,
+   "seconds_port_native": 15.3,
+   "seconds_null_a": 103.2,
+   "seconds_null_b": 108.6,
+   "B": 1000,
+   "seed": 1,
+   "rng": "cellchat (R's generator)",
+   "species": "human",
+   "n_rows": 1757690,
+   "n_family": 27942,
+   "n_lr": 2090,
+   "n_types": 29,
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives prob > 0",
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 49084,
+     "gated_in_family": 19521,
+     "family": 27942,
+     "calls": {
+      "p_b2": 204,
+      "p_b2_uncorrected": 214,
+      "p_b2_unmatched": 185,
+      "p_b2_joint": 6256
+     },
+     "vs_null_b": {
+      "calls_a": 204,
+      "calls_b": 8837,
+      "same_call": 0.9950838885127639,
+      "jaccard": 0.022621875353466804
+     },
+     "vs_null_a": {
+      "calls_a": 204,
+      "calls_b": 12972,
+      "same_call": 0.9927347825839596,
+      "jaccard": 0.015647884066908195
+     }
+    }
+   }
+  }
+ }
+}

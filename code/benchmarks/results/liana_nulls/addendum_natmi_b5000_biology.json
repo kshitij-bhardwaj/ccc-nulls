@@ -1,0 +1,1791 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 03:34",
+ "amendment_5_sha256": "46bcd94bda5fb299ff969f56b9c0b669a6245d714defc7317337bea9ab52429c",
+ "addendum": "addendum to AMENDMENT_5, not pre-registered: AMENDMENT_5's code with B = 5,000 for Null A and Null B (p-value floor 1/5001); native NATMI not rerun",
+ "alpha": 0.05,
+ "results": {
+  "tnbc_wu2021": {
+   "spatial_kept_vs_dropped": {
+    "null_b": {
+     "odds_ratio": 0.6840099454098372,
+     "ci95": [
+      0.48188474952061616,
+      0.9077959507993821
+     ],
+     "kept_calls": 35570,
+     "kept_colocalised": 390,
+     "dropped_calls": 78063,
+     "dropped_colocalised": 1245,
+     "frac_colocalised_kept": 0.010964295754849593,
+     "frac_colocalised_dropped": 0.015948656854079396,
+     "n_pairs": 812
+    },
+    "b2": {
+     "odds_ratio": 0.5224421879995612,
+     "ci95": [
+      0.29102385346261184,
+      1.2033397584899674
+     ],
+     "kept_calls": 65,
+     "kept_colocalised": 0,
+     "dropped_calls": 113568,
+     "dropped_colocalised": 1635,
+     "frac_colocalised_kept": 0.0,
+     "frac_colocalised_dropped": 0.014396661031276415,
+     "n_pairs": 812
+    },
+    "loo_t": {
+     "odds_ratio": 1.044922932247281,
+     "ci95": [
+      0.7951377981847251,
+      1.4218682329296273
+     ],
+     "kept_calls": 28737,
+     "kept_colocalised": 427,
+     "dropped_calls": 84896,
+     "dropped_colocalised": 1208,
+     "frac_colocalised_kept": 0.014858892716706686,
+     "frac_colocalised_dropped": 0.014229174519411986,
+     "n_pairs": 812
+    }
+   },
+   "pair_level_auprc": {
+    "n_truth_rows": 812,
+    "n_positive": 12,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.015283011786718238,
+      "auprc_ci95": [
+       0.007052810521290728,
+       0.029347270757900234
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       2.448717948717949
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0037742764189574347,
+      "auprc_diff_ci95": [
+       -0.010745902974281275,
+       -0.0007926983233026163
+      ],
+      "frac_resamples_ref_not_better": 0.995
+     },
+     "null_a": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.014288163659192244,
+      "auprc_ci95": [
+       0.0067431746637260665,
+       0.027593000801455693
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       2.448717948717949
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.00277942829143144,
+      "auprc_diff_ci95": [
+       -0.009287883270293042,
+       -0.0004953029564138723
+      ],
+      "frac_resamples_ref_not_better": 0.995
+     },
+     "null_b": {
+      "n_truth_rows_scored": 811,
+      "auprc": 0.011508735367760804,
+      "auprc_ci95": [
+       0.005554337725763999,
+       0.020656072754210032
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "b2": {
+      "n_truth_rows_scored": 58,
+      "auprc": 0.007389162561576354,
+      "auprc_ci95": [
+       0.003694581280788177,
+       0.012315270935960592
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.004119572806184449,
+      "auprc_diff_ci95": [
+       0.0012509908744641263,
+       0.009903831282626306
+      ],
+      "frac_resamples_ref_not_better": 0.0
+     },
+     "loo_t": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.016224732526228452,
+      "auprc_ci95": [
+       0.007195506729944071,
+       0.02984734693036359
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.004715997158467648,
+      "auprc_diff_ci95": [
+       -0.012032220236645724,
+       -0.0005904732420855366
+      ],
+      "frac_resamples_ref_not_better": 0.994
+     },
+     "liana_builtin": {
+      "n_truth_rows_scored": 0,
+      "auprc": 0.5073891625615764,
+      "auprc_ci95": [
+       0.5036945812807881,
+       0.5123152709359606
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       5.026315789473684
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.4958804271938156,
+      "auprc_diff_ci95": [
+       -0.4987490091255358,
+       -0.49009616871737366
+      ],
+      "frac_resamples_ref_not_better": 1.0
+     }
+    }
+   },
+   "openproblems_source_target": {
+    "n_truth_rows": 812,
+    "n_positive": 12,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.02359786694535886,
+      "auprc_ci95": [
+       0.008284904780099748,
+       0.08865977260733215
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       8.073684210526316
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0821351552036982,
+      "auprc_diff_ci95": [
+       -0.0017719653334252797,
+       0.24408505548518677
+      ],
+      "frac_resamples_ref_not_better": 0.06
+     },
+     "null_a": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.02386373735505402,
+      "auprc_ci95": [
+       0.008413920889475934,
+       0.08876441337705251
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       8.073684210526316
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.08186928479400303,
+      "auprc_diff_ci95": [
+       -0.002027802539522791,
+       0.24379018199699967
+      ],
+      "frac_resamples_ref_not_better": 0.063
+     },
+     "null_b": {
+      "n_truth_rows_scored": 811,
+      "auprc": 0.10573302214905705,
+      "auprc_ci95": [
+       0.008701656310513246,
+       0.31737979202954064
+      ],
+      "odds_ratio": 4.010526315789473,
+      "odds_ratio_ci95": [
+       0.0,
+       17.044444444444444
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "b2": {
+      "n_truth_rows_scored": 58,
+      "auprc": 0.007389162561576354,
+      "auprc_ci95": [
+       0.003694581280788177,
+       0.012315270935960592
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.0983438595874807,
+      "auprc_diff_ci95": [
+       0.0038295289176596362,
+       0.30949598757359986
+      ],
+      "frac_resamples_ref_not_better": 0.0
+     },
+     "loo_t": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.023599338399707702,
+      "auprc_ci95": [
+       0.00828768145259487,
+       0.08866118645614597
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       8.073684210526316
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.08213368374934935,
+      "auprc_diff_ci95": [
+       -0.0017719653334252797,
+       0.244079345540197
+      ],
+      "frac_resamples_ref_not_better": 0.06
+     },
+     "random": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.10127752927348276,
+      "auprc_ci95": [
+       0.008824701155828008,
+       0.29714414018640817
+      ],
+      "odds_ratio": 1.7738927738927739,
+      "odds_ratio_ci95": [
+       0.0,
+       8.073684210526316
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.004455492875574299,
+      "auprc_diff_ci95": [
+       -0.013765834211481118,
+       0.03313301698126647
+      ],
+      "frac_resamples_ref_not_better": 0.329
+     }
+    }
+   },
+   "cytokine_ligand_target": {
+    "n_truth_rows": 812,
+    "n_positive": 166,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 743,
+      "auprc": 0.2933492446530777,
+      "auprc_ci95": [
+       0.2363718735631707,
+       0.3622772161217226
+      ],
+      "odds_ratio": 2.1963562753036436,
+      "odds_ratio_ci95": [
+       1.0112331296154826,
+       4.678033949701004
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.03718375305450222,
+      "auprc_diff_ci95": [
+       -0.08132739765625335,
+       -0.002508605695726088
+      ],
+      "frac_resamples_ref_not_better": 0.982
+     },
+     "null_a": {
+      "n_truth_rows_scored": 684,
+      "auprc": 0.2856869394399868,
+      "auprc_ci95": [
+       0.22953145706907524,
+       0.3533808891920861
+      ],
+      "odds_ratio": 2.1963562753036436,
+      "odds_ratio_ci95": [
+       1.0112331296154826,
+       4.678033949701004
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.029521447841411308,
+      "auprc_diff_ci95": [
+       -0.07325379875098804,
+       0.004974250001071332
+      ],
+      "frac_resamples_ref_not_better": 0.949
+     },
+     "null_b": {
+      "n_truth_rows_scored": 344,
+      "auprc": 0.2561654915985755,
+      "auprc_ci95": [
+       0.2099044103028839,
+       0.31785604254476657
+      ],
+      "odds_ratio": 1.9479544904381505,
+      "odds_ratio_ci95": [
+       0.6542324246771879,
+       4.085059467495607
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "b2": {
+      "n_truth_rows_scored": 0,
+      "auprc": 0.6022167487684729,
+      "auprc_ci95": [
+       0.5892857142857143,
+       0.6163793103448276
+      ],
+      "odds_ratio": 0.302934836677168,
+      "odds_ratio_ci95": [
+       0.3934640522875817,
+       2.0043915891037867
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.3460512571698974,
+      "auprc_diff_ci95": [
+       -0.3836186870252096,
+       -0.2934384420035918
+      ],
+      "frac_resamples_ref_not_better": 1.0
+     },
+     "loo_t": {
+      "n_truth_rows_scored": 465,
+      "auprc": 0.2937390057563556,
+      "auprc_ci95": [
+       0.23718285232181957,
+       0.36221102461520327
+      ],
+      "odds_ratio": 2.1963562753036436,
+      "odds_ratio_ci95": [
+       1.0112331296154826,
+       4.678033949701004
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.0375735141577801,
+      "auprc_diff_ci95": [
+       -0.08201009794184941,
+       -0.0023258825944341187
+      ],
+      "frac_resamples_ref_not_better": 0.985
+     },
+     "random": {
+      "n_truth_rows_scored": 812,
+      "auprc": 0.21410915457809934,
+      "auprc_ci95": [
+       0.17536506931325163,
+       0.2640115412627152
+      ],
+      "odds_ratio": 1.5098998887652948,
+      "odds_ratio_ci95": [
+       0.5678875207081571,
+       3.0763059163059165
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.04205633702047615,
+      "auprc_diff_ci95": [
+       -0.013482178210977613,
+       0.10157755897646012
+      ],
+      "frac_resamples_ref_not_better": 0.081
+     }
+    }
+   },
+   "cytosig": {
+    "null_b": {
+     "n_lines": 11915,
+     "n_units": 959,
+     "n_footprints": 41,
+     "responding": 831,
+     "D1": {
+      "odds_ratio": 1.5720108695652173,
+      "ci95": [
+       1.067290953846278,
+       2.085080274339494
+      ],
+      "kept_calls": 3870,
+      "kept_responding": 351,
+      "dropped_calls": 8045,
+      "dropped_responding": 480,
+      "frac_responding_kept": 0.09069767441860466,
+      "frac_responding_dropped": 0.05966438781852082,
+      "n_units": 959
+     },
+     "D1_z1": {
+      "odds_ratio": 1.428502827431467,
+      "ci95": [
+       1.1893704879307254,
+       1.6965650955614238
+      ],
+      "kept_calls": 3870,
+      "kept_responding": 1176,
+      "dropped_calls": 8045,
+      "dropped_responding": 1883,
+      "frac_responding_kept": 0.30387596899224806,
+      "frac_responding_dropped": 0.23405842137973898,
+      "n_units": 959
+     },
+     "D2_receptor": {
+      "odds_ratio": 2.4388552207272323,
+      "ci95": [
+       1.3869184883423686,
+       4.282570826761394
+      ],
+      "kept_calls": 3870,
+      "kept_responding": 351,
+      "dropped_calls": 4683,
+      "dropped_responding": 184,
+      "frac_responding_kept": 0.09069767441860466,
+      "frac_responding_dropped": 0.03929105274396754,
+      "n_units": 936
+     },
+     "D2_ligand": {
+      "odds_ratio": 1.0331616783023432,
+      "ci95": [
+       0.7042240781888554,
+       1.4151122104571077
+      ],
+      "kept_calls": 3870,
+      "kept_responding": 351,
+      "dropped_calls": 3362,
+      "dropped_responding": 296,
+      "frac_responding_kept": 0.09069767441860466,
+      "frac_responding_dropped": 0.08804283164782867,
+      "n_units": 540
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": null,
+      "ci95": null,
+      "kept_calls": 0,
+      "dropped_calls": 11915,
+      "n_units": 959
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.1449608146872123,
+      "ci95": [
+       0.7820261869031296,
+       1.6232846439651287
+      ],
+      "kept_calls": 2791,
+      "kept_responding": 214,
+      "dropped_calls": 9124,
+      "dropped_responding": 617,
+      "frac_responding_kept": 0.07667502687208885,
+      "frac_responding_dropped": 0.06762384918895221,
+      "n_units": 959
+     }
+    }
+   },
+   "progeny": {
+    "null_b": {
+     "n_lines": 6993,
+     "n_units": 281,
+     "n_footprints": 13,
+     "responding": 699,
+     "D1": {
+      "odds_ratio": 0.8343246887144102,
+      "ci95": [
+       0.47645435122404145,
+       1.1423905662341614
+      ],
+      "kept_calls": 2581,
+      "kept_responding": 232,
+      "dropped_calls": 4412,
+      "dropped_responding": 467,
+      "frac_responding_kept": 0.0898876404494382,
+      "frac_responding_dropped": 0.10584768812330009,
+      "n_units": 281
+     },
+     "D1_z1": {
+      "odds_ratio": 0.9199608656841707,
+      "ci95": [
+       0.6785889332261643,
+       1.212870503377763
+      ],
+      "kept_calls": 2581,
+      "kept_responding": 547,
+      "dropped_calls": 4412,
+      "dropped_responding": 998,
+      "frac_responding_kept": 0.21193335916311506,
+      "frac_responding_dropped": 0.22620126926563916,
+      "n_units": 281
+     },
+     "D2_receptor": {
+      "odds_ratio": 0.9976740025049203,
+      "ci95": [
+       0.40925079957685667,
+       1.9056767546731437
+      ],
+      "kept_calls": 2581,
+      "kept_responding": 232,
+      "dropped_calls": 2298,
+      "dropped_responding": 207,
+      "frac_responding_kept": 0.0898876404494382,
+      "frac_responding_dropped": 0.09007832898172324,
+      "n_units": 272
+     },
+     "D2_ligand": {
+      "odds_ratio": 0.7042735042735042,
+      "ci95": [
+       0.5263106116175916,
+       0.8381594190515239
+      ],
+      "kept_calls": 2581,
+      "kept_responding": 232,
+      "dropped_calls": 2114,
+      "dropped_responding": 260,
+      "frac_responding_kept": 0.0898876404494382,
+      "frac_responding_dropped": 0.12298959318826869,
+      "n_units": 187
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": 0.6915379116951669,
+      "ci95": [
+       0.23266950753520263,
+       12.259261826065318
+      ],
+      "kept_calls": 6,
+      "kept_responding": 0,
+      "dropped_calls": 6987,
+      "dropped_responding": 699,
+      "frac_responding_kept": 0.0,
+      "frac_responding_dropped": 0.1000429368827823,
+      "n_units": 281
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.4888887676732414,
+      "ci95": [
+       1.020084335771115,
+       2.308675231049559
+      ],
+      "kept_calls": 1166,
+      "kept_responding": 155,
+      "dropped_calls": 5827,
+      "dropped_responding": 544,
+      "frac_responding_kept": 0.13293310463121785,
+      "frac_responding_dropped": 0.09335850351810537,
+      "n_units": 281
+     }
+    }
+   }
+  },
+  "allen_brain_atlas": {
+   "spatial_kept_vs_dropped": {
+    "null_b": {
+     "odds_ratio": 0.9174304536566869,
+     "ci95": [
+      0.7392842185039711,
+      1.0987555309878003
+     ],
+     "kept_calls": 21585,
+     "kept_colocalised": 907,
+     "dropped_calls": 35657,
+     "dropped_colocalised": 1627,
+     "frac_colocalised_kept": 0.04201992124160296,
+     "frac_colocalised_dropped": 0.04562918921950809,
+     "n_pairs": 506
+    },
+    "b2": {
+     "odds_ratio": 7.195041757085552,
+     "ci95": [
+      2.5493218500729724,
+      31.833870019834034
+     ],
+     "kept_calls": 1,
+     "kept_colocalised": 0,
+     "dropped_calls": 57241,
+     "dropped_colocalised": 2534,
+     "frac_colocalised_kept": 0.0,
+     "frac_colocalised_dropped": 0.04426896804737863,
+     "n_pairs": 506
+    },
+    "loo_t": {
+     "odds_ratio": 1.6916518803740594,
+     "ci95": [
+      0.9921112788385434,
+      2.746365040358652
+     ],
+     "kept_calls": 12541,
+     "kept_colocalised": 801,
+     "dropped_calls": 44701,
+     "dropped_colocalised": 1733,
+     "frac_colocalised_kept": 0.06387050474443824,
+     "frac_colocalised_dropped": 0.038768707635175946,
+     "n_pairs": 506
+    }
+   },
+   "pair_level_auprc": {
+    "n_truth_rows": 506,
+    "n_positive": 26,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.04301560166432593,
+      "auprc_ci95": [
+       0.024703904950315148,
+       0.08096551569915268
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       3.143181818181818
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.00011750510155737748,
+      "auprc_diff_ci95": [
+       -0.01987781658688531,
+       0.008483640759528392
+      ],
+      "frac_resamples_ref_not_better": 0.475
+     },
+     "null_a": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.04515489853497184,
+      "auprc_ci95": [
+       0.02569192552330481,
+       0.09505009492873692
+      ],
+      "odds_ratio": 1.6557971014492754,
+      "odds_ratio_ci95": [
+       0.0,
+       5.215909090909091
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.002021791769088531,
+      "auprc_diff_ci95": [
+       -0.03492322473568991,
+       0.004913260234687267
+      ],
+      "frac_resamples_ref_not_better": 0.699
+     },
+     "null_b": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.043133106765883306,
+      "auprc_ci95": [
+       0.025100762858714876,
+       0.07222548392903169
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       3.507575757575758
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "b2": {
+      "n_truth_rows_scored": 1,
+      "auprc": 0.025691699604743084,
+      "auprc_ci95": [
+       0.017786561264822136,
+       0.532608695652174
+      ],
+      "odds_ratio": 3.9740259740259742,
+      "odds_ratio_ci95": [
+       0.0,
+       3.3157894736842106
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.017441407161140222,
+      "auprc_diff_ci95": [
+       -0.4915359100711106,
+       0.03726781499548034
+      ],
+      "frac_resamples_ref_not_better": 0.361
+     },
+     "loo_t": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.10236762244152488,
+      "auprc_ci95": [
+       0.03555578823603346,
+       0.21794661324529283
+      ],
+      "odds_ratio": 2.7154150197628457,
+      "odds_ratio_ci95": [
+       0.0,
+       8.12280701754386
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.05923451567564157,
+      "auprc_diff_ci95": [
+       -0.1608743523208124,
+       8.242976127059759e-05
+      ],
+      "frac_resamples_ref_not_better": 0.973
+     },
+     "liana_builtin": {
+      "n_truth_rows_scored": 0,
+      "auprc": 0.525691699604743,
+      "auprc_ci95": [
+       0.516798418972332,
+       0.5355731225296443
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       3.72192513368984
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.4825585928388597,
+      "auprc_diff_ci95": [
+       -0.49359992488265514,
+       -0.4567973778424178
+      ],
+      "frac_resamples_ref_not_better": 1.0
+     }
+    }
+   },
+   "openproblems_source_target": {
+    "n_truth_rows": 506,
+    "n_positive": 26,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.06440787335123675,
+      "auprc_ci95": [
+       0.0366561471504237,
+       0.11567601200895582
+      ],
+      "odds_ratio": 2.7154150197628457,
+      "odds_ratio_ci95": [
+       0.0,
+       6.921223647353675
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.004957622585594804,
+      "auprc_diff_ci95": [
+       -0.0033544102794075435,
+       0.019808166693121975
+      ],
+      "frac_resamples_ref_not_better": 0.132
+     },
+     "null_a": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.06443252981884648,
+      "auprc_ci95": [
+       0.03667424348906133,
+       0.11569608345988203
+      ],
+      "odds_ratio": 2.7154150197628457,
+      "odds_ratio_ci95": [
+       0.0,
+       6.921223647353675
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.004932966117985077,
+      "auprc_diff_ci95": [
+       -0.003397136430729169,
+       0.01978809708083272
+      ],
+      "frac_resamples_ref_not_better": 0.132
+     },
+     "null_b": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.06936549593683156,
+      "auprc_ci95": [
+       0.03723174967164662,
+       0.1310206254682316
+      ],
+      "odds_ratio": 2.7154150197628457,
+      "odds_ratio_ci95": [
+       0.0,
+       8.12280701754386
+      ],
+      "odds_ratio_nonfinite_resamples": 0
+     },
+     "b2": {
+      "n_truth_rows_scored": 1,
+      "auprc": 0.025691699604743084,
+      "auprc_ci95": [
+       0.017786561264822136,
+       0.532608695652174
+      ],
+      "odds_ratio": 3.9740259740259742,
+      "odds_ratio_ci95": [
+       0.0,
+       3.3157894736842106
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.04367379633208847,
+      "auprc_diff_ci95": [
+       -0.4795150658098064,
+       0.09387680962433645
+      ],
+      "frac_resamples_ref_not_better": 0.361
+     },
+     "loo_t": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.06440787335123675,
+      "auprc_ci95": [
+       0.0366561471504237,
+       0.11567601200895582
+      ],
+      "odds_ratio": 2.7154150197628457,
+      "odds_ratio_ci95": [
+       0.0,
+       6.921223647353675
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.004957622585594804,
+      "auprc_diff_ci95": [
+       -0.0033544102794075435,
+       0.019808166693121975
+      ],
+      "frac_resamples_ref_not_better": 0.132
+     },
+     "random": {
+      "n_truth_rows_scored": 506,
+      "auprc": 0.04848820533940937,
+      "auprc_ci95": [
+       0.026876354679401637,
+       0.08367543959208426
+      ],
+      "odds_ratio": 0.76,
+      "odds_ratio_ci95": [
+       0.0,
+       5.47767857142857
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.020877290597422188,
+      "auprc_diff_ci95": [
+       -0.02047541371240236,
+       0.07968366769745697
+      ],
+      "frac_resamples_ref_not_better": 0.164
+     }
+    }
+   },
+   "cytosig": {
+    "null_b": {
+     "n_lines": 3390,
+     "n_units": 518,
+     "n_footprints": 35,
+     "responding": 397,
+     "D1": {
+      "odds_ratio": 0.8666432994508705,
+      "ci95": [
+       0.46297435219569844,
+       1.4583164530127197
+      ],
+      "kept_calls": 755,
+      "kept_responding": 80,
+      "dropped_calls": 2635,
+      "dropped_responding": 317,
+      "frac_responding_kept": 0.10596026490066225,
+      "frac_responding_dropped": 0.12030360531309298,
+      "n_units": 518
+     },
+     "D1_z1": {
+      "odds_ratio": 0.8451917404129794,
+      "ci95": [
+       0.5922344553039374,
+       1.1864826683372045
+      ],
+      "kept_calls": 755,
+      "kept_responding": 190,
+      "dropped_calls": 2635,
+      "dropped_responding": 750,
+      "frac_responding_kept": 0.25165562913907286,
+      "frac_responding_dropped": 0.2846299810246679,
+      "n_units": 518
+     },
+     "D2_receptor": {
+      "odds_ratio": 1.6,
+      "ci95": [
+       0.9472464626840588,
+       2.381864190857784
+      ],
+      "kept_calls": 755,
+      "kept_responding": 80,
+      "dropped_calls": 1276,
+      "dropped_responding": 88,
+      "frac_responding_kept": 0.10596026490066225,
+      "frac_responding_dropped": 0.06896551724137931,
+      "n_units": 480
+     },
+     "D2_ligand": {
+      "odds_ratio": 0.5848293708555717,
+      "ci95": [
+       0.2655552816077447,
+       1.1159879302690587
+      ],
+      "kept_calls": 755,
+      "kept_responding": 80,
+      "dropped_calls": 1359,
+      "dropped_responding": 229,
+      "frac_responding_kept": 0.10596026490066225,
+      "frac_responding_dropped": 0.16850625459896984,
+      "n_units": 300
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": null,
+      "ci95": null,
+      "kept_calls": 0,
+      "dropped_calls": 3390,
+      "n_units": 518
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.8501647413758882,
+      "ci95": [
+       1.175515400453454,
+       2.9257588183749053
+      ],
+      "kept_calls": 1114,
+      "kept_responding": 181,
+      "dropped_calls": 2276,
+      "dropped_responding": 216,
+      "frac_responding_kept": 0.16247755834829444,
+      "frac_responding_dropped": 0.09490333919156414,
+      "n_units": 518
+     }
+    }
+   },
+   "progeny": {
+    "null_b": {
+     "n_lines": 1754,
+     "n_units": 183,
+     "n_footprints": 13,
+     "responding": 155,
+     "D1": {
+      "odds_ratio": 0.6435712624970937,
+      "ci95": [
+       0.19355513149789824,
+       1.799582212506793
+      ],
+      "kept_calls": 601,
+      "kept_responding": 40,
+      "dropped_calls": 1153,
+      "dropped_responding": 115,
+      "frac_responding_kept": 0.06655574043261231,
+      "frac_responding_dropped": 0.0997398091934085,
+      "n_units": 183
+     },
+     "D1_z1": {
+      "odds_ratio": 0.5354099908090518,
+      "ci95": [
+       0.2945952168326523,
+       0.9507166352847347
+      ],
+      "kept_calls": 601,
+      "kept_responding": 104,
+      "dropped_calls": 1153,
+      "dropped_responding": 324,
+      "frac_responding_kept": 0.17304492512479203,
+      "frac_responding_dropped": 0.2810060711188205,
+      "n_units": 183
+     },
+     "D2_receptor": {
+      "odds_ratio": 0.7204618618139251,
+      "ci95": [
+       0.18452969114313328,
+       2.296446425359327
+      ],
+      "kept_calls": 601,
+      "kept_responding": 40,
+      "dropped_calls": 744,
+      "dropped_responding": 67,
+      "frac_responding_kept": 0.06655574043261231,
+      "frac_responding_dropped": 0.09005376344086022,
+      "n_units": 178
+     },
+     "D2_ligand": {
+      "odds_ratio": 0.5362448009506833,
+      "ci95": [
+       0.16252343205667355,
+       2.1344215505055946
+      ],
+      "kept_calls": 601,
+      "kept_responding": 40,
+      "dropped_calls": 409,
+      "dropped_responding": 48,
+      "frac_responding_kept": 0.06655574043261231,
+      "frac_responding_dropped": 0.11735941320293398,
+      "n_units": 108
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": null,
+      "ci95": null,
+      "kept_calls": 0,
+      "dropped_calls": 1754,
+      "n_units": 183
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.5972938939779264,
+      "ci95": [
+       0.6802078689464697,
+       3.823311123215585
+      ],
+      "kept_calls": 455,
+      "kept_responding": 54,
+      "dropped_calls": 1299,
+      "dropped_responding": 101,
+      "frac_responding_kept": 0.11868131868131868,
+      "frac_responding_dropped": 0.07775211701308699,
+      "n_units": 183
+     }
+    }
+   }
+  },
+  "tabula_sapiens_mammary": {
+   "cytosig": {
+    "null_b": {
+     "n_lines": 3977,
+     "n_units": 477,
+     "n_footprints": 41,
+     "responding": 275,
+     "D1": {
+      "odds_ratio": 1.365152172565549,
+      "ci95": [
+       0.8274501815108105,
+       2.0532641128748748
+      ],
+      "kept_calls": 1037,
+      "kept_responding": 88,
+      "dropped_calls": 2940,
+      "dropped_responding": 187,
+      "frac_responding_kept": 0.08486017357762778,
+      "frac_responding_dropped": 0.06360544217687075,
+      "n_units": 477
+     },
+     "D1_z1": {
+      "odds_ratio": 1.5754269894894897,
+      "ci95": [
+       1.198318729633083,
+       2.1140553190582563
+      ],
+      "kept_calls": 1037,
+      "kept_responding": 371,
+      "dropped_calls": 2940,
+      "dropped_responding": 768,
+      "frac_responding_kept": 0.35776277724204436,
+      "frac_responding_dropped": 0.2612244897959184,
+      "n_units": 477
+     },
+     "D2_receptor": {
+      "odds_ratio": 1.8578955291284058,
+      "ci95": [
+       1.013795326420783,
+       4.098052108286263
+      ],
+      "kept_calls": 1037,
+      "kept_responding": 88,
+      "dropped_calls": 1767,
+      "dropped_responding": 84,
+      "frac_responding_kept": 0.08486017357762778,
+      "frac_responding_dropped": 0.04753820033955857,
+      "n_units": 413
+     },
+     "D2_ligand": {
+      "odds_ratio": 0.9633032215822481,
+      "ci95": [
+       0.5046430421916449,
+       1.6836484865611172
+      ],
+      "kept_calls": 1037,
+      "kept_responding": 88,
+      "dropped_calls": 1173,
+      "dropped_responding": 103,
+      "frac_responding_kept": 0.08486017357762778,
+      "frac_responding_dropped": 0.08780903665814152,
+      "n_units": 274
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": null,
+      "ci95": null,
+      "kept_calls": 0,
+      "dropped_calls": 3977,
+      "n_units": 477
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.3640067098011022,
+      "ci95": [
+       0.7905456734533811,
+       2.539360196435001
+      ],
+      "kept_calls": 936,
+      "kept_responding": 80,
+      "dropped_calls": 3041,
+      "dropped_responding": 195,
+      "frac_responding_kept": 0.08547008547008547,
+      "frac_responding_dropped": 0.06412364353830977,
+      "n_units": 477
+     }
+    }
+   },
+   "progeny": {
+    "null_b": {
+     "n_lines": 2253,
+     "n_units": 164,
+     "n_footprints": 13,
+     "responding": 314,
+     "D1": {
+      "odds_ratio": 1.6249523194741937,
+      "ci95": [
+       1.001812959838586,
+       2.3845895743659664
+      ],
+      "kept_calls": 636,
+      "kept_responding": 117,
+      "dropped_calls": 1617,
+      "dropped_responding": 197,
+      "frac_responding_kept": 0.18396226415094338,
+      "frac_responding_dropped": 0.12183055040197897,
+      "n_units": 164
+     },
+     "D1_z1": {
+      "odds_ratio": 1.3025915186661834,
+      "ci95": [
+       0.8485132417266371,
+       1.9078695266322432
+      ],
+      "kept_calls": 636,
+      "kept_responding": 171,
+      "dropped_calls": 1617,
+      "dropped_responding": 356,
+      "frac_responding_kept": 0.2688679245283019,
+      "frac_responding_dropped": 0.22016079158936303,
+      "n_units": 164
+     },
+     "D2_receptor": {
+      "odds_ratio": 2.6798013514613697,
+      "ci95": [
+       1.3935806815513134,
+       5.553190317272459
+      ],
+      "kept_calls": 636,
+      "kept_responding": 117,
+      "dropped_calls": 915,
+      "dropped_responding": 71,
+      "frac_responding_kept": 0.18396226415094338,
+      "frac_responding_dropped": 0.07759562841530054,
+      "n_units": 164
+     },
+     "D2_ligand": {
+      "odds_ratio": 1.0305532617671347,
+      "ci95": [
+       0.6213109708622401,
+       1.5681249581283827
+      ],
+      "kept_calls": 636,
+      "kept_responding": 117,
+      "dropped_calls": 702,
+      "dropped_responding": 126,
+      "frac_responding_kept": 0.18396226415094338,
+      "frac_responding_dropped": 0.1794871794871795,
+      "n_units": 94
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": null,
+      "ci95": null,
+      "kept_calls": 0,
+      "dropped_calls": 2253,
+      "n_units": 164
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.0837550205359778,
+      "ci95": [
+       0.6797930086083465,
+       1.5598678469159464
+      ],
+      "kept_calls": 407,
+      "kept_responding": 60,
+      "dropped_calls": 1846,
+      "dropped_responding": 254,
+      "frac_responding_kept": 0.14742014742014742,
+      "frac_responding_dropped": 0.13759479956663057,
+      "n_units": 164
+     }
+    }
+   }
+  },
+  "tabula_sapiens_liver": {
+   "cytosig": {
+    "null_b": {
+     "n_lines": 7799,
+     "n_units": 703,
+     "n_footprints": 42,
+     "responding": 702,
+     "D1": {
+      "odds_ratio": 1.506644181297761,
+      "ci95": [
+       1.0723117961266895,
+       2.072802225704147
+      ],
+      "kept_calls": 2341,
+      "kept_responding": 269,
+      "dropped_calls": 5458,
+      "dropped_responding": 433,
+      "frac_responding_kept": 0.11490815890645023,
+      "frac_responding_dropped": 0.07933308904360571,
+      "n_units": 703
+     },
+     "D1_z1": {
+      "odds_ratio": 1.5800472248831408,
+      "ci95": [
+       1.3007698175496825,
+       1.9265309543561353
+      ],
+      "kept_calls": 2341,
+      "kept_responding": 812,
+      "dropped_calls": 5458,
+      "dropped_responding": 1373,
+      "frac_responding_kept": 0.34686031610422896,
+      "frac_responding_dropped": 0.2515573470135581,
+      "n_units": 703
+     },
+     "D2_receptor": {
+      "odds_ratio": 2.006832348699818,
+      "ci95": [
+       1.28008636750586,
+       3.0428561900169706
+      ],
+      "kept_calls": 2341,
+      "kept_responding": 269,
+      "dropped_calls": 2732,
+      "dropped_responding": 166,
+      "frac_responding_kept": 0.11490815890645023,
+      "frac_responding_dropped": 0.06076134699853587,
+      "n_units": 627
+     },
+     "D2_ligand": {
+      "odds_ratio": 1.1956657701039721,
+      "ci95": [
+       0.8013934846688344,
+       1.8303058800731182
+      ],
+      "kept_calls": 2341,
+      "kept_responding": 269,
+      "dropped_calls": 2726,
+      "dropped_responding": 267,
+      "frac_responding_kept": 0.11490815890645023,
+      "frac_responding_dropped": 0.0979457079970653,
+      "n_units": 427
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": 3.3672597864768683,
+      "ci95": [
+       1.2147847008276382,
+       14.839466166728542
+      ],
+      "kept_calls": 1,
+      "kept_responding": 0,
+      "dropped_calls": 7798,
+      "dropped_responding": 702,
+      "frac_responding_kept": 0.0,
+      "frac_responding_dropped": 0.0900230828417543,
+      "n_units": 703
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.1777946672708755,
+      "ci95": [
+       0.7669259443167373,
+       1.8681367635383053
+      ],
+      "kept_calls": 2025,
+      "kept_responding": 203,
+      "dropped_calls": 5774,
+      "dropped_responding": 499,
+      "frac_responding_kept": 0.10024691358024691,
+      "frac_responding_dropped": 0.08642189123657776,
+      "n_units": 703
+     }
+    }
+   },
+   "progeny": {
+    "null_b": {
+     "n_lines": 4529,
+     "n_units": 255,
+     "n_footprints": 13,
+     "responding": 435,
+     "D1": {
+      "odds_ratio": 1.7909607351712615,
+      "ci95": [
+       1.2112848946011014,
+       2.3314993930742585
+      ],
+      "kept_calls": 1382,
+      "kept_responding": 185,
+      "dropped_calls": 3147,
+      "dropped_responding": 250,
+      "frac_responding_kept": 0.13386396526772792,
+      "frac_responding_dropped": 0.07944073721004132,
+      "n_units": 255
+     },
+     "D1_z1": {
+      "odds_ratio": 1.414379651420532,
+      "ci95": [
+       0.9883413012374634,
+       1.8904547965448366
+      ],
+      "kept_calls": 1382,
+      "kept_responding": 409,
+      "dropped_calls": 3147,
+      "dropped_responding": 721,
+      "frac_responding_kept": 0.2959479015918958,
+      "frac_responding_dropped": 0.22910708611375913,
+      "n_units": 255
+     },
+     "D2_receptor": {
+      "odds_ratio": 2.7178719155612607,
+      "ci95": [
+       1.4748804704185674,
+       4.5859611392192825
+      ],
+      "kept_calls": 1382,
+      "kept_responding": 185,
+      "dropped_calls": 1524,
+      "dropped_responding": 82,
+      "frac_responding_kept": 0.13386396526772792,
+      "frac_responding_dropped": 0.05380577427821522,
+      "n_units": 251
+     },
+     "D2_ligand": {
+      "odds_ratio": 1.3385398018856665,
+      "ci95": [
+       0.8360978815769642,
+       1.9010174101705775
+      ],
+      "kept_calls": 1382,
+      "kept_responding": 185,
+      "dropped_calls": 1623,
+      "dropped_responding": 168,
+      "frac_responding_kept": 0.13386396526772792,
+      "frac_responding_dropped": 0.10351201478743069,
+      "n_units": 157
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": 3.1331802525832373,
+      "ci95": [
+       1.0610425759037492,
+       17.458102301399183
+      ],
+      "kept_calls": 1,
+      "kept_responding": 0,
+      "dropped_calls": 4528,
+      "dropped_responding": 435,
+      "frac_responding_kept": 0.0,
+      "frac_responding_dropped": 0.09606890459363958,
+      "n_units": 255
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.181747263382726,
+      "ci95": [
+       0.7862592382815992,
+       1.6142199306202616
+      ],
+      "kept_calls": 764,
+      "kept_responding": 83,
+      "dropped_calls": 3765,
+      "dropped_responding": 352,
+      "frac_responding_kept": 0.10863874345549739,
+      "frac_responding_dropped": 0.09349269588313414,
+      "n_units": 255
+     }
+    }
+   }
+  },
+  "moffitt2018_hypothalamus": {
+   "spatial_kept_vs_dropped": {
+    "null_b": {
+     "odds_ratio": 1.0495953518594516,
+     "ci95": [
+      0.7423548471452772,
+      1.422184765571374
+     ],
+     "kept_calls": 3392,
+     "kept_colocalised": 626,
+     "dropped_calls": 6675,
+     "dropped_colocalised": 1184,
+     "frac_colocalised_kept": 0.18455188679245282,
+     "frac_colocalised_dropped": 0.17737827715355806,
+     "n_pairs": 56
+    },
+    "b2": {
+     "odds_ratio": null,
+     "ci95": null,
+     "kept_calls": 0,
+     "kept_colocalised": 0,
+     "dropped_calls": 10067,
+     "dropped_colocalised": 1810,
+     "frac_colocalised_kept": 0.0,
+     "frac_colocalised_dropped": 0.17979537101420484,
+     "n_pairs": 56
+    },
+    "loo_t": {
+     "odds_ratio": 0.8539349062780245,
+     "ci95": [
+      0.6281112525474668,
+      1.186001553933295
+     ],
+     "kept_calls": 2465,
+     "kept_colocalised": 401,
+     "dropped_calls": 7602,
+     "dropped_colocalised": 1409,
+     "frac_colocalised_kept": 0.16267748478701827,
+     "frac_colocalised_dropped": 0.1853459615890555,
+     "n_pairs": 56
+    }
+   },
+   "pair_level_auprc": {
+    "n_truth_rows": 72,
+    "n_positive": 10,
+    "n_boot": 1000,
+    "reference": "null_b",
+    "methods": {
+     "native_rule": {
+      "n_truth_rows_scored": 56,
+      "auprc": 0.20850226503056693,
+      "auprc_ci95": [
+       0.08756717378353947,
+       0.3756096606413602
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       5.25
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": -0.007319944761121244,
+      "auprc_diff_ci95": [
+       -0.05879651749637197,
+       0.14057166077003894
+      ],
+      "frac_resamples_ref_not_better": 0.607
+     },
+     "null_a": {
+      "n_truth_rows_scored": 56,
+      "auprc": 0.19657186631451337,
+      "auprc_ci95": [
+       0.07940731845809076,
+       0.36720495403719206
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       5.25
+      ],
+      "odds_ratio_nonfinite_resamples": 1,
+      "auprc_diff_ref_minus_this": 0.004610453954932314,
+      "auprc_diff_ci95": [
+       -0.042562563590914385,
+       0.142985600019346
+      ],
+      "frac_resamples_ref_not_better": 0.436
+     },
+     "null_b": {
+      "n_truth_rows_scored": 56,
+      "auprc": 0.20118232026944569,
+      "auprc_ci95": [
+       0.08141734368671416,
+       0.4238031317678758
+      ],
+      "odds_ratio": 3.3333333333333335,
+      "odds_ratio_ci95": [
+       0.0,
+       21.0
+      ],
+      "odds_ratio_nonfinite_resamples": 15
+     },
+     "b2": {
+      "n_truth_rows_scored": 0,
+      "auprc": 0.5694444444444444,
+      "auprc_ci95": [
+       0.5347222222222222,
+       0.6111111111111112
+      ],
+      "odds_ratio": 3.3333333333333335,
+      "odds_ratio_ci95": [
+       0.0,
+       11.8
+      ],
+      "odds_ratio_nonfinite_resamples": 3,
+      "auprc_diff_ref_minus_this": -0.3682621241749987,
+      "auprc_diff_ci95": [
+       -0.463783121901073,
+       -0.15236804022698489
+      ],
+      "frac_resamples_ref_not_better": 0.998
+     },
+     "loo_t": {
+      "n_truth_rows_scored": 56,
+      "auprc": 0.1485336679850056,
+      "auprc_ci95": [
+       0.06479264216111345,
+       0.2638733627462012
+      ],
+      "odds_ratio": 0.0,
+      "odds_ratio_ci95": [
+       0.0,
+       0.0
+      ],
+      "odds_ratio_nonfinite_resamples": 0,
+      "auprc_diff_ref_minus_this": 0.05264865228444007,
+      "auprc_diff_ci95": [
+       -0.014776107787911993,
+       0.250069096330621
+      ],
+      "frac_resamples_ref_not_better": 0.087
+     },
+     "liana_builtin": {
+      "n_truth_rows_scored": 0,
+      "auprc": 0.5694444444444444,
+      "auprc_ci95": [
+       0.5347222222222222,
+       0.6111111111111112
+      ],
+      "odds_ratio": 3.3333333333333335,
+      "odds_ratio_ci95": [
+       0.0,
+       11.8
+      ],
+      "odds_ratio_nonfinite_resamples": 3,
+      "auprc_diff_ref_minus_this": -0.3682621241749987,
+      "auprc_diff_ci95": [
+       -0.463783121901073,
+       -0.15236804022698489
+      ],
+      "frac_resamples_ref_not_better": 0.998
+     }
+    }
+   },
+   "cytosig": {
+    "null_b": {
+     "n_lines": 700,
+     "n_units": 184,
+     "n_footprints": 35,
+     "responding": 76,
+     "D1": {
+      "odds_ratio": 0.8352059925093632,
+      "ci95": [
+       0.3896439666968422,
+       1.4677875814513757
+      ],
+      "kept_calls": 197,
+      "kept_responding": 19,
+      "dropped_calls": 503,
+      "dropped_responding": 57,
+      "frac_responding_kept": 0.09644670050761421,
+      "frac_responding_dropped": 0.11332007952286283,
+      "n_units": 184
+     },
+     "D1_z1": {
+      "odds_ratio": 1.2097484802855392,
+      "ci95": [
+       0.7884469696969697,
+       1.863734282306225
+      ],
+      "kept_calls": 197,
+      "kept_responding": 58,
+      "dropped_calls": 503,
+      "dropped_responding": 129,
+      "frac_responding_kept": 0.29441624365482233,
+      "frac_responding_dropped": 0.25646123260437376,
+      "n_units": 184
+     },
+     "D2_receptor": {
+      "odds_ratio": 1.9459809853068277,
+      "ci95": [
+       0.8969552469135802,
+       4.881959134615383
+      ],
+      "kept_calls": 197,
+      "kept_responding": 19,
+      "dropped_calls": 250,
+      "dropped_responding": 13,
+      "frac_responding_kept": 0.09644670050761421,
+      "frac_responding_dropped": 0.052,
+      "n_units": 160
+     },
+     "D2_ligand": {
+      "odds_ratio": 0.5070224719101124,
+      "ci95": [
+       0.21299414893617022,
+       0.985979853479852
+      ],
+      "kept_calls": 197,
+      "kept_responding": 19,
+      "dropped_calls": 253,
+      "dropped_responding": 44,
+      "frac_responding_kept": 0.09644670050761421,
+      "frac_responding_dropped": 0.17391304347826086,
+      "n_units": 118
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": null,
+      "ci95": null,
+      "kept_calls": 0,
+      "dropped_calls": 700,
+      "n_units": 184
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 1.6213262084041777,
+      "ci95": [
+       1.0557935888738128,
+       3.0886517328824996
+      ],
+      "kept_calls": 209,
+      "kept_responding": 30,
+      "dropped_calls": 491,
+      "dropped_responding": 46,
+      "frac_responding_kept": 0.14354066985645933,
+      "frac_responding_dropped": 0.09368635437881874,
+      "n_units": 184
+     }
+    }
+   },
+   "progeny": {
+    "null_b": {
+     "n_lines": 332,
+     "n_units": 64,
+     "n_footprints": 12,
+     "responding": 40,
+     "D1": {
+      "odds_ratio": 0.6558169513374154,
+      "ci95": [
+       0.319958984375,
+       1.0869733303451365
+      ],
+      "kept_calls": 118,
+      "kept_responding": 11,
+      "dropped_calls": 214,
+      "dropped_responding": 29,
+      "frac_responding_kept": 0.09322033898305085,
+      "frac_responding_dropped": 0.13551401869158877,
+      "n_units": 64
+     },
+     "D1_z1": {
+      "odds_ratio": 0.9193418940609952,
+      "ci95": [
+       0.475340553499732,
+       1.8674925595238097
+      ],
+      "kept_calls": 118,
+      "kept_responding": 29,
+      "dropped_calls": 214,
+      "dropped_responding": 56,
+      "frac_responding_kept": 0.2457627118644068,
+      "frac_responding_dropped": 0.2616822429906542,
+      "n_units": 64
+     },
+     "D2_receptor": {
+      "odds_ratio": 3.289719626168224,
+      "ci95": [
+       0.4380428571428572,
+       7.647734204793024
+      ],
+      "kept_calls": 118,
+      "kept_responding": 11,
+      "dropped_calls": 132,
+      "dropped_responding": 4,
+      "frac_responding_kept": 0.09322033898305085,
+      "frac_responding_dropped": 0.030303030303030304,
+      "n_units": 62
+     },
+     "D2_ligand": {
+      "odds_ratio": 0.234392523364486,
+      "ci95": [
+       0.13083885859111583,
+       0.505991891464977
+      ],
+      "kept_calls": 118,
+      "kept_responding": 11,
+      "dropped_calls": 82,
+      "dropped_responding": 25,
+      "frac_responding_kept": 0.09322033898305085,
+      "frac_responding_dropped": 0.3048780487804878,
+      "n_units": 45
+     }
+    },
+    "b2": {
+     "D1": {
+      "odds_ratio": null,
+      "ci95": null,
+      "kept_calls": 0,
+      "dropped_calls": 332,
+      "n_units": 64
+     }
+    },
+    "loo_t": {
+     "D1": {
+      "odds_ratio": 2.6444444444444444,
+      "ci95": [
+       1.3294133610024743,
+       4.972826086956517
+      ],
+      "kept_calls": 69,
+      "kept_responding": 15,
+      "dropped_calls": 263,
+      "dropped_responding": 25,
+      "frac_responding_kept": 0.21739130434782608,
+      "frac_responding_dropped": 0.09505703422053231,
+      "n_units": 64
+     }
+    }
+   }
+  }
+ }
+}

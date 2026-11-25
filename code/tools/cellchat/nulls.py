@@ -359,8 +359,37 @@ def null_a(adata, interactions: pd.DataFrame, groupby: str = "label", *, B: int 
     if permutations is not None:
         permutations = np.asarray(permutations)
         B = permutations.shape[1]
+    if not keep_top:                                       # permutations on $CCC_NULLS_WORKERS processes
+        from ccc_nulls import composite
+
+        def counts(lo, hi):
+            ex, ti, npo = (np.zeros(P_obs.shape, dtype=np.int64) for _ in range(3))
+            a1, a2, a3 = np.zeros(P_obs.shape), np.zeros(P_obs.shape), np.zeros(P_obs.shape)
+            g = np.random.default_rng(seed)
+            for b in range(hi):
+                if permutations is not None:
+                    if b < lo:
+                        continue
+                    cb = codes[permutations[:, b] - 1]
+                else:
+                    cb = g.permutation(codes)
+                    if b < lo:
+                        continue
+                Pb = score_of(cb)
+                ex += beats(Pb - P_obs, 0)
+                ti += Pb == P_obs
+                npo += Pb > 0
+                a1 += Pb
+                a2 += Pb * Pb
+                a3 += Pb ** 3
+            return ex, ti, npo, a1, a2, a3
+
+        exceed, tie, npos, s1, s2, s3 = composite.map_permutations(counts, int(B), composite.n_workers())
+        B_loop = 0
+    else:
+        B_loop = B
     gen = np.random.default_rng(seed)
-    for b in range(B):
+    for b in range(B_loop):
         cb = codes[permutations[:, b] - 1] if permutations is not None else gen.permutation(codes)
         Pb = score_of(cb)
         exceed += beats(Pb - P_obs, 0)                    # R: rowSums(Pboot - Pnull > 0), or >= 0 in 1.0

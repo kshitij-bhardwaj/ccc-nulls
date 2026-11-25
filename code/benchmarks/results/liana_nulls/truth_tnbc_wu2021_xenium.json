@@ -1,0 +1,55 @@
+{
+ "sections": {
+  "rep1": {
+   "cells": 167780,
+   "labelled": 167780,
+   "counted": 157863,
+   "cells_per_class": {
+    "B": 4987,
+    "CD4 T": 8453,
+    "CD8 T": 6940,
+    "Dendritic": 792,
+    "Endothelial": 8931,
+    "Fibroblast": 41422,
+    "Myeloid": 12798,
+    "Myoepithelial": 9938,
+    "Perivascular": 847,
+    "Tumour": 62755
+   }
+  },
+  "rep2": {
+   "cells": 118752,
+   "labelled": 118752,
+   "counted": 114322,
+   "cells_per_class": {
+    "B": 3792,
+    "CD4 T": 5940,
+    "CD8 T": 4948,
+    "Dendritic": 606,
+    "Endothelial": 6699,
+    "Fibroblast": 38644,
+    "Myeloid": 9630,
+    "Myoepithelial": 8709,
+    "Perivascular": 549,
+    "Tumour": 34805
+   }
+  }
+ },
+ "n_pairs": 90,
+ "n_colocalised": 36,
+ "k_nn": 10,
+ "n_perm": 200,
+ "z_threshold": 1.645,
+ "classes": [
+  "B",
+  "CD4 T",
+  "CD8 T",
+  "Dendritic",
+  "Endothelial",
+  "Fibroblast",
+  "Myeloid",
+  "Myoepithelial",
+  "Perivascular",
+  "Tumour"
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "amendment_1_sha256": "85e3e8f7811807cbbad56f12390904acfab684ea272987e29b1ec80bbf2a7146",
+ "written": "2026-11-13 04:07",
+ "dataset": "moffitt2018_hypothalamus",
+ "groupby": "cell_class",
+ "B": 1000,
+ "rerun": "this machine; CellChat column 1 (R) not rerun",
+ "n_cells": 26604,
+ "n_types": 8,
+ "cellphonedb": {
+  "tool": "cellphonedb",
+  "native_rule": "p <= 0.05 (significant_means, pvalue = 0.05)",
+  "rows": 103616,
+  "family": 5896,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 2770,
+   "2_our_null_a_bh": 2724,
+   "3_null_b_bh": 1456
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 980,
+   "receptor": 288
+  },
+  "fidelity": null,
+  "meta": {
+   "orthologs": {
+    "source": "HCOP, min_evidence = 3, one-to-one",
+    "genes_in": 27933,
+    "genes_mapped": 15172
+   },
+   "seconds_prepare": 2.5,
+   "seconds_native": 2.2,
+   "seconds_null_a": 147.3,
+   "seconds_null_b": 149.2,
+   "B": 1000,
+   "seed": 0,
+   "rng": "cellphonedb (np.random.seed, shuffle)",
+   "species": "mouse",
+   "n_rows": 103616,
+   "n_family": 5896,
+   "n_lr": 2437,
+   "n_types": 8,
+   "family_rule": "CellPhoneDB's gate: both partners in > 10% of their type's cells, and score > 0",
+   "score_max_abs_diff": 0.0004999935626983643,
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 2094,
+     "gated_in_family": 2093,
+     "family": 5896,
+     "calls": {
+      "p_b2": 1,
+      "p_b2_uncorrected": 1,
+      "p_b2_unmatched": 0,
+      "p_b2_joint": 75
+     },
+     "vs_null_b": {
+      "calls_a": 1,
+      "calls_b": 1456,
+      "same_call": 0.98595776714021,
+      "jaccard": 0.0006868131868131869
+     },
+     "vs_null_a": {
+      "calls_a": 1,
+      "calls_b": 2724,
+      "same_call": 0.9737202748610253,
+      "jaccard": 0.0003671071953010279
+     }
+    },
+    "pr9": {
+     "n_rows": 103616,
+     "n_tested": 5896,
+     "n_testable": 100776,
+     "n_interactions": 1619,
+     "n_types": 8,
+     "seconds_null_a": 15.5,
+     "seconds_null_b": 17.8,
+     "score_max_abs_diff": 0.0005019052980974603,
+     "n_over_adapter_tolerance": 1,
+     "rows_matched": 103616,
+     "rows": 103616,
+     "B": 1000,
+     "seed": 0,
+     "calls": {
+      "null_b_pr9": 1424,
+      "null_b_pr9_testable": 1378,
+      "null_b_pr9_by": 1378
+     },
+     "vs_null_b": {
+      "calls_a": 1424,
+      "calls_b": 1456,
+      "same_call": 0.9994595429277332,
+      "jaccard": 0.9618528610354223
+     },
+     "p_identical_in_family": 0.883819538670285,
+     "spearman_p_in_family": 0.997024741449811
+    }
+   }
+  }
+ }
+}

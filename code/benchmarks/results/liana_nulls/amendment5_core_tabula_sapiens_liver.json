@@ -1,0 +1,96 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 02:16",
+ "amendment_5_sha256": "46bcd94bda5fb299ff969f56b9c0b669a6245d714defc7317337bea9ab52429c",
+ "dataset": "tabula_sapiens_liver",
+ "groupby": "label",
+ "B": 1000,
+ "native_run": true,
+ "n_cells": 22214,
+ "n_types": 24,
+ "natmi": {
+  "tool": "natmi",
+  "native_rule": "none (NATMI has no p-value); stand-in: Null A p < 0.05 and score > 0 (AMENDMENT_5)",
+  "rows": 1312704,
+  "family": 1280980,
+  "calls": {
+   "1_native_tool_rule": null,
+   "2_our_null_a_tool_rule": 121183,
+   "2_our_null_a_bh": 87805,
+   "3_null_b_bh": 0,
+   "b2_bh": 5,
+   "loo_t_bh": 22589
+  },
+  "null_b_calls_outside_null_a": 0,
+  "null_a_only_by_limiting_partner": {
+   "ligand": 61044,
+   "receptor": 26761
+  },
+  "fidelity": {
+   "native_rows": 714335,
+   "port_positive_rows": 714335,
+   "only_native": 0,
+   "only_port": 0,
+   "rows_compared": 714335,
+   "max_rel_diff_score": 9.962115538731738e-13,
+   "max_rel_diff_expr_prod": 9.96949628521496e-13,
+   "rtol": 1e-09,
+   "identical": true
+  },
+  "meta": {
+   "seconds_null_a": 60.4,
+   "seconds_null_b": 72.5,
+   "n_pairs": 2279,
+   "seconds_native": 559.3,
+   "native_commit": "f35f677cb2e4c8a176a6c5501a9483c9e28661a1",
+   "B": 1000,
+   "seed": 0,
+   "rng": "numpy default_rng(seed).permutation(codes), one per iteration",
+   "species": "human",
+   "n_rows": 1312704,
+   "n_family": 1280980,
+   "n_lr": 2279,
+   "n_types": 24,
+   "score": "spec_weight",
+   "family_rule": "composite.testable: some labelling (observed, Null A or either Null B side) gives a positive score",
+   "seconds_liana_builtin": 8.4,
+   "amendment_3": {
+    "b2": {
+     "gated_rows": 117792,
+     "gated_in_family": 117792,
+     "family": 1280980,
+     "calls": {
+      "p_b2": 5,
+      "p_b2_uncorrected": 5,
+      "p_b2_unmatched": 13,
+      "p_b2_joint": 3692
+     },
+     "vs_null_b": {
+      "calls_a": 5,
+      "calls_b": 0,
+      "same_call": 0.9999961910682073,
+      "jaccard": 0.0
+     },
+     "vs_null_a": {
+      "calls_a": 5,
+      "calls_b": 87805,
+      "same_call": 0.9331151577202477,
+      "jaccard": 5.694436535504812e-05
+     }
+    }
+   }
+  },
+  "liana_builtin": {
+   "rows_matched": 120160,
+   "calls_p_lt_0.05": 0,
+   "jaccard_with_native_rule": 0.0,
+   "spearman_score": 0.9999999999951219
+  },
+  "outside_null_a": {
+   "null_b": 0,
+   "b2": 0,
+   "loo_t": 1643
+  },
+  "fidelity_passed": true
+ }
+}

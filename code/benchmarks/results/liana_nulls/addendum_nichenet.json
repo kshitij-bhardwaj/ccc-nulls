@@ -1,0 +1,2913 @@
+{
+ "plan_sha256": "8ba57470dcababf0b3e3992e6f84acf6ef2444c1ddc83aa6cc6441c0b86abdbf",
+ "written": "2026-11-13 04:10",
+ "addendum": "addition, not pre-registered: NicheNet v2 (Zenodo 7074291) as truth (step 1), footprint p (step 2), filter (step 3)",
+ "alpha": 0.05,
+ "results": {
+  "moffitt2018_hypothalamus": {
+   "step2_calibration": {
+    "shuffles": [
+     {
+      "n_ligands": 1225,
+      "n_receivers": 8,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.044897959183673466,
+      "binom99_limit": 2.0
+     },
+     {
+      "n_ligands": 1225,
+      "n_receivers": 8,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.037551020408163265,
+      "binom99_limit": 2.0
+     }
+    ],
+    "ligand_mean_p_spearman_between_shuffles": 0.12395457281686381,
+    "reading": "share_ligands_above_binom99 near 0.01 and a Spearman near 0: no ligand is favoured whatever the labels"
+   },
+   "natmi": {
+    "rows": 112384,
+    "family": 106366,
+    "calls": {
+     "null_b": 4175,
+     "b2": 0,
+     "loo_t": 3112,
+     "null_a": 11842
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 9500,
+      "n_units": 2475,
+      "n_footprints": 545,
+      "responding": 474,
+      "D1": {
+       "odds_ratio": 0.8407499115670322,
+       "ci95": [
+        0.6324508771134738,
+        1.061882650582691
+       ],
+       "kept_calls": 3228,
+       "kept_responding": 144,
+       "dropped_calls": 6272,
+       "dropped_responding": 330,
+       "frac_responding_kept": 0.04460966542750929,
+       "frac_responding_dropped": 0.052614795918367346,
+       "n_units": 2475
+      },
+      "D1_z1": {
+       "odds_ratio": 0.8466507708728328,
+       "ci95": [
+        0.7395805000856424,
+        0.9682558934745205
+       ],
+       "kept_calls": 3228,
+       "kept_responding": 634,
+       "dropped_calls": 6272,
+       "dropped_responding": 1405,
+       "frac_responding_kept": 0.19640644361833953,
+       "frac_responding_dropped": 0.22401147959183673,
+       "n_units": 2475
+      },
+      "D2_receptor": {
+       "odds_ratio": 1.1544747081712063,
+       "ci95": [
+        0.8580505590731629,
+        1.5822853958799152
+       ],
+       "kept_calls": 3228,
+       "kept_responding": 144,
+       "dropped_calls": 3087,
+       "dropped_responding": 120,
+       "frac_responding_kept": 0.04460966542750929,
+       "frac_responding_dropped": 0.038872691933916424,
+       "n_units": 2125
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.6614785992217899,
+       "ci95": [
+        0.472860264004326,
+        0.9043906439926377
+       ],
+       "kept_calls": 3228,
+       "kept_responding": 144,
+       "dropped_calls": 3185,
+       "dropped_responding": 210,
+       "frac_responding_kept": 0.04460966542750929,
+       "frac_responding_dropped": 0.06593406593406594,
+       "n_units": 1621
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "dropped_calls": 9500,
+       "n_units": 2475
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 1.6906466138858638,
+       "ci95": [
+        1.3021594457375831,
+        2.192571080152757
+       ],
+       "kept_calls": 2397,
+       "kept_responding": 169,
+       "dropped_calls": 7103,
+       "dropped_responding": 305,
+       "frac_responding_kept": 0.07050479766374634,
+       "frac_responding_dropped": 0.04293960298465437,
+       "n_units": 2475
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 108480,
+     "covered_family": 102654,
+     "share_p_lt_005_null_a_calls": 0.09442105263157895,
+     "share_p_lt_005_family": 0.0775420344068424
+    },
+    "step3_calls": {
+     "null_a": 11842,
+     "null_b": 4175,
+     "b2": 0,
+     "loo_t": 3112,
+     "filter_null_b_then_footprint": 412,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 3854
+    },
+    "step3_spatial": {
+     "merfish": {
+      "null_b": {
+       "odds_ratio": 1.0495953518594516,
+       "ci95": [
+        0.7423548471452772,
+        1.422184765571374
+       ],
+       "kept_calls": 3392,
+       "kept_colocalised": 626,
+       "dropped_calls": 6675,
+       "dropped_colocalised": 1184,
+       "frac_colocalised_kept": 0.18455188679245282,
+       "frac_colocalised_dropped": 0.17737827715355806,
+       "n_pairs": 56
+      },
+      "b2": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 10067,
+       "dropped_colocalised": 1810,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.17979537101420484,
+       "n_pairs": 56
+      },
+      "loo_t": {
+       "odds_ratio": 0.8539349062780245,
+       "ci95": [
+        0.6281112525474668,
+        1.186001553933295
+       ],
+       "kept_calls": 2465,
+       "kept_colocalised": 401,
+       "dropped_calls": 7602,
+       "dropped_colocalised": 1409,
+       "frac_colocalised_kept": 0.16267748478701827,
+       "frac_colocalised_dropped": 0.1853459615890555,
+       "n_pairs": 56
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 1.4842012887093672,
+       "ci95": [
+        0.9589814534287336,
+        2.078597401140672
+       ],
+       "kept_calls": 317,
+       "kept_colocalised": 77,
+       "dropped_calls": 9750,
+       "dropped_colocalised": 1733,
+       "frac_colocalised_kept": 0.24290220820189273,
+       "frac_colocalised_dropped": 0.17774358974358975,
+       "n_pairs": 56
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 10067,
+       "dropped_colocalised": 1810,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.17979537101420484,
+       "n_pairs": 56
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.0101258635969947,
+       "ci95": [
+        0.7234669955347033,
+        1.3479699714403088
+       ],
+       "kept_calls": 3108,
+       "kept_colocalised": 562,
+       "dropped_calls": 6959,
+       "dropped_colocalised": 1248,
+       "frac_colocalised_kept": 0.18082368082368083,
+       "frac_colocalised_dropped": 0.17933611151027445,
+       "n_pairs": 56
+      }
+     }
+    }
+   },
+   "cellchat": {
+    "rows": 119808,
+    "family": 4805,
+    "calls": {
+     "null_b": 875,
+     "b2": 8,
+     "loo_t": 142,
+     "null_a": 1179
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 812,
+      "n_units": 217,
+      "n_footprints": 68,
+      "responding": 32,
+      "D1": {
+       "odds_ratio": 0.36445012787723785,
+       "ci95": [
+        0.12776971502070436,
+        10.348232870014659
+       ],
+       "kept_calls": 567,
+       "kept_responding": 15,
+       "dropped_calls": 245,
+       "dropped_responding": 17,
+       "frac_responding_kept": 0.026455026455026454,
+       "frac_responding_dropped": 0.06938775510204082,
+       "n_units": 217
+      },
+      "D1_z1": {
+       "odds_ratio": 0.9898953446409239,
+       "ci95": [
+        0.4490474854405176,
+        3.043566039493292
+       ],
+       "kept_calls": 567,
+       "kept_responding": 78,
+       "dropped_calls": 245,
+       "dropped_responding": 34,
+       "frac_responding_kept": 0.13756613756613756,
+       "frac_responding_dropped": 0.13877551020408163,
+       "n_units": 217
+      },
+      "D2_receptor": {
+       "odds_ratio": 4.965610859728507,
+       "ci95": [
+        1.4607070195948424,
+        10.082766134052703
+       ],
+       "kept_calls": 567,
+       "kept_responding": 15,
+       "dropped_calls": 88,
+       "dropped_responding": 0,
+       "frac_responding_kept": 0.026455026455026454,
+       "frac_responding_dropped": 0.0,
+       "n_units": 214
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.2237851662404092,
+       "ci95": [
+        0.07862973039215684,
+        6.448901913395111
+       ],
+       "kept_calls": 567,
+       "kept_responding": 15,
+       "dropped_calls": 157,
+       "dropped_responding": 17,
+       "frac_responding_kept": 0.026455026455026454,
+       "frac_responding_dropped": 0.10828025477707007,
+       "n_units": 200
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 2.654700854700854,
+       "ci95": [
+        0.8398061622864428,
+        25.864661654135297
+       ],
+       "kept_calls": 4,
+       "kept_responding": 0,
+       "dropped_calls": 808,
+       "dropped_responding": 32,
+       "frac_responding_kept": 0.0,
+       "frac_responding_dropped": 0.039603960396039604,
+       "n_units": 217
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 0.28225806451612906,
+       "ci95": [
+        0.06780687292515249,
+        2.1045350609756075
+       ],
+       "kept_calls": 81,
+       "kept_responding": 1,
+       "dropped_calls": 731,
+       "dropped_responding": 31,
+       "frac_responding_kept": 0.012345679012345678,
+       "frac_responding_dropped": 0.04240766073871409,
+       "n_units": 217
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 102720,
+     "covered_family": 4244,
+     "share_p_lt_005_null_a_calls": 0.07317073170731707,
+     "share_p_lt_005_family": 0.04641847313854854
+    },
+    "step3_calls": {
+     "null_a": 1179,
+     "null_b": 875,
+     "b2": 8,
+     "loo_t": 142,
+     "filter_null_b_then_footprint": 46,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 759
+    },
+    "step3_spatial": {
+     "merfish": {
+      "null_b": {
+       "odds_ratio": 1.9539078156312624,
+       "ci95": [
+        1.2967891197911185,
+        3.740561300064631
+       ],
+       "kept_calls": 655,
+       "kept_colocalised": 156,
+       "dropped_calls": 261,
+       "dropped_colocalised": 36,
+       "frac_colocalised_kept": 0.2381679389312977,
+       "frac_colocalised_dropped": 0.13793103448275862,
+       "n_pairs": 56
+      },
+      "b2": {
+       "odds_ratio": 1.2582897033158813,
+       "ci95": [
+        0.28341906083134727,
+        10.945911712511078
+       ],
+       "kept_calls": 4,
+       "kept_colocalised": 1,
+       "dropped_calls": 912,
+       "dropped_colocalised": 191,
+       "frac_colocalised_kept": 0.25,
+       "frac_colocalised_dropped": 0.20942982456140352,
+       "n_pairs": 56
+      },
+      "loo_t": {
+       "odds_ratio": 0.8406095238095237,
+       "ci95": [
+        0.2724191075779211,
+        2.0431290026099544
+       ],
+       "kept_calls": 92,
+       "kept_colocalised": 17,
+       "dropped_calls": 824,
+       "dropped_colocalised": 175,
+       "frac_colocalised_kept": 0.18478260869565216,
+       "frac_colocalised_dropped": 0.21237864077669902,
+       "n_pairs": 56
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 0.6902356902356902,
+       "ci95": [
+        0.14875484106686154,
+        2.0239302976829814
+       ],
+       "kept_calls": 32,
+       "kept_colocalised": 5,
+       "dropped_calls": 884,
+       "dropped_colocalised": 187,
+       "frac_colocalised_kept": 0.15625,
+       "frac_colocalised_dropped": 0.21153846153846154,
+       "n_pairs": 56
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 916,
+       "dropped_colocalised": 192,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.2096069868995633,
+       "n_pairs": 56
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.7423986120147474,
+       "ci95": [
+        1.3055932444363023,
+        2.666919456768831
+       ],
+       "kept_calls": 574,
+       "kept_colocalised": 139,
+       "dropped_calls": 342,
+       "dropped_colocalised": 53,
+       "frac_colocalised_kept": 0.2421602787456446,
+       "frac_colocalised_dropped": 0.15497076023391812,
+       "n_pairs": 56
+      }
+     }
+    }
+   },
+   "cellphonedb": {
+    "rows": 103616,
+    "family": 5896,
+    "calls": {
+     "null_b": 1456,
+     "b2": 1,
+     "loo_t": 2,
+     "null_a": 2724
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 827,
+      "n_units": 315,
+      "n_footprints": 92,
+      "responding": 57,
+      "D1": {
+       "odds_ratio": 1.6080165045682286,
+       "ci95": [
+        0.9012804501708036,
+        4.325125364077666
+       ],
+       "kept_calls": 566,
+       "kept_responding": 44,
+       "dropped_calls": 261,
+       "dropped_responding": 13,
+       "frac_responding_kept": 0.07773851590106007,
+       "frac_responding_dropped": 0.04980842911877394,
+       "n_units": 315
+      },
+      "D1_z1": {
+       "odds_ratio": 0.5635767594336333,
+       "ci95": [
+        0.3286137058279999,
+        1.0427318448094718
+       ],
+       "kept_calls": 566,
+       "kept_responding": 80,
+       "dropped_calls": 261,
+       "dropped_responding": 59,
+       "frac_responding_kept": 0.1413427561837456,
+       "frac_responding_dropped": 0.2260536398467433,
+       "n_units": 315
+      },
+      "D2_receptor": {
+       "odds_ratio": 4.186462324393359,
+       "ci95": [
+        1.6200486439122093,
+        23.391457742484388
+       ],
+       "kept_calls": 566,
+       "kept_responding": 44,
+       "dropped_calls": 152,
+       "dropped_responding": 3,
+       "frac_responding_kept": 0.07773851590106007,
+       "frac_responding_dropped": 0.019736842105263157,
+       "n_units": 312
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.8344827586206897,
+       "ci95": [
+        0.3824972985412122,
+        6.16980333842276
+       ],
+       "kept_calls": 566,
+       "kept_responding": 44,
+       "dropped_calls": 109,
+       "dropped_responding": 10,
+       "frac_responding_kept": 0.07773851590106007,
+       "frac_responding_dropped": 0.09174311926605505,
+       "n_units": 260
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 4.460869565217391,
+       "ci95": [
+        1.490168191494548,
+        21.560492753623187
+       ],
+       "kept_calls": 1,
+       "kept_responding": 0,
+       "dropped_calls": 826,
+       "dropped_responding": 57,
+       "frac_responding_kept": 0.0,
+       "frac_responding_dropped": 0.06900726392251816,
+       "n_units": 315
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "dropped_calls": 827,
+       "n_units": 315
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 40512,
+     "covered_family": 1875,
+     "share_p_lt_005_null_a_calls": 0.08997722095671981,
+     "share_p_lt_005_family": 0.07786666666666667
+    },
+    "step3_calls": {
+     "null_a": 2724,
+     "null_b": 1456,
+     "b2": 1,
+     "loo_t": 2,
+     "filter_null_b_then_footprint": 74,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 696
+    },
+    "step3_spatial": {
+     "merfish": {
+      "null_b": {
+       "odds_ratio": 0.5970681721144268,
+       "ci95": [
+        0.3282106672266467,
+        1.4833433161348022
+       ],
+       "kept_calls": 1137,
+       "kept_colocalised": 152,
+       "dropped_calls": 1042,
+       "dropped_colocalised": 214,
+       "frac_colocalised_kept": 0.13368513632365875,
+       "frac_colocalised_dropped": 0.2053742802303263,
+       "n_pairs": 56
+      },
+      "b2": {
+       "odds_ratio": 1.6484765802637562,
+       "ci95": [
+        0.4699336057729077,
+        12.311631790942128
+       ],
+       "kept_calls": 1,
+       "kept_colocalised": 0,
+       "dropped_calls": 2178,
+       "dropped_colocalised": 366,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.16804407713498623,
+       "n_pairs": 56
+      },
+      "loo_t": {
+       "odds_ratio": 0.9885402455661665,
+       "ci95": [
+        0.31050149144634437,
+        10.696107554417413
+       ],
+       "kept_calls": 2,
+       "kept_colocalised": 0,
+       "dropped_calls": 2177,
+       "dropped_colocalised": 366,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.1681212677997244,
+       "n_pairs": 56
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 1.3541666666666665,
+       "ci95": [
+        0.4416094901856293,
+        3.9667646112614
+       ],
+       "kept_calls": 61,
+       "kept_colocalised": 13,
+       "dropped_calls": 2118,
+       "dropped_colocalised": 353,
+       "frac_colocalised_kept": 0.21311475409836064,
+       "frac_colocalised_dropped": 0.16666666666666666,
+       "n_pairs": 56
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 2179,
+       "dropped_colocalised": 366,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.1679669573198715,
+       "n_pairs": 56
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.3083616189114216,
+       "ci95": [
+        0.7093370057990517,
+        3.2854644062038045
+       ],
+       "kept_calls": 569,
+       "kept_colocalised": 112,
+       "dropped_calls": 1610,
+       "dropped_colocalised": 254,
+       "frac_colocalised_kept": 0.1968365553602812,
+       "frac_colocalised_dropped": 0.1577639751552795,
+       "n_pairs": 56
+      }
+     }
+    }
+   }
+  },
+  "tnbc_wu2021": {
+   "step2_calibration": {
+    "shuffles": [
+     {
+      "n_ligands": 1225,
+      "n_receivers": 29,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.08244897959183674,
+      "binom99_limit": 5.0
+     },
+     {
+      "n_ligands": 1225,
+      "n_receivers": 29,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.0563265306122449,
+      "binom99_limit": 5.0
+     }
+    ],
+    "ligand_mean_p_spearman_between_shuffles": -0.022331755563796372,
+    "reading": "share_ligands_above_binom99 near 0.01 and a Spearman near 0: no ligand is favoured whatever the labels"
+   },
+   "natmi": {
+    "rows": 1735824,
+    "family": 1733252,
+    "calls": {
+     "null_b": 37657,
+     "b2": 73,
+     "loo_t": 31872,
+     "null_a": 118759
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 107909,
+      "n_units": 11237,
+      "n_footprints": 710,
+      "responding": 6864,
+      "D1": {
+       "odds_ratio": 1.0671155067431002,
+       "ci95": [
+        0.9609257674027858,
+        1.1834508379469648
+       ],
+       "kept_calls": 33681,
+       "kept_responding": 2233,
+       "dropped_calls": 74228,
+       "dropped_responding": 4631,
+       "frac_responding_kept": 0.06629850657640807,
+       "frac_responding_dropped": 0.06238885595732069,
+       "n_units": 11237
+      },
+      "D1_z1": {
+       "odds_ratio": 1.1926114240687007,
+       "ci95": [
+        1.128533776065415,
+        1.2626289119698368
+       ],
+       "kept_calls": 33681,
+       "kept_responding": 10150,
+       "dropped_calls": 74228,
+       "dropped_responding": 19716,
+       "frac_responding_kept": 0.30135684807458213,
+       "frac_responding_dropped": 0.26561405399579674,
+       "n_units": 11237
+      },
+      "D2_receptor": {
+       "odds_ratio": 1.394808995896759,
+       "ci95": [
+        1.1884407036862963,
+        1.6333442165443144
+       ],
+       "kept_calls": 33681,
+       "kept_responding": 2233,
+       "dropped_calls": 36250,
+       "dropped_responding": 1756,
+       "frac_responding_kept": 0.06629850657640807,
+       "frac_responding_dropped": 0.048441379310344826,
+       "n_units": 10574
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.8669660225852477,
+       "ci95": [
+        0.770668909113892,
+        0.9760466052041558
+       ],
+       "kept_calls": 33681,
+       "kept_responding": 2233,
+       "dropped_calls": 37978,
+       "dropped_responding": 2875,
+       "frac_responding_kept": 0.06629850657640807,
+       "frac_responding_dropped": 0.07570172204960766,
+       "n_units": 6424
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 0.27250527520088935,
+       "ci95": [
+        0.10015684863141784,
+        1.0152666454506343
+       ],
+       "kept_calls": 55,
+       "kept_responding": 1,
+       "dropped_calls": 107854,
+       "dropped_responding": 6863,
+       "frac_responding_kept": 0.01818181818181818,
+       "frac_responding_dropped": 0.0636323177629017,
+       "n_units": 11237
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 1.3286379607414187,
+       "ci95": [
+        1.2007010228658934,
+        1.4702533402944604
+       ],
+       "kept_calls": 27580,
+       "kept_responding": 2122,
+       "dropped_calls": 80329,
+       "dropped_responding": 4742,
+       "frac_responding_kept": 0.07693981145757796,
+       "frac_responding_dropped": 0.05903222995431289,
+       "n_units": 11237
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 1671067,
+     "covered_family": 1668496,
+     "share_p_lt_005_null_a_calls": 0.08572037550158003,
+     "share_p_lt_005_family": 0.06548652199345997
+    },
+    "step3_calls": {
+     "null_a": 118759,
+     "null_b": 37657,
+     "b2": 73,
+     "loo_t": 31872,
+     "filter_null_b_then_footprint": 3105,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 32696
+    },
+    "step3_spatial": {
+     "visium": {
+      "null_b": {
+       "odds_ratio": 0.6840099454098372,
+       "ci95": [
+        0.48188474952061616,
+        0.9077959507993821
+       ],
+       "kept_calls": 35570,
+       "kept_colocalised": 390,
+       "dropped_calls": 78063,
+       "dropped_colocalised": 1245,
+       "frac_colocalised_kept": 0.010964295754849593,
+       "frac_colocalised_dropped": 0.015948656854079396,
+       "n_pairs": 812
+      },
+      "b2": {
+       "odds_ratio": 0.5224421879995612,
+       "ci95": [
+        0.29102385346261184,
+        1.2033397584899674
+       ],
+       "kept_calls": 65,
+       "kept_colocalised": 0,
+       "dropped_calls": 113568,
+       "dropped_colocalised": 1635,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.014396661031276415,
+       "n_pairs": 812
+      },
+      "loo_t": {
+       "odds_ratio": 1.044922932247281,
+       "ci95": [
+        0.7951377981847251,
+        1.4218682329296273
+       ],
+       "kept_calls": 28737,
+       "kept_colocalised": 427,
+       "dropped_calls": 84896,
+       "dropped_colocalised": 1208,
+       "frac_colocalised_kept": 0.014858892716706686,
+       "frac_colocalised_dropped": 0.014229174519411986,
+       "n_pairs": 812
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 0.4678696088436832,
+       "ci95": [
+        0.21984209947459452,
+        0.8059097830486046
+       ],
+       "kept_calls": 2908,
+       "kept_colocalised": 20,
+       "dropped_calls": 110725,
+       "dropped_colocalised": 1615,
+       "frac_colocalised_kept": 0.0068775790921595595,
+       "frac_colocalised_dropped": 0.014585685256265522,
+       "n_pairs": 812
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 113633,
+       "dropped_colocalised": 1635,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.014388425897406564,
+       "n_pairs": 812
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 0.6619920286251417,
+       "ci95": [
+        0.45501503940674976,
+        0.8708287787296806
+       ],
+       "kept_calls": 30856,
+       "kept_colocalised": 325,
+       "dropped_calls": 82777,
+       "dropped_colocalised": 1310,
+       "frac_colocalised_kept": 0.010532797511018927,
+       "frac_colocalised_dropped": 0.01582565205310654,
+       "n_pairs": 812
+      }
+     },
+     "xenium_proxy": {
+      "null_b": {
+       "odds_ratio": 1.3568611551574474,
+       "ci95": [
+        1.2350778127618522,
+        1.485906249574045
+       ],
+       "kept_calls": 21933,
+       "kept_colocalised": 9742,
+       "dropped_calls": 49119,
+       "dropped_colocalised": 18206,
+       "frac_colocalised_kept": 0.4441708840559887,
+       "frac_colocalised_dropped": 0.37065086829943605,
+       "n_pairs": 458
+      },
+      "b2": {
+       "odds_ratio": 2.0571469492981955,
+       "ci95": [
+        0.9371943669636953,
+        5.242422127793181
+       ],
+       "kept_calls": 35,
+       "kept_colocalised": 20,
+       "dropped_calls": 71017,
+       "dropped_colocalised": 27928,
+       "frac_colocalised_kept": 0.5714285714285714,
+       "frac_colocalised_dropped": 0.3932579523212752,
+       "n_pairs": 458
+      },
+      "loo_t": {
+       "odds_ratio": 1.1453856554384558,
+       "ci95": [
+        1.0324118546776406,
+        1.2647185333705298
+       ],
+       "kept_calls": 17662,
+       "kept_colocalised": 7380,
+       "dropped_calls": 53390,
+       "dropped_colocalised": 20568,
+       "frac_colocalised_kept": 0.41784622353074397,
+       "frac_colocalised_dropped": 0.38524068177561344,
+       "n_pairs": 458
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 1.8931353684430157,
+       "ci95": [
+        1.5656161212288529,
+        2.272750028604011
+       ],
+       "kept_calls": 1639,
+       "kept_colocalised": 897,
+       "dropped_calls": 69413,
+       "dropped_colocalised": 27051,
+       "frac_colocalised_kept": 0.5472849298352654,
+       "frac_colocalised_dropped": 0.3897108610778961,
+       "n_pairs": 458
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 71052,
+       "dropped_colocalised": 27948,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.39334571862861,
+       "n_pairs": 458
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.3797430114565783,
+       "ci95": [
+        1.257042876639238,
+        1.5111755755624185
+       ],
+       "kept_calls": 19105,
+       "kept_colocalised": 8601,
+       "dropped_calls": 51947,
+       "dropped_colocalised": 19347,
+       "frac_colocalised_kept": 0.4501962836953677,
+       "frac_colocalised_dropped": 0.37243729185516006,
+       "n_pairs": 458
+      }
+     }
+    }
+   },
+   "cellchat": {
+    "rows": 1757690,
+    "family": 27942,
+    "calls": {
+     "null_b": 8837,
+     "b2": 204,
+     "loo_t": 464,
+     "null_a": 12972
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 11628,
+      "n_units": 1336,
+      "n_footprints": 160,
+      "responding": 1018,
+      "D1": {
+       "odds_ratio": 2.0826167744328457,
+       "ci95": [
+        1.5570358306768666,
+        2.8166719475460518
+       ],
+       "kept_calls": 7864,
+       "kept_responding": 819,
+       "dropped_calls": 3764,
+       "dropped_responding": 199,
+       "frac_responding_kept": 0.10414547304170906,
+       "frac_responding_dropped": 0.052869287991498405,
+       "n_units": 1336
+      },
+      "D1_z1": {
+       "odds_ratio": 1.5039465112912564,
+       "ci95": [
+        1.232323515753756,
+        1.8610318605498526
+       ],
+       "kept_calls": 7864,
+       "kept_responding": 2232,
+       "dropped_calls": 3764,
+       "dropped_responding": 785,
+       "frac_responding_kept": 0.28382502543234994,
+       "frac_responding_dropped": 0.2085547290116897,
+       "n_units": 1336
+      },
+      "D2_receptor": {
+       "odds_ratio": 2.001268038798202,
+       "ci95": [
+        1.3769891213803755,
+        3.146036145522548
+       ],
+       "kept_calls": 7864,
+       "kept_responding": 819,
+       "dropped_calls": 2459,
+       "dropped_responding": 135,
+       "frac_responding_kept": 0.10414547304170906,
+       "frac_responding_dropped": 0.05490036600244002,
+       "n_units": 1336
+      },
+      "D2_ligand": {
+       "odds_ratio": 2.254211763662172,
+       "ci95": [
+        1.2392337420038864,
+        6.7122696222355165
+       ],
+       "kept_calls": 7864,
+       "kept_responding": 819,
+       "dropped_calls": 1305,
+       "dropped_responding": 64,
+       "frac_responding_kept": 0.10414547304170906,
+       "frac_responding_dropped": 0.04904214559386973,
+       "n_units": 1090
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 1.7185562353714119,
+       "ci95": [
+        0.6166723768441451,
+        3.29380050593774
+       ],
+       "kept_calls": 171,
+       "kept_responding": 24,
+       "dropped_calls": 11457,
+       "dropped_responding": 994,
+       "frac_responding_kept": 0.14035087719298245,
+       "frac_responding_dropped": 0.08675918652352274,
+       "n_units": 1336
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 0.6871433366901645,
+       "ci95": [
+        0.32749482868826585,
+        1.148168913416491
+       ],
+       "kept_calls": 400,
+       "kept_responding": 25,
+       "dropped_calls": 11228,
+       "dropped_responding": 993,
+       "frac_responding_kept": 0.0625,
+       "frac_responding_dropped": 0.08843961524759529,
+       "n_units": 1336
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 1653406,
+     "covered_family": 25673,
+     "share_p_lt_005_null_a_calls": 0.048159614723082216,
+     "share_p_lt_005_family": 0.05753125852062478
+    },
+    "step3_calls": {
+     "null_a": 12972,
+     "null_b": 8837,
+     "b2": 204,
+     "loo_t": 464,
+     "filter_null_b_then_footprint": 469,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 8160
+    },
+    "step3_spatial": {
+     "visium": {
+      "null_b": {
+       "odds_ratio": 1.0515397451456312,
+       "ci95": [
+        0.6469395840080971,
+        1.527994279051839
+       ],
+       "kept_calls": 8345,
+       "kept_colocalised": 105,
+       "dropped_calls": 4009,
+       "dropped_colocalised": 48,
+       "frac_colocalised_kept": 0.012582384661473937,
+       "frac_colocalised_dropped": 0.011973060613619356,
+       "n_pairs": 784
+      },
+      "b2": {
+       "odds_ratio": 0.22193206669681004,
+       "ci95": [
+        0.11591461534905215,
+        0.6593548309685331
+       ],
+       "kept_calls": 176,
+       "kept_colocalised": 0,
+       "dropped_calls": 12178,
+       "dropped_colocalised": 153,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.012563639349646905,
+       "n_pairs": 784
+      },
+      "loo_t": {
+       "odds_ratio": 1.3548832167143,
+       "ci95": [
+        0.27708490519657164,
+        2.990060107902849
+       ],
+       "kept_calls": 424,
+       "kept_colocalised": 7,
+       "dropped_calls": 11930,
+       "dropped_colocalised": 146,
+       "frac_colocalised_kept": 0.01650943396226415,
+       "frac_colocalised_dropped": 0.012238055322715843,
+       "n_pairs": 784
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 0.7331163674301998,
+       "ci95": [
+        0.16309770722023534,
+        1.6947105622933325
+       ],
+       "kept_calls": 435,
+       "kept_colocalised": 4,
+       "dropped_calls": 11919,
+       "dropped_colocalised": 149,
+       "frac_colocalised_kept": 0.009195402298850575,
+       "frac_colocalised_dropped": 0.012501048745700143,
+       "n_pairs": 784
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 12354,
+       "dropped_colocalised": 153,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.01238465274405051,
+       "n_pairs": 784
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.0125155408205553,
+       "ci95": [
+        0.7007481116561268,
+        1.3030187787522158
+       ],
+       "kept_calls": 7716,
+       "kept_colocalised": 96,
+       "dropped_calls": 4638,
+       "dropped_colocalised": 57,
+       "frac_colocalised_kept": 0.012441679626749611,
+       "frac_colocalised_dropped": 0.012289780077619664,
+       "n_pairs": 784
+      }
+     },
+     "xenium_proxy": {
+      "null_b": {
+       "odds_ratio": 1.5440104524252372,
+       "ci95": [
+        1.2885083002059854,
+        1.8424799084323595
+       ],
+       "kept_calls": 5201,
+       "kept_colocalised": 2234,
+       "dropped_calls": 2471,
+       "dropped_colocalised": 810,
+       "frac_colocalised_kept": 0.42953278215727747,
+       "frac_colocalised_dropped": 0.32780250910562525,
+       "n_pairs": 450
+      },
+      "b2": {
+       "odds_ratio": 1.5250248591315878,
+       "ci95": [
+        0.6974705321892084,
+        3.2870432725553105
+       ],
+       "kept_calls": 54,
+       "kept_colocalised": 27,
+       "dropped_calls": 7618,
+       "dropped_colocalised": 3017,
+       "frac_colocalised_kept": 0.5,
+       "frac_colocalised_dropped": 0.396035704909425,
+       "n_pairs": 450
+      },
+      "loo_t": {
+       "odds_ratio": 1.3367323815998189,
+       "ci95": [
+        0.8517533180034368,
+        1.9596406750138022
+       ],
+       "kept_calls": 219,
+       "kept_colocalised": 102,
+       "dropped_calls": 7453,
+       "dropped_colocalised": 2942,
+       "frac_colocalised_kept": 0.4657534246575342,
+       "frac_colocalised_dropped": 0.3947403730041594,
+       "n_pairs": 450
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 1.5557067712214987,
+       "ci95": [
+        1.1207196586974297,
+        2.2259462929254132
+       ],
+       "kept_calls": 255,
+       "kept_colocalised": 128,
+       "dropped_calls": 7417,
+       "dropped_colocalised": 2916,
+       "frac_colocalised_kept": 0.5019607843137255,
+       "frac_colocalised_dropped": 0.3931508696238371,
+       "n_pairs": 450
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 7672,
+       "dropped_colocalised": 3044,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.3967674661105318,
+       "n_pairs": 450
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.5207477371840443,
+       "ci95": [
+        1.2702030902270134,
+        1.8307524397732935
+       ],
+       "kept_calls": 4838,
+       "kept_colocalised": 2096,
+       "dropped_calls": 2834,
+       "dropped_colocalised": 948,
+       "frac_colocalised_kept": 0.43323687474162875,
+       "frac_colocalised_dropped": 0.33450952717007765,
+       "n_pairs": 450
+      }
+     }
+    }
+   },
+   "cellphonedb": {
+    "rows": 1308596,
+    "family": 18815,
+    "calls": {
+     "null_b": 9528,
+     "b2": 13,
+     "loo_t": 0,
+     "null_a": 14765
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 10895,
+      "n_units": 1432,
+      "n_footprints": 162,
+      "responding": 1181,
+      "D1": {
+       "odds_ratio": 1.2931839768357571,
+       "ci95": [
+        1.0225303638715821,
+        1.701607558005736
+       ],
+       "kept_calls": 7220,
+       "kept_responding": 841,
+       "dropped_calls": 3675,
+       "dropped_responding": 340,
+       "frac_responding_kept": 0.1164819944598338,
+       "frac_responding_dropped": 0.09251700680272108,
+       "n_units": 1432
+      },
+      "D1_z1": {
+       "odds_ratio": 1.5421186741568436,
+       "ci95": [
+        1.2829582481275628,
+        1.8959573603101367
+       ],
+       "kept_calls": 7220,
+       "kept_responding": 2557,
+       "dropped_calls": 3675,
+       "dropped_responding": 964,
+       "frac_responding_kept": 0.3541551246537396,
+       "frac_responding_dropped": 0.26231292517006805,
+       "n_units": 1432
+      },
+      "D2_receptor": {
+       "odds_ratio": 2.9020056619606613,
+       "ci95": [
+        1.6742203957883428,
+        6.252246440959855
+       ],
+       "kept_calls": 7220,
+       "kept_responding": 841,
+       "dropped_calls": 1956,
+       "dropped_responding": 85,
+       "frac_responding_kept": 0.1164819944598338,
+       "frac_responding_dropped": 0.0434560327198364,
+       "n_units": 1432
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.7569100817941223,
+       "ci95": [
+        0.5772171631524747,
+        1.0835602099975241
+       ],
+       "kept_calls": 7220,
+       "kept_responding": 841,
+       "dropped_calls": 1719,
+       "dropped_responding": 255,
+       "frac_responding_kept": 0.1164819944598338,
+       "frac_responding_dropped": 0.14834205933682373,
+       "n_units": 1119
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 2.471307300509338,
+       "ci95": [
+        0.2966688837157743,
+        10.564610437440047
+       ],
+       "kept_calls": 13,
+       "kept_responding": 3,
+       "dropped_calls": 10882,
+       "dropped_responding": 1178,
+       "frac_responding_kept": 0.23076923076923078,
+       "frac_responding_dropped": 0.10825215952949825,
+       "n_units": 1432
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "dropped_calls": 10895,
+       "n_units": 1432
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 686256,
+     "covered_family": 14161,
+     "share_p_lt_005_null_a_calls": 0.11950435979807252,
+     "share_p_lt_005_family": 0.1122802062001271
+    },
+    "step3_calls": {
+     "null_a": 14765,
+     "null_b": 9528,
+     "b2": 13,
+     "loo_t": 0,
+     "filter_null_b_then_footprint": 986,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 7413
+    },
+    "step3_spatial": {
+     "visium": {
+      "null_b": {
+       "odds_ratio": 0.7984830707341602,
+       "ci95": [
+        0.59277272962086,
+        1.324970563122838
+       ],
+       "kept_calls": 9052,
+       "kept_colocalised": 103,
+       "dropped_calls": 5067,
+       "dropped_colocalised": 72,
+       "frac_colocalised_kept": 0.01137870083959346,
+       "frac_colocalised_dropped": 0.014209591474245116,
+       "n_pairs": 811
+      },
+      "b2": {
+       "odds_ratio": 2.940065421546903,
+       "ci95": [
+        1.388121658610037,
+        10.350208759695382
+       ],
+       "kept_calls": 13,
+       "kept_colocalised": 0,
+       "dropped_calls": 14106,
+       "dropped_colocalised": 175,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.012406068339713597,
+       "n_pairs": 811
+      },
+      "loo_t": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 14119,
+       "dropped_colocalised": 175,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.012394645513138325,
+       "n_pairs": 811
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 0.3292302829144934,
+       "ci95": [
+        0.0402402717175357,
+        1.008886513256891
+       ],
+       "kept_calls": 929,
+       "kept_colocalised": 4,
+       "dropped_calls": 13190,
+       "dropped_colocalised": 171,
+       "frac_colocalised_kept": 0.004305705059203444,
+       "frac_colocalised_dropped": 0.012964366944655041,
+       "n_pairs": 811
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 14119,
+       "dropped_colocalised": 175,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.012394645513138325,
+       "n_pairs": 811
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 0.7341459774118114,
+       "ci95": [
+        0.5011328392670715,
+        1.4120732290804012
+       ],
+       "kept_calls": 7039,
+       "kept_colocalised": 74,
+       "dropped_calls": 7080,
+       "dropped_colocalised": 101,
+       "frac_colocalised_kept": 0.010512856939906237,
+       "frac_colocalised_dropped": 0.014265536723163842,
+       "n_pairs": 811
+      }
+     },
+     "xenium_proxy": {
+      "null_b": {
+       "odds_ratio": 1.3314093374205602,
+       "ci95": [
+        1.1579903590436413,
+        1.541007074627542
+       ],
+       "kept_calls": 5500,
+       "kept_colocalised": 2518,
+       "dropped_calls": 2904,
+       "dropped_colocalised": 1127,
+       "frac_colocalised_kept": 0.4578181818181818,
+       "frac_colocalised_dropped": 0.3880853994490358,
+       "n_pairs": 458
+      },
+      "b2": {
+       "odds_ratio": 5.227135402361989,
+       "ci95": [
+        0.44977505991038963,
+        21.589311894633113
+       ],
+       "kept_calls": 5,
+       "kept_colocalised": 4,
+       "dropped_calls": 8399,
+       "dropped_colocalised": 3641,
+       "frac_colocalised_kept": 0.8,
+       "frac_colocalised_dropped": 0.4335039885700679,
+       "n_pairs": 458
+      },
+      "loo_t": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 8404,
+       "dropped_colocalised": 3645,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.4337220371251785,
+       "n_pairs": 458
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 1.3189050710182733,
+       "ci95": [
+        1.0175198727876944,
+        1.724549704450655
+       ],
+       "kept_calls": 530,
+       "kept_colocalised": 264,
+       "dropped_calls": 7874,
+       "dropped_colocalised": 3381,
+       "frac_colocalised_kept": 0.4981132075471698,
+       "frac_colocalised_dropped": 0.42938785877571756,
+       "n_pairs": 458
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 8404,
+       "dropped_colocalised": 3645,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.4337220371251785,
+       "n_pairs": 458
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.30638038102821,
+       "ci95": [
+        1.1236148946003752,
+        1.5261253584324606
+       ],
+       "kept_calls": 4466,
+       "kept_colocalised": 2074,
+       "dropped_calls": 3938,
+       "dropped_colocalised": 1571,
+       "frac_colocalised_kept": 0.464397671294223,
+       "frac_colocalised_dropped": 0.398933468765871,
+       "n_pairs": 458
+      }
+     }
+    }
+   }
+  },
+  "allen_brain_atlas": {
+   "step2_calibration": {
+    "shuffles": [
+     {
+      "n_ligands": 1225,
+      "n_receivers": 23,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.053061224489795916,
+      "binom99_limit": 4.0
+     },
+     {
+      "n_ligands": 1225,
+      "n_receivers": 23,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.06612244897959184,
+      "binom99_limit": 4.0
+     }
+    ],
+    "ligand_mean_p_spearman_between_shuffles": 0.1880972418418706,
+    "reading": "share_ligands_above_binom99 near 0.01 and a Spearman near 0: no ligand is favoured whatever the labels"
+   },
+   "natmi": {
+    "rows": 846929,
+    "family": 846866,
+    "calls": {
+     "null_b": 22897,
+     "b2": 1,
+     "loo_t": 13904,
+     "null_a": 60319
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 53228,
+      "n_units": 6604,
+      "n_footprints": 539,
+      "responding": 6465,
+      "D1": {
+       "odds_ratio": 0.6926097594380374,
+       "ci95": [
+        0.6073484241411433,
+        0.7819830606594423
+       ],
+       "kept_calls": 19874,
+       "kept_responding": 1946,
+       "dropped_calls": 33354,
+       "dropped_responding": 4519,
+       "frac_responding_kept": 0.09791687632082118,
+       "frac_responding_dropped": 0.1354859986808179,
+       "n_units": 6604
+      },
+      "D1_z1": {
+       "odds_ratio": 0.6770427592383589,
+       "ci95": [
+        0.6101397646744279,
+        0.7441042431139925
+       ],
+       "kept_calls": 19874,
+       "kept_responding": 3468,
+       "dropped_calls": 33354,
+       "dropped_responding": 7936,
+       "frac_responding_kept": 0.17449934587903793,
+       "frac_responding_dropped": 0.23793248186124602,
+       "n_units": 6604
+      },
+      "D2_receptor": {
+       "odds_ratio": 1.0752302137844305,
+       "ci95": [
+        0.9143568660385769,
+        1.266908728762158
+       ],
+       "kept_calls": 19874,
+       "kept_responding": 1946,
+       "dropped_calls": 16675,
+       "dropped_responding": 1529,
+       "frac_responding_kept": 0.09791687632082118,
+       "frac_responding_dropped": 0.09169415292353823,
+       "n_units": 6217
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.49694866422210576,
+       "ci95": [
+        0.43205672098042847,
+        0.5749110072963033
+       ],
+       "kept_calls": 19874,
+       "kept_responding": 1946,
+       "dropped_calls": 16679,
+       "dropped_responding": 2990,
+       "frac_responding_kept": 0.09791687632082118,
+       "frac_responding_dropped": 0.17926734216679657,
+       "n_units": 3844
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 2.410873095661588,
+       "ci95": [
+        0.9371318203970671,
+        7.898643083399714
+       ],
+       "kept_calls": 1,
+       "kept_responding": 0,
+       "dropped_calls": 53227,
+       "dropped_responding": 6465,
+       "frac_responding_kept": 0.0,
+       "frac_responding_dropped": 0.12146091269468502,
+       "n_units": 6604
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 2.8606100058324597,
+       "ci95": [
+        2.5325888432679697,
+        3.221006112536957
+       ],
+       "kept_calls": 12056,
+       "kept_responding": 2697,
+       "dropped_calls": 41172,
+       "dropped_responding": 3768,
+       "frac_responding_kept": 0.2237060384870604,
+       "frac_responding_dropped": 0.09151850772369571,
+       "n_units": 6604
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 817305,
+     "covered_family": 817243,
+     "share_p_lt_005_null_a_calls": 0.09711054332306306,
+     "share_p_lt_005_family": 0.07196146066714551
+    },
+    "step3_calls": {
+     "null_a": 60319,
+     "null_b": 22897,
+     "b2": 1,
+     "loo_t": 13904,
+     "filter_null_b_then_footprint": 2385,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 19027
+    },
+    "step3_spatial": {
+     "visium": {
+      "null_b": {
+       "odds_ratio": 0.9174304536566869,
+       "ci95": [
+        0.7392842185039711,
+        1.0987555309878003
+       ],
+       "kept_calls": 21585,
+       "kept_colocalised": 907,
+       "dropped_calls": 35657,
+       "dropped_colocalised": 1627,
+       "frac_colocalised_kept": 0.04201992124160296,
+       "frac_colocalised_dropped": 0.04562918921950809,
+       "n_pairs": 506
+      },
+      "b2": {
+       "odds_ratio": 7.195041757085552,
+       "ci95": [
+        2.5493218500729724,
+        31.833870019834034
+       ],
+       "kept_calls": 1,
+       "kept_colocalised": 0,
+       "dropped_calls": 57241,
+       "dropped_colocalised": 2534,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.04426896804737863,
+       "n_pairs": 506
+      },
+      "loo_t": {
+       "odds_ratio": 1.6916518803740594,
+       "ci95": [
+        0.9921112788385434,
+        2.746365040358652
+       ],
+       "kept_calls": 12541,
+       "kept_colocalised": 801,
+       "dropped_calls": 44701,
+       "dropped_colocalised": 1733,
+       "frac_colocalised_kept": 0.06387050474443824,
+       "frac_colocalised_dropped": 0.038768707635175946,
+       "n_pairs": 506
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 0.8471535982814177,
+       "ci95": [
+        0.604080126549901,
+        1.076627853765255
+       ],
+       "kept_calls": 2212,
+       "kept_colocalised": 84,
+       "dropped_calls": 55030,
+       "dropped_colocalised": 2450,
+       "frac_colocalised_kept": 0.0379746835443038,
+       "frac_colocalised_dropped": 0.044521170270761405,
+       "n_pairs": 506
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 57242,
+       "dropped_colocalised": 2534,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.044268194682226335,
+       "n_pairs": 506
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 0.9157097576252207,
+       "ci95": [
+        0.7348107548023984,
+        1.0937854126954545
+       ],
+       "kept_calls": 17917,
+       "kept_colocalised": 748,
+       "dropped_calls": 39325,
+       "dropped_colocalised": 1786,
+       "frac_colocalised_kept": 0.04174806050119998,
+       "frac_colocalised_dropped": 0.04541640178003814,
+       "n_pairs": 506
+      }
+     }
+    }
+   },
+   "cellchat": {
+    "rows": 988701,
+    "family": 162047,
+    "calls": {
+     "null_b": 13558,
+     "b2": 10,
+     "loo_t": 3182,
+     "null_a": 27973
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 25252,
+      "n_units": 2479,
+      "n_footprints": 198,
+      "responding": 2200,
+      "D1": {
+       "odds_ratio": 1.6781149576318763,
+       "ci95": [
+        1.4028427221895292,
+        2.007923154710266
+       ],
+       "kept_calls": 12117,
+       "kept_responding": 1313,
+       "dropped_calls": 13135,
+       "dropped_responding": 887,
+       "frac_responding_kept": 0.10836015515391599,
+       "frac_responding_dropped": 0.06752950133231823,
+       "n_units": 2479
+      },
+      "D1_z1": {
+       "odds_ratio": 1.6294118375926374,
+       "ci95": [
+        1.4201691934328082,
+        1.8816368843859717
+       ],
+       "kept_calls": 12117,
+       "kept_responding": 2248,
+       "dropped_calls": 13135,
+       "dropped_responding": 1611,
+       "frac_responding_kept": 0.18552446975323925,
+       "frac_responding_dropped": 0.12264940997335363,
+       "n_units": 2479
+      },
+      "D2_receptor": {
+       "odds_ratio": 4.107563193733621,
+       "ci95": [
+        2.979473712387074,
+        6.037623487577721
+       ],
+       "kept_calls": 12117,
+       "kept_responding": 1313,
+       "dropped_calls": 7099,
+       "dropped_responding": 204,
+       "frac_responding_kept": 0.10836015515391599,
+       "frac_responding_dropped": 0.02873644175235949,
+       "n_units": 2478
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.9524818095136391,
+       "ci95": [
+        0.7659181110711744,
+        1.1902953046054956
+       ],
+       "kept_calls": 12117,
+       "kept_responding": 1313,
+       "dropped_calls": 6036,
+       "dropped_responding": 683,
+       "frac_responding_kept": 0.10836015515391599,
+       "frac_responding_dropped": 0.11315440689198145,
+       "n_units": 1769
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 3.494995450409463,
+       "ci95": [
+        0.4127284461052323,
+        90.19909552601733
+       ],
+       "kept_calls": 8,
+       "kept_responding": 2,
+       "dropped_calls": 25244,
+       "dropped_responding": 2198,
+       "frac_responding_kept": 0.25,
+       "frac_responding_dropped": 0.08707019489779749,
+       "n_units": 2479
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 1.3482303387810348,
+       "ci95": [
+        1.0736820977018244,
+        1.668311487299712
+       ],
+       "kept_calls": 2829,
+       "kept_responding": 312,
+       "dropped_calls": 22423,
+       "dropped_responding": 1888,
+       "frac_responding_kept": 0.1102863202545069,
+       "frac_responding_dropped": 0.08419925968871249,
+       "n_units": 2479
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 853806,
+     "covered_family": 154511,
+     "share_p_lt_005_null_a_calls": 0.06487061325771003,
+     "share_p_lt_005_family": 0.05631314275359036
+    },
+    "step3_calls": {
+     "null_a": 27973,
+     "null_b": 13558,
+     "b2": 10,
+     "loo_t": 3182,
+     "filter_null_b_then_footprint": 801,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 12140
+    },
+    "step3_spatial": {
+     "visium": {
+      "null_b": {
+       "odds_ratio": 1.1625060114545533,
+       "ci95": [
+        0.8844624472067038,
+        1.5692200564515357
+       ],
+       "kept_calls": 12648,
+       "kept_colocalised": 544,
+       "dropped_calls": 13809,
+       "dropped_colocalised": 514,
+       "frac_colocalised_kept": 0.043010752688172046,
+       "frac_colocalised_dropped": 0.03722210152798899,
+       "n_pairs": 506
+      },
+      "b2": {
+       "odds_ratio": 3.43181511015002,
+       "ci95": [
+        1.0856360917953738,
+        15.846341226098463
+       ],
+       "kept_calls": 8,
+       "kept_colocalised": 1,
+       "dropped_calls": 26449,
+       "dropped_colocalised": 1057,
+       "frac_colocalised_kept": 0.125,
+       "frac_colocalised_dropped": 0.039963703731710085,
+       "n_pairs": 506
+      },
+      "loo_t": {
+       "odds_ratio": 1.324575718208217,
+       "ci95": [
+        0.900280491229538,
+        1.8997098218359534
+       ],
+       "kept_calls": 2946,
+       "kept_colocalised": 149,
+       "dropped_calls": 23511,
+       "dropped_colocalised": 909,
+       "frac_colocalised_kept": 0.05057705363204345,
+       "frac_colocalised_dropped": 0.03866275360469568,
+       "n_pairs": 506
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 0.7041832479932633,
+       "ci95": [
+        0.4053139022981686,
+        1.0500655048165166
+       ],
+       "kept_calls": 731,
+       "kept_colocalised": 21,
+       "dropped_calls": 25726,
+       "dropped_colocalised": 1037,
+       "frac_colocalised_kept": 0.028727770177838577,
+       "frac_colocalised_dropped": 0.040309414600015546,
+       "n_pairs": 506
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 26457,
+       "dropped_colocalised": 1058,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.0399894167895075,
+       "n_pairs": 506
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": 1.1674839946279323,
+       "ci95": [
+        0.8783439556652037,
+        1.5426149084489031
+       ],
+       "kept_calls": 11332,
+       "kept_colocalised": 492,
+       "dropped_calls": 15125,
+       "dropped_colocalised": 566,
+       "frac_colocalised_kept": 0.04341687257324391,
+       "frac_colocalised_dropped": 0.037421487603305784,
+       "n_pairs": 506
+      }
+     }
+    }
+   },
+   "cellphonedb": {
+    "rows": 833704,
+    "family": 135279,
+    "calls": {
+     "null_b": 15121,
+     "b2": 1,
+     "loo_t": 82,
+     "null_a": 46928
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 14472,
+      "n_units": 1840,
+      "n_footprints": 158,
+      "responding": 1380,
+      "D1": {
+       "odds_ratio": 1.3564436600036247,
+       "ci95": [
+        1.1480870482367964,
+        1.6354561625612276
+       ],
+       "kept_calls": 4769,
+       "kept_responding": 542,
+       "dropped_calls": 9703,
+       "dropped_responding": 838,
+       "frac_responding_kept": 0.1136506605158314,
+       "frac_responding_dropped": 0.08636504173966815,
+       "n_units": 1840
+      },
+      "D1_z1": {
+       "odds_ratio": 1.3653569783685957,
+       "ci95": [
+        1.1907204424317692,
+        1.5597837885891612
+       ],
+       "kept_calls": 4769,
+       "kept_responding": 1071,
+       "dropped_calls": 9703,
+       "dropped_responding": 1698,
+       "frac_responding_kept": 0.2245753826798071,
+       "frac_responding_dropped": 0.17499742347727507,
+       "n_units": 1840
+      },
+      "D2_receptor": {
+       "odds_ratio": 2.902744144189126,
+       "ci95": [
+        2.1209507100194362,
+        4.075036202476962
+       ],
+       "kept_calls": 4769,
+       "kept_responding": 542,
+       "dropped_calls": 4704,
+       "dropped_responding": 199,
+       "frac_responding_kept": 0.1136506605158314,
+       "frac_responding_dropped": 0.04230442176870748,
+       "n_units": 1822
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.8748884231446032,
+       "ci95": [
+        0.7086621345653306,
+        1.0996903346081053
+       ],
+       "kept_calls": 4769,
+       "kept_responding": 542,
+       "dropped_calls": 4999,
+       "dropped_responding": 639,
+       "frac_responding_kept": 0.1136506605158314,
+       "frac_responding_dropped": 0.1278255651130226,
+       "n_units": 995
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 28.472272562522654,
+       "ci95": [
+        8.40646216009944,
+        66.52725035929656
+       ],
+       "kept_calls": 1,
+       "kept_responding": 1,
+       "dropped_calls": 14471,
+       "dropped_responding": 1379,
+       "frac_responding_kept": 1.0,
+       "frac_responding_dropped": 0.0952940363485592,
+       "n_units": 1840
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 1.2084883797920942,
+       "ci95": [
+        0.2948936368187383,
+        2.679375217770033
+       ],
+       "kept_calls": 62,
+       "kept_responding": 7,
+       "dropped_calls": 14410,
+       "dropped_responding": 1373,
+       "frac_responding_kept": 0.11290322580645161,
+       "frac_responding_dropped": 0.09528105482303956,
+       "n_units": 1840
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 316871,
+     "covered_family": 41010,
+     "share_p_lt_005_null_a_calls": 0.07600447816892648,
+     "share_p_lt_005_family": 0.06069251402097049
+    },
+    "step3_calls": {
+     "null_a": 46928,
+     "null_b": 15121,
+     "b2": 1,
+     "loo_t": 82,
+     "filter_null_b_then_footprint": 477,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 0
+    },
+    "step3_spatial": {
+     "visium": {
+      "null_b": {
+       "odds_ratio": 1.097976488237069,
+       "ci95": [
+        0.7810347871235884,
+        1.479364511017658
+       ],
+       "kept_calls": 14113,
+       "kept_colocalised": 646,
+       "dropped_calls": 30196,
+       "dropped_colocalised": 1264,
+       "frac_colocalised_kept": 0.04577340041096861,
+       "frac_colocalised_dropped": 0.04185984898662074,
+       "n_pairs": 506
+      },
+      "b2": {
+       "odds_ratio": 66.61351139041633,
+       "ci95": [
+        15.724319761046655,
+        206.71291626191785
+       ],
+       "kept_calls": 1,
+       "kept_colocalised": 1,
+       "dropped_calls": 44308,
+       "dropped_colocalised": 1909,
+       "frac_colocalised_kept": 1.0,
+       "frac_colocalised_dropped": 0.04308477024465108,
+       "n_pairs": 506
+      },
+      "loo_t": {
+       "odds_ratio": 5.585620052770449,
+       "ci95": [
+        2.2183074551387594,
+        12.304979862933912
+       ],
+       "kept_calls": 75,
+       "kept_colocalised": 15,
+       "dropped_calls": 44234,
+       "dropped_colocalised": 1895,
+       "frac_colocalised_kept": 0.2,
+       "frac_colocalised_dropped": 0.04284034905276484,
+       "n_pairs": 506
+      },
+      "filter_null_b_then_footprint": {
+       "odds_ratio": 1.2873755893137768,
+       "ci95": [
+        0.656985021395077,
+        2.275612308964143
+       ],
+       "kept_calls": 439,
+       "kept_colocalised": 24,
+       "dropped_calls": 43870,
+       "dropped_colocalised": 1886,
+       "frac_colocalised_kept": 0.05466970387243736,
+       "frac_colocalised_dropped": 0.04299065420560748,
+       "n_pairs": 506
+      },
+      "and_max_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 44309,
+       "dropped_colocalised": 1910,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.04310636665237311,
+       "n_pairs": 506
+      },
+      "or_cauchy_bh": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "kept_colocalised": 0,
+       "dropped_calls": 44309,
+       "dropped_colocalised": 1910,
+       "frac_colocalised_kept": 0.0,
+       "frac_colocalised_dropped": 0.04310636665237311,
+       "n_pairs": 506
+      }
+     }
+    }
+   }
+  },
+  "tabula_sapiens_mammary": {
+   "step2_calibration": {
+    "shuffles": [
+     {
+      "n_ligands": 1225,
+      "n_receivers": 16,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.04081632653061224,
+      "binom99_limit": 3.0
+     },
+     {
+      "n_ligands": 1225,
+      "n_receivers": 16,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.06285714285714286,
+      "binom99_limit": 3.0
+     }
+    ],
+    "ligand_mean_p_spearman_between_shuffles": 0.12401262689577074,
+    "reading": "share_ligands_above_binom99 near 0.01 and a Spearman near 0: no ligand is favoured whatever the labels"
+   },
+   "natmi": {
+    "rows": 583424,
+    "family": 561543,
+    "calls": {
+     "null_b": 10369,
+     "b2": 4,
+     "loo_t": 12341,
+     "null_a": 40457
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 34725,
+      "n_units": 6149,
+      "n_footprints": 745,
+      "responding": 1361,
+      "D1": {
+       "odds_ratio": 1.2274956398232035,
+       "ci95": [
+        1.0304210559194056,
+        1.4346384563113694
+       ],
+       "kept_calls": 8569,
+       "kept_responding": 388,
+       "dropped_calls": 26156,
+       "dropped_responding": 973,
+       "frac_responding_kept": 0.04527949585715953,
+       "frac_responding_dropped": 0.03719987765713412,
+       "n_units": 6149
+      },
+      "D1_z1": {
+       "odds_ratio": 1.515328103999311,
+       "ci95": [
+        1.3925801998729037,
+        1.6673602483727155
+       ],
+       "kept_calls": 8569,
+       "kept_responding": 4384,
+       "dropped_calls": 26156,
+       "dropped_responding": 10691,
+       "frac_responding_kept": 0.5116116232932664,
+       "frac_responding_dropped": 0.4087398684814192,
+       "n_units": 6149
+      },
+      "D2_receptor": {
+       "odds_ratio": 1.6694807161875609,
+       "ci95": [
+        1.2495096557769194,
+        2.2654365589227754
+       ],
+       "kept_calls": 8569,
+       "kept_responding": 388,
+       "dropped_calls": 13322,
+       "dropped_responding": 368,
+       "frac_responding_kept": 0.04527949585715953,
+       "frac_responding_dropped": 0.02762347995796427,
+       "n_units": 5414
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.9586518247784374,
+       "ci95": [
+        0.7915696831955509,
+        1.1659198182546378
+       ],
+       "kept_calls": 8569,
+       "kept_responding": 388,
+       "dropped_calls": 12834,
+       "dropped_responding": 605,
+       "frac_responding_kept": 0.04527949585715953,
+       "frac_responding_dropped": 0.047140408290478414,
+       "n_units": 3325
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 3.5004983998740884,
+       "ci95": [
+        1.6715294586805074,
+        24.872673210380892
+       ],
+       "kept_calls": 3,
+       "kept_responding": 0,
+       "dropped_calls": 34722,
+       "dropped_responding": 1361,
+       "frac_responding_kept": 0.0,
+       "frac_responding_dropped": 0.03919705086112551,
+       "n_units": 6149
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 0.9595185260050051,
+       "ci95": [
+        0.7782726178467783,
+        1.1788345010877643
+       ],
+       "kept_calls": 9404,
+       "kept_responding": 358,
+       "dropped_calls": 25321,
+       "dropped_responding": 1003,
+       "frac_responding_kept": 0.038068906848149724,
+       "frac_responding_dropped": 0.03961138975553888,
+       "n_units": 6149
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 559872,
+     "covered_family": 538795,
+     "share_p_lt_005_null_a_calls": 0.08020158387329014,
+     "share_p_lt_005_family": 0.06434358151059308
+    },
+    "step3_calls": {
+     "null_a": 40457,
+     "null_b": 10369,
+     "b2": 4,
+     "loo_t": 12341,
+     "filter_null_b_then_footprint": 823,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 9278
+    },
+    "step3_spatial": {}
+   },
+   "cellchat": {
+    "rows": 508160,
+    "family": 71456,
+    "calls": {
+     "null_b": 3297,
+     "b2": 66,
+     "loo_t": 1628,
+     "null_a": 6873
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 6008,
+      "n_units": 1039,
+      "n_footprints": 171,
+      "responding": 155,
+      "D1": {
+       "odds_ratio": 0.9096728246954192,
+       "ci95": [
+        0.5643677982845605,
+        1.4793317426190256
+       ],
+       "kept_calls": 2812,
+       "kept_responding": 69,
+       "dropped_calls": 3196,
+       "dropped_responding": 86,
+       "frac_responding_kept": 0.02453769559032717,
+       "frac_responding_dropped": 0.02690863579474343,
+       "n_units": 1039
+      },
+      "D1_z1": {
+       "odds_ratio": 1.1386404270645716,
+       "ci95": [
+        0.9608463590620924,
+        1.3706590390722186
+       ],
+       "kept_calls": 2812,
+       "kept_responding": 1091,
+       "dropped_calls": 3196,
+       "dropped_responding": 1143,
+       "frac_responding_kept": 0.3879800853485064,
+       "frac_responding_dropped": 0.3576345431789737,
+       "n_units": 1039
+      },
+      "D2_receptor": {
+       "odds_ratio": 1.4597052236862662,
+       "ci95": [
+        0.6985356349547371,
+        3.2414504321026256
+       ],
+       "kept_calls": 2812,
+       "kept_responding": 69,
+       "dropped_calls": 2066,
+       "dropped_responding": 35,
+       "frac_responding_kept": 0.02453769559032717,
+       "frac_responding_dropped": 0.016940948693126814,
+       "n_units": 1035
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.5321996097017007,
+       "ci95": [
+        0.3006445020905572,
+        1.5209291717487299
+       ],
+       "kept_calls": 2812,
+       "kept_responding": 69,
+       "dropped_calls": 1130,
+       "dropped_responding": 51,
+       "frac_responding_kept": 0.02453769559032717,
+       "frac_responding_dropped": 0.04513274336283186,
+       "n_units": 717
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 0.8021552915169936,
+       "ci95": [
+        0.25328558929347383,
+        3.3378896497530297
+       ],
+       "kept_calls": 48,
+       "kept_responding": 1,
+       "dropped_calls": 5960,
+       "dropped_responding": 154,
+       "frac_responding_kept": 0.020833333333333332,
+       "frac_responding_dropped": 0.025838926174496644,
+       "n_units": 1039
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 0.9908723167864661,
+       "ci95": [
+        0.39297993295484884,
+        1.9759488770325722
+       ],
+       "kept_calls": 1405,
+       "kept_responding": 36,
+       "dropped_calls": 4603,
+       "dropped_responding": 119,
+       "frac_responding_kept": 0.025622775800711744,
+       "frac_responding_dropped": 0.025852704757766673,
+       "n_units": 1039
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 477952,
+     "covered_family": 69230,
+     "share_p_lt_005_null_a_calls": 0.05775632490013315,
+     "share_p_lt_005_family": 0.04955943954932832
+    },
+    "step3_calls": {
+     "null_a": 6873,
+     "null_b": 3297,
+     "b2": 66,
+     "loo_t": 1628,
+     "filter_null_b_then_footprint": 195,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 3087
+    },
+    "step3_spatial": {}
+   },
+   "cellphonedb": {
+    "rows": 494848,
+    "family": 11767,
+    "calls": {
+     "null_b": 2890,
+     "b2": 17,
+     "loo_t": 0,
+     "null_a": 6201
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 4396,
+      "n_units": 882,
+      "n_footprints": 162,
+      "responding": 264,
+      "D1": {
+       "odds_ratio": 0.9340054334901887,
+       "ci95": [
+        0.6637880517624467,
+        1.5618495122218148
+       ],
+       "kept_calls": 1951,
+       "kept_responding": 113,
+       "dropped_calls": 2445,
+       "dropped_responding": 151,
+       "frac_responding_kept": 0.057919015889287544,
+       "frac_responding_dropped": 0.06175869120654397,
+       "n_units": 882
+      },
+      "D1_z1": {
+       "odds_ratio": 1.2468122061156468,
+       "ci95": [
+        0.9952959313802852,
+        1.6043081127724699
+       ],
+       "kept_calls": 1951,
+       "kept_responding": 820,
+       "dropped_calls": 2445,
+       "dropped_responding": 899,
+       "frac_responding_kept": 0.4202972834443875,
+       "frac_responding_dropped": 0.36768916155419223,
+       "n_units": 882
+      },
+      "D2_receptor": {
+       "odds_ratio": 2.0753609975590392,
+       "ci95": [
+        0.9260476867289664,
+        6.460313045177245
+       ],
+       "kept_calls": 1951,
+       "kept_responding": 113,
+       "dropped_calls": 1286,
+       "dropped_responding": 37,
+       "frac_responding_kept": 0.057919015889287544,
+       "frac_responding_dropped": 0.028771384136858476,
+       "n_units": 872
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.5635654697134567,
+       "ci95": [
+        0.37551197392155716,
+        1.0925146534420773
+       ],
+       "kept_calls": 1951,
+       "kept_responding": 113,
+       "dropped_calls": 1159,
+       "dropped_responding": 114,
+       "frac_responding_kept": 0.057919015889287544,
+       "frac_responding_dropped": 0.09836065573770492,
+       "n_units": 589
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 1.1184139054861486,
+       "ci95": [
+        0.30217408856825717,
+        6.256746397387429
+       ],
+       "kept_calls": 15,
+       "kept_responding": 1,
+       "dropped_calls": 4381,
+       "dropped_responding": 263,
+       "frac_responding_kept": 0.06666666666666667,
+       "frac_responding_dropped": 0.06003195617438941,
+       "n_units": 882
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": null,
+       "ci95": null,
+       "kept_calls": 0,
+       "dropped_calls": 4396,
+       "n_units": 882
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 223744,
+     "covered_family": 8928,
+     "share_p_lt_005_null_a_calls": 0.12033666969972702,
+     "share_p_lt_005_family": 0.10887096774193548
+    },
+    "step3_calls": {
+     "null_a": 6201,
+     "null_b": 2890,
+     "b2": 17,
+     "loo_t": 0,
+     "filter_null_b_then_footprint": 287,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 2010
+    },
+    "step3_spatial": {}
+   }
+  },
+  "tabula_sapiens_liver": {
+   "step2_calibration": {
+    "shuffles": [
+     {
+      "n_ligands": 1225,
+      "n_receivers": 24,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.08816326530612245,
+      "binom99_limit": 4.0
+     },
+     {
+      "n_ligands": 1225,
+      "n_receivers": 24,
+      "share_p_lt_005": 0.04979591836734694,
+      "share_ligands_above_binom99": 0.06285714285714286,
+      "binom99_limit": 4.0
+     }
+    ],
+    "ligand_mean_p_spearman_between_shuffles": 0.11026090904255222,
+    "reading": "share_ligands_above_binom99 near 0.01 and a Spearman near 0: no ligand is favoured whatever the labels"
+   },
+   "natmi": {
+    "rows": 1312704,
+    "family": 1286822,
+    "calls": {
+     "null_b": 24929,
+     "b2": 5,
+     "loo_t": 22582,
+     "null_a": 89531
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 80369,
+      "n_units": 10023,
+      "n_footprints": 766,
+      "responding": 6589,
+      "D1": {
+       "odds_ratio": 1.6092223996089035,
+       "ci95": [
+        1.4709715708644828,
+        1.7538256005293178
+       ],
+       "kept_calls": 21989,
+       "kept_responding": 2421,
+       "dropped_calls": 58380,
+       "dropped_responding": 4168,
+       "frac_responding_kept": 0.11010050479785347,
+       "frac_responding_dropped": 0.07139431312093182,
+       "n_units": 10023
+      },
+      "D1_z1": {
+       "odds_ratio": 1.5261236253545736,
+       "ci95": [
+        1.43909922623944,
+        1.6142369805793764
+       ],
+       "kept_calls": 21989,
+       "kept_responding": 7951,
+       "dropped_calls": 58380,
+       "dropped_responding": 15802,
+       "frac_responding_kept": 0.3615898858520169,
+       "frac_responding_dropped": 0.27067488866050016,
+       "n_units": 10023
+      },
+      "D2_receptor": {
+       "odds_ratio": 2.610685437209474,
+       "ci95": [
+        2.195818627355764,
+        3.092790109847073
+       ],
+       "kept_calls": 21989,
+       "kept_responding": 2421,
+       "dropped_calls": 24908,
+       "dropped_responding": 1127,
+       "frac_responding_kept": 0.11010050479785347,
+       "frac_responding_dropped": 0.04524650714629838,
+       "n_units": 9107
+      },
+      "D2_ligand": {
+       "odds_ratio": 1.2380784195445025,
+       "ci95": [
+        1.111545517395814,
+        1.3883478866323224
+       ],
+       "kept_calls": 21989,
+       "kept_responding": 2421,
+       "dropped_calls": 33472,
+       "dropped_responding": 3041,
+       "frac_responding_kept": 0.11010050479785347,
+       "frac_responding_dropped": 0.09085205544933078,
+       "n_units": 5331
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 1.5994601801567427,
+       "ci95": [
+        0.7373406803468386,
+        11.160167020238426
+       ],
+       "kept_calls": 3,
+       "kept_responding": 0,
+       "dropped_calls": 80366,
+       "dropped_responding": 6589,
+       "frac_responding_kept": 0.0,
+       "frac_responding_dropped": 0.08198740761018342,
+       "n_units": 10023
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 0.72593375562875,
+       "ci95": [
+        0.6265246762228915,
+        0.8418456101809852
+       ],
+       "kept_calls": 18693,
+       "kept_responding": 1212,
+       "dropped_calls": 61676,
+       "dropped_responding": 5377,
+       "frac_responding_kept": 0.0648371047985877,
+       "frac_responding_dropped": 0.08718139957195668,
+       "n_units": 10023
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 1259712,
+     "covered_family": 1233861,
+     "share_p_lt_005_null_a_calls": 0.08444798367529768,
+     "share_p_lt_005_family": 0.06690461891574497
+    },
+    "step3_calls": {
+     "null_a": 89531,
+     "null_b": 24929,
+     "b2": 5,
+     "loo_t": 22582,
+     "filter_null_b_then_footprint": 2321,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 21725
+    },
+    "step3_spatial": {}
+   },
+   "cellchat": {
+    "rows": 1251072,
+    "family": 80794,
+    "calls": {
+     "null_b": 7617,
+     "b2": 3,
+     "loo_t": 1912,
+     "null_a": 12798
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 11096,
+      "n_units": 1648,
+      "n_footprints": 193,
+      "responding": 1038,
+      "D1": {
+       "odds_ratio": 0.9563680189429818,
+       "ci95": [
+        0.6552881650624759,
+        1.4233256124742852
+       ],
+       "kept_calls": 6576,
+       "kept_responding": 605,
+       "dropped_calls": 4520,
+       "dropped_responding": 433,
+       "frac_responding_kept": 0.09200121654501217,
+       "frac_responding_dropped": 0.09579646017699114,
+       "n_units": 1648
+      },
+      "D1_z1": {
+       "odds_ratio": 0.9807979528165448,
+       "ci95": [
+        0.790103420024778,
+        1.2231644670169792
+       ],
+       "kept_calls": 6576,
+       "kept_responding": 2131,
+       "dropped_calls": 4520,
+       "dropped_responding": 1484,
+       "frac_responding_kept": 0.3240571776155718,
+       "frac_responding_dropped": 0.32831858407079645,
+       "n_units": 1648
+      },
+      "D2_receptor": {
+       "odds_ratio": 1.2559346920970738,
+       "ci95": [
+        0.7471427083535602,
+        2.3974732401891536
+       ],
+       "kept_calls": 6576,
+       "kept_responding": 605,
+       "dropped_calls": 1728,
+       "dropped_responding": 129,
+       "frac_responding_kept": 0.09200121654501217,
+       "frac_responding_dropped": 0.07465277777777778,
+       "n_units": 1646
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.8292492661900942,
+       "ci95": [
+        0.5335996325531777,
+        1.3908786370954747
+       ],
+       "kept_calls": 6576,
+       "kept_responding": 605,
+       "dropped_calls": 2792,
+       "dropped_responding": 304,
+       "frac_responding_kept": 0.09200121654501217,
+       "frac_responding_dropped": 0.10888252148997135,
+       "n_units": 1345
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 1.3832450649975927,
+       "ci95": [
+        0.6112473656676775,
+        9.447668288944234
+       ],
+       "kept_calls": 3,
+       "kept_responding": 0,
+       "dropped_calls": 11093,
+       "dropped_responding": 1038,
+       "frac_responding_kept": 0.0,
+       "frac_responding_dropped": 0.09357252321283692,
+       "n_units": 1648
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 0.8358611524869302,
+       "ci95": [
+        0.6061172348882038,
+        1.1484417551426251
+       ],
+       "kept_calls": 1649,
+       "kept_responding": 134,
+       "dropped_calls": 9447,
+       "dropped_responding": 904,
+       "frac_responding_kept": 0.08126137052759248,
+       "frac_responding_dropped": 0.09569175399597755,
+       "n_units": 1648
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 1179072,
+     "covered_family": 76631,
+     "share_p_lt_005_null_a_calls": 0.08264239365537131,
+     "share_p_lt_005_family": 0.06959324555336613
+    },
+    "step3_calls": {
+     "null_a": 12798,
+     "null_b": 7617,
+     "b2": 3,
+     "loo_t": 1912,
+     "filter_null_b_then_footprint": 643,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 6896
+    },
+    "step3_spatial": {}
+   },
+   "cellphonedb": {
+    "rows": 1129536,
+    "family": 31315,
+    "calls": {
+     "null_b": 7203,
+     "b2": 3,
+     "loo_t": 43,
+     "null_a": 15773
+    },
+    "step1_truth": {
+     "null_b": {
+      "n_lines": 11241,
+      "n_units": 1580,
+      "n_footprints": 189,
+      "responding": 1221,
+      "D1": {
+       "odds_ratio": 1.1876019575856442,
+       "ci95": [
+        0.8967950223152185,
+        1.5674956555232546
+       ],
+       "kept_calls": 5168,
+       "kept_responding": 608,
+       "dropped_calls": 6073,
+       "dropped_responding": 613,
+       "frac_responding_kept": 0.11764705882352941,
+       "frac_responding_dropped": 0.10093858060266754,
+       "n_units": 1580
+      },
+      "D1_z1": {
+       "odds_ratio": 1.3625226889197597,
+       "ci95": [
+        1.1460559093521567,
+        1.6251500719595149
+       ],
+       "kept_calls": 5168,
+       "kept_responding": 2015,
+       "dropped_calls": 6073,
+       "dropped_responding": 1939,
+       "frac_responding_kept": 0.38989938080495357,
+       "frac_responding_dropped": 0.3192820681705911,
+       "n_units": 1580
+      },
+      "D2_receptor": {
+       "odds_ratio": 2.07037037037037,
+       "ci95": [
+        1.2317696583861715,
+        3.9436782375156407
+       ],
+       "kept_calls": 5168,
+       "kept_responding": 608,
+       "dropped_calls": 3570,
+       "dropped_responding": 216,
+       "frac_responding_kept": 0.11764705882352941,
+       "frac_responding_dropped": 0.06050420168067227,
+       "n_units": 1562
+      },
+      "D2_ligand": {
+       "odds_ratio": 0.7073047858942065,
+       "ci95": [
+        0.5241451871505491,
+        0.9896370715963865
+       ],
+       "kept_calls": 5168,
+       "kept_responding": 608,
+       "dropped_calls": 2503,
+       "dropped_responding": 397,
+       "frac_responding_kept": 0.11764705882352941,
+       "frac_responding_dropped": 0.15860966839792248,
+       "n_units": 972
+      }
+     },
+     "b2": {
+      "D1": {
+       "odds_ratio": 1.1715689140985905,
+       "ci95": [
+        0.5514874472400023,
+        8.076362994715291
+       ],
+       "kept_calls": 3,
+       "kept_responding": 0,
+       "dropped_calls": 11238,
+       "dropped_responding": 1221,
+       "frac_responding_kept": 0.0,
+       "frac_responding_dropped": 0.10864922584089695,
+       "n_units": 1580
+      }
+     },
+     "loo_t": {
+      "D1": {
+       "odds_ratio": 1.231527093596059,
+       "ci95": [
+        0.2090038902883129,
+        3.4175016999863996
+       ],
+       "kept_calls": 23,
+       "kept_responding": 3,
+       "dropped_calls": 11218,
+       "dropped_responding": 1218,
+       "frac_responding_kept": 0.13043478260869565,
+       "frac_responding_dropped": 0.10857550365484044,
+       "n_units": 1580
+      }
+     }
+    },
+    "step2_footprint": {
+     "covered_rows": 510912,
+     "covered_family": 22561,
+     "share_p_lt_005_null_a_calls": 0.13201672449070367,
+     "share_p_lt_005_family": 0.10730907317938035
+    },
+    "step3_calls": {
+     "null_a": 15773,
+     "null_b": 7203,
+     "b2": 3,
+     "loo_t": 43,
+     "filter_null_b_then_footprint": 749,
+     "and_max_bh": 0,
+     "or_cauchy_bh": 5174
+    },
+    "step3_spatial": {}
+   }
+  }
+ }
+}

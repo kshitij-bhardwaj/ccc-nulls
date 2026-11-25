@@ -36,6 +36,7 @@ with no change to the tool's folder.
 """
 from __future__ import annotations
 
+import os
 import warnings
 from dataclasses import dataclass
 from typing import Any, Callable
@@ -48,6 +49,40 @@ from .scores import get_score
 from .stats import bh
 
 SUFFIX = "null_b"
+
+
+# ------------------------------------------------------------------ permutations on several processes
+def n_workers(workers: int | None = None) -> int:
+    """Processes for a permutation loop: ``workers``, else ``$CCC_NULLS_WORKERS``, else 1."""
+    return max(1, int(workers if workers is not None else os.environ.get("CCC_NULLS_WORKERS", "1")))
+
+
+_JOB: dict = {}
+
+
+def _chunk(bounds):
+    return _JOB["fn"](*bounds)
+
+
+def map_permutations(fn: Callable[[int, int], tuple], B: int, workers: int = 1) -> tuple:
+    """Sum of ``fn(lo, hi)`` over contiguous blocks of permutations 0..B-1, one block per process.
+
+    ``fn(lo, hi)`` returns a tuple of integer count arrays over permutations lo..hi-1. It must draw the
+    same sequence as a serial loop (draw every permutation from 0, score only lo..hi-1), so the summed
+    counts, and the p-values, are identical for any number of workers. Processes are forked, so
+    ``fn`` and what it closes over (the side score, the data) are shared, not pickled."""
+    if workers <= 1 or B < 2 * workers:
+        return fn(0, B)
+    import multiprocessing as mp
+
+    edges = np.linspace(0, B, workers + 1).astype(int)
+    _JOB["fn"] = fn
+    try:
+        with mp.get_context("fork").Pool(workers) as pool:
+            parts = pool.map(_chunk, list(zip(edges[:-1].tolist(), edges[1:].tolist())))
+    finally:
+        _JOB.clear()
+    return tuple(sum(p[i] for p in parts) for i in range(len(parts[0])))
 
 
 @dataclass(frozen=True)
@@ -87,7 +122,7 @@ def get(method: str | Callable = "composite") -> Callable:
 @register("composite")
 def composite(side: SideScore, codes, n_types: int, *, B: int = 1000, seed: int = 0,
               permutations: np.ndarray | None = None, delta: float | tuple = 0.0,
-              ties: str = "count") -> dict:
+              ties: str = "count", workers: int | None = None) -> dict:
     """p_L, p_R and p = max(p_L, p_R) for every entry of ``side.score``'s output.
 
     Parameters
@@ -108,6 +143,9 @@ def composite(side: SideScore, codes, n_types: int, *, B: int = 1000, seed: int 
     ties
         ``"count"``: p = (1 + #{b : s_b >= s - delta}) / (B + 1), the repository's convention.
         ``"ignore"``: count s_b > s - delta only, as CellChat's own test does.
+    workers
+        Processes for the permutations (default ``$CCC_NULLS_WORKERS``, else 1). The p-values do not
+        depend on it (:func:`map_permutations`).
 
     Returns
     -------
@@ -123,22 +161,38 @@ def composite(side: SideScore, codes, n_types: int, *, B: int = 1000, seed: int 
     codes = np.asarray(codes)
     obs = side.summarize(codes, n_types)
     s_obs = np.asarray(side.score(obs, obs))
-    kL = {d: np.zeros(s_obs.shape, dtype=np.int64) for d in deltas}
-    kR = {d: np.zeros(s_obs.shape, dtype=np.int64) for d in deltas}
-    nL, nR = np.zeros(s_obs.shape, dtype=np.int64), np.zeros(s_obs.shape, dtype=np.int64)
     if permutations is not None:
         permutations = np.asarray(permutations)
         B = permutations.shape[1]
-    gen = np.random.default_rng(seed)
-    for b in range(B):
-        perm = side.summarize(codes[permutations[:, b]] if permutations is not None else gen.permutation(codes), n_types)
-        s_L = np.asarray(side.score(perm, obs))              # sender side shuffled
-        s_R = np.asarray(side.score(obs, perm))              # receiver side shuffled
-        nL += s_L > 0
-        nR += s_R > 0
-        for d in deltas:
-            kL[d] += beats(s_L, s_obs - d)
-            kR[d] += beats(s_R, s_obs - d)
+
+    def counts(lo, hi):
+        kL = [np.zeros(s_obs.shape, dtype=np.int64) for _ in deltas]
+        kR = [np.zeros(s_obs.shape, dtype=np.int64) for _ in deltas]
+        nL, nR = np.zeros(s_obs.shape, dtype=np.int64), np.zeros(s_obs.shape, dtype=np.int64)
+        gen = np.random.default_rng(seed)
+        for b in range(hi):
+            if permutations is not None:
+                if b < lo:
+                    continue
+                c = codes[permutations[:, b]]
+            else:
+                c = gen.permutation(codes)                   # drawn for every b, so the sequence is the serial one
+                if b < lo:
+                    continue
+            perm = side.summarize(c, n_types)
+            s_L = np.asarray(side.score(perm, obs))          # sender side shuffled
+            s_R = np.asarray(side.score(obs, perm))          # receiver side shuffled
+            nL += s_L > 0
+            nR += s_R > 0
+            for i, d in enumerate(deltas):
+                kL[i] += beats(s_L, s_obs - d)
+                kR[i] += beats(s_R, s_obs - d)
+        return (nL, nR, *kL, *kR)
+
+    out = map_permutations(counts, int(B), n_workers(workers))
+    nL, nR = out[0], out[1]
+    kL = dict(zip(deltas, out[2:2 + len(deltas)]))
+    kR = dict(zip(deltas, out[2 + len(deltas):]))
 
     pval = lambda k: np.where(s_obs == 0, 1.0, (1 + k) / (B + 1))
     p_delta = {d: np.maximum(pval(kL[d]), pval(kR[d])) for d in deltas}

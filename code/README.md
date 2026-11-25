@@ -79,6 +79,8 @@ This downloads in 16 parallel byte ranges and checks each file's md5 (about 9 GB
 | Allen brain, mouse V1 | real data; spatial truth (Open Problems' own) | Open Problems: https://openproblems-data.s3.amazonaws.com/resources/datasets/openproblems_v1/allen_brain_atlas/log_cp10k/dataset.h5ad |
 | Mouse hypothalamus, Moffitt et al. 2018 | real data; MERFISH spatial truth | scRNA-seq: GEO GSE113576 (the 10x files `GSE113576_{matrix.mtx,genes.tsv,barcodes.tsv}.gz` in `data/moffitt2018/scrna/`); MERFISH: animal 1 of the study (scverse example data) as `data/moffitt2018/merfish/merfish.h5ad`. `benchmarks/liana_nulls/hypothalamus.py` builds `data/moffitt2018/moffitt2018_hypothalamus.h5ad` from them |
 | TNBC Visium slides, Wu et al. 2021 | TNBC spatial truth | Zenodo record 4739739, the 4 TNBC slides, in `data/wu2021_visium/` |
+| NicheNet v2 ligand-target matrix, Browaeys et al. 2020 | downstream truth and footprint filter (addition after AMENDMENT_5) | Zenodo record 7074291, `ligand_target_matrix_nsga2r_final.rds` (md5 `b09606b04b2d4490418d9028c0e58b9f`), converted to `data/nichenet/ligand_target_matrix.{bin,rows.txt,cols.txt}` as `benchmarks/liana_nulls/nichenet.py` describes |
+| 10x Xenium human breast cancer, Janesick et al. 2023 | single-cell spatial truth for TNBC (addition; ER+/HER2+ tumour, not triple negative) | `Xenium_FFPE_Human_Breast_Cancer_Rep{1,2}_cells.csv.gz` (10x Genomics, Xenium 1.0.1 samples) and `GSE243275_Barcode_Cell_Type_Matrices.xlsx` (GEO GSE243275); see `benchmarks/liana_nulls/xenium.py`. The truth it gives is committed (`results/liana_nulls/truth_tnbc_wu2021_xenium.*`) |
 
 **Open Problems closed its S3 bucket** (`AllAccessDisabled`, checked 2026-11-05), so the two Open Problems links no
 longer download. Copies taken before that are the Kaggle data set
@@ -137,6 +139,19 @@ python -m benchmarks.liana_nulls --part core --dataset moffitt2018_hypothalamus 
 python -m benchmarks.liana_nulls --part calibration power biology amendment extend power_a3 b2_validity ablation report
 python -m benchmarks.liana_nulls.amendment4 --part all                            # T2 (LOO-t) through every stage
 python -m benchmarks.liana_nulls.amendment5 --part all                            # NATMI (native NATMI for column 1)
+```
+
+Additions after AMENDMENT_5 (not pre-registered; results and reading in
+[`benchmarks/results/liana_nulls/AMENDMENT_5_NATMI.md`](benchmarks/results/liana_nulls/AMENDMENT_5_NATMI.md)). They ran on
+a lab server with `CCC_NULLS_WORKERS=8` (permutations on 8 processes; the p-values do not depend on it):
+
+```bash
+python -m benchmarks.liana_nulls.addendum_b5000 --part core --dataset tabula_sapiens_mammary   # NATMI with B = 5,000 (each data set; also calibration, power, biology)
+python -m benchmarks.liana_nulls.rerun_tools --tool cellchat                     # CellChat and CellPhoneDB row tables, as --part core
+python -m benchmarks.liana_nulls.rerun_tools --tool cellphonedb
+python -c "from pathlib import Path; from benchmarks.liana_nulls import xenium; xenium.tnbc_truth(Path('benchmarks/results/liana_nulls'))"   # Xenium truth
+python -m benchmarks.liana_nulls.nichenet_eval                                   # NicheNet: truth, footprint p, filter, Cauchy
+python -m benchmarks.liana_nulls.absolute_eval --tool natmi                      # biology against all tested rows (and cellchat, cellphonedb)
 ```
 
 (`make benchmark1` runs all five.) The calibration stage reads each tool's calibration runs, or runs them
@@ -213,6 +228,16 @@ recomputes every earlier variant in the same runs.
 | Sec. 4.4, the top-1% cutoff checked at 0.5–10% | `benchmarks.liana_final.amendment9`, parts `calibration`, `lung`, `mouse`, `hard_power`; report `report9.py` | `amendment9/*.json`, `amendment9/README.md` |
 | Table 3 (summary) | all of the above; the held-out Lung rule is `amendment8`'s part `lung` (`confirm_*.json`) | as above |
 
+Results in the code but not in the report: additions run after AMENDMENT_5 (Benchmark 1), not pre-registered;
+their results and reading are in [`benchmarks/results/liana_nulls/AMENDMENT_5_NATMI.md`](benchmarks/results/liana_nulls/AMENDMENT_5_NATMI.md).
+
+| Result | Code | Result files |
+|---|---|---|
+| Native NATMI through Benchmark 1 (fidelity to native NATMI; JLP, BPT, MDT, LOO-t; B = 1,000 and 5,000) | `benchmarks.liana_nulls.amendment5`, `addendum_b5000` | `results/liana_nulls/amendment5_*.json`, `addendum_natmi_b5000_*.json` |
+| NicheNet (Browaeys et al. 2020) as a downstream truth, footprint p-value, footprint filter on BPT's calls, Cauchy combination (Liu and Xie 2020) and max(p) | `benchmarks.liana_nulls.nichenet_eval` (with `nichenet.py`; NATMI from `addendum_b5000`, CellChat and CellPhoneDB rows from `rerun_tools`) | `results/liana_nulls/addendum_nichenet.json` |
+| Xenium single-cell spatial truth (Janesick et al. 2023) | `benchmarks.liana_nulls.xenium` | `results/liana_nulls/truth_tnbc_wu2021_xenium.*`, `truth_xenium_breast_classes.csv` |
+| Biology against all tested rows (class-pair bootstrap for Xenium) | `benchmarks.liana_nulls.absolute_eval` | `results/liana_nulls/addendum_absolute_<tool>.json` |
+
 The figures themselves are drawn by `figures/make_figures.py` (section 4); `make reports` rebuilds the tables of
 every results README from the same files.
 
@@ -239,7 +264,7 @@ code/
 │   ├── evaluation/           Open Problems' evaluation metrics
 │   └── simulate.py           synthetic data with planted interactions (the tests' simulations)
 ├── benchmarks/
-│   ├── liana_nulls/          Benchmark 1: PLAN.md, AMENDMENT_1-5.md and their code
+│   ├── liana_nulls/          Benchmark 1: PLAN.md, AMENDMENT_1-5.md and their code; additions (B = 5,000, NicheNet, Xenium)
 │   ├── liana_final/          Benchmark 2: PLAN.md, AMENDMENT_1-9.md and their code (amendment<N>.py runs
 │   │                         AMENDMENT_<N>.md, report_amendment<N>.py writes its README), aux_files.md5
 │   ├── null_b_cellphonedb.py CellPhoneDB's own Null B (Benchmark 1's "#9's Null B" column, AMENDMENT_3)
