@@ -11,7 +11,7 @@ python -m ccc_nulls.datasets tabula_sapiens_lung  # held-out confirmation (3.20 
 
 **Open Problems disabled its S3 bucket** (`s3://openproblems-data`, `AllAccessDisabled`, checked 2026-11-05): the two
 Open Problems links below no longer work. Copies downloaded before that, with the md5 sums below, are the Kaggle dataset
-[`kshitijbhardwaj1729/ccc-nulls-openproblems`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems) (private to the project team; to be added as a collaborator, ask a maintainer); place them here under the filenames shown and the downloader verifies them.
+[`kshitijbhardwaj1729/ccc-nulls-openproblems`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems) (public; files unchanged, credits and terms in its description); place them here under the filenames shown and the downloader verifies them.
 
 The downloader fetches 16 byte ranges in parallel and checks the md5. A single stream from S3
 (or the CELLxGENE CDN) can be as slow as ~100 KB/s. A browser download of the link below works too; save the file

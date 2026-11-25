@@ -85,7 +85,7 @@ This downloads in 16 parallel byte ranges and checks each file's md5 (about 9 GB
 **Open Problems closed its S3 bucket** (`AllAccessDisabled`, checked 2026-11-05), so the two Open Problems links no
 longer download. Copies taken before that are the Kaggle data set
 [`kshitijbhardwaj1729/ccc-nulls-openproblems`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems)
-(private to the project team: ask to be added as a collaborator). Put the two files in `data/` under the names in
+(public; files unchanged, credits and terms in its description). Put the two files in `data/` under the names in
 `data/README.md`; the command above then checks their md5 against the originals.
 
 **Auxiliary files** (about 200 MB): the CellChatDB v2.1.2 files (also fetched automatically from
@@ -93,7 +93,8 @@ longer download. Copies taken before that are the Kaggle data set
 the CytoSig signature (`downstream/cytosig_signature.centroid`, Jiang et al. 2021), PROGENy from OmniPath
 (`downstream/progeny_omnipath_human.tsv`, Schubert et al. 2018), HCOP human–mouse orthologs (also fetched through
 LIANA+ the first time) and the processed hypothalamus. They are one archive, the Kaggle data set
-[`kshitijbhardwaj1729/ccc-nulls-aux`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux) (private, as above):
+[`kshitijbhardwaj1729/ccc-nulls-aux`](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux) (public; each file's source and licence in its
+description):
 
 ```bash
 tar xzf ccc-nulls-aux.tgz -C data

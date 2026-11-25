@@ -271,6 +271,12 @@ def collect():
         merge(d / "out" / "results", meta["machine"])
 
 
+# Sessions that ran on a lab server, not on Kaggle (more memory than a Kaggle session); no Kaggle notebook exists
+LAB_SERVER = {"a2-sensitivity-perms-mammary", "a4-sensitivity-perms-mammary", "a8-donor-mammary", "a8-donor-tnbc",
+              "a8-sensitivity-seed-expr", "a8-sensitivity-cells-labels", "a8-sensitivity-perms-hypothalamus",
+              "a8-sensitivity-perms-mammary"} | {f"a8-tool-real-{k}" for k in RUNS}
+
+
 def readme():
     """kaggle/README.md: every session, its link, inputs and command (with run time once collected)."""
     url = lambda k: f"https://www.kaggle.com/code/{OWNER}/{slug(k)}"
@@ -287,14 +293,17 @@ def readme():
          f"- h5ad files: the output of [ccc-nulls-data]({url('data')}): Tabula Sapiens from CELLxGENE, TNBC and Allen brain "
          f"from the [Open Problems copies](https://www.kaggle.com/datasets/{OWNER}/ccc-nulls-openproblems) (the Open Problems "
          "bucket is closed), all md5-checked", "",
-         "The sessions and data sets are private to the project team; to be added as a collaborator, ask a maintainer.", "",
+         "The sessions and the three data sets are public (no Kaggle account is needed to view them). Sessions marked "
+         "*lab server* ran there instead, from the same commit (their results record it in `machine`); `report` only "
+         "rebuilds the READMEs from the merged results and was run locally.", "",
          "| Session | Needs | Command | Run time |", "|---|---|---|---|"]
     for k, s in SESSIONS.items():
         f = OUTPUTS / slug(k) / "out" / "session.json"
         secs = json.loads(f.read_text())["seconds"] if f.exists() else None
         cmd = "download the five h5ad files" if s.get("download") else "<br>".join(f"`{c}`" for c in s["commands"])
         needs = ", ".join(n for n in s["needs"] if n != "data") if k != "report" else "all"
-        L.append(f"| [{k}]({url(k)}) | {needs or '–'} | {cmd.replace('|', '\\|')} | "
+        name = f"{k} (*lab server*)" if k in LAB_SERVER else k if k == "report" else f"[{k}]({url(k)})"
+        L.append(f"| {name} | {needs or '–'} | {cmd.replace('|', '\\|')} | "
                  f"{'' if secs is None else f'{secs / 3600:.1f} h'} |")
     (HERE / "README.md").write_text("\n".join(L) + "\n")
     print("wrote", HERE / "README.md")

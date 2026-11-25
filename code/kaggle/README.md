@@ -8,7 +8,7 @@ Inputs:
 - auxiliary files: [ccc-nulls-aux](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-aux) (md5: `benchmarks/liana_final/aux_files.md5`)
 - h5ad files: the output of [ccc-nulls-data](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-data): Tabula Sapiens from CELLxGENE, TNBC and Allen brain from the [Open Problems copies](https://www.kaggle.com/datasets/kshitijbhardwaj1729/ccc-nulls-openproblems) (the Open Problems bucket is closed), all md5-checked
 
-The sessions and data sets are private to the project team; to be added as a collaborator, ask a maintainer.
+The sessions and the three data sets are public (no Kaggle account is needed to view them). Sessions marked *lab server* ran there instead, from the same commit (their results record it in `machine`); `report` only rebuilds the READMEs from the merged results and was run locally.
 
 | Session | Needs | Command | Run time |
 |---|---|---|---|
@@ -47,7 +47,7 @@ The sessions and data sets are private to the project team; to be added as a col
 | [a2-sensitivity-seed-expr](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-seed-expr) | run-mammary | `python -m benchmarks.liana_final.amendment2 --part sensitivity --only '^seed\|@expr_prop='` | 4.9 h |
 | [a2-sensitivity-cells-labels](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-cells-labels) | run-mammary | `python -m benchmarks.liana_final.amendment2 --part sensitivity --only '@(cells\|labels)='` | 3.4 h |
 | [a2-sensitivity-perms-hypothalamus](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-perms-hypothalamus) | run-mammary, run-hypothalamus | `python -m benchmarks.liana_final.amendment2 --part sensitivity --only '^real$\|^moffitt2018_hypothalamus@n_perms'` | 4.6 h |
-| [a2-sensitivity-perms-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-sensitivity-perms-mammary) | run-mammary, run-hypothalamus | `python -m benchmarks.liana_final.amendment2 --part sensitivity --only '^real@\|^tabula_sapiens_mammary@n_perms'` |  |
+| a2-sensitivity-perms-mammary (*lab server*) | run-mammary, run-hypothalamus | `python -m benchmarks.liana_final.amendment2 --part sensitivity --only '^real@\|^tabula_sapiens_mammary@n_perms'` |  |
 | [a2-cases](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-cases) | run-tnbc, run-allen, run-mammary, run-liver, run-hypothalamus | `python -m benchmarks.liana_final.amendment2 --part cases` | 0.1 h |
 | [a2-biology](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a2-biology) | biology, a2-donor-real, run-tnbc, run-allen, run-mammary, run-liver, run-hypothalamus | `python -m benchmarks.liana_final.amendment2 --part biology` | 0.0 h |
 | [a3-real-tnbc](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a3-real-tnbc) | run-tnbc | `python -m benchmarks.liana_final.amendment3 --part real --only '^tnbc_wu2021$'` | 0.7 h |
@@ -77,7 +77,7 @@ The sessions and data sets are private to the project team; to be added as a col
 | [a4-sensitivity-seed-expr](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-sensitivity-seed-expr) | a3-real-mammary | `python -m benchmarks.liana_final.amendment4 --part sensitivity --only '^seed\|@expr_prop='` | 4.7 h |
 | [a4-sensitivity-cells-labels](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-sensitivity-cells-labels) | a3-real-mammary | `python -m benchmarks.liana_final.amendment4 --part sensitivity --only '@(cells\|labels)='` | 3.3 h |
 | [a4-sensitivity-perms-hypothalamus](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-sensitivity-perms-hypothalamus) | a3-real-mammary, a3-real-hypothalamus | `python -m benchmarks.liana_final.amendment4 --part sensitivity --only '^real$\|^moffitt2018_hypothalamus@n_perms'` | 5.2 h |
-| [a4-sensitivity-perms-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-sensitivity-perms-mammary) | a3-real-mammary | `python -m benchmarks.liana_final.amendment4 --part sensitivity --only '^real@\|^tabula_sapiens_mammary@n_perms'` |  |
+| a4-sensitivity-perms-mammary (*lab server*) | a3-real-mammary | `python -m benchmarks.liana_final.amendment4 --part sensitivity --only '^real@\|^tabula_sapiens_mammary@n_perms'` |  |
 | [a4-mouse](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-mouse) | – | `python -m benchmarks.liana_final.amendment4 --part mouse` | 2.0 h |
 | [a4-cases](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-cases) | run-tnbc, run-allen, run-mammary, run-liver, run-hypothalamus, a3-real-tnbc, a3-real-allen, a3-real-mammary, a3-real-liver, a3-real-hypothalamus | `python -m benchmarks.liana_final.amendment4 --part cases` | 0.1 h |
 | [a4-timing](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a4-timing) | run-mammary, run-hypothalamus | `python -m benchmarks.liana_final.amendment4 --part timing` | 0.0 h |
@@ -146,13 +146,13 @@ The sessions and data sets are private to the project team; to be added as a col
 | [a8-donor-lung-donor-0](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-donor-lung-donor-0) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tabula_sapiens_lung\\|donor\\|0$'` | 1.8 h |
 | [a8-donor-lung-donor-1](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-donor-lung-donor-1) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tabula_sapiens_lung\\|donor\\|1$'` | 1.8 h |
 | [a8-donor-lung-donor-2](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-donor-lung-donor-2) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tabula_sapiens_lung\\|donor\\|2$'` | 1.9 h |
-| [a8-donor-tnbc](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-donor-tnbc) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tnbc_wu2021\\|'` |  |
-| [a8-donor-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-donor-mammary) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tabula_sapiens_mammary\\|'` |  |
+| a8-donor-tnbc (*lab server*) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tnbc_wu2021\\|'` |  |
+| a8-donor-mammary (*lab server*) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tabula_sapiens_mammary\\|'` |  |
 | [a8-donor-liver](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-donor-liver) | – | `python -m benchmarks.liana_final.amendment8 --part donor --only '^tabula_sapiens_liver\\|'` | 4.2 h |
-| [a8-sensitivity-seed-expr](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-sensitivity-seed-expr) | a8-real-mammary | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '^seed\|@expr_prop='` |  |
-| [a8-sensitivity-cells-labels](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-sensitivity-cells-labels) | a8-real-mammary | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '@(cells\|labels)='` |  |
-| [a8-sensitivity-perms-hypothalamus](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-sensitivity-perms-hypothalamus) | a8-real-mammary, a8-real-hypothalamus | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '^real$\|^moffitt2018_hypothalamus@n_perms'` |  |
-| [a8-sensitivity-perms-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-sensitivity-perms-mammary) | a8-real-mammary | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '^real@\|^tabula_sapiens_mammary@n_perms'` |  |
+| a8-sensitivity-seed-expr (*lab server*) | a8-real-mammary | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '^seed\|@expr_prop='` |  |
+| a8-sensitivity-cells-labels (*lab server*) | a8-real-mammary | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '@(cells\|labels)='` |  |
+| a8-sensitivity-perms-hypothalamus (*lab server*) | a8-real-mammary, a8-real-hypothalamus | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '^real$\|^moffitt2018_hypothalamus@n_perms'` |  |
+| a8-sensitivity-perms-mammary (*lab server*) | a8-real-mammary | `python -m benchmarks.liana_final.amendment8 --part sensitivity --only '^real@\|^tabula_sapiens_mammary@n_perms'` |  |
 | [a8-tool-labels](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-labels) | – | `python -m benchmarks.liana_final.amendment8 --part tool_labels` | 3.9 h |
 | [a8-tool-power-1000](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-1000) | – | `python -m benchmarks.liana_final.amendment8 --part tool_power --only '\\|B1000\\|'` | 1.2 h |
 | [a8-tool-power-5000-0](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-0) | – | `python -m benchmarks.liana_final.amendment8 --part tool_power --only '\\|B5000\\|f1.5\\|0$'` | 1.1 h |
@@ -160,11 +160,11 @@ The sessions and data sets are private to the project team; to be added as a col
 | [a8-tool-power-5000-2](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-2) | – | `python -m benchmarks.liana_final.amendment8 --part tool_power --only '\\|B5000\\|f1.5\\|2$'` | 1.0 h |
 | [a8-tool-power-5000-3](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-3) | – | `python -m benchmarks.liana_final.amendment8 --part tool_power --only '\\|B5000\\|f1.5\\|3$'` | 0.7 h |
 | [a8-tool-power-5000-4](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-power-5000-4) | – | `python -m benchmarks.liana_final.amendment8 --part tool_power --only '\\|B5000\\|f1.5\\|4$'` | 1.1 h |
-| [a8-tool-real-tnbc](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-real-tnbc) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^tnbc_wu2021$'` |  |
-| [a8-tool-real-allen](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-real-allen) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^allen_brain_atlas$'` |  |
-| [a8-tool-real-mammary](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-real-mammary) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^tabula_sapiens_mammary$'` |  |
-| [a8-tool-real-liver](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-real-liver) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^tabula_sapiens_liver$'` |  |
-| [a8-tool-real-hypothalamus](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a8-tool-real-hypothalamus) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^moffitt2018_hypothalamus$'` |  |
+| a8-tool-real-tnbc (*lab server*) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^tnbc_wu2021$'` |  |
+| a8-tool-real-allen (*lab server*) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^allen_brain_atlas$'` |  |
+| a8-tool-real-mammary (*lab server*) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^tabula_sapiens_mammary$'` |  |
+| a8-tool-real-liver (*lab server*) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^tabula_sapiens_liver$'` |  |
+| a8-tool-real-hypothalamus (*lab server*) | – | `python -m benchmarks.liana_final.amendment8 --part tool_real --only '^moffitt2018_hypothalamus$'` |  |
 | [a9-calibration-mammary-receptor](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a9-calibration-mammary-receptor) | – | `python -m benchmarks.liana_final.amendment9 --part calibration --only '^tabula_sapiens_mammary\\|receptor\\|'` | 2.0 h |
 | [a9-calibration-mammary-ligand](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a9-calibration-mammary-ligand) | – | `python -m benchmarks.liana_final.amendment9 --part calibration --only '^tabula_sapiens_mammary\\|ligand\\|'` | 1.3 h |
 | [a9-calibration-liver-receptor](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a9-calibration-liver-receptor) | – | `python -m benchmarks.liana_final.amendment9 --part calibration --only '^tabula_sapiens_liver\\|receptor\\|'` | 2.0 h |
@@ -177,4 +177,4 @@ The sessions and data sets are private to the project team; to be added as a col
 | [a9-lung-ligand-2](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a9-lung-ligand-2) | – | `python -m benchmarks.liana_final.amendment9 --part lung --only '^tabula_sapiens_lung\\|ligand\\|2$'` | 2.1 h |
 | [a9-mouse](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a9-mouse) | – | `python -m benchmarks.liana_final.amendment9 --part mouse` | 2.3 h |
 | [a9-hard-power](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-a9-hard-power) | – | `python -m benchmarks.liana_final.amendment9 --part hard_power` | 1.2 h |
-| [report](https://www.kaggle.com/code/kshitijbhardwaj1729/ccc-nulls-report) | all | `python -m benchmarks.liana_final --part report`<br>`python -m benchmarks.liana_final.amendment2 --part report`<br>`python -m benchmarks.liana_final.amendment3 --part report`<br>`python -m benchmarks.liana_final.amendment4 --part report`<br>`python -m benchmarks.liana_final.amendment6 --part report` |  |
+| report | all | `python -m benchmarks.liana_final --part report`<br>`python -m benchmarks.liana_final.amendment2 --part report`<br>`python -m benchmarks.liana_final.amendment3 --part report`<br>`python -m benchmarks.liana_final.amendment4 --part report`<br>`python -m benchmarks.liana_final.amendment6 --part report` |  |
